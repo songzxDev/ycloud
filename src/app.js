@@ -13,6 +13,13 @@ let viewmodel = {
       id: 2,
       title: '3'
     }
-  ])
+  ]),
+  isShow: ko.observable(false),
+  clickoutside: function () {
+    viewmodel.isShow(false)
+  },
+  showdropdown: function () {
+    viewmodel.isShow(!viewmodel.isShow())
+  }
 }
 ko.applyBindings(viewmodel, document.getElementById('app'))

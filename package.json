@@ -46,7 +46,8 @@
   },
   "dependencies": {
     "knockout": "^3.4.2",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "ko-bindinghandler": "1.0.0"
   },
   "engines": {
     "node": ">= 4.0.0",

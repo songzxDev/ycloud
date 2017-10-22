@@ -4,8 +4,8 @@ var config = require('./webpack.base.config'),
 var merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 var Dashboard = require('webpack-dashboard');
-// var DashboardPlugin = require('webpack-dashboard/plugin');
-// var dashboard = new Dashboard();
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var dashboard = new Dashboard();
 
 config = merge(config, {
   entry: {
@@ -64,7 +64,7 @@ config = merge(config, {
     //   name: 'runtime'
     // }),
     new webpack.HotModuleReplacementPlugin(),
-    //new DashboardPlugin(dashboard.setData),
+    new DashboardPlugin(dashboard.setData),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('dev')
     })

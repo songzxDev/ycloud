@@ -19,7 +19,22 @@
 <body>
 <a href="/yuncai/mobile/login.html?r=/">yc测试登录链接</a>
 <div id="app">
+  <h1>1.demo</h1>
  <y-demo></y-demo>
+  <h1>2.dropdown</h1>
+  <div data-bind="clickoutside:clickoutside" style="width: 300px">
+    <button type="button" data-bind="click:showdropdown">点击后切换显示dropdown</button>
+    <div>
+      <y-dropdown params="width:300, isShow:isShow">
+        <div data-bind="text:$parent.id"></div>
+        <div data-bind="text:$parent.b"></div>
+        <div>i am dropdown</div>
+        <div>i am dropdown</div>
+        <div>i am dropdown</div>
+        <div>i am dropdown</div>
+      </y-dropdown>
+    </div>
+  </div>
 </div>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>

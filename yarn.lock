@@ -2786,6 +2786,13 @@ knockout@^3.4.2:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/knockout/-/knockout-3.4.2.tgz#e87958de77ad1e936f7ce645bab8b5d7c456d937"
 
+ko-bindinghandler@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ko-bindinghandler/-/ko-bindinghandler-1.0.0.tgz#d47a6d9163ba90886c69788327e75226c7f2d0b7"
+  dependencies:
+    knockout "^3.4.2"
+    lodash "^4.17.4"
+
 lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
@@ -4962,10 +4969,6 @@ websocket-driver@>=0.5.1:
 websocket-extensions@>=0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.1.tgz#76899499c184b6ef754377c2dbb0cd6cb55d29e7"
-
-webuploader@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/webuploader/-/webuploader-0.1.8.tgz#7a84f282b4d3cbbf753c79adf484da4e69e8e9e1"
 
 whet.extend@~0.9.9:
   version "0.9.9"

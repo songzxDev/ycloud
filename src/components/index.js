@@ -1,11 +1,11 @@
 import demo from './demo'
-
+import dropdown from './dropdown'
+const PREFIX = 'y-'
 function register (model) {
-  var name = model.name
-  var path = model.path || model.name
-  ko.components.register(name, {
+  ko.components.register(PREFIX + model.name, {
     viewModel: model.init,
     template: model.template
   })
 }
 register(demo)
+register(dropdown)
