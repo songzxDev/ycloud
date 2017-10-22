@@ -13,7 +13,7 @@ module.exports = {
   devtool: 'inline-source-map',
   plugins: [
     new ExtractTextPlugin({
-      filename: 'index.css',
+      filename: 'ycloud.min.css',
       disable: false,
       allChunks: true,
     })
@@ -54,6 +54,7 @@ module.exports = {
             {
               loader: 'postcss-loader',
               options: {
+                minimize: true,
                 plugins: [
                   require('autoprefixer')({browsers: [
                     'last 3 versions',
@@ -61,7 +62,7 @@ module.exports = {
                 ]
               }
             }],
-          fallback: 'style-loader',
+          fallback: 'style-loader'
         })
       },
       {
@@ -79,6 +80,6 @@ module.exports = {
   },
   output: {
     path: distpath,
-    filename: 'libs.js'
+    filename: 'ycloud.min.js'
   },
 };

@@ -2,7 +2,7 @@
   "name": "ycloud",
   "version": "1.0.0",
   "description":"",
-  "main": "dist/libs.js",
+  "main": "dist/ycloud.min.js",
   "author": "windknow <songhlc@yonyou.com>",
   "license": "MIT",
   "files": [
