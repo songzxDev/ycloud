@@ -1,3 +1,4 @@
+import ko from 'knockout'
 import './index'
 import '@/components/index.less'
 console.log('test')

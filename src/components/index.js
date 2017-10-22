@@ -1,3 +1,4 @@
+import ko from 'knockout'
 import demo from './demo'
 import dropdown from './dropdown'
 const PREFIX = 'y-'
