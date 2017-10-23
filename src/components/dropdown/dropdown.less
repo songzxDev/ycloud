@@ -1,72 +1,7 @@
-@keyframes slideInDown {
-  0% {
-    opacity: 0;
-    transform-origin: center top 0px;
-    transform: scaleY(.8);
-  }
-  100% {
-    opacity: 1;
-    transform-origin: center top 0px;
-    transform: scaleY(1);
-  }
-}
-
-.slideInDown {
-  animation-name: slideInDown;
-}
-@keyframes slideInUp {
-  0% {
-    opacity: 0;
-    transform-origin: center top 0px;
-    transform: scaleY(.8);
-  }
-  100% {
-    opacity: 1;
-    transform-origin: center top 0px;
-    transform: scaleY(1);
-  }
-}
-
-.slideInUp {
-  animation-name: slideInUp;
-}
-@keyframes slideOutDown {
-  0% {
-    opacity: 1;
-    transform-origin: center top 0px;
-    transform: scaleY(1);
-  }
-  100% {
-    opacity: 0;
-    transform-origin: center top 0px;
-    transform: scaleY(.8);
-  }
-}
-
-.slideOutDown {
-  animation-name: slideOutDown;
-}
-
-@keyframes slideOutUp {
-  0% {
-    opacity: 1;
-    transform-origin: center top 0px;
-    transform: scaleY(1);
-  }
-  100% {
-    opacity: 0;
-    transform-origin: center top 0px;
-    transform: scaleY(.8);
-  }
-}
-
-.slideOutUp {
-  animation-name: slideOutUp;
-}
-.animated {
-  animation-duration: .5s;
-  animation-fill-mode: both;
-}
-.hidden{
-  display: none;
+.y-dropdown{
+  max-height: 200px;
+  overflow: auto;
+  margin: 5px 0;
+  border-radius: 4px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
 }

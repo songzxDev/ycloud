@@ -24,6 +24,7 @@ let viewmodel = {
   },
   callback: function(val) {
     debugger
-  }
+  },
+  selectList: ko.observableArray([{value:1,label:'1'},{value:2,label:'2'}])
 }
 ko.applyBindings(viewmodel, document.getElementById('app'))

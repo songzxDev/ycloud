@@ -15,4 +15,6 @@ import _ from '@/util/lodash'
 
 3. ko通用指令目前是写在yonyouyc/ko-bindinghander下有需求向songhlc@yonyou.com提
 
+4. 所有鼠标键盘交互事件使用handle开头
+
 
