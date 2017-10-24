@@ -17,4 +17,13 @@ import _ from '@/util/lodash'
 
 4. 所有鼠标键盘交互事件使用handle开头
 
+5. 组件维护信息开头注释
+  ```
+  /*
+  * @author: songhlc
+  * @date: 2017-10-23
+  * @description: 下拉组件
+  * */
+  ```
+
 
