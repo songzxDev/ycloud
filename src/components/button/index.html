@@ -1,0 +1,8 @@
+<button class="yc-button" data-bind="css: classes, attr: {type: btnType, disabled: disabled}, style: {opacity: loading()?0.7:1}, click: click">
+  <span data-bind="visible: loading">
+    loading..
+  </span>
+  <span data-bind="visible: !loading()">
+      <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+  </span>
+</button>
