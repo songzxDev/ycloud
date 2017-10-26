@@ -1,0 +1,36 @@
+.y-tag{
+  display: inline-block;
+  height: 22px;
+  line-height: 22px;
+  margin: 2px 4px 2px 0;
+  padding: 0 8px;
+  border: 1px solid #e9eaec;
+  border-radius: 3px;
+  background: #f7f7f7;
+  font-size: @f-size-base;
+  vertical-align: middle;
+  opacity: 1;
+  overflow: hidden;
+  cursor: pointer;
+  .y-tag-text{
+    color: @f-color-normal;
+    max-width: 100px;
+    overflow: hidden;
+  }
+  .y-tag-close{
+    display: inline-block;
+    font-size: 12px;
+    transform: scale(1.8) rotate(45deg);
+    cursor: pointer;
+    margin-left: 8px;
+    color: @f-color-normal;
+    opacity: .66;
+    position: relative;
+    top: -1px;
+    right: -1px;
+    &:hover{
+      color: @f-color-dark;
+    }
+  }
+}
+
