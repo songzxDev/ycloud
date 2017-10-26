@@ -13,22 +13,18 @@ import template from './index.html'
 import ko from 'knockout'
 
 function init (params) {
-  debugger
   const PREFIX = 'y-button-'
-  // 样式
+  this.defaultFun = function () {}
   this.type = params.type ? (PREFIX + params.type) : ''
   this.size = params.size ? (PREFIX + params.size) : ''
   this.shape = params.shape ? (PREFIX + params.shape) : ''
   this.classes = ko.computed(() => {
     return `${this.type} ${this.size} ${this.shape}`
   })
-  // 属性
-  this.btnType = params.btnType || ''
-  // 动态的
+  this.btnType = params.btnType || 'button'
   this.disabled = params.disabled || ko.observable(false)
   this.loading = params.loading || ko.observable(false)
-  // 点击事件
-  this.click = params.click || ''
+  this.handleclick = params.click || this.defaultFun
 }
 export default {
   name: 'button',
