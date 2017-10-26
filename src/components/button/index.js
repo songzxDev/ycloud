@@ -5,17 +5,20 @@
 * type: primary/ghost/dashed/text/info/success/warning/error
 * size: large/small/default
 * shape: circle
+* btnType: 原生button属性
+* disabled: true/false
+* loading: true/false
 * */
 import template from './index.html'
 import ko from 'knockout'
 
 function init (params) {
   debugger
-  const PREFIX = 'yc-button-'
+  const PREFIX = 'y-button-'
   // 样式
-  this.type = (PREFIX + params.type) || ''
-  this.size = (PREFIX + params.size) || ''
-  this.shape = (PREFIX + params.shape) || ''
+  this.type = params.type ? (PREFIX + params.type) : ''
+  this.size = params.size ? (PREFIX + params.size) : ''
+  this.shape = params.shape ? (PREFIX + params.shape) : ''
   this.classes = ko.computed(() => {
     return `${this.type} ${this.size} ${this.shape}`
   })
