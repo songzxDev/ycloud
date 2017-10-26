@@ -6,6 +6,7 @@ function init (params) {
   this.key = params.key || 'value'
   this.labelsecond = params.labelsecond || ''
   this.itemClick = params.itemClick
+  this.curValue = params.curValue
 }
 export default {
   name: 'option',

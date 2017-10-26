@@ -1,4 +1,4 @@
-<div data-bind="click:itemClick" class="y-option" >
+<div data-bind="click:itemClick, css:{'y-selected-item':curValue == value[key]}" class="y-option" >
   <span data-bind="text:value[label]"></span>
   <!--<span class="y-option-sec" data-bind="text: sublabel"></span>-->
 </div>

@@ -1,8 +1,42 @@
-.selected .y-select-ctn{
-  box-shadow: 0 0 0 2px rgba(45,140,240,.2)
+@import "../base.less";
+.y-select-placeholder,.y-select-single{
+  color: @f-color-placeholder;
+  line-height: 30px;
+  text-indent: 10px;
 }
-.y-select-placeholder{
-  color: #999;
+.y-select-single{
+  color: @f-color-dark;
+}
+.y-select-arrow{
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  line-height: 1;
+  margin-top: -7px;
+  font-size: 14px;
+  color: #80848f;
+  transition: all .2s ease-in-out;
+}
+.y-input.y-select-ctn{
+  padding: 0;
+}
+.y-select-ctn:hover .y-select-showdrop{
+  display: none;
+}
+.fa-close,.y-select-showclose{
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+.y-select-ctn:hover .y-select-showclose{
+  opacity: 1;
+}
+.selected {
+  .y-select-ctn {
+    box-shadow: 0 0 0 2px rgba(45, 140, 240, .2)
+  }
+  .y-select-arrow{
+    transform: rotate(-180deg);
+  }
 }
 .y-option{
   margin: 0;
@@ -18,4 +52,9 @@
   &:hover{
     background: #f3f3f3;
   }
+  &.y-selected-item{
+    background: @primary-color;
+    color: #FFF;
+  }
 }
+

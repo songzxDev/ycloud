@@ -48,12 +48,22 @@
       <div class="clearfix"></div>
    </div>
    <h1>4.select</h1>
-   <div class="row">
-     <div class="col-md-2">
-       <y-select params="dataList:selectList"></y-select>
+   <div class="row m-b-xs">
+     <div class="col-md-1">
+       普通下拉：
      </div>
-
+     <div class="col-md-2">
+       <y-select params="dataList:selectList,value:singleselect"></y-select>
+     </div>
    </div>
+  <div class="row m-b-xs">
+    <div class="col-md-1">
+      可删除：
+    </div>
+    <div class="col-md-2">
+      <y-select params="dataList:selectList,value:singleselect,clearable:true"></y-select>
+    </div>
+  </div>
    <h1>4.button</h1>
    <div class="row">
       <div class="col-md-12">

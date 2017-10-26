@@ -17,6 +17,7 @@ let viewmodel = {
     }
   ]),
   isShow: ko.observable(false),
+  singleselect: ko.observable(),
   clickoutside: function () {
     viewmodel.isShow(false)
   },
@@ -34,4 +35,9 @@ let viewmodel = {
 setInterval(() => {
   viewmodel.loading(!viewmodel.loading())
 }, 1000)
+// 打印每次单选的内容
+viewmodel.singleselect.subscribe(function (item) {
+  console.log('单选：')
+  console.log(item)
+})
 ko.applyBindings(viewmodel, document.getElementById('app'))
