@@ -11,23 +11,28 @@
 * */
 import template from './index.html'
 import ko from 'knockout'
+import _ from '@/util/lodash'
 
 function init (params) {
   const PREFIX = 'y-button-'
-  // 样式
+  let defaultFun = function () {}
   this.type = params.type ? (PREFIX + params.type) : ''
   this.size = params.size ? (PREFIX + params.size) : ''
   this.shape = params.shape ? (PREFIX + params.shape) : ''
   this.classes = ko.computed(() => {
     return `${this.type} ${this.size} ${this.shape}`
   })
-  // 属性
-  this.btnType = params.btnType || ''
-  // 动态的
+  this.btnType = params.btnType || 'button'
   this.disabled = params.disabled || ko.observable(false)
   this.loading = params.loading || ko.observable(false)
-  // 点击事件
-  this.click = params.click || ''
+  this.handleClick = params.click || defaultFun
+  this.handleReClick = _.debounce(() => {
+    this.handleClick()
+    this.disabled(true)
+    setTimeout(() => {
+      this.disabled(false)
+    }, params.wait || 0)
+  }, params.wait || 0, {'leading': true})
 }
 export default {
   name: 'button',
