@@ -72,4 +72,8 @@ viewmodel.singleselect.subscribe(function (item) {
   console.log('单选：')
   console.log(item)
 })
+viewmodel.multiselect.subscribe(function (items) {
+  console.log('多选：')
+  console.log(items)
+})
 ko.applyBindings(viewmodel, document.getElementById('app'))

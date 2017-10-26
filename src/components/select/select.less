@@ -1,6 +1,7 @@
 .y-select-placeholder,.y-select-single{
   color: @f-color-placeholder;
   line-height: 30px;
+  text-indent: 4px;
 }
 .y-select-single{
   color: @f-color-dark;
@@ -63,6 +64,17 @@
   }
   &.y-selected-multiItem{
     color: @primary-color;
+  }
+  span{
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  i{
+    position: relative;
+    top: 3px;
   }
 }
 
