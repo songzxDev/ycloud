@@ -32,6 +32,7 @@ let viewmodel = {
       title: '河北'
     }
   ]),
+  boxtitle: 'box and boxcontent',
   isShow: ko.observable(false),
   singleselect: ko.observable(),
   multiselect: ko.observableArray(),

@@ -1,4 +1,7 @@
 import ko from 'knockout'
+import box from './box'
+import boxcontent from './boxcontent'
+import boxsticky from './boxsticky'
 import demo from './demo'
 import dropdown from './dropdown'
 import yswitch from './switch'
@@ -13,9 +16,12 @@ function register (model) {
     template: model.template
   })
 }
+register(box)
+register(boxcontent)
 register(demo)
 register(dropdown)
 register(yswitch)
 register(select)
 register(button)
 register(tag)
+register(boxsticky)
