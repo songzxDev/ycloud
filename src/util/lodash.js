@@ -1,5 +1,7 @@
 import split from 'lodash/split'
+import debounce from 'lodash/debounce'
 var _ = {
-  split
+  split,
+  debounce
 }
 export default _
