@@ -13,7 +13,6 @@ import template from './index.html'
 import ko from 'knockout'
 
 function init (params) {
-  debugger
   const PREFIX = 'y-button-'
   // 样式
   this.type = params.type ? (PREFIX + params.type) : ''

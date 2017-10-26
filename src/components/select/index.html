@@ -1,14 +1,17 @@
 <div class="y-inline-block y-relative y-width-100" data-bind="clickoutside:clickoutside,css:{selected:showDropdown}">
   <div class="y-select-ctn y-input" data-bind="click:handleShowDrop">
-    <div class="y-select-single" data-bind="visible:!filterable(), visible:selectedLabel, text:selectedLabel"></div>
-    <div class="y-select-placeholder" data-bind="text:placeholder,visible:!selectedLabel(),"></div>
+    <div data-bind="foreach:{data: multiValue, as: 'tag'}">
+      <y-tag params="item: tag,text: tag.label,closeable:true,handleClose:$parent.handleDeleteSelected"></y-tag>
+    </div>
+    <div class="y-select-single" data-bind="visible:!multiple&&selectedLabel(), text:selectedLabel"></div>
+    <div class="y-select-placeholder" data-bind="text:placeholder,visible:showPlaceholder"></div>
     <input type="text" data-bind="event:{focus:handleShowDrop},visible:filterable" class="">
     <i class="y-select-arrow fa fa-close" data-bind="css:{'y-select-showclose':showCloseIcon}, click:handlerClear"></i>
     <i class="y-select-arrow fa fa-caret-down" data-bind="css: {'y-select-showdrop':clearable && showCloseIcon()}"></i>
   </div>
   <y-dropdown params="width:width, isShow:showDropdown">
      <div class="option-ctn" data-bind="foreach:{data: $parent.dataList, as: 'item'}">
-       <y-option params="value: item,label:'label',key:'value',itemClick:$parentContext.$parent.handleOptClick, curValue:$parent.curValue"></y-option>
+       <y-option params="value: item,label:'label',key:'value',itemClick:$parentContext.$parent.handleOptClick, curValue:$parentContext.$parent.curValue, curMultiValue:$parentContext.$parent.multiValue"></y-option>
      </div>
   </y-dropdown>
 </div>

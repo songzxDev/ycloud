@@ -1,4 +1,5 @@
-<div data-bind="click:itemClick, css:{'y-selected-item':curValue == value[key]}" class="y-option" >
+<div data-bind="click:itemClick, css:{'y-selected-item':active,'y-selected-multiItem':multiActive}" class="y-option" >
   <span data-bind="text:value[label]"></span>
+  <i data-bind="visible:multiActive" class="fa fa-check pull-right"></i>
   <!--<span class="y-option-sec" data-bind="text: sublabel"></span>-->
 </div>

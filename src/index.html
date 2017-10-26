@@ -52,7 +52,7 @@
      <div class="col-md-1">
        普通下拉：
      </div>
-     <div class="col-md-2">
+     <div class="col-md-3">
        <y-select params="dataList:selectList,value:singleselect"></y-select>
      </div>
 
@@ -61,8 +61,16 @@
     <div class="col-md-1">
       可删除：
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
       <y-select params="dataList:selectList,value:singleselect,clearable:true"></y-select>
+    </div>
+  </div>
+  <div class="row m-b-xs">
+    <div class="col-md-1">
+      多选：
+    </div>
+    <div class="col-md-3">
+      <y-select params="dataList:selectList,value:multiselect,clearable:true,multiple:true"></y-select>
     </div>
   </div>
    <h1>5.button</h1>
@@ -78,6 +86,12 @@
         <y-button params="type: 'error', loading: loading">啊</y-button>
       </div>
    </div>
+  <h1>6.tag</h1>
+  <div>
+    <y-tag params="text:'tag1'"></y-tag>
+    <y-tag params="text:'tag2'"></y-tag>
+    <y-tag params="text:'tag3',closeable:true,handleClose:handleClose"></y-tag>
+  </div>
 </div>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>

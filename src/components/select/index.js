@@ -15,6 +15,11 @@ ko.components.register(PREFIX + option.name, {
 function init (params) {
   // 选中的值 {value:'',label:''}格式
   this.value = params.value || ko.observable()
+  this.multiValue = params.multiValue || ko.observableArray()
+  this.value.subscribe(item => {
+    this.selectedLabel(item.label)
+    this.curValue(item.value)
+  })
   // 选中的文本
   this.selectedLabel = ko.observable()
   // 是否支持清空
@@ -30,6 +35,14 @@ function init (params) {
   this.showCloseIcon = ko.computed(() => {
     // 不是多选 + 支持清空按钮 + 已有选中值
     return !this.multiple && this.clearable && this.selectedLabel()
+  })
+  // 是否显示placeholder
+  this.showPlaceholder = ko.computed(() => {
+    if (this.multiple) {
+      return this.multiValue().length === 0
+    } else {
+      return !this.selectedLabel()
+    }
   })
   // 设置placeholder提示
   this.placeholder = params.placeholder || '请选择'
@@ -47,18 +60,26 @@ function init (params) {
   }
   // 点击选项
   this.handleOptClick = (item, evt) => {
-    this.selectedLabel(item.value[item.label])
-    this.curValue(item.value[item.value])
-    this.value(item.value)
     if (!this.multiple) {
+      this.value(item.value)
       this.showDropdown(false)
+    } else {
+      var index = this.multiValue.indexOf(item.value)
+      if (index >= 0) {
+        this.multiValue.splice(index, 1)
+      } else {
+        this.multiValue.push(item.value)
+      }
     }
   }
   // 点击清空按钮
   this.handlerClear = () => {
     this.value({})
-    this.selectedLabel('')
-    this.curValue('')
+  }
+  // 点击清空已选择的
+  this.handleDeleteSelected = (item) => {
+    var index = this.multiValue.indexOf(item.item)
+    this.multiValue.splice(index, 1)
   }
 }
 export default {
