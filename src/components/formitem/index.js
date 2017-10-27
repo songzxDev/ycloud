@@ -1,10 +1,11 @@
 import template from './index.html'
 function init (params) {
-  this.title = params.title
-  this.vm = params.vm
+  this.model = params.model
+  this.label = params.label
 }
+
 export default {
-  name: 'boxfilter',
+  name: 'formitem',
   init,
   template
 }

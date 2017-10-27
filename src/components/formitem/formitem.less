@@ -1,0 +1,36 @@
+.y-form-item{
+  margin-bottom: 15px;
+  vertical-align: top;
+  &:after, &:before {
+    content: "";
+    display: table;
+  }
+  .y-form-item-label{
+    text-align: right;
+    vertical-align: middle;
+    float: left;
+    font-size: 12px;
+    color: @f-color-normal;
+    line-height: 1;
+    padding: 10px 12px 10px 0;
+    box-sizing: border-box;
+  }
+  .y-form-item-ctn{
+    position: relative;
+    line-height: 32px;
+    font-size: 12px;
+    box-sizing: border-box;
+  }
+  .y-form-wrapper{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    vertical-align: middle;
+  }
+}
+.y-form-text-right .y-form-item-label{
+  text-align: right;
+}
+.y-form-text-left .y-form-item-label{
+  text-align: left;
+}

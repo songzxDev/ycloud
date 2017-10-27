@@ -4,6 +4,8 @@ import boxcontent from './boxcontent'
 import boxfilter from './boxfilter'
 import boxsticky from './boxsticky'
 import demo from './demo'
+import form from './form'
+import formitem from './formitem'
 import dropdown from './dropdown'
 import yswitch from './switch'
 import tag from './tag'
@@ -27,3 +29,5 @@ register(select)
 register(button)
 register(tag)
 register(boxsticky)
+register(formitem)
+register(form)

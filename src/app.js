@@ -51,6 +51,7 @@ let viewmodel = {
   _console: function() {
     console.log(11)
   },
+  formData: {title: ko.observable('')},
   selectList: ko.observableArray([
     {value:1,label:'北京'},
     {value:2,label:'上海'},

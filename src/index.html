@@ -44,8 +44,8 @@
     <a href="/yuncai/mobile/login.html?r=/">yc测试登录链接</a>
     <y-demo></y-demo>
   </y-boxcontent>
-  <y-boxcontent params="title:'dropdown'" id="dropdown">
-    <div data-bind="clickoutside:$root.clickoutside" style="width: 300px">
+  <y-boxcontent params="title:'dropdown',vm:$root" id="dropdown">
+    <div data-bind="clickoutside:vm.clickoutside" style="width: 300px">
       <button type="button" data-bind="click:$root.showdropdown">点击后切换显示dropdown</button>
       <div>
         <y-dropdown params="width:300, isShow:$root.isShow">
@@ -63,7 +63,7 @@
       <div class="clearfix">
         <div class="pull-left">switch测试:</div>
         <div class="pull-left">
-          <y-switch params="checked: $root.checked, callback: $root.callback"></y-switch>
+          <y-switch params="checked: vm.checked, callback: vm.callback"></y-switch>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -74,16 +74,15 @@
         普通下拉：
       </div>
       <div class="col-md-3">
-        <y-select params="dataList:$root.selectList,value:$root.singleselect"></y-select>
+        <y-select params="dataList:vm.selectList,value:vm.singleselect"></y-select>
       </div>
-
     </div>
     <div class="row m-b-xs">
       <div class="col-md-1">
         可删除：
       </div>
       <div class="col-md-3">
-        <y-select params="dataList:$root.selectList,value:$root.singleselect,clearable:true"></y-select>
+        <y-select params="dataList:vm.selectList,value:vm.singleselect,clearable:true"></y-select>
       </div>
     </div>
     <div class="row m-b-xs">
@@ -92,28 +91,28 @@
       </div>
       <div class="col-md-3">
         <y-select
-          params="dataList:$root.selectList,multiValue:$root.multiselect,clearable:true,multiple:true"></y-select>
+          params="dataList:vm.selectList,multiValue:vm.multiselect,clearable:true,multiple:true"></y-select>
       </div>
     </div>
     <h1 id="button">5.button</h1>
     <div class="row">
       <div class="col-md-12">
         <y-button>1</y-button>
-        <y-button params="type: 'primary', size: 'large', shape: 'circle', btnType: 'submit', click: $root._console">2
+        <y-button params="type: 'primary', size: 'large', shape: 'circle', btnType: 'submit', click: vm._console">2
         </y-button>
         <y-button params="type: 'dashed', click: $root._console, wait: 3000">3</y-button>
         <y-button params="type: 'text'">4</y-button>
         <y-button params="type: 'info'">5</y-button>
         <y-button params="type: 'success'">6</y-button>
         <y-button params="type: 'warning', disabled: true">7</y-button>
-        <y-button params="type: 'error', loading: $root.loading">啊</y-button>
+        <y-button params="type: 'error', loading: vm.loading">啊</y-button>
       </div>
     </div>
     <h1 id="tag">6.tag</h1>
     <div>
       <y-tag params="text:'tag1'"></y-tag>
       <y-tag params="text:'tag2'"></y-tag>
-      <y-tag params="text:'tag3',closeable:true,handleClose:$root.handleClose"></y-tag>
+      <y-tag params="text:'tag3',closeable:true,handleClose:vm.handleClose"></y-tag>
     </div>
     <h1 id="container">7.容器组件</h1>
     <h2>7.1 box</h2>
@@ -124,6 +123,25 @@
         </y-boxcontent>
       </y-box>
     </div>
+  </y-boxcontent>
+  <y-boxcontent>
+    <h1 id="form">8.表单</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <y-form params="model:$root.formData,labelWidth:'80px',labelAlign:'right'">
+          <y-formitem params="label:'输入框'">
+            <input class="y-input" type="text" data-bind="value:$parent.model.title">
+          </y-formitem>
+          <y-formitem params="label:'下拉框'">
+            <y-select params="placeholder:'多选下拉框',dataList:$root.selectList,value:$root.singleselect,clearable:true"></y-select>
+          </y-formitem>
+          <y-formitem params="label:'开关'">
+            <y-switch params="checked: $root.checked, callback: $root.callback"></y-switch>
+          </y-formitem>
+        </y-form>
+      </div>
+    </div>
+
   </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
