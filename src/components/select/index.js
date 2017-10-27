@@ -6,6 +6,7 @@
 import template from './index.html'
 import ko from 'knockout'
 import 'ko-bindinghandler'
+import {lockScrollEffect, resetScrollEffect} from '@/util/scrollable'
 import option from './option'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + option.name, {
@@ -31,6 +32,13 @@ function init (params) {
   this.width = ko.observable()
   // 用于判断是否显示下拉
   this.showDropdown = ko.observable(false)
+  this.showDropdown.subscribe(val => {
+    if (val) {
+      lockScrollEffect()
+    } else {
+      resetScrollEffect()
+    }
+  })
   // 用于判断是否显示关闭按钮
   this.showCloseIcon = ko.computed(() => {
     // 不是多选 + 支持清空按钮 + 已有选中值
