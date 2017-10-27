@@ -36,7 +36,10 @@ function init (params) {
   }, params.wait || 0, {'leading': true})
 
   // a target
-  this.url = params.url ? ('//' + params.url) : 'javascript:;'
+  this.url = params.url || 'javascript:;'
+  if (params.rootPath) {
+    this.url = 'http://' + this.url
+  }
   this.target = params.target || '_self'
 }
 export default {
