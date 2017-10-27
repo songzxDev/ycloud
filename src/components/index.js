@@ -13,6 +13,7 @@ import tag from './tag'
 import select from './select'
 import button from './button'
 import icon from './icon'
+import tree from './tree'
 
 const PREFIX = 'y-'
 function register (model) {
@@ -35,3 +36,4 @@ register(boxsticky)
 register(formitem)
 register(form)
 register(icon)
+register(tree)
