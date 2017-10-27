@@ -102,6 +102,20 @@ a:focus {
   font-size: 16px;
   padding-left: 10px;
 }
+.y-box-filter {
+  padding: 9px 20px 9px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #FFF;
+  min-height: 48px;
+}
+.y-box-filter .y-box-filter-title {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 32px;
+  margin-right: 20px;
+  color: #333;
+}
 .y-box-sticky-ctn {
   overflow: hidden;
   margin-bottom: 10px;

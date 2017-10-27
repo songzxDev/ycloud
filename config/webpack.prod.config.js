@@ -3,6 +3,7 @@ var config = require('./webpack.base.config'),
 var merge = require('webpack-merge')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var uglifyjs = require('uglifyjs-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // ...
 config = merge(config, {
@@ -47,6 +48,9 @@ config = merge(config, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
+    new CopyWebpackPlugin([
+      { from: 'src/components/bootstrap.css', to: '' }
+    ])
     // new BundleAnalyzerPlugin()
   ]
 })
