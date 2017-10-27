@@ -1,4 +1,8 @@
-<button class="y-button" data-bind="css: classes, attr: {type: btnType, disabled: disabled}, style: {opacity: loading()?0.7:1}, click: handleReClick">
+<!-- 用if还是会渲染出来 不知道为啥 -->
+<a class="y-button" data-bind="visible: btnType==='a', css: classes, attr: {href: url, target: target}">
+    <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+</a>
+<button class="y-button" data-bind="visible: btnType!=='a', css: classes, attr: {type: btnType, disabled: disabled}, style: {opacity: loading()?0.7:1}, click: handleReClick">
   <span data-bind="visible: loading">
       <span class="glyphicon glyphicon-repeat y-load-loop"></span> loading..
   </span>
