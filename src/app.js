@@ -59,6 +59,23 @@ let viewmodel = {
   showModal: function () {
     viewmodel.modalVisible(true)
   },
+  treeData: ko.observable([{
+    id: 1, name: 'name', children: [
+      {
+        id: 2, name: 'name2', children: []
+      },
+      {
+        id: 3, name: 'name3', children: [
+          {
+            id: 4, name: 'name4', children: []
+          },
+          {
+            id: 5, name: 'name1', children: []
+          }
+        ]
+      }
+    ]
+  }]),
   modalVisible: ko.observable(false),
   selectList: ko.observableArray([
     {value:1,label:'北京'},

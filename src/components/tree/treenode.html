@@ -1,0 +1,15 @@
+<div class="y-treenode">
+  <ul data-bind="foreach: {data:data, as:'item'}">
+    <li>
+      <span class="y-tree-icon" data-bind="click:$parent.handleExpand">
+        <i class="fa fa-caret-down"></i>
+      </span>
+      <span class="y-tree-title" data-bind="text:item.name"></span>
+      <!-- ko if: item.children && item.children.length > 0 -->
+      <y-treenode params="data:item.children,loadData:$parent.loadData,expand:$parent.expand">
+      </y-treenode>
+      <!-- /ko -->
+    </li>
+  </ul>
+
+</div>

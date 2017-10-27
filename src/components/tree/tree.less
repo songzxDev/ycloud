@@ -1,0 +1,41 @@
+.y-tree{
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: @f-size-base;
+    li{
+      font-size: @f-size-sm;
+      list-style: none;
+      margin: 8px 0;
+      padding: 0;
+      white-space: nowrap;
+      outline: 0;
+      ul{
+        margin: 0;
+        padding: 0 0 0 18px;
+        display: none;
+      }
+      &.y-tree-icon-expand > * > .y-treenode > ul{
+        display: block;
+      }
+    }
+    .y-tree-title{
+      display: inline-block;
+      margin: 0;
+      padding: 0 4px;
+      border-radius: 3px;
+      cursor: pointer;
+      vertical-align: top;
+      color: @f-color-dark;
+      transition: all .2s ease-in-out;
+    }
+    .y-tree-icon{
+      transition: all .2s ease-in-out;
+      transform: rotate(-90deg);
+    }
+    .y-tree-icon-expand.y-tree-icon i{
+      transform: rotate(-90deg);
+    }
+  }
+}
