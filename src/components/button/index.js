@@ -5,7 +5,7 @@
 * type: primary/ghost/dashed/text/info/success/warning/error
 * size: large/small/default
 * shape: circle
-* btnType: 原生button属性
+* btnType: 原生button属性 + a
 * disabled: true/false
 * loading: true/false
 * */
@@ -15,6 +15,7 @@ import _ from '@/util/lodash'
 
 function init (params) {
   const PREFIX = 'y-button-'
+  // button
   let defaultFun = function () {}
   this.type = params.type ? (PREFIX + params.type) : ''
   this.size = params.size ? (PREFIX + params.size) : ''
@@ -33,6 +34,13 @@ function init (params) {
       this.disabled(false)
     }, params.wait || 0)
   }, params.wait || 0, {'leading': true})
+
+  // a target
+  this.url = params.url || 'javascript:;'
+  if (params.rootPath) {
+    this.url = 'http://' + this.url
+  }
+  this.target = params.target || '_self'
 }
 export default {
   name: 'button',

@@ -108,6 +108,9 @@
         <y-button params="type: 'success'">6</y-button>
         <y-button params="type: 'warning', disabled: true">7</y-button>
         <y-button params="type: 'error', loading: vm.loading">啊</y-button>
+        <y-button params="btnType: 'a', url: 'www.baidu.com', target: '_blank'">a标签相对路径跳转</y-button>
+        <y-button params="type: 'warning', btnType: 'a', url: 'www.baidu.com', rootPath: true">a标签绝对路径跳转</y-button>
+        <a href="www.baidu.com">百度一下</a>
       </div>
     </div>
     <h1 id="tag">6.tag</h1>
