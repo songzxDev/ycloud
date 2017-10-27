@@ -18,29 +18,30 @@
     }
 
     body {
-      padding: 20px;
+      padding: 0px;
       background-color: #eee;
     }
   </style>
 </head>
 <body>
-<a href="/yuncai/mobile/login.html?r=/">yc测试登录链接</a>
 <y-box id="app">
   <y-boxsticky params="title:'吸顶菜单'">
     <div class="col-sm-8 text-center" style="line-height: 32px">
-      <a href="#demo" class="sticky-anchor active">demo</a>
-      <a href="#dropdown" class="sticky-anchor">dropdown</a>
-      <a href="#switch" class="sticky-anchor">switch</a>
-      <a href="#select" class="sticky-anchor">select</a>
-      <a href="#button" class="sticky-anchor">button</a>
-      <a href="#tag" class="sticky-anchor">tag</a>
-      <a href="#container" class="sticky-anchor">container</a>
+      <a href="#demo" class="sticky-anchor active">Demo</a>
+      <a href="#dropdown" class="sticky-anchor">Dropdown</a>
+      <a href="#switch" class="sticky-anchor">开关</a>
+      <a href="#select" class="sticky-anchor">下拉</a>
+      <a href="#button" class="sticky-anchor">按钮</a>
+      <a href="#tag" class="sticky-anchor">标签</a>
+      <a href="#container" class="sticky-anchor">容器</a>
     </div>
     <div class="col-sm-2">
       <button class="pull-right">btn</button>
     </div>
   </y-boxsticky>
-  <y-boxcontent params="title:'demo'" id="demo">
+  <y-boxfilter params="title: 'boxfilter示例'"></y-boxfilter>
+  <y-boxcontent params="title:'boxcontent'" id="demo">
+    <a href="/yuncai/mobile/login.html?r=/">yc测试登录链接</a>
     <y-demo></y-demo>
   </y-boxcontent>
   <y-boxcontent params="title:'dropdown'" id="dropdown">
