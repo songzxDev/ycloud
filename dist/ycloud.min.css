@@ -3,6 +3,9 @@ a:active,
 a:focus {
   text-decoration: none;
 }
+i {
+  font-style: normal;
+}
 @keyframes slideInDown {
   0% {
     opacity: 0;
@@ -102,6 +105,43 @@ a:focus {
   font-size: 16px;
   padding-left: 10px;
 }
+.y-form-item {
+  margin-bottom: 15px;
+  vertical-align: top;
+}
+.y-form-item:after,
+.y-form-item:before {
+  content: "";
+  display: table;
+}
+.y-form-item .y-form-item-label {
+  text-align: right;
+  vertical-align: middle;
+  float: left;
+  font-size: 12px;
+  color: #666;
+  line-height: 1;
+  padding: 10px 12px 10px 0;
+  box-sizing: border-box;
+}
+.y-form-item .y-form-item-ctn {
+  position: relative;
+  line-height: 32px;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+.y-form-item .y-form-wrapper {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  vertical-align: middle;
+}
+.y-form-text-right .y-form-item-label {
+  text-align: right;
+}
+.y-form-text-left .y-form-item-label {
+  text-align: left;
+}
 .y-box-filter {
   padding: 9px 20px 9px;
   margin-bottom: 10px;
@@ -185,6 +225,9 @@ a:focus {
 }
 .y-select-single {
   color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .y-select-arrow {
   position: absolute;

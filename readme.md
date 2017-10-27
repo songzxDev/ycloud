@@ -1,3 +1,7 @@
+[![npm version](https://img.shields.io/npm/v/ycloud.svg)](https://www.npmjs.com/package/ycloud)
+[![license](https://img.shields.io/npm/l/ycloud.svg)](https://www.npmjs.com/package/ycloud)
+[![Build Status](https://api.travis-ci.org/yonyouyc/ycloud.png?branch=master)](https://api.travis-ci.org/yonyouyc/ycloud.png?branch=master)
+
 # ycloud
 
 ## 来自友云采前端团队的为什么要上云（why cloud）ui 框架
