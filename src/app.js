@@ -52,6 +52,10 @@ let viewmodel = {
     console.log(11)
   },
   formData: {title: ko.observable('')},
+  showModal: function () {
+    viewmodel.modalVisible(true)
+  },
+  modalVisible: ko.observable(false),
   selectList: ko.observableArray([
     {value:1,label:'北京'},
     {value:2,label:'上海'},

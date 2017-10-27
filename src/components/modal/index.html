@@ -1,0 +1,20 @@
+<div data-bind="transferdom,visible:visible">
+  <div class="y-modal-mask"></div>
+  <div class="y-modal-wrap" data-bind="click:handleClose">
+    <div class="y-modal" data-bind="style:{width:width}">
+      <div class="y-modal-ctn">
+        <div class="y-modal-head">
+          <span class="y-modal-head-title" data-bind="text:title"></span>
+        </div>
+        <div class="y-modal-body">
+          <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+        </div>
+        <div class="y-modal-foot">
+          <y-button params="">取消</y-button>
+          <y-button params="type:'primary'">确定</y-button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

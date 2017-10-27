@@ -52,12 +52,12 @@
     "webpack-dashboard": "^1.0.0-5",
     "webpack-dev-server": "^2.7.1",
     "webpack-merge": "^4.1.0",
+    "copy-webpack-plugin": "^4.2.0",
     "webpack-parallel-uglify-plugin": "^1.0.0"
   },
   "dependencies": {
-    "copy-webpack-plugin": "^4.2.0",
     "knockout": "^3.4.2",
-    "ko-bindinghandler": "1.0.0",
+    "ko-bindinghandler": "1.1.0",
     "lodash": "^4.17.4"
   },
   "engines": {

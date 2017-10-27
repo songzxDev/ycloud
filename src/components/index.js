@@ -3,6 +3,7 @@ import box from './box'
 import boxcontent from './boxcontent'
 import boxfilter from './boxfilter'
 import boxsticky from './boxsticky'
+import modal from './modal'
 import demo from './demo'
 import form from './form'
 import formitem from './formitem'
@@ -22,6 +23,7 @@ function register (model) {
 register(box)
 register(boxcontent)
 register(boxfilter)
+register(modal)
 register(demo)
 register(dropdown)
 register(yswitch)

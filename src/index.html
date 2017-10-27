@@ -40,7 +40,7 @@
     </div>
   </y-boxsticky>
   <y-boxfilter params="title: 'boxfilter示例'"></y-boxfilter>
-  <y-boxcontent params="title:'boxcontent'" id="demo">
+  <y-boxcontent params="title:'boxcontent', animated:true" id="demo">
     <a href="/yuncai/mobile/login.html?r=/">yc测试登录链接</a>
     <y-demo></y-demo>
   </y-boxcontent>
@@ -149,7 +149,13 @@
         </y-form>
       </div>
     </div>
-
+  </y-boxcontent>
+  <y-boxcontent>
+    <h1>9.弹框</h1>
+    <y-button params="click:$root.showModal">显示弹框</y-button>
+    <y-modal params="visible: $root.modalVisible, width:'500px'">
+      <div >i am mask</div>
+    </y-modal>
   </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>

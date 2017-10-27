@@ -3176,9 +3176,9 @@ knockout@^3.4.2:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/knockout/-/knockout-3.4.2.tgz#e87958de77ad1e936f7ce645bab8b5d7c456d937"
 
-ko-bindinghandler@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ko-bindinghandler/-/ko-bindinghandler-1.0.0.tgz#d47a6d9163ba90886c69788327e75226c7f2d0b7"
+ko-bindinghandler@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ko-bindinghandler/-/ko-bindinghandler-1.1.0.tgz#043bf44e1eb96ebc22c4eedac1aaad9d63d24e2d"
   dependencies:
     knockout "^3.4.2"
     lodash "^4.17.4"
