@@ -138,12 +138,12 @@
             <y-select params="placeholder:'多选下拉框',dataList:$root.selectList,value:$root.singleselect,clearable:true"></y-select>
           </y-formitem>
           <y-formitem params="label:'开关'">
-            <y-switch params="checked: $root.checked, size: 'large'">
-              <span  data-bind = "text:$root.checked()? '开启': '关闭'">开</span>
+            <y-switch params="checked: $root.checked1, size: 'large'">
+              <span  data-bind = "text:$root.checked1()? '开启': '关闭'">开</span>
             </y-switch>
-            <y-switch params="checked: $root.checked">
+            <y-switch params="checked: $root.checked2, disabled: $root.switchDisabled ">
             </y-switch>
-            <y-switch params="checked: $root.checked, size: 'small'">
+            <y-switch params="checked: $root.checked3, size: 'small'">
             </y-switch>
           </y-formitem>
         </y-form>

@@ -3,6 +3,10 @@ import './index'
 console.log('test')
 let viewmodel = {
   checked: ko.observable(true),
+  checked1: ko.observable(false),
+  checked2: ko.observable(true),
+  checked3: ko.observable(true),
+  switchDisabled: ko.observable(true),
   loading: ko.observable(true),
   b: ko.observable('i am ucloud-ko-fileupload'),
   id: ko.observable('随意绑定一个id'),
