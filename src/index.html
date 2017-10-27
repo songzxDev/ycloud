@@ -63,7 +63,9 @@
       <div class="clearfix">
         <div class="pull-left">switch测试:</div>
         <div class="pull-left">
-          <y-switch params="checked: vm.checked, callback: vm.callback"></y-switch>
+          <y-switch params="checked: $root.checked, size: 'large'">
+              <span  data-bind = "text:$root.checked()? '开启': '关闭'">开</span>
+          </y-switch>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -136,7 +138,13 @@
             <y-select params="placeholder:'多选下拉框',dataList:$root.selectList,value:$root.singleselect,clearable:true"></y-select>
           </y-formitem>
           <y-formitem params="label:'开关'">
-            <y-switch params="checked: $root.checked, callback: $root.callback"></y-switch>
+            <y-switch params="checked: $root.checked, size: 'large'">
+              <span  data-bind = "text:$root.checked()? '开启': '关闭'">开</span>
+            </y-switch>
+            <y-switch params="checked: $root.checked">
+            </y-switch>
+            <y-switch params="checked: $root.checked, size: 'small'">
+            </y-switch>
           </y-formitem>
         </y-form>
       </div>
