@@ -29,5 +29,7 @@ import _ from '@/util/lodash'
   * @description: 下拉组件
   * */
   ```
+  
+  依赖第三方包：knockout,jquery,ko-bindinghandler
 
 

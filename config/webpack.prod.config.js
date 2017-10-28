@@ -19,6 +19,11 @@ config = merge(config, {
       commonjs: 'jquery',
       commonjs2: 'jquery',
       amd: 'jquery'
+    },
+    'ko-bindinghandler': {
+      commonjs: 'ko-bindinghandler',
+      commonjs2: 'ko-bindinghandler',
+      amd: 'ko-bindinghandler'
     }
   },
   output: {
@@ -50,8 +55,8 @@ config = merge(config, {
     }),
     new CopyWebpackPlugin([
       { from: 'src/components/bootstrap.css', to: '' }
-    ])
-    // new BundleAnalyzerPlugin()
+    ]),
+    new BundleAnalyzerPlugin()
   ]
 })
 module.exports = config
