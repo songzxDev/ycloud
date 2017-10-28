@@ -10,6 +10,45 @@ let viewmodel = {
   loading: ko.observable(true),
   b: ko.observable('i am ucloud-ko-fileupload'),
   id: ko.observable('随意绑定一个id'),
+  cascaderData: ko.observableArray([
+    {
+      id: 1,
+      name: '1',
+    }, {
+      id: 2,
+      name: '有下级',
+      children: [
+        {
+          id:3,
+          name: '4',
+        }, {
+          id:4,
+          name: '有下级',
+          children: [
+            {
+              id:5,
+              name: '4',
+            }, {
+              id:6,
+              name: '有下级',
+              children: [
+                {
+                  id:7,
+                  name: '4',
+                }, {
+                  name: '有下级',
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }, {
+      id:8,
+      name: '3',
+    }
+  ]),
+  cascaderValue: ko.observable({name: '', id: ''}),
   list: ko.observableArray([
     {
       id: 1,

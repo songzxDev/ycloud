@@ -176,6 +176,11 @@
     <y-tree params="data:$root.asyncTreeData, height:'200px',onSelect: $root.onTreeSelect, loadData:$root.loadTreeData"></y-tree>
 
   </y-boxcontent>
+  <y-boxcontent>
+    <h1>12.级联列表</h1>
+    <y-cascader params='data: $root.cascaderData, selectedValue: $root.cascaderValue'>
+      </y-cascader>
+  </y-boxcontent>  
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
