@@ -14,6 +14,8 @@ import select from './select'
 import button from './button'
 import icon from './icon'
 import tree from './tree'
+import casitem from './casitem'
+import cascader from './cascader'
 
 const PREFIX = 'y-'
 function register (model) {
@@ -37,3 +39,5 @@ register(formitem)
 register(form)
 register(icon)
 register(tree)
+register(casitem)
+register(cascader)
