@@ -156,8 +156,8 @@
   <y-boxcontent>
     <h1>9.弹框</h1>
     <y-button params="click:$root.showModal">显示弹框</y-button>
-    <y-modal params="visible: $root.modalVisible, width:'500px'">
-      <div >i am mask</div>
+    <y-modal params="visible: $root.modalVisible, width:'500px',errormsg:'请选择组织',title:'组织选择！'">
+      <y-tree params="data:$root.treeData, height:'200px',onSelect: $root.onTreeSelect,validate:onModalOkValidate"></y-tree>
     </y-modal>
   </y-boxcontent>
   <y-boxcontent>
@@ -166,10 +166,6 @@
     <y-button params="type: 'primary'"><y-icon params="type: 'star', color: 'yellow'"></y-icon>你有freestyle吗？</y-button>
     <y-button params="type: 'primary'"><y-icon params="type: 'cog', padding: {right: '5px'}"></y-icon>设定</y-button>
     <y-button params="type: 'primary'"><y-icon params="type: 'cog', padding: '5px'"></y-icon>设定</y-button>
-  </y-boxcontent>
-  <y-boxcontent>
-    <h1>11.树</h1>
-    <y-tree params="data:$root.treeData"></y-tree>
   </y-boxcontent>
   <y-boxcontent>
     <h1>11.树</h1>

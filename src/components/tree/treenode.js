@@ -30,7 +30,11 @@ function init (params) {
     // 直返会当前项不返回子节点
     item.children = []
     // todo 如果是多选则需要重新处理
-    this.selectedItem(item)
+    if (this.selectedItem() === item) {
+      this.selectedItem({})
+    } else {
+      this.selectedItem(item)
+    }
   }
   this.expanded = ko.observable(false)
   // 展开子节点

@@ -31,7 +31,10 @@
       vertical-align: top;
       color: @f-color-dark;
       transition: all .2s ease-in-out;
-      &:hover,&.y-tree-node-selected{
+      &:hover{
+        background-color: #d5e8fc;
+      }
+      &.y-tree-node-selected{
         background-color: #d5e8fc;
         font-size: @f-size-md;
       }
@@ -51,8 +54,6 @@
       from{transform:rotate(0)}
       to{transform:rotate(360deg)}
     }
-
-
     .y-tree-icon-expand.y-tree-icon i{
       transform: rotate(90deg);
     }

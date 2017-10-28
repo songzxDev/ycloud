@@ -90,11 +90,8 @@ let viewmodel = {
     } else {
       cb(null)
     }
-
   },
-  asyncTreeData: [
-    {id: 1, name: '北京总公司', children: []}
-  ],
+  asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([
     {value:1,label:'北京'},
     {value:2,label:'上海'},
@@ -122,3 +119,6 @@ viewmodel.multiselect.subscribe(function (items) {
   console.log(items)
 })
 ko.applyBindings(viewmodel, document.getElementById('app'))
+setTimeout(() => {
+  viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])
+}, 500)

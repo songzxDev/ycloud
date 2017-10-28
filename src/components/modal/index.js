@@ -17,6 +17,17 @@ function init (params) {
   this.handleCancel = () => {
     this.visible(false)
   }
+  this.handleOk = (data, event) => {
+    if (this.isValidate) {
+      this.errormsg('')
+      this.visible(false)
+      if (params.ok) {
+        params.ok(data)
+      }
+    } else {
+      this.errormsg(params.errormsg || '校验失败！')
+    }
+  }
   this.visible.subscribe(val => {
     if (val) {
       lockScrollEffect()
@@ -24,6 +35,16 @@ function init (params) {
       resetScrollEffect()
     }
   })
+  // 添加外层错误校验
+  this.errormsg = ko.observable('')
+  this.isValidate = true
+  this.onModalOkValidate = function (validateResult) {
+    if (validateResult) {
+      this.isValidate = true
+    } else {
+      this.isValidate = false
+    }
+  }.bind(this)
 }
 
 export default {
