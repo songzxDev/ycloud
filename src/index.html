@@ -162,7 +162,12 @@
   </y-boxcontent>
   <y-boxcontent>
     <h1>10.树</h1>
-    <y-tree params="data:$root.treeData"></y-tree>
+    <h2>10.1 单选</h2>
+    <y-tree params="data:$root.treeData, height:'200px',onSelect: $root.onTreeSelect"></y-tree>
+    <p>当前选中的节点是：<span data-bind="text:$root.treeSelectedData"></span></p>
+    <h2>10.2 异步加载</h2>
+    <y-tree params="data:$root.asyncTreeData, height:'200px',onSelect: $root.onTreeSelect, loadData:$root.loadTreeData"></y-tree>
+
   </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
