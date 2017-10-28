@@ -13,7 +13,7 @@ let viewmodel = {
   list: ko.observableArray([
     {
       id: 1,
-      title: '2'
+      title: '1'
 
     },{
       id: 2,
@@ -60,23 +60,38 @@ let viewmodel = {
     viewmodel.modalVisible(true)
   },
   treeData: ko.observable([{
-    id: 1, name: 'name', children: [
+    id: 1, name: '北京总公司', children: [
       {
-        id: 2, name: 'name2', children: []
+        id: 2, name: '上海分公司', children: []
       },
       {
-        id: 3, name: 'name3', children: [
+        id: 3, name: '福建分公司', children: [
           {
-            id: 4, name: 'name4', children: []
+            id: 4, name: '福州分公司', children: []
           },
           {
-            id: 5, name: 'name1', children: []
+            id: 5, name: '厦门分公司', children: []
           }
         ]
       }
     ]
   }]),
   modalVisible: ko.observable(false),
+  treeSelectedData: ko.observable(''),
+  onTreeSelect: function (data) {
+    viewmodel.treeSelectedData(JSON.stringify(data))
+  },
+  loadTreeData: function (params, cb) {
+    if (params.name !== 'nodeadd') {
+      setTimeout(()=> {
+        cb([{id:Math.random(),name:'nodeadd'}, {id:Math.random(),name:'nodeadd2'}])
+      }, 500)
+
+    } else {
+      cb(null)
+    }
+  },
+  asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([
     {value:1,label:'北京'},
     {value:2,label:'上海'},
@@ -104,3 +119,6 @@ viewmodel.multiselect.subscribe(function (items) {
   console.log(items)
 })
 ko.applyBindings(viewmodel, document.getElementById('app'))
+setTimeout(() => {
+  viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])
+}, 500)

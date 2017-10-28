@@ -156,8 +156,8 @@
   <y-boxcontent>
     <h1>9.弹框</h1>
     <y-button params="click:$root.showModal">显示弹框</y-button>
-    <y-modal params="visible: $root.modalVisible, width:'500px'">
-      <div >i am mask</div>
+    <y-modal params="visible: $root.modalVisible, width:'500px',errormsg:'请选择组织',title:'组织选择！'">
+      <y-tree params="data:$root.treeData, height:'200px',onSelect: $root.onTreeSelect,validate:onModalOkValidate"></y-tree>
     </y-modal>
   </y-boxcontent>
   <y-boxcontent>
@@ -169,7 +169,12 @@
   </y-boxcontent>
   <y-boxcontent>
     <h1>11.树</h1>
-    <y-tree params="data:$root.treeData"></y-tree>
+    <h2>11.1 单选</h2>
+    <y-tree params="data:$root.treeData, height:'200px',onSelect: $root.onTreeSelect"></y-tree>
+    <p>当前选中的节点是：<span data-bind="text:$root.treeSelectedData"></span></p>
+    <h2>11.2 异步加载</h2>
+    <y-tree params="data:$root.asyncTreeData, height:'200px',onSelect: $root.onTreeSelect, loadData:$root.loadTreeData"></y-tree>
+
   </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>

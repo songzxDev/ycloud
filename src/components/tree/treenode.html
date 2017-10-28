@@ -1,13 +1,19 @@
 <div class="y-treenode">
-  <ul data-bind="foreach: {data:data, as:'item'}">
     <li>
-      <span class="y-tree-icon" data-bind="click:$parent.handleExpand">
-        <i class="fa fa-caret-down"></i>
+      <span class="y-tree-icon" data-bind="click:handleExpand,css:{'y-tree-icon-expand':expanded}">
+        <!-- ko if: isShowExpanIcon -->
+        <i class="fa fa-caret-right"></i>
+        <!-- /ko -->
+        <!-- ko if: isLoading -->
+        <i class="y-tree-isloading fa fa-spinner"></i>
+        <!-- /ko -->
       </span>
-      <span class="y-tree-title" data-bind="text:item.name"></span>
-      <!-- ko if: item.children && item.children.length > 0 -->
-      <y-treenode params="data:item.children,loadData:$parent.loadData,expand:$parent.expand">
-      </y-treenode>
+      <span class="y-tree-title" data-bind="click:handleClickNode, text:data().name,css:{'y-tree-node-selected':isNodeSelected}"></span>
+      <!-- ko if: data().children && data().children.length > 0 -->
+      <ul data-bind="foreach: {data:data().children, as:'item'},css:{'y-tree-icon-expand':expanded}">
+        <y-treenode params="data:item,loadData:$parent.loadData,expand:$parent.expand,selectedItem: $parent.selectedItem">
+        </y-treenode>
+      </ul>
       <!-- /ko -->
     </li>
   </ul>

@@ -1,23 +1,58 @@
 import template from './treenode.html'
+import ko from 'knockout'
 function init (params) {
-  this.data = params.data
-  this.loadData = params.loadData || function () {}
+  this.data = ko.observable(params.data)
+  this.loadData = params.loadData
+  this.selectedItem = params.selectedItem
+  this.loaded = ko.observable(params.loadData === undefined)
+  this.isLoading = ko.observable(false)
+  this.isShowExpanIcon = ko.computed(() => {
+    // 如果children有值休闲室
+    if (this.data().children && this.data().children.length > 0) {
+      return true
+    } else if (this.isLoading()) { // 如果正在加载 那么也要隐藏
+      return false
+    } else {
+      // 需要异步加载切还没有点击过加载，也需要显示
+      if (params.loadData && !this.loaded()) {
+        return true
+      } else {
+        return false
+      }
+    }
+  })
+  this.isNodeSelected = ko.computed(() => {
+    return this.selectedItem().id === this.data().id
+  })
+  // 选中子节点 将选中值赋值给选中的
+  this.handleClickNode = (data, event) => {
+    let item = data.data()
+    // 直返会当前项不返回子节点
+    item.children = []
+    // todo 如果是多选则需要重新处理
+    if (this.selectedItem() === item) {
+      this.selectedItem({})
+    } else {
+      this.selectedItem(item)
+    }
+  }
+  this.expanded = ko.observable(false)
+  // 展开子节点
   this.handleExpand = (data, event) => {
-    // event.target
-    var el = event.target
-    while (!el.classList.contains('y-tree-icon')) {
-      el = el.parentElement
-    }
-    if (el.classList.contains('y-tree-icon-expand')) {
-      el.classList.remove('y-tree-icon-expand')
+    if (this.loaded()) {
+      this.expanded(!this.expanded())
     } else {
-      el.classList.add('y-tree-icon-expand')
-    }
-    el = el.parentElement
-    if (el.classList.contains('y-tree-icon-expand')) {
-      el.classList.remove('y-tree-icon-expand')
-    } else {
-      el.classList.add('y-tree-icon-expand')
+      this.isLoading(true)
+      params.loadData(data.data(), function (childrenData) {
+        this.isLoading(false)
+        var _data = this.data()
+        if (childrenData && childrenData.length > 0) {
+          _data.children = childrenData
+        }
+        this.data(_data)
+        this.expanded(!this.expanded())
+        this.loaded(true)
+      }.bind(this))
     }
   }
 }

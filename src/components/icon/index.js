@@ -26,7 +26,6 @@ function init (params) {
     }
     this.padding = `${padding.top} ${padding.right} ${padding.bottom} ${padding.left} `
   } else {
-    debugger
     this.padding = params.padding
   }
 }

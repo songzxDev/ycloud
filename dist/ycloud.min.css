@@ -198,6 +198,12 @@ i {
   padding: 12px 18px;
   text-align: right;
 }
+.y-modal .y-modal-error-msg {
+  float: left;
+  font-size: 12px;
+  color: red;
+  line-height: 32px;
+}
 .y-box-filter {
   padding: 9px 20px 9px;
   margin-bottom: 10px;
@@ -2001,6 +2007,71 @@ fieldset[disabled] .y-button-info.active > a:only-child:after {
 }
 .y-switch-disabled .y-switch-inner {
   color: #ccc;
+}
+.y-tree {
+  overflow: scroll;
+}
+.y-tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+.y-tree ul li {
+  font-size: 14px;
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+  white-space: nowrap;
+  outline: 0;
+}
+.y-tree ul li ul {
+  margin: 0;
+  padding: 0 0 0 18px;
+  display: none;
+}
+.y-tree ul li ul.y-tree-icon-expand {
+  display: block;
+}
+.y-tree ul .y-tree-title {
+  display: inline-block;
+  margin: 0;
+  padding: 2px 4px;
+  border-radius: 3px;
+  cursor: pointer;
+  line-height: 18px;
+  vertical-align: top;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+}
+.y-tree ul .y-tree-title:hover {
+  background-color: #d5e8fc;
+}
+.y-tree ul .y-tree-title.y-tree-node-selected {
+  background-color: #d5e8fc;
+  font-size: 16px;
+}
+.y-tree ul .y-tree-icon {
+  transition: all 0.2s ease-in-out;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0 4px;
+}
+.y-tree ul .y-tree-isloading {
+  animation: rotating 1.2s linear infinite;
+}
+@keyframes rotating {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.y-tree ul .y-tree-icon-expand.y-tree-icon i {
+  transform: rotate(90deg);
 }
 .y-inline-block {
   display: inline-block;
