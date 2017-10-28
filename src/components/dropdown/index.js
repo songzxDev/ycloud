@@ -1,8 +1,13 @@
 import template from './index.html'
 import ko from 'knockout'
 import 'ko-bindinghandler'
-function init (params) {
+function _init (params, el) {
   this.isShow = params.isShow || ko.observable(false)
+  this.scrollTop = params.scrollTop || ko.observable()
+  let _el = el.element
+  this.scrollTop.subscribe(val => {
+    _el.children[0].scrollTop = val
+  })
   this.style = ko.computed(() => {
     let style = {}
     if (params.width) {
@@ -17,6 +22,11 @@ function init (params) {
       this.animated(false)
     }, 1500)
   })
+}
+var init = {
+  createViewModel: function (params, componentInfo) {
+    return new _init(params, componentInfo)
+  }
 }
 export default {
   name: 'dropdown',

@@ -3,15 +3,16 @@
     <div data-bind="foreach:{data: multiValue, as: 'tag'}">
       <y-tag params="item: tag,text: tag.label,closeable:true,handleClose:$parent.handleDeleteSelected"></y-tag>
     </div>
-    <div class="y-select-single" data-bind="visible:!multiple&&selectedLabel(), text:selectedLabel"></div>
-    <div class="y-select-placeholder" data-bind="text:placeholder,visible:showPlaceholder"></div>
-    <input type="text" data-bind="event:{focus:handleShowDrop},visible:filterable" class="">
+    <div class="y-select-single" data-bind="visible:!multiple&&selectedLabel() && !filterable(), text:selectedLabel"></div>
+    <div class="y-select-placeholder" data-bind="text:placeholder,visible:showPlaceholder() && !filterable()"></div>
+    <input class="y-select-filter" type="text" data-bind="event:{keyup:handleKeyUp,focus:handleShowDrop, compositionend: handleCompositionEnd,compositionstart:handleCompositionStart},textInput:key,visible:filterable,attr:{placeholder:placeholder}">
     <i class="y-select-arrow fa fa-close" data-bind="css:{'y-select-showclose':showCloseIcon}, click:handlerClear"></i>
     <i class="y-select-arrow fa fa-caret-down" data-bind="css: {'y-select-showdrop':clearable && showCloseIcon()}"></i>
   </div>
-  <y-dropdown params="width:width, isShow:showDropdown">
-     <div class="option-ctn" data-bind="foreach:{data: $parent.dataList, as: 'item'}">
-       <y-option params="value: item,label:'label',key:'value',itemClick:$parentContext.$parent.handleOptClick, curValue:$parentContext.$parent.curValue, curMultiValue:$parentContext.$parent.multiValue"></y-option>
+  <y-dropdown params="width:width, isShow:showDropdown,scrollTop:scrollTop">
+     <div class="option-ctn" data-bind="foreach:{data: $parent.filterDataList, as: 'item'}">
+       <y-option params="value: item,label:'label',key:'value',itemClick:$parentContext.$parent.handleOptClick,index:$index, curIndex:$parentContext.$parent.curIndex, curValue:$parentContext.$parent.curValue, curMultiValue:$parentContext.$parent.multiValue"></y-option>
      </div>
+     <div class="y-select-nodata" data-bind="visible: $parent.isNoData">暂无匹配数据</div>
   </y-dropdown>
 </div>
