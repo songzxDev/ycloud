@@ -12,6 +12,7 @@ import yswitch from './switch'
 import tag from './tag'
 import select from './select'
 import button from './button'
+import icon from './icon'
 import tree from './tree'
 
 const PREFIX = 'y-'
@@ -34,4 +35,5 @@ register(tag)
 register(boxsticky)
 register(formitem)
 register(form)
+register(icon)
 register(tree)
