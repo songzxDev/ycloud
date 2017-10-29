@@ -24,6 +24,9 @@ function init (params) {
   // 是否支持多选
   this.multiple = params.multiple || false
   this.width = ko.observable()
+  // 是否有更多按钮（一般用于各种参照）
+  this.hasmore = params.hasmore || false
+  this.handleMore = params.onmore
   // 用于判断是否显示下拉
   this.showDropdown = ko.observable(false)
   // 设置placeholder提示
@@ -85,8 +88,8 @@ function init (params) {
   }.bind(this)
   // 用于判断是否显示关闭按钮
   this.showCloseIcon = ko.computed(() => {
-    // 不是多选 + 支持清空按钮 + 已有选中值
-    return !this.multiple && this.clearable && this.selectedLabel()
+    // 支持清空按钮 + 已有选中值
+    return this.clearable && (this.selectedLabel() || this.multiValue().length > 0)
   })
   // 是否显示placeholder
   this.showPlaceholder = ko.computed(() => {
@@ -104,6 +107,14 @@ function init (params) {
   this.handleShowDrop = () => {
     this.showDropdown(true)
   }
+  // 鼠标移入的时候如果是从后端获取数据，则直接开始查询
+  this.handleFocus = () => {
+    params.loadData && params.loadData(this.key(), (remoteData) => {
+      this.filterDataList(remoteData)
+    })
+    this.handleShowDrop(true)
+  }
+  // 显示暂无数据
   this.isNoData = ko.computed(() => {
     return this.filterable() && this.key() && this.filterDataList().length === 0
   })
@@ -116,7 +127,7 @@ function init (params) {
       this.key('')
     }
   }
-  // 点击选项
+  // 选中
   this.handleOptClick = (item, evt) => {
     if (!this.multiple) {
       this.value(item.value)
@@ -131,13 +142,14 @@ function init (params) {
       }
     }
   }
+  // 在中文输入法期间不触发查询
   let isStartQuery = true
   params.filterable && this.key.subscribe(val => {
     if (isStartQuery) {
       this.startFilter(val)
     }
   })
-  // 键盘输入法事件开始
+  // 键盘输入法事件开始 如果在用中文输入法，则输入法期间的文字不触发查询
   this.handleCompositionStart = (data, event) => {
     isStartQuery = false
   }
@@ -146,7 +158,7 @@ function init (params) {
     isStartQuery = true
     this.startFilter(this.key())
   }
-  if (params.dataList.subscribe) {
+  if (params.dataList && params.dataList.subscribe) {
     this.filterDataList(params.dataList())
     params.dataList.subscribe(val => {
       this.filterDataList(val)
@@ -154,10 +166,12 @@ function init (params) {
   } else {
     this.filterDataList(params.dataList || [])
   }
-
   this.startFilter = function (key) {
     if (params.loadData) {
       // 从远程查询
+      params.loadData(key, (remoteData) => {
+        this.filterDataList(remoteData)
+      })
     } else {
       let result = []
       if (key !== '') {
@@ -179,6 +193,7 @@ function init (params) {
   // 点击清空按钮
   this.handlerClear = () => {
     this.value({})
+    this.multiValue([])
     this.key('')
   }
   // 点击清空已选择的

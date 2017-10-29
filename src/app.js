@@ -120,6 +120,16 @@ let viewmodel = {
   onTreeSelect: function (data) {
     viewmodel.treeSelectedData(JSON.stringify(data))
   },
+  loadSelectData: function (params, cb) {
+    if (params) {
+      setTimeout(() => {
+        cb([{value:'1',label:'上海'}, {value:'2', label:'大北京'}])
+      }, 500)
+    } else {
+      cb([{value:'1',label:'小上海'}, {value:'2', label:'小北京'}])
+    }
+
+  },
   loadTreeData: function (params, cb) {
     if (params.name !== 'nodeadd') {
       setTimeout(()=> {

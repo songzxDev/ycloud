@@ -98,10 +98,26 @@
     </div>
     <div class="row m-b-xs">
       <div class="col-md-1">
-        单选+filterable：
+        filterable：
       </div>
       <div class="col-md-3">
         <y-select params="dataList:vm.selectList,value:vm.singleselect,clearable:true,filterable:true"></y-select>
+      </div>
+    </div>
+    <div class="row m-b-xs">
+      <div class="col-md-1">
+        remote：
+      </div>
+      <div class="col-md-3">
+        <y-select params="value:vm.singleselect,loadData: $root.loadSelectData,clearable:true,filterable:true"></y-select>
+      </div>
+    </div>
+    <div class="row m-b-xs">
+      <div class="col-md-1">
+        hasmore：
+      </div>
+      <div class="col-md-3">
+        <y-select params="hasmore:true, onmore:$root.showModal,value:vm.singleselect,loadData: $root.loadSelectData,clearable:true,filterable:true"></y-select>
       </div>
     </div>
     <h1 id="button">5.button</h1>
@@ -188,7 +204,7 @@
     <h1>12.级联列表</h1>
     <y-cascader params='data: $root.cascaderData, selectedValue: $root.cascaderValue'>
       </y-cascader>
-  </y-boxcontent>  
+  </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>

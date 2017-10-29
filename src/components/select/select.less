@@ -16,8 +16,22 @@
   line-height: 1;
   margin-top: -7px;
   font-size: 14px;
-  color: #80848f;
+  cursor: pointer;
+  color: @f-color-normal;
   transition: all .2s ease-in-out;
+  &:hover{
+    color: @f-color-dark;
+  }
+}
+.y-select-arrow.fa-close{
+  color: @danger-color;
+}
+.y-select-arrow.y-select-important{
+  right: 30px;
+  top: 50%;
+}
+.y-select-hasmore:hover{
+  color: @primary-color;
 }
 .y-input.y-select-ctn{
   padding: 0 6px;
@@ -65,7 +79,7 @@
   .y-select-ctn {
     box-shadow: 0 0 0 2px rgba(45, 140, 240, .2)
   }
-  .y-select-arrow{
+  .y-select-arrow.fa-caret-down{
     transform: rotate(-180deg);
   }
 }
