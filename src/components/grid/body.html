@@ -1,0 +1,15 @@
+<div class="y-grid-body">
+  <table cellspacing="0" cellpadding="0" border="0">
+    <colgroup data-bind="foreach:{data: columns,as: 'col'}">
+      <col data-bind="visible: !col.hidden, attr:{width:$parent.setCellWidth(col, $index)}">
+    </colgroup>
+    <tbody data-bind="foreach: {data: rows, as: 'row'}">
+      <tr data-bind="foreach:{data: $parent.columns,as: 'col'}">
+        <td>
+          <div class="y-cell" data-bind="text: row[col.field]">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

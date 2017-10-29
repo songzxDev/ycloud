@@ -140,6 +140,7 @@ let viewmodel = {
       cb(null)
     }
   },
+  htmltemplate: '<div data-bind="text:function(){debugger;}"></div>',
   asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([
     {value:1,label:'北京'},

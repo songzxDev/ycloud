@@ -6,6 +6,17 @@ a:focus {
 i {
   font-style: normal;
 }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.fadeInUp {
+  animation-name: fadeInUp;
+}
 @keyframes slideInDown {
   0% {
     opacity: 0;
@@ -298,8 +309,22 @@ i {
   line-height: 1;
   margin-top: -7px;
   font-size: 14px;
-  color: #80848f;
+  cursor: pointer;
+  color: #666;
   transition: all 0.2s ease-in-out;
+}
+.y-select-arrow:hover {
+  color: #333;
+}
+.y-select-arrow.fa-close {
+  color: #f15c50;
+}
+.y-select-arrow.y-select-important {
+  right: 30px;
+  top: 50%;
+}
+.y-select-hasmore:hover {
+  color: #2d8cf0;
 }
 .y-input.y-select-ctn {
   padding: 0 6px;
@@ -351,7 +376,7 @@ i {
 .selected .y-select-ctn {
   box-shadow: 0 0 0 2px rgba(45, 140, 240, 0.2);
 }
-.selected .y-select-arrow {
+.selected .y-select-arrow.fa-caret-down {
   transform: rotate(-180deg);
 }
 .y-select-hover {
@@ -2043,7 +2068,7 @@ fieldset[disabled] .y-button-info.active > a:only-child:after {
   color: #ccc;
 }
 .y-tree {
-  overflow: scroll;
+  overflow: auto;
 }
 .y-tree ul {
   list-style: none;

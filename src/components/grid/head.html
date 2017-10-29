@@ -1,0 +1,15 @@
+<div class="y-grid-head">
+  <table  cellspacing="0" cellpadding="0" border="0">
+    <colgroup data-bind="foreach:{data: columns,as: 'col'}">
+      <col data-bind="visible: !col.hidden, attr:{width:$parent.setCellWidth(col, $index)}">
+    </colgroup>
+    <thead>
+      <tr data-bind="foreach:{data: columns,as: 'col'}">
+        <th>
+          <div class="y-cell" data-bind="text:col.title">
+          </div>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
