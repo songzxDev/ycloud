@@ -1,6 +1,11 @@
-<div class="y-grid-wrapper">
-  <div class="y-grid" data-bind="css:{'y-grid-stripe':isStripe}">
-    <y-grid-head params="columns:columns"></y-grid-head>
-    <y-grid-body params="columns:columns, rows:rows"></y-grid-body>
+<div>
+  <div class="y-grid-wrapper">
+    <div class="y-grid" data-bind="css:{'y-grid-stripe':isStripe},style:{height:maxheight}">
+      <y-grid-head params="columns:columns"></y-grid-head>
+      <y-grid-body params="columns:columns, rows:rows, onRowSelect:onRowSelect"></y-grid-body>
+    </div>
   </div>
+  <!-- ko if: pagination -->
+  <y-pagination data-bind="visible: isShowPagination" params="onPageChage:onPageChage,pageSize: pageSize, totalCount: totalCount, pageIndex: pageIndex"></y-pagination>
+  <!-- /ko -->
 </div>

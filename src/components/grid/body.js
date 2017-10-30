@@ -21,6 +21,8 @@ function init (params) {
   this.handleClick = (row) => {
     // todo:需要将选中的数据放入缓存当中或从缓存中剔除
     row._selected(!row._selected())
+    // 触发行选中事件
+    params.onRowSelect && params.onRowSelect(row)
   }
 }
 
