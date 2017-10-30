@@ -141,6 +141,47 @@ let viewmodel = {
     }
   },
   htmltemplate: '<div data-bind="text:function(){debugger;}"></div>',
+  columns: ko.observableArray([
+    {
+      title: '',
+      field: '',
+      checkbox: true,
+      hidden: false,
+      width: 50
+    },
+    {
+      title: 'name',
+      field: 'name',
+      hidden: false
+    },
+    {
+      field: 'id',
+      title: 'renderType',
+      hidden: false,
+      render: function (row, index) {
+        return `<div onclick="clickme(event)" data-id='${row.id}'>${index + row.name + row.id + '通过render函数生成的html片段'}</div>`
+      }
+    }, {
+      field: 'id',
+      title: 'operation',
+      hidden: false,
+      render: function (row, index) {
+        window.clickme = function (event) {
+          console.log(row.id)
+        }
+        var links = `<a class="y-grid-operation" href="http://www.baidu.com?id=${row.id}">新增</a>
+          <a class="y-grid-operation"  href="http://www.baidu.com?id=${row.id}">修改</a>
+          <span class="y-grid-operation" onclick="clickme(event)">删除</span>
+        `
+        return links
+      }
+    }
+  ]),
+  rows: ko.observableArray([
+    {id: 1, name: '张三'},
+    {id: 2, name: '张李四'},
+    {id: 3, name: '张李'}
+  ]),
   asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([
     {value:1,label:'北京'},
@@ -168,6 +209,9 @@ viewmodel.multiselect.subscribe(function (items) {
   console.log('多选：')
   console.log(items)
 })
+window.clickme = function clickme (event) {
+  console.log(event)
+}
 ko.applyBindings(viewmodel, document.getElementById('app'))
 setTimeout(() => {
   viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])

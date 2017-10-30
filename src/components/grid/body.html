@@ -4,11 +4,26 @@
       <col data-bind="visible: !col.hidden, attr:{width:$parent.setCellWidth(col, $index)}">
     </colgroup>
     <tbody data-bind="foreach: {data: rows, as: 'row'}">
-      <tr data-bind="foreach:{data: $parent.columns,as: 'col'}">
+      <tr data-bind="foreach:{data: $parent.columns,as: 'col'},css:{'y-grid-row-hover':row._hover},event:{mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
+        <!-- ko if: col.checkbox -->
         <td>
-          <div class="y-cell" data-bind="text: row[col.field]">
+          <div class="y-cell">
+            <input type="checkbox" class="y-grid-checkbox">
           </div>
         </td>
+        <!-- /ko -->
+        <!-- ko ifnot:col.checkbox -->
+        <td>
+          <!-- ko if: col.render-->
+            <div class="y-cell" data-bind="html: col.render(row, $parentContext.$index())">
+            </div>
+          <!-- /ko -->
+          <!-- ko if: !col.render-->
+            <div class="y-cell" data-bind="text: row[col.field]">
+            </div>
+          <!-- /ko -->
+        </td>
+        <!-- /ko -->
       </tr>
     </tbody>
   </table>
