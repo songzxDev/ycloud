@@ -167,7 +167,6 @@ let viewmodel = {
       width: '15%',
       type: 'component',
       compFn: function (row) {
-        // <y-select params="placeholder:'多选下拉框',dataList:$root.selectList,value:$root.singleselect,clearable:true"></y-select>
         return {
           name: 'y-select',
           params: {
@@ -182,7 +181,7 @@ let viewmodel = {
     },
     {
       field: 'id',
-      title: 'renderType',
+      title: 'renderFn',
       type: 'render',
       hidden: false,
       renderFn: function (row, index) {

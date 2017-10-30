@@ -1,3 +1,10 @@
+body {
+  font-size: 13px;
+}
+a {
+  color: #666;
+  text-decoration: none;
+}
 a:hover,
 a:active,
 a:focus {
@@ -2132,7 +2139,7 @@ fieldset[disabled] .y-button-info.active > a:only-child:after {
 .y-tree ul .y-tree-icon-expand.y-tree-icon i {
   transform: rotate(90deg);
 }
-.casitem {
+.y-casitem {
   display: inline-block;
   min-width: 100px;
   height: 180px;
@@ -2143,7 +2150,7 @@ fieldset[disabled] .y-button-info.active > a:only-child:after {
   border-right: 1px solid #e9eaec;
   overflow: auto;
 }
-.casitem .casitem-item {
+.y-casitem .y-casitem-item {
   margin: 0;
   line-height: normal;
   padding: 7px 16px;
@@ -2157,15 +2164,175 @@ fieldset[disabled] .y-button-info.active > a:only-child:after {
   padding-right: 24px;
   transition: all 0.2s ease-in-out;
 }
-.casitem .casitem-item.active {
+.y-casitem .y-casitem-item.active {
   background-color: #eee;
   color: #1baede !important;
 }
-.casitem .casitem-item i {
+.y-casitem .y-casitem-item i {
+  font-size: 14px;
   position: absolute;
   right: 15px;
-  top: 50%;
+  top: 48%;
   margin-top: -6px;
+}
+.y-casitem-fix .y-casitem {
+  margin-left: -4px;
+}
+.y-cascader-dropdown {
+  width: inherit;
+  max-height: 200px;
+  overflow: auto;
+  margin: 5px 0;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 900;
+}
+.y-grid-wrapper {
+  position: relative;
+  border: 1px solid #dddee1;
+  border-bottom: 0;
+  border-right: 0;
+  margin-bottom: 10px;
+}
+.y-grid {
+  width: inherit;
+  height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  color: #495060;
+  font-size: 13px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.y-grid .y-grid-operation {
+  cursor: pointer;
+  color: #2d8cf0;
+}
+.y-grid:after,
+.y-grid:before {
+  content: "";
+  position: absolute;
+  background-color: #dddee1;
+}
+.y-grid:before {
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.y-grid:after {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+.y-grid table {
+  table-layout: fixed;
+  width: 100%;
+}
+.y-grid table tbody tr.y-grid-row-hover td,
+.y-grid table tbody tr.y-grid-row-selected td {
+  background-color: #ebf7ff !important;
+}
+.y-grid table tbody .y-grid-checkbox {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.y-grid table tbody tr.y-grid-row-hover .y-grid-checkbox,
+.y-grid table tbody tr.y-grid-row-selected .y-grid-checkbox {
+  opacity: 1;
+}
+.y-grid table th {
+  height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: #f8f8f9;
+}
+.y-grid table td {
+  background-color: #fff;
+  transition: background-color 0.2s ease-in-out;
+}
+.y-grid table th,
+.y-grid table td {
+  min-width: 0;
+  height: 44px;
+  box-sizing: border-box;
+  text-align: left;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  border-bottom: 1px solid #e9eaec;
+}
+.y-grid table .y-cell {
+  padding-left: 18px;
+  padding-right: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  box-sizing: border-box;
+}
+.y-grid table .y-cell-overflow-auto {
+  overflow: visible;
+}
+.y-grid-stripe .y-grid-body tr:nth-child(2n) td {
+  background-color: #f8f8f9;
+}
+.y-pagination {
+  margin-bottom: 10px;
+}
+.y-pagination .y-page-next,
+.y-pagination .y-page-prev {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 32px;
+  height: 32px;
+  line-height: 30px;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  color: #666;
+  font-family: Arial;
+  border: 1px solid #dddee1;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+.y-pagination .y-page-item {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 32px;
+  height: 32px;
+  line-height: 30px;
+  margin-right: 4px;
+  text-align: center;
+  list-style: none;
+  background-color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  font-family: Arial;
+  border: 1px solid #dddee1;
+  border-radius: 4px;
+  transition: border 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.y-pagination .y-page-item-cur {
+  background-color: #2d8cf0;
+  border-color: #2d8cf0;
+}
+.y-pagination .y-page-item-cur a {
+  color: #FFF;
+}
+.y-pagination .y-page-disable {
+  cursor: not-allowed;
+}
+.y-pagination .y-page-disable a {
+  color: #999;
 }
 .y-inline-block {
   display: inline-block;

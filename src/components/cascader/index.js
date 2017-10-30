@@ -2,8 +2,8 @@
 * @author: songhlc liuxu7
 * @date: 2017-10-25
 * @description: 级联列表组件
-* data: 
-* selectedValue: 
+* data:
+* selectedValue:
 * */
 import template from './index.html'
 import ko from 'knockout'
