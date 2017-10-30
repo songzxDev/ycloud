@@ -27,6 +27,12 @@ config = merge(config, {
         changeOrigin: true,
         host: "yc.yonyou.com"
       },
+      '/cpu-cdn': {
+        target: 'http://yc.yonyou.com',
+        secure: false,
+        changeOrigin: true,
+        host: "yc.yonyou.com"
+      },
       '/yuncai': {
         target: 'http://yc.yonyou.com',
         secure: false,

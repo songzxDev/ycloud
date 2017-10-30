@@ -1,6 +1,13 @@
 import ko from 'knockout'
 import './index'
 console.log('test')
+var dt = new u.DataTable({
+  meta:{
+    id: "",
+    name: ""
+  }
+})
+dt.setSimpleData([{id:1,name:2},{id:2,name:1},{id:3,name:4}])
 let viewmodel = {
   checked: ko.observable(true),
   checked1: ko.observable(false),
@@ -204,11 +211,75 @@ let viewmodel = {
       }
     }
   ]),
+  columnsdt: [
+    {
+      title: '',
+      field: '',
+      type: 'checkbox',
+      hidden: false,
+      width: 50
+    },
+    {
+      title: '序号',
+      width: 70,
+      type: 'index'
+    },
+    {
+      title: 'name',
+      field: 'name',
+      hidden: false,
+      align: 'right',
+      width: '20%'
+    },
+    {
+      title: 'component',
+      hidden: false,
+      width: '15%',
+      type: 'component',
+      compFn: function (row) {
+        return {
+          name: 'y-select',
+          params: {
+            placeholder: '多选下拉',
+            dataList: viewmodel.selectList,
+            clearable: true,
+            label: row.name,
+            id: row.id
+          }
+        }
+      }
+    },
+    {
+      field: 'id',
+      title: 'renderFn',
+      type: 'render',
+      hidden: false,
+      renderFn: function (row, index) {
+        return `<div onclick="clickme(event)" data-id='${row.getValue('id')}'>${index + row.getValue('name') + row.getValue('id') + '通过render函数生成的html片段'}</div>`
+      }
+    }, {
+      field: 'id',
+      title: 'operation',
+      hidden: false,
+      type: 'render',
+      renderFn: function (row, index) {
+        window.clickme = function (event) {
+          console.log(row.getValue('id'))
+        }
+        var links = `<a class="y-grid-operation" href="http://www.baidu.com?id=${row.getValue('id')}">新增</a>
+          <a class="y-grid-operation"  href="http://www.baidu.com?id=${row.getValue('id')}">修改</a>
+          <span class="y-grid-operation" onclick="clickme(event)">删除</span>
+        `
+        return links
+      }
+    }
+  ],
   rows: ko.observableArray([
     {id: ko.observable(1), name: ko.observable('张三')},
     {id: ko.observable(2), name: ko.observable('张李四')},
     {id: ko.observable(3), name: ko.observable('张李')}
   ]),
+  datatable: dt.rows,
   pageIndex: ko.observable(0),
   totalCount: ko.observable(112),
   pageSize: ko.observable(10),

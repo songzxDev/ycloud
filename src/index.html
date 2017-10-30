@@ -206,12 +206,16 @@
     <y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows,pagination:true,totalCount: $root.totalCount"></y-grid>
   </y-boxcontent>
   <y-boxcontent>
+    <h1>13.表格-datatable</h1>
+    <y-grid params="isStripe: true,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount"></y-grid>
+  </y-boxcontent>
+  <y-boxcontent>
     <h1>14.分页</h1>
     <y-pagination params="onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>
   </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
-
+<script src="/cpu-cdn/js/uui/iuap-design-3.1.23/js/u.js"></script>
 </body>
 </html>

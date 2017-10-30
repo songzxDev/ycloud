@@ -32,8 +32,14 @@
         <!-- /ko -->
         <!-- ko ifnot: col.type-->
         <td>
+          <!-- ko ifnot: $parentContext.$parent.isDataTable -->
           <div class="y-cell" data-bind="text: row[col.field],css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
           </div>
+          <!-- /ko -->
+          <!-- ko if: $parentContext.$parent.isDataTable -->
+          <div class="y-cell" data-bind="text: row.ref(col.field),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+          </div>
+          <!-- /ko -->
         </td>
         <!-- /ko -->
       </tr>

@@ -14,6 +14,7 @@ ko.components.register(PREFIX + body.name, {
 const PAGESIZE = 10
 const PAGEINDEX = 0
 function init (params) {
+  this.isDataTable = params.isDataTable || false
   this.columns = params.columns
   this.rows = params.rows
   this.maxheight = params.maxheight || '484px'

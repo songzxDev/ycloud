@@ -3,6 +3,7 @@ import ko from 'knockout'
 function init (params) {
   // 为跨页选择做准备
   // let cacheData = []
+  this.isDataTable = params.isDataTable
   this.setCellWidth = function () { return '200' }
   this.columns = params.columns
   params.rows().forEach(function (row) {
@@ -10,7 +11,9 @@ function init (params) {
     row._selected = ko.observable(false)
     // todo:行是否选中要和cacheData里的数据进行合并
   })
-  this.rows = params.rows
+  this.rows = ko.computed(() => {
+    return params.rows()
+  })
   this.handleMouseIn = (row) => {
     if (row._hover()) return
     row._hover(true)
