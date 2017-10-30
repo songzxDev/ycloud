@@ -162,12 +162,31 @@ let viewmodel = {
       width: '20%'
     },
     {
+      title: 'component',
+      hidden: false,
+      width: '15%',
+      type: 'component',
+      compFn: function (row) {
+        // <y-select params="placeholder:'多选下拉框',dataList:$root.selectList,value:$root.singleselect,clearable:true"></y-select>
+        return {
+          name: 'y-select',
+          params: {
+            placeholder: '多选下拉',
+            dataList: viewmodel.selectList,
+            clearable: true,
+            label: row.name,
+            id: row.id
+          }
+        }
+      }
+    },
+    {
       field: 'id',
       title: 'renderType',
       type: 'render',
       hidden: false,
       renderFn: function (row, index) {
-        return `<div onclick="clickme(event)" data-id='${row.id}'>${index + row.name + row.id + '通过render函数生成的html片段'}</div>`
+        return `<div onclick="clickme(event)" data-id='${row.id()}'>${index + row.name() + row.id() + '通过render函数生成的html片段'}</div>`
       }
     }, {
       field: 'id',
@@ -187,9 +206,9 @@ let viewmodel = {
     }
   ]),
   rows: ko.observableArray([
-    {id: 1, name: '张三'},
-    {id: 2, name: '张李四'},
-    {id: 3, name: '张李'}
+    {id: ko.observable(1), name: ko.observable('张三')},
+    {id: ko.observable(2), name: ko.observable('张李四')},
+    {id: ko.observable(3), name: ko.observable('张李')}
   ]),
   pageIndex: ko.observable(0),
   totalCount: ko.observable(112),

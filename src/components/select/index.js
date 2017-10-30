@@ -34,12 +34,14 @@ function init (params) {
   // 监听选中值改变
   this.value.subscribe(item => {
     this.selectedLabel(item.label)
+    this.selectedValue(item.value)
     this.curValue(item.value)
     this.key(item.label)
   })
   this.filterDataList = ko.observableArray()
   // 选中的文本
-  this.selectedLabel = ko.observable()
+  this.selectedLabel = params.label || ko.observable()
+  this.selectedValue = params.id || ko.observable()
   this.isKeyDownEffect = false
   this.showDropdown.subscribe(val => {
     if (val) {

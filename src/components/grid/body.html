@@ -24,6 +24,12 @@
             </div>
         </td>
         <!-- /ko -->
+        <!-- ko if:col.type == 'component' -->
+        <td>
+          <div class="y-cell y-cell-overflow-auto" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},component: col.compFn(row)">
+          </div>
+        </td>
+        <!-- /ko -->
         <!-- ko ifnot: col.type-->
         <td>
           <div class="y-cell" data-bind="text: row[col.field],css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
