@@ -145,27 +145,36 @@ let viewmodel = {
     {
       title: '',
       field: '',
-      checkbox: true,
+      type: 'checkbox',
       hidden: false,
       width: 50
     },
     {
+      title: '序号',
+      width: 70,
+      type: 'index'
+    },
+    {
       title: 'name',
       field: 'name',
-      hidden: false
+      hidden: false,
+      align: 'right',
+      width: '20%'
     },
     {
       field: 'id',
       title: 'renderType',
+      type: 'render',
       hidden: false,
-      render: function (row, index) {
+      renderFn: function (row, index) {
         return `<div onclick="clickme(event)" data-id='${row.id}'>${index + row.name + row.id + '通过render函数生成的html片段'}</div>`
       }
     }, {
       field: 'id',
       title: 'operation',
       hidden: false,
-      render: function (row, index) {
+      type: 'render',
+      renderFn: function (row, index) {
         window.clickme = function (event) {
           console.log(row.id)
         }
@@ -182,6 +191,12 @@ let viewmodel = {
     {id: 2, name: '张李四'},
     {id: 3, name: '张李'}
   ]),
+  pageIndex: ko.observable(0),
+  totalCount: ko.observable(112),
+  pageSize: ko.observable(10),
+  onPageChage: function (pageIndex, pageSize) {
+    console.log('pageIndex:' + pageIndex + ' ,pageSize:' + pageSize)
+  },
   asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([
     {value:1,label:'北京'},

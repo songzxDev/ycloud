@@ -1,27 +1,33 @@
 <div class="y-grid-body">
   <table cellspacing="0" cellpadding="0" border="0">
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
-      <col data-bind="visible: !col.hidden, attr:{width:$parent.setCellWidth(col, $index)}">
+      <col data-bind="visible: !col.hidden, attr:{width:col.width}">
     </colgroup>
     <tbody data-bind="foreach: {data: rows, as: 'row'}">
-      <tr data-bind="foreach:{data: $parent.columns,as: 'col'},css:{'y-grid-row-hover':row._hover},event:{mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
-        <!-- ko if: col.checkbox -->
+      <tr data-bind="foreach:{data: $parent.columns,as: 'col'},css:{'y-grid-row-hover':row._hover,'y-grid-row-selected':row._selected},event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
+        <!-- ko if: col.type == 'index' -->
         <td>
-          <div class="y-cell">
-            <input type="checkbox" class="y-grid-checkbox">
+          <div class="y-cell" data-bind="text: $parentContext.$index() + 1">
           </div>
         </td>
         <!-- /ko -->
-        <!-- ko ifnot:col.checkbox -->
+        <!-- ko if: col.type == 'checkbox' -->
         <td>
-          <!-- ko if: col.render-->
-            <div class="y-cell" data-bind="html: col.render(row, $parentContext.$index())">
+          <div class="y-cell">
+            <input type="checkbox" class="y-grid-checkbox" data-bind="checked:row._selected">
+          </div>
+        </td>
+        <!-- /ko -->
+        <!-- ko if:col.type == 'render' -->
+        <td>
+            <div class="y-cell" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},html: col.renderFn(row, $parentContext.$index())">
             </div>
-          <!-- /ko -->
-          <!-- ko if: !col.render-->
-            <div class="y-cell" data-bind="text: row[col.field]">
-            </div>
-          <!-- /ko -->
+        </td>
+        <!-- /ko -->
+        <!-- ko ifnot: col.type-->
+        <td>
+          <div class="y-cell" data-bind="text: row[col.field],css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+          </div>
         </td>
         <!-- /ko -->
       </tr>

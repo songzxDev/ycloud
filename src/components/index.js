@@ -17,6 +17,7 @@ import tree from './tree'
 import casitem from './casitem'
 import cascader from './cascader'
 import grid from './grid'
+import pagination from './pagination'
 
 const PREFIX = 'y-'
 function register (model) {
@@ -43,3 +44,4 @@ register(tree)
 register(casitem)
 register(cascader)
 register(grid)
+register(pagination)

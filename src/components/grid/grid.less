@@ -40,14 +40,14 @@
     table-layout: fixed;
     width: 100%;
     tbody {
-      tr.y-grid-row-hover td{
+      tr.y-grid-row-hover td, tr.y-grid-row-selected td{
         background-color: #ebf7ff !important;
       }
       .y-grid-checkbox{
         opacity: 0;
         transition: opacity .2s ease-in-out;;
       }
-      tr.y-grid-row-hover .y-grid-checkbox{
+      tr.y-grid-row-hover .y-grid-checkbox, tr.y-grid-row-selected .y-grid-checkbox{
         opacity: 1;
       }
     }

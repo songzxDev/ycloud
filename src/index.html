@@ -202,8 +202,12 @@
       </y-cascader>
   </y-boxcontent>
   <y-boxcontent>
-    <h1>13.grid</h1>
+    <h1>13.表格</h1>
     <y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>
+  </y-boxcontent>
+  <y-boxcontent>
+    <h1>14.分页</h1>
+    <y-pagination params="onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>
   </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
