@@ -20,6 +20,7 @@ import grid from './grid'
 import pagination from './pagination'
 import checkbox from './checkbox'
 import input from './input'
+import ycloud from './base'
 
 const PREFIX = 'y-'
 function register (model) {
@@ -49,3 +50,4 @@ register(cascader)
 register(pagination)
 register(grid)
 register(input)
+export default ycloud

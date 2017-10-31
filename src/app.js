@@ -1,5 +1,5 @@
 import ko from 'knockout'
-import './index'
+import ycloud from './index'
 console.log('test')
 var dt = new u.DataTable({
   meta:{
@@ -356,3 +356,9 @@ ko.applyBindings(viewmodel, document.getElementById('app'))
 setTimeout(() => {
   viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])
 }, 500)
+setTimeout(() => {
+  ycloud.notice.info('info', {timeout: 30000})
+}, 0)
+setTimeout(() => {
+  ycloud.notice.error('here has some error！here has some error！here has some error！here has some error！here has some error！here has some error！')
+}, 20000)
