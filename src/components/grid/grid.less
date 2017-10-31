@@ -88,4 +88,13 @@
 .y-grid-stripe .y-grid-body tr:nth-child(2n) td{
   background-color: #f8f8f9;
 }
-
+.y-grid-empty{
+  display: none;
+  td{
+    border-bottom:none !important;
+    text-align: center !important;
+  }
+}
+.y-grid-body table tbody:not(.y-grid-empty):empty+.y-grid-empty {
+  display: table-row-group;
+}

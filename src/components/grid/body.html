@@ -37,11 +37,18 @@
           </div>
           <!-- /ko -->
           <!-- ko if: $parentContext.$parent.isDataTable -->
-          <div class="y-cell" data-bind="text: row.ref(col.field),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+            <div class="y-cell" data-bind="text: row.ref(col.field),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
           </div>
           <!-- /ko -->
         </td>
         <!-- /ko -->
+      </tr>
+    </tbody>
+    <tbody class="y-grid-empty">
+      <tr>
+        <td data-bind="attr:{colspan: columns.length},style:{height: noDataHeight}">
+          暂无数据
+        </td>
       </tr>
     </tbody>
   </table>
