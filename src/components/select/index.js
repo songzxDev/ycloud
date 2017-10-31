@@ -16,6 +16,8 @@ ko.components.register(PREFIX + option.name, {
 function init (params) {
   // 选中的值 {value:'',label:''}格式
   this.value = params.value || ko.observable()
+  this.labelkey = params.labelkey || 'label'
+  this.valuekey = params.valuekey || 'value'
   this.multiValue = params.multiValue || ko.observableArray()
   // 是否支持清空
   this.clearable = params.clearable || false
@@ -33,10 +35,10 @@ function init (params) {
   this.placeholder = params.placeholder || '请选择'
   // 监听选中值改变
   this.value.subscribe(item => {
-    this.selectedLabel(item.label)
-    this.selectedValue(item.value)
-    this.curValue(item.value)
-    this.key(item.label)
+    this.selectedLabel(item[this.labelkey])
+    this.selectedValue(item[this.valuekey])
+    this.curValue(item[this.valuekey])
+    this.key(item[this.labelkey])
   })
   this.filterDataList = ko.observableArray()
   // 选中的文本
@@ -123,8 +125,8 @@ function init (params) {
   // 点击外部收起下拉
   this.clickoutside = () => {
     this.showDropdown(false)
-    if (this.value() && this.value().label) {
-      this.key(this.value().label)
+    if (this.value() && this.value()[this.labelkey]) {
+      this.key(this.value()[this.labelkey])
     } else {
       this.key('')
     }
@@ -133,7 +135,7 @@ function init (params) {
   this.handleOptClick = (item, evt) => {
     if (!this.multiple) {
       this.value(item.value)
-      this.key(item.value.label)
+      this.key(item.value[this.labelkey])
       this.showDropdown(false)
     } else {
       var index = this.multiValue.indexOf(item.value)
@@ -179,11 +181,11 @@ function init (params) {
       if (key !== '') {
         if (params.dataList.subscribe) {
           result = params.dataList().filter(item => {
-            return item.label.indexOf(key) >= 0
+            return item[this.labelkey].indexOf(key) >= 0
           })
         } else {
           result = params.dataList.filter(item => {
-            return item.label.indexOf(key) >= 0
+            return item[this.labelkey].indexOf(key) >= 0
           })
         }
         this.filterDataList(result)

@@ -3,7 +3,6 @@ import ko from 'knockout'
 function init (params) {
   this.value = params.value
   this.label = params.label || 'label'
-  this.key = params.key || 'value'
   this.curIndex = params.curIndex
   this.index = params.index
   this.labelsecond = params.labelsecond || ''

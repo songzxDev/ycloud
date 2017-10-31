@@ -133,12 +133,24 @@ let viewmodel = {
   loadSelectData: function (params, cb) {
     if (params) {
       setTimeout(() => {
-        cb([{value:'1',label:'上海'}, {value:'2', label:'大北京'}])
+        cb([{id:'1',personName:'上海'}, {id:'2', personName:'大北京'}])
       }, 500)
     } else {
-      cb([{value:'1',label:'小上海'}, {value:'2', label:'小北京'}])
+      cb([{
+        email: '',
+        enterpriseId: 30,
+        id: 31703,
+        moblie: '',
+        organizationId: 41,
+        organizationName: '北京采购部',
+        personCode: 'kbczy',
+        personName: '开标操作员',
+        suporgCode: 'p01',
+        suporgName: '1网上商城运营方',
+        userId: 889,
+        userName: 'newtest'
+      }])
     }
-
   },
   loadTreeData: function (params, cb) {
     if (params.name !== 'nodeadd') {

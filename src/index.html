@@ -105,7 +105,7 @@
         remote：
       </div>
       <div class="col-md-3">
-        <y-select params="value:vm.singleselect,loadData: $root.loadSelectData,clearable:true,filterable:true"></y-select>
+        <y-select params="valuekey:'id',labelkey: 'personName',value:vm.singleselect,loadData: $root.loadSelectData,clearable:true,filterable:true"></y-select>
       </div>
     </div>
     <div class="row m-b-xs">
@@ -113,7 +113,7 @@
         hasmore：
       </div>
       <div class="col-md-3">
-        <y-select params="hasmore:true, onmore:$root.showModal,value:vm.singleselect,loadData: $root.loadSelectData,clearable:true,filterable:true"></y-select>
+        <y-select params="valuekey:'id',labelkey: 'personName',hasmore:true, onmore:$root.showModal,value:vm.singleselect,loadData: $root.loadSelectData,clearable:true,filterable:true"></y-select>
       </div>
     </div>
     <h1 id="button">5.button</h1>

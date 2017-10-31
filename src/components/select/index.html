@@ -12,7 +12,7 @@
   </div>
   <y-dropdown params="width:width, isShow:showDropdown,scrollTop:scrollTop">
      <div class="option-ctn" data-bind="foreach:{data: $parent.filterDataList, as: 'item'}">
-       <y-option params="value: item,label:'label',key:'value',itemClick:$parentContext.$parent.handleOptClick,index:$index, curIndex:$parentContext.$parent.curIndex, curValue:$parentContext.$parent.curValue, curMultiValue:$parentContext.$parent.multiValue"></y-option>
+       <y-option params="value: item,label:$parentContext.$parent.labelkey,itemClick:$parentContext.$parent.handleOptClick,index:$index, curIndex:$parentContext.$parent.curIndex, curValue:$parentContext.$parent.curValue, curMultiValue:$parentContext.$parent.multiValue"></y-option>
      </div>
      <div class="y-select-nodata" data-bind="visible: $parent.isNoData">暂无匹配数据</div>
   </y-dropdown>
