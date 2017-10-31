@@ -209,13 +209,14 @@
         <y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>
       </div>
       <div class="col-md-6">
-        <h4>datatable</h4>
-        <y-grid params="isStripe: true,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount"></y-grid>
-      </div>
-      <div class="col-md-6">
         <h4>普通ko对象，由普通json对象set获得，不支持可编辑</h4>
         <y-grid params="columns:$root.pureColumns,rows: $root.pureRows,maxheight:'auto',pagination:true,totalCount: $root.totalCount"></y-grid>
       </div>
+      <div class="col-md-12">
+        <h4>datatable</h4>
+        <y-grid params="isStripe: true,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount"></y-grid>
+      </div>
+
     </div>
   </y-boxcontent>
   <y-boxcontent>

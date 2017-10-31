@@ -216,11 +216,20 @@ let viewmodel = {
       type: 'index'
     },
     {
-      title: 'name',
-      field: 'name',
+      title: 'y-input',
       hidden: false,
-      align: 'right',
-      width: '20%'
+      align: 'left',
+      width: '20%',
+      type: 'component',
+      compFn: function (row) {
+        return {
+          name: 'y-input',
+          params: {
+            type: 'text',
+            value: row.ref('name')
+          }
+        }
+      }
     },
     {
       title: 'component',

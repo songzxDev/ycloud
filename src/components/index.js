@@ -19,6 +19,7 @@ import cascader from './cascader'
 import grid from './grid'
 import pagination from './pagination'
 import checkbox from './checkbox'
+import input from './input'
 
 const PREFIX = 'y-'
 function register (model) {
@@ -47,3 +48,4 @@ register(casitem)
 register(cascader)
 register(pagination)
 register(grid)
+register(input)
