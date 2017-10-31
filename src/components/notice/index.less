@@ -1,0 +1,39 @@
+.y-notice{
+  left: 50%;
+  top: 30px;
+  position: fixed;
+  transform: translate(-50%,0);
+  z-index: 1010;
+  font-size: @f-size-base;
+  .y-notice-ctn{
+    display: inline-block;
+    pointer-events: all;
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    background: #fff;
+    position: relative;
+    min-width: 100px;
+    max-width: 300px;
+    .fa{
+      margin-right: 6px;
+    }
+    .fa-info-circle{
+      color: @primary-color;
+    }
+    .fa-warning{
+      color: @danger-color
+    }
+    span{
+      position: absolute;
+      right: 6px;
+      top: 4px;
+      display: inline-block;
+      font-size: 12px;
+      transform: scale(1.8) rotate(45deg);
+      cursor: pointer;
+      color: @f-color-normal;
+      opacity: .66;
+    }
+  }
+}
