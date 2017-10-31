@@ -217,11 +217,17 @@
         <y-grid params="columns:$root.pureColumns,rows: $root.pureRows,maxheight:'auto',pagination:true,totalCount: $root.totalCount"></y-grid>
       </div>
     </div>
-
   </y-boxcontent>
   <y-boxcontent>
     <h1>14.分页</h1>
     <y-pagination params="onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>
+  </y-boxcontent>
+  <y-boxcontent>
+    <h1>15.checkbox</h1>
+    <h4>水平方向</h4>
+    <y-checkbox params="dataList:$root.checkboxDataList,value:$root.checkboxValue"></y-checkbox>
+    <h4>垂直方向</h4>
+    <y-checkbox params="dataList:$root.checkboxDataList,value:$root.checkboxValue, direction:'vertical'"></y-checkbox>
   </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>

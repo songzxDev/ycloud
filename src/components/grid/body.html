@@ -14,7 +14,7 @@
         <!-- ko if: col.type == 'checkbox' -->
         <td>
           <div class="y-cell">
-            <input type="checkbox" class="y-grid-checkbox" data-bind="checked:row._selected">
+            <y-checkbox-item class="y-grid-checkbox" params="value:row._selected(),label:'',checked:row._selected"></y-checkbox-item>
           </div>
         </td>
         <!-- /ko -->

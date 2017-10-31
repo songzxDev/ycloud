@@ -323,7 +323,9 @@ let viewmodel = {
     {value:8,label:'阿斯蒂芬卡拉卡减肥啦时代峻峰5'},
     {value:9,label:'阿斯蒂芬卡拉卡减肥啦时代峻峰6'},
     {value:10,label:'阿斯蒂芬卡拉卡减肥啦时代峻7峰'},
-    {value:11,label:'等等9912.。想，'}])
+    {value:11,label:'等等9912.。想，'}]),
+  checkboxValue: ko.observableArray([]),
+  checkboxDataList: ko.observableArray([{value: 1,label:'北京'},{value: 2,label:'上海'}])
 }
 setTimeout(() => {
   viewmodel.loading(!viewmodel.loading())
