@@ -54,18 +54,6 @@
         </y-dropdown>
       </div>
     </div>
-    <div style="margin-top: 20px;">
-      <h1 id="switch">3.switch</h1>
-      <div class="clearfix">
-        <div class="pull-left">switch测试:</div>
-        <div class="pull-left">
-          <y-switch params="checked: $root.checked, size: 'large'">
-              <span  data-bind = "text:$root.checked()? '开启': '关闭'">开</span>
-          </y-switch>
-        </div>
-      </div>
-      <div class="clearfix"></div>
-    </div>
     <h1 id="select">4.select</h1>
     <div class="row m-b-xs">
       <div class="col-md-1">
@@ -153,9 +141,12 @@
     <h1 id="form">8.表单</h1>
     <div class="row">
       <div class="col-md-4">
-        <y-form params="model:$root.formData,labelWidth:'80px',labelAlign:'right'">
+        <y-form params="model:$root.formData,labelWidth:'200px',labelAlign:'right'">
           <y-formitem params="label:'输入框'">
-            <input class="y-input" type="text" data-bind="value:$parent.model.title">
+            <y-input params="placeholder:'请输入文本',class:'y-inline-block',type:'text',value:$parent.model.title"></y-input>
+          </y-formitem>
+          <y-formitem params="label:'带图标'">
+            <y-input params="onSubmit:$root.submitFn,onIconClick:$root.submitFn,type:'text',value:$parent.model.title, iconClass:'fa fa-search'"></y-input>
           </y-formitem>
           <y-formitem params="label:'下拉框'">
             <y-select params="placeholder:'多选下拉框',dataList:$root.selectList,value:$root.singleselect,clearable:true"></y-select>
@@ -168,6 +159,16 @@
             </y-switch>
             <y-switch params="checked: $root.checked3, size: 'small'">
             </y-switch>
+          </y-formitem>
+          <y-formitem params="label:'checkbox水平'">
+            <y-checkbox params="dataList:$root.checkboxDataList,value:$root.checkboxValue"></y-checkbox>
+          </y-formitem>
+          <y-formitem params="label:'checkbox垂直'">
+            <y-checkbox params="dataList:$root.checkboxDataList,value:$root.checkboxValue, direction:'vertical'"></y-checkbox>
+          </y-formitem>
+          <y-formitem params="label: '级联'">
+            <y-cascader params='data: $root.cascaderData, selectedValue: $root.cascaderValue'>
+            </y-cascader>
           </y-formitem>
         </y-form>
       </div>
@@ -197,11 +198,6 @@
 
   </y-boxcontent>
   <y-boxcontent>
-    <h1>12.级联列表</h1>
-    <y-cascader params='data: $root.cascaderData, selectedValue: $root.cascaderValue'>
-      </y-cascader>
-  </y-boxcontent>
-  <y-boxcontent>
     <h1>13.表格</h1>
     <div class="row">
       <div class="col-md-6">
@@ -222,13 +218,6 @@
   <y-boxcontent>
     <h1>14.分页</h1>
     <y-pagination params="onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>
-  </y-boxcontent>
-  <y-boxcontent>
-    <h1>15.checkbox</h1>
-    <h4>水平方向</h4>
-    <y-checkbox params="dataList:$root.checkboxDataList,value:$root.checkboxValue"></y-checkbox>
-    <h4>垂直方向</h4>
-    <y-checkbox params="dataList:$root.checkboxDataList,value:$root.checkboxValue, direction:'vertical'"></y-checkbox>
   </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>

@@ -20,6 +20,9 @@ let viewmodel = {
   loading: ko.observable(true),
   b: ko.observable('i am ucloud-ko-fileupload'),
   id: ko.observable('随意绑定一个id'),
+  submitFn: function () {
+    alert ('submit:' + viewmodel.formData.title())
+  },
   cascaderData: ko.observableArray([
     {
       id: 1,

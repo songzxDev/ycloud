@@ -2410,7 +2410,7 @@ fieldset[disabled] .y-button-info.active > a:only-child:after {
 }
 .y-notice {
   left: 50%;
-  top: 30px;
+  top: 60px;
   position: fixed;
   transform: translate(-50%, 0);
   z-index: 1010;
@@ -2447,11 +2447,23 @@ fieldset[disabled] .y-button-info.active > a:only-child:after {
   color: #666;
   opacity: .66;
 }
-.y-inline-block {
-  display: inline-block;
-}
-.y-relative {
+.y-input-ctn {
   position: relative;
+}
+.y-input-ctn i {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  line-height: 1;
+  margin-top: -6px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease-in-out;
+}
+.y-input-ctn:hover i,
+.y-input-ctn .y-input:focus ~ i {
+  color: #1baede;
 }
 .y-input {
   height: 30px;
@@ -2471,7 +2483,7 @@ fieldset[disabled] .y-button-info.active > a:only-child:after {
 .y-input:hover,
 .y-input:focus,
 .selected .y-input {
-  border-color: #3e9ed3;
+  border-color: #1baede;
 }
 .y-input:focus {
   outline: 0;
@@ -2481,6 +2493,12 @@ fieldset[disabled] .y-button-info.active > a:only-child:after {
 }
 .y-input.lg {
   height: 34px;
+}
+.y-inline-block {
+  display: inline-block;
+}
+.y-relative {
+  position: relative;
 }
 .y-width-100 {
   width: 100%;

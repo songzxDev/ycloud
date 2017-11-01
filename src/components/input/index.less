@@ -1,0 +1,44 @@
+.y-input-ctn{
+  position: relative;
+  i{
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    line-height: 1;
+    margin-top: -6px;
+    font-size: @f-size-sm;
+    cursor: pointer;
+    color: @f-color-normal;
+    transition: all 0.2s ease-in-out;
+  }
+  &:hover i, .y-input:focus ~ i {
+    color: @primary-color;
+  }
+}
+.y-input{
+  height: 30px;
+  background-color: #FFF;
+  background-image: none;
+  border: 1px solid #e5e6e7;
+  border-radius: 1px;
+  color: #333;
+  display: block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;
+  width: 100%;
+  font-size: 13px;
+  box-shadow: none;
+}
+.y-input:hover,.y-input:focus,.selected .y-input{
+  border-color: @primary-color;
+}
+.y-input:focus{
+  outline: 0
+}
+.y-input.sm{
+  height: 22px;
+}
+.y-input.lg{
+  height: 34px;
+}

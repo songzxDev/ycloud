@@ -1,1 +1,6 @@
-<input class="y-input" data-bind="attr:{type: type},value:value">
+<div class="y-input-ctn" data-bind="css:ctnClass">
+ <form data-bind="submit:handleSubmit">
+  <input class="y-input" data-bind="attr:{type: type, placeholder:placeholder},value:value">
+  <i data-bind="visible: showIcon, css:iconClass,click: handleIconClick"></i>
+ </form>
+</div>
