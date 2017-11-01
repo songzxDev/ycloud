@@ -34,6 +34,7 @@ function init (params) {
     row._selected(!row._selected())
     // 触发行选中事件
     params.onRowSelect && params.onRowSelect(row)
+    return true
   }
 }
 

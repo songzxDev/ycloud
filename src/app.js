@@ -166,6 +166,10 @@ let viewmodel = {
     }
   },
   htmltemplate: '<div data-bind="text:function(){debugger;}"></div>',
+  onPageChange: function (pageIndex, pageSize) {
+    debugger
+    console.log(pageIndex + ' '+ pageSize)
+  },
   columns: ko.observableArray([
     {
       title: '',
