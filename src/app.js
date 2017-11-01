@@ -342,19 +342,7 @@ let viewmodel = {
     console.log('pageIndex:' + pageIndex + ' ,pageSize:' + pageSize)
   },
   asyncTreeData: ko.observableArray([]),
-  selectList: ko.observableArray([
-    {value:1,label:'北京'},
-    {value:2,label:'上海'},
-    {value:3,label:'天津'},
-    {value:4,label:'附件'},
-    {value:5,label:'超过二十个字的参照超过二十个字的参照超过二十个字的参照'},
-    {value:5,label:'Ablee'},
-    {value:6,label:'Blaskdf'},
-    {value:7,label:'cliskdf'},
-    {value:8,label:'阿斯蒂芬卡拉卡减肥啦时代峻峰5'},
-    {value:9,label:'阿斯蒂芬卡拉卡减肥啦时代峻峰6'},
-    {value:10,label:'阿斯蒂芬卡拉卡减肥啦时代峻7峰'},
-    {value:11,label:'等等9912.。想，'}]),
+  selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
   checkboxDataList: ko.observableArray([{value: 1,label:'北京'},{value: 2,label:'上海'}])
 }
@@ -377,6 +365,21 @@ window.clickme = function clickme (event) {
 ko.applyBindings(viewmodel, document.getElementById('app'))
 setTimeout(() => {
   viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])
+  viewmodel.selectList([
+    {value:1,label:'北京'},
+    {value:2,label:'上海'},
+    {value:3,label:'天津'},
+    {value:4,label:'附件'},
+    {value:5,label:'超过二十个字的参照超过二十个字的参照超过二十个字的参照'},
+    {value:5,label:'Ablee'},
+    {value:6,label:'Blaskdf'},
+    {value:7,label:'cliskdf'},
+    {value:8,label:'阿斯蒂芬卡拉卡减肥啦时代峻峰5'},
+    {value:9,label:'阿斯蒂芬卡拉卡减肥啦时代峻峰6'},
+    {value:10,label:'阿斯蒂芬卡拉卡减肥啦时代峻7峰'},
+    {value:11,label:'等等9912.。想，'}])
+  viewmodel.multiselect([{value:1}, {value:2}])
+  viewmodel.singleselect({value:1,label:'北京'})
 }, 500)
 setTimeout(() => {
   ycloud.notice.info('info', {timeout: 30000})

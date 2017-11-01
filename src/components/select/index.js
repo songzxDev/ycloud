@@ -13,6 +13,40 @@ ko.components.register(PREFIX + option.name, {
   viewModel: option.init,
   template: option.template
 })
+// 思路 根据filterDataList里的值重写label 重新setValue里的值
+function setDefaultValue () {
+  // 设置默认值 通常用于修改页面 todo 需要重构 还要支持value值异步设置
+  // 多选
+  if (this.multiple) {
+    // 有值才查询
+    if (this.multiValue().length > 0 && this.filterDataList().length > 0) {
+      var _defaultItem = this.filterDataList().filter(item => {
+        let _list = this.multiValue().filter(_val => {
+          return item.value === _val[this.valuekey]
+        })
+        return _list.length > 0
+      })
+      if (_defaultItem.length > 0) {
+        this.hasSetDefault = true
+        this.multiValue(_defaultItem)
+      }
+    }
+  } else { // 单选
+    if (this.value() && this.value()[this.valuekey] && this.filterDataList().length > 0) {
+      var defaultItem = this.filterDataList().filter(item => {
+        if (this.value()) {
+          return item[this.valuekey] === this.value()[this.valuekey]
+        } else {
+          return false
+        }
+      })
+      if (defaultItem.length > 0) {
+        this.hasSetDefault = true
+        this.selectedLabel(defaultItem[0][this.labelkey])
+      }
+    }
+  }
+}
 function init (params) {
   // 选中的值 {value:'',label:''}格式
   this.value = params.value || ko.observable()
@@ -39,6 +73,14 @@ function init (params) {
     this.selectedValue(item[this.valuekey])
     this.curValue(item[this.valuekey])
     this.key(item[this.labelkey])
+    if (!this.hasSetDefault) {
+      setDefaultValue.apply(this)
+    }
+  })
+  this.multiValue.subscribe(() => {
+    if (!this.hasSetDefault) {
+      setDefaultValue.apply(this)
+    }
   })
   this.filterDataList = ko.observableArray()
   // 选中的文本
@@ -103,8 +145,8 @@ function init (params) {
       return !this.selectedLabel()
     }
   })
-  // filter查询值
-  this.key = ko.observable('')
+  // filter查询值 查询的时候有选中值
+  this.key = ko.observable(this.value() ? this.value()[this.labelkey] : '')
   // 当前选中值
   this.curValue = ko.observable()
   // 点击显示下拉
@@ -173,6 +215,12 @@ function init (params) {
   } else {
     this.filterDataList(params.dataList || [])
   }
+  // 设置默认值
+  this.hasSetDefault = false
+  setDefaultValue.apply(this)
+  this.filterDataList.subscribe(val => {
+    setDefaultValue.apply(this)
+  })
   this.startFilter = function (key) {
     if (params.loadData) {
       // 从远程查询
