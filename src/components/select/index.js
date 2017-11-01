@@ -131,12 +131,14 @@ function init (params) {
       this.key('')
     }
   }
+  this.onChange = params.onChange || function () {}
   // 选中
   this.handleOptClick = (item, evt) => {
     if (!this.multiple) {
       this.value(item.value)
       this.key(item.value[this.labelkey])
       this.showDropdown(false)
+      this.onChange(item.value)
     } else {
       var index = this.multiValue.indexOf(item.value)
       if (index >= 0) {
@@ -144,6 +146,7 @@ function init (params) {
       } else {
         this.multiValue.push(item.value)
       }
+      this.onChange(this.multiValue())
     }
   }
   // 在中文输入法期间不触发查询

@@ -23,9 +23,7 @@
 <y-box id="app">
   <y-boxsticky params="title:'吸顶菜单'">
     <div class="col-sm-8 text-center" style="line-height: 32px">
-      <a href="#demo" class="sticky-anchor active">Demo</a>
       <a href="#dropdown" class="sticky-anchor">Dropdown</a>
-      <a href="#switch" class="sticky-anchor">开关</a>
       <a href="#select" class="sticky-anchor">下拉</a>
       <a href="#button" class="sticky-anchor">按钮</a>
       <a href="#tag" class="sticky-anchor">标签</a>
@@ -60,7 +58,7 @@
         普通下拉：
       </div>
       <div class="col-md-3">
-        <y-select params="dataList:vm.selectList,value:vm.singleselect"></y-select>
+        <y-select params="dataList:vm.selectList,value:vm.singleselect,onChange:$root.onSelectChange"></y-select>
       </div>
     </div>
     <div class="row m-b-xs">
