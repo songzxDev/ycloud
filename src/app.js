@@ -4,11 +4,12 @@ console.log('test')
 var dt = new u.DataTable({
   meta:{
     id: "",
-    name: ""
+    name: "",
+    createdate: ""
   }
 })
 setTimeout(function () {
-  dt.setSimpleData([{id:1,name:2},{id:2,name:1},{id:3,name:4}])
+  dt.setSimpleData([{id:1,name:2,createdate:'2014-01-06'},{id:2,name:1,createdate:'2014-01-06 00:02:03'},{id:3,name:4,createdate:''},{id:3,name:4,createdate:1509610089885}])
   // dt.setAllRowsUnSelect()
 }, 1000)
 window.dt = dt
@@ -234,6 +235,18 @@ let viewmodel = {
       title: '序号',
       width: 70,
       type: 'index'
+    },
+    {
+      title: 'date',
+      width: 150,
+      field: 'createdate',
+      dataType: 'date'
+    },
+    {
+      title: 'datetime',
+      width: 200,
+      field: 'createdate',
+      dataType: 'datetime'
     },
     {
       title: 'y-input',

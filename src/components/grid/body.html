@@ -5,43 +5,9 @@
     </colgroup>
     <tbody data-bind="foreach: {data: rows, as: 'row'}">
       <tr data-bind="foreach:{data: $parent.columns,as: 'col'},css:{'y-grid-row-hover':row._hover,'y-grid-row-selected':row._selected},event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
-        <!-- ko if: col.type == 'index' -->
         <td>
-          <div class="y-cell" data-bind="text: $parentContext.$index() + 1">
-          </div>
+          <y-grid-td params="isDataTable:$parentContext.$parent.isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
         </td>
-        <!-- /ko -->
-        <!-- ko if: col.type == 'checkbox' -->
-        <td>
-          <div class="y-cell">
-            <y-checkbox-item class="y-grid-checkbox" params="value:row._selected(),label:'',checked:row._selected"></y-checkbox-item>
-          </div>
-        </td>
-        <!-- /ko -->
-        <!-- ko if:col.type == 'render' -->
-        <td>
-            <div class="y-cell" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},html: col.renderFn(row, $parentContext.$index())">
-            </div>
-        </td>
-        <!-- /ko -->
-        <!-- ko if:col.type == 'component' -->
-        <td>
-          <div class="y-cell y-cell-overflow-auto" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},component: col.compFn(row)">
-          </div>
-        </td>
-        <!-- /ko -->
-        <!-- ko ifnot: col.type-->
-        <td>
-          <!-- ko ifnot: $parentContext.$parent.isDataTable -->
-          <div class="y-cell" data-bind="text: row[col.field],css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
-          </div>
-          <!-- /ko -->
-          <!-- ko if: $parentContext.$parent.isDataTable -->
-            <div class="y-cell" data-bind="text: row.ref(col.field),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
-          </div>
-          <!-- /ko -->
-        </td>
-        <!-- /ko -->
       </tr>
     </tbody>
     <tbody class="y-grid-empty">

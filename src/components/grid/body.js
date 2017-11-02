@@ -1,5 +1,6 @@
 import template from './body.html'
 import ko from 'knockout'
+import td from './td'
 // 判断点击事件是否触发行选中
 function isTriggerRowSelect (evt) {
   // 如果点击的是input则不触发
@@ -11,6 +12,11 @@ function isTriggerRowSelect (evt) {
   }
   return true
 }
+const PREFIX = 'y-'
+ko.components.register(PREFIX + td.name, {
+  viewModel: td.init,
+  template: td.template
+})
 function init (params) {
   // 为跨页选择做准备
   // let cacheData = []

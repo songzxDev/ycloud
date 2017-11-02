@@ -1,0 +1,28 @@
+<!-- ko if: col.type == 'index' -->
+<!-- 索引列 -->
+<div class="y-cell" data-bind="text: rowIndex + 1">
+</div>
+<!-- /ko -->
+<!-- ko if: col.type == 'checkbox' -->
+<div class="y-cell">
+  <y-checkbox-item class="y-grid-checkbox" params="value:row._selected(),label:'',checked:row._selected"></y-checkbox-item>
+</div>
+<!-- /ko -->
+<!-- ko if:col.type == 'render' -->
+  <div class="y-cell" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},html: col.renderFn(row, rowIndex)">
+  </div>
+<!-- /ko -->
+<!-- ko if:col.type == 'component' -->
+  <div class="y-cell y-cell-overflow-auto" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},component: col.compFn(row)">
+  </div>
+<!-- /ko -->
+<!-- ko ifnot: col.type-->
+  <!-- ko ifnot: isDataTable -->
+  <div class="y-cell" data-bind="text: defaultFormatText(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+  </div>
+  <!-- /ko -->
+  <!-- ko if: isDataTable -->
+  <div class="y-cell" data-bind="text: defaultFormatText(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+  </div>
+  <!-- /ko -->
+<!-- /ko -->
