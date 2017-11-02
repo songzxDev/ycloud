@@ -1,6 +1,6 @@
 <div class="y-input-ctn" data-bind="css:ctnClass">
  <form data-bind="submit:handleSubmit">
-  <input class="y-input" data-bind="event:{change:onChange,blur:onBlur,input:onInput,focus: onFocus},attr:{type: type, placeholder:placeholder},value:value">
+  <input class="y-input" data-bind="click:onClick,event:{blur:onBlur,input:onInput,focus: onFocus},attr:{type: type, placeholder:placeholder},value:value">
   <i data-bind="visible: showIcon, css:iconClass,click: handleIconClick"></i>
  </form>
 </div>

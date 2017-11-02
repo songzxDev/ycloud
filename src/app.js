@@ -9,7 +9,8 @@ var dt = new u.DataTable({
 })
 setTimeout(function () {
   dt.setSimpleData([{id:1,name:2},{id:2,name:1},{id:3,name:4}])
-}, 3000)
+  // dt.setAllRowsUnSelect()
+}, 1000)
 window.dt = dt
 let viewmodel = {
   checked: ko.observable(true),

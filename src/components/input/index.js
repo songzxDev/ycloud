@@ -12,6 +12,7 @@ function init (params) {
   this.onInput = params.onInput || function () {}
   this.onBlur = params.onBlur || function () {}
   this.onFocus = params.onFocus || function () {}
+  this.onClick = function () { return false }
   this.showIcon = ko.computed(() => {
     return this.iconClass.length > 0
   })
