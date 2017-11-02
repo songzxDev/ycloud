@@ -13,6 +13,12 @@ function _init (params, el) {
     if (params.width) {
       style.width = params.width + 'px'
     }
+    if (params.maxHeight) {
+      style.maxHeight = params.maxHeight + 'px'
+    }
+    if (params.overflow) {
+      style.overflow = params.overflow
+    }
     return style
   })
   this.animated = ko.observable(false)

@@ -21,6 +21,8 @@ import pagination from './pagination'
 import checkbox from './checkbox'
 import input from './input'
 import ycloud from './base'
+import datepicker from './datepicker'
+import datetimepicker from './datetimepicker'
 
 const PREFIX = 'y-'
 function register (model) {
@@ -50,4 +52,6 @@ register(cascader)
 register(pagination)
 register(grid)
 register(input)
+register(datepicker)
+register(datetimepicker)
 export default ycloud

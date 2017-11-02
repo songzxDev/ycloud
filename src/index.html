@@ -164,10 +164,19 @@
           <y-formitem params="label:'checkbox垂直'">
             <y-checkbox params="dataList:$root.checkboxDataList,value:$root.checkboxValue, direction:'vertical'"></y-checkbox>
           </y-formitem>
+          <y-formitem params="label: '日期'">
+            <y-datepicker params='placeholder:"请选择日期",data: $root.datepicker'>
+            </y-datepicker>
+          </y-formitem>
+          <y-formitem params="label: '时间'">
+            <y-datetimepicker params='placeholder:"请选择时间",data: $root.datepicker'>
+            </y-datetimepicker>
+          </y-formitem>
           <y-formitem params="label: '级联'">
             <y-cascader params='data: $root.cascaderData, selectedValue: $root.cascaderValue'>
             </y-cascader>
           </y-formitem>
+
         </y-form>
       </div>
     </div>

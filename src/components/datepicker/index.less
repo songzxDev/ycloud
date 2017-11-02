@@ -1,0 +1,75 @@
+.y-datepicker-input{
+  position: relative;
+  .fa{
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    line-height: 1;
+    margin-top: -7px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #666;
+  }
+}
+.y-datepicker-ctn{
+  height: 298px;
+  &.alignright{
+    right: 0;
+  }
+  &.select-date{
+    display: block;
+  }
+  &.isTimer .y-datepicker-option .confirmbutton,&.isTimer .y-datepicker-option .timer-picker{
+    display: inline-block;
+  }
+  .y-datepicker-option > div {
+    width: 33.333%;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    padding: 4px 0px;
+    margin-top: 0;
+    border-radius: 2px;
+    line-height: 20px;
+    cursor: pointer;
+    &:hover{
+      background-color: #eee;
+    }
+    &.confirmbutton:hover{
+      background-color: #1baede;
+      color: #FFF;
+    }
+  }
+  .y-datepicker-option .confirmbutton,.y-datepicker-option .timer-picker{
+    display: none;
+  }
+  .y-datepicker-footer{
+    position: absolute;
+    background-color: #FFF;
+    padding: 10px;
+    z-index:1001;
+    border-radius: 4px;
+    width: 100%;
+    .datepicker-option{
+      cursor:pointer
+    }
+  }
+  .hide{
+    display: none;
+  }
+  .show{
+    display: block;
+  }
+  .y-datepicker-mask{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+  }
+}
+@import "base/day.less";
+@import "base/month.less";
+@import "base/timer.less";
+@import "base/year.less";

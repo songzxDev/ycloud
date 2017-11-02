@@ -1,0 +1,57 @@
+@basecolor: #3e9ed3;
+.y-year-ctn{
+  .y-year-header{
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    .last10year{
+      width: 18%;
+      text-align: left;
+      display: inline-block;
+    }
+    .cur10year{
+      width: 60%;
+      text-align: center;
+      display: inline-block;
+    }
+    .next10year{
+      width: 18%;
+      text-align: right;
+      display: inline-block;
+    }
+  }
+  .y-year-body{
+    width: 100%;
+    padding: 0;
+    margin-top: 10px;
+    text-align: center;
+    td{
+
+      padding: 5px 3px;
+      cursor: pointer;
+      div {
+        line-height: 32px;
+        width: 48px;
+        height: 32px;
+      }
+      div:hover {
+        background-color: #e4e8f1;
+      }
+      &.curry div{
+        background-color: @basecolor;
+        color: #FFF;
+      }
+      &.curry div:hover{
+        background-color: @basecolor;
+        color: #FFF;
+      }
+    }
+    .selected-year div{
+      background-color: blue;
+    }
+  }
+}

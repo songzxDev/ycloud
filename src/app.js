@@ -341,6 +341,7 @@ let viewmodel = {
   onPageChage: function (pageIndex, pageSize) {
     console.log('pageIndex:' + pageIndex + ' ,pageSize:' + pageSize)
   },
+  datepicker: ko.observable(),
   asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
