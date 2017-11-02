@@ -1,5 +1,11 @@
 import template from './td.html'
 import ko from 'knockout'
+import operation from './operation'
+const PREFIX = 'y-'
+ko.components.register(PREFIX + operation.name, {
+  viewModel: operation.init,
+  template: operation.template
+})
 // 判断点击事件是否触发行选中
 function init (params) {
   // 为跨页选择做准备

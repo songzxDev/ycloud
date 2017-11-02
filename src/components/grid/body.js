@@ -10,6 +10,9 @@ function isTriggerRowSelect (evt) {
   if (evt.target.tagName === 'A') {
     return false
   }
+  if (evt.target.classList.contains('y-grid-operation')) {
+    return false
+  }
   return true
 }
 const PREFIX = 'y-'
@@ -26,6 +29,7 @@ function init (params) {
   this.rows = ko.computed(() => {
     params.rows().forEach((row) => {
       row._hover = ko.observable(false)
+      row._disabled = ko.observable(false)
       if (this.isDataTable) {
         // 如果是dataTable设置成计算属性
         row._selected = ko.pureComputed({

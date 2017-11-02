@@ -16,6 +16,9 @@
   <div class="y-cell y-cell-overflow-auto" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},component: col.compFn(row)">
   </div>
 <!-- /ko -->
+<!-- ko if:col.type == 'operation' -->
+  <y-grid-operation params="operationList: col.operationList, row: row, col: col"></y-grid-operation>
+<!-- /ko -->
 <!-- ko ifnot: col.type-->
   <!-- ko ifnot: isDataTable -->
   <div class="y-cell" data-bind="text: defaultFormatText(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">

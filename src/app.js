@@ -22,6 +22,9 @@ let viewmodel = {
   loading: ko.observable(true),
   b: ko.observable('i am ucloud-ko-fileupload'),
   id: ko.observable('随意绑定一个id'),
+  oper1: function (row, evt) {
+    debugger
+  },
   submitFn: function () {
     alert ('submit:' + viewmodel.formData.title())
   },
@@ -259,7 +262,8 @@ let viewmodel = {
           name: 'y-input',
           params: {
             type: 'text',
-            value: row.ref('name')
+            value: row.ref('name'),
+            disabled: row._disabled
           }
         }
       }
@@ -288,8 +292,31 @@ let viewmodel = {
       type: 'render',
       hidden: false,
       renderFn: function (row, index) {
-        return `<div onclick="clickme(event)" data-id='${row.getValue('id')}'>${index + row.getValue('name') + row.getValue('id') + '通过render函数生成的html片段'}</div>`
+        window.evt_setDisabeld = function (rowId) {
+          let row = dt.getRowByRowId(rowId)
+          row._disabled(!row._disabled())
+        }
+        return `<div onclick="evt_setDisabeld(${row.rowId})" data-id='${row.getValue('id')}'>${index + row.getValue('name') + row.getValue('id') + '通过render函数生成的html片段'}</div>`
       }
+    }, {
+      field: 'id',
+      title: 'operationList',
+      type: 'operation',
+      operationList: [
+        {
+          title: '操作1',
+          click: function (row, evt) {
+            row._disabled(true)
+            return false
+          }
+        }, {
+          title: '操作2',
+          click: function (row, evt) {
+            row._disabled(false)
+            return false
+          }
+        }
+      ]
     }
   ],
   rows: ko.observableArray([

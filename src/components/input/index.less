@@ -29,6 +29,10 @@
   width: 100%;
   font-size: 13px;
   box-shadow: none;
+  &[disabled='true']{
+    border: none;
+    background: transparent;
+  }
 }
 .y-input:hover,.y-input:focus,.selected .y-input{
   border-color: @primary-color;

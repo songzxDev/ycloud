@@ -13,6 +13,7 @@ function init (params) {
   this.onBlur = params.onBlur || function () {}
   this.onFocus = params.onFocus || function () {}
   this.onClick = function () { return false }
+  this.disabled = params.disabled || ko.observable(false)
   this.showIcon = ko.computed(() => {
     return this.iconClass.length > 0
   })
