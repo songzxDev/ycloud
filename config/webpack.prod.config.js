@@ -58,11 +58,6 @@ config = merge(config, {
     new CopyWebpackPlugin([
       { from: 'src/components/bootstrap.css', to: '' }
     ]),
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: {
-        safe: true
-      }
-    }),
     new BundleAnalyzerPlugin()
   ]
 })

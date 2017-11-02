@@ -4,7 +4,17 @@ function init ({row, col, operationList}) {
   this.row = row
   this.col = col
   this.operClick = (item, evt) => {
-    item.click(this.row, evt)
+    item.click(row, evt)
+    var index = this.operationList.indexOf(item)
+    // 为了重新出发visible
+    this.operationList.splice(index, 1, item)
+  }
+  this.visible = (item) => {
+    if (item.visible) {
+      return item.visible(row)
+    } else {
+      return true
+    }
   }
 }
 

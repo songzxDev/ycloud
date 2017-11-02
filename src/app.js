@@ -308,12 +308,18 @@ let viewmodel = {
           click: function (row, evt) {
             row._disabled(true)
             return false
+          },
+          visible: function (row) {
+            return !row._disabled()
           }
         }, {
           title: '操作2',
           click: function (row, evt) {
             row._disabled(false)
             return false
+          },
+          visible: function (row) {
+            return row._disabled()
           }
         }
       ]
