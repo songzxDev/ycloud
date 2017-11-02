@@ -8,6 +8,10 @@ function init (params) {
   this.handleIconClick = params.onIconClick || function () {}
   this.iconClass = params.iconClass || ''
   this.ctnClass = params.class || ''
+  this.onChange = params.onChange || function () {}
+  this.onInput = params.onInput || function () {}
+  this.onBlur = params.onBlur || function () {}
+  this.onFocus = params.onFocus || function () {}
   this.showIcon = ko.computed(() => {
     return this.iconClass.length > 0
   })

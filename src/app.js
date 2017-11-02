@@ -342,6 +342,9 @@ let viewmodel = {
     console.log('pageIndex:' + pageIndex + ' ,pageSize:' + pageSize)
   },
   datepicker: ko.observable(),
+  onInputBlur: function (data) {
+    alert('blur')
+  },
   asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
