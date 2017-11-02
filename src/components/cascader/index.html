@@ -1,14 +1,14 @@
-<div data-bind="clickoutside: handleClose">
+<div data-bind="clickoutside: handleClose" style="white-space: nowrap;">
   <div class="y-inline-block y-relative y-width-100" data-bind="click: handleVisible, css:{selected:casitmevisible}" style="cursor: pointer">
     <div class="y-select-ctn y-input">
       <div class="y-select-single" data-bind="text: selectedValue().name || '请选择', style: {color: selectedValue().name? '':'#999'}"></div>
       <!-- 待完善 -->
       <!-- <input class="y-select-filter" type="text" data-bind="textInput: selectedValue().name"> -->
-      <!-- <i class="y-select-arrow fa fa-close"></i> -->
-      <i class="y-select-arrow fa fa-caret-down"></i>
+      <i class="y-select-arrow fa fa-close" data-bind="css: {'y-select-showclose': showCloseIcon}, click: function(data, event){handlerClear(event)}"></i>
+      <i class="y-select-arrow fa fa-caret-down" data-bind="css: {'y-select-showdrop': showCloseIcon}"></i>
     </div>
   </div>
-  <div class="y-cascader-dropdown animated" data-bind="css:{slideInUp: casitmevisible, slideOutUp: !casitmevisible()}">
+  <div class="y-cascader-dropdown animated" data-bind="css:{slideInUp: casitmevisible, slideOutDown: !casitmevisible()}">
     <y-casitem params="data: data, selectedValue:selectedValue, casitmevisible: casitmevisible"></y-casitem>
   </div>
 </div>
