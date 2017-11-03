@@ -217,7 +217,9 @@
       <div class="col-md-12">
         <h4>datatable</h4>
         <y-state-tabs params="hideNum: true,index:$root.curStateIndex,items:$root.stateTabsItems,handler: $root.stateTabsHandler"></y-state-tabs>
-        <y-grid params="isStripe: true,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount"></y-grid>
+        <y-grid params="minheight:'484px',maxheight:'auto',isStripe: true,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount">
+          <div data-bind="text:row.ref('name')"></div>
+        </y-grid>
       </div>
 
     </div>

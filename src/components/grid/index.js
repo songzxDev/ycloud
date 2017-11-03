@@ -18,7 +18,9 @@ function init (params) {
   this.columns = params.columns
   this.rows = params.rows
   this.maxheight = params.maxheight || '484px'
+  this.minheight = params.minheight || 'auto'
   this.isStripe = params.isStripe || false
+  this.expand = params.expand || true
   // 是否启用分页组件
   this.pagination = ko.observable(params.pagination || false)
   this.onPageChange = params.onPageChange

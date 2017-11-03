@@ -1,8 +1,9 @@
 <div>
   <div class="y-grid-wrapper">
-    <div class="y-grid" data-bind="css:{'y-grid-stripe':isStripe},style:{height:maxheight}">
+    <div class="y-grid" data-bind="css:{'y-grid-stripe':isStripe},style:{height:maxheight,minHeight:minheight}">
       <y-grid-head params="columns:columns"></y-grid-head>
-      <y-grid-body params="maxheight:maxheight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect"></y-grid-body>
+      <y-grid-body params="expand:expand,maxheight:maxheight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect">
+      </y-grid-body>
     </div>
   </div>
   <!-- ko if: pagination -->

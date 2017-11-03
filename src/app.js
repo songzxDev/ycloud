@@ -232,7 +232,18 @@ let viewmodel = {
       field: '',
       type: 'checkbox',
       hidden: false,
-      width: 50
+      width: 50,
+      expandCompFn (row) {
+        return {
+          name: 'y-grid',
+          params: {
+            isStripe: true,
+            maxheight: 'auto',
+            columns:viewmodel.columns,
+            rows: viewmodel.rows
+          }
+        }
+      }
     },
     {
       title: '序号',
@@ -320,6 +331,12 @@ let viewmodel = {
           },
           visible: function (row) {
             return row._disabled()
+          }
+        }, {
+          title: '子表',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
           }
         }
       ]

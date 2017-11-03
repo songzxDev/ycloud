@@ -25,11 +25,13 @@ function init (params) {
   // let cacheData = []
   this.isDataTable = params.isDataTable
   this.setCellWidth = function () { return '200' }
+  this.expand = params.expand
   this.columns = params.columns
   this.rows = ko.computed(() => {
     params.rows().forEach((row) => {
       row._hover = ko.observable(false)
       row._disabled = ko.observable(false)
+      row._expand = ko.observable(false)
       if (this.isDataTable) {
         // 如果是dataTable设置成计算属性
         row._selected = ko.pureComputed({
