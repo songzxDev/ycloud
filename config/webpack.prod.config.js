@@ -58,7 +58,13 @@ config = merge(config, {
     new CopyWebpackPlugin([
       { from: 'src/components/bootstrap.css', to: '' }
     ]),
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin(),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
+    }),
+    new webpack.BannerPlugin('ycloud v1.1.23 author by 友云采FED')
   ]
 })
 module.exports = config

@@ -62,7 +62,7 @@ function init (params) {
       }
     }
     // 切换到其他月份的时候
-    params.data((new Date(year, month - 1, day, params.hour(), params.minutes(), params.seconds())).Format(params.isTimer ? 'yyyy-MM-dd hh:mm:ss' : 'yyyy-MM-dd'))
+    params.data((new Date(year, month - 1, day, params.hour(), params.minutes(), params.seconds()))._format(params.isTimer ? 'yyyy-MM-dd hh:mm:ss' : 'yyyy-MM-dd'))
   }
   // 判断是否当前天
   this.isSelectedDay = (cellType, cellDay) => {

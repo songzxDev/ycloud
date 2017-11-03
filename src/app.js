@@ -395,10 +395,35 @@ let viewmodel = {
   asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
-  checkboxDataList: ko.observableArray([{value: 1,label:'北京'},{value: 2,label:'上海'}])
+  checkboxDataList: ko.observableArray([{value: 1,label:'北京'},{value: 2,label:'上海'}]),
+  stateTabsItems:ko.observableArray([
+    {
+      title: '待收货',
+      state: 1
+    },
+    {
+      title: '已收货',
+      state: 2,
+      num: 2
+    },
+    {
+      title: '待收货',
+      state: 3,
+      num: 3
+    }
+  ]),
+  stateTabsHandler (data) {
+    debugger
+    console.log(data)
+  },
+  curStateIndex: ko.observable(0)
 }
 setTimeout(() => {
   viewmodel.loading(!viewmodel.loading())
+  var item = viewmodel.stateTabsItems()[0]
+  item.num = 0
+  viewmodel.stateTabsItems.splice(0, 1)
+  viewmodel.stateTabsItems.splice(0, 0, item)
 }, 3000)
 // 打印每次单选的内容
 viewmodel.singleselect.subscribe(function (item) {
