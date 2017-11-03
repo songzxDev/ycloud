@@ -21,6 +21,9 @@ let notice = {
     } else if (type === 'error') {
       $('body').append(errorTemplate)
     }
+    setTimeout(() => {
+      $('#y-notice').addClass('y-notice-active')
+    }, 100)
   },
   info: function (msg, option = {}) {
     this.init(msg, 'info')
@@ -35,6 +38,7 @@ let notice = {
     }, option.timeout || 2000)
   },
   close: function () {
+    $('#y-notice').removeClass('y-notice-active')
     $('#y-notice').remove()
   }
 }

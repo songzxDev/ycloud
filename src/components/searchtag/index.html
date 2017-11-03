@@ -1,0 +1,6 @@
+<div class="y-searchtag-wrapper" data-bind="style:style">
+  <div class="y-searchtag-ctn" data-bind="foreach:{data:tagList, as:'tag'}">
+    <y-tag params="item:tag,handleClick:tag.handleClick,text:tag.title, type:'blank',style:{marginRight:'15px'}"></y-tag>
+  </div>
+  <div data-bind="visible:showMore,click: handleMoreClick,text:operation" style="position: absolute;right: 0;top:0">展开<div>
+</div>

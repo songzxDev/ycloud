@@ -33,7 +33,12 @@
       <button class="pull-right">btn</button>
     </div>
   </y-boxsticky>
-  <y-boxfilter params="title: 'boxfilter示例'"></y-boxfilter>
+  <y-boxfilter params="title: 'boxfilter示例'">
+    <div class="pull-right">
+      <y-input class="" params="iconClass:'fa fa-search'">
+      </y-input>
+    </div>
+  </y-boxfilter>
   <y-boxcontent params="title:'boxcontent', animated:true" id="demo">
     <a href="/yuncai/mobile/login.html?r=/">yc测试登录链接</a>
     <y-demo></y-demo>
@@ -121,9 +126,25 @@
     </div>
     <h1 id="tag">6.tag</h1>
     <div>
-      <y-tag params="text:'tag1'"></y-tag>
-      <y-tag params="text:'tag2'"></y-tag>
-      <y-tag params="text:'tag3',closeable:true,handleClose:vm.handleClose"></y-tag>
+
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+      <y-form params="model:$root.formData,labelWidth:'200px',labelAlign:'right'">
+        <y-formitem params="label:'普通标签:'">
+          <y-tag params="text:'tag1'"></y-tag>
+          <y-tag params="text:'tag2', type:'ghost'"></y-tag>
+          <y-tag params="text:'可点击选中', type:'blank',style:{marginLeft:'15px'}"></y-tag>
+          <y-tag params="text:'tag4',closeable:true,handleClose:vm.handleClose"></y-tag>
+        </y-formitem>
+        <y-formitem params="label:'可选则标签:'">
+          <y-searchtag params="tagList: $root.tagList"></y-searchtag>
+        </y-formitem>
+        <y-formitem params="label:'可选则标签:'">
+          <y-searchtag params="tagList: $root.tagList"></y-searchtag>
+        </y-formitem>
+      </y-form>
+      </div>
     </div>
     <h1 id="container">7.容器组件</h1>
     <h2>7.1 box</h2>

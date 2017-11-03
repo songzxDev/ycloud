@@ -18,6 +18,7 @@ import icon from './icon'
 import input from './input'
 import modal from './modal'
 import pagination from './pagination'
+import searchtag from './searchtag'
 import select from './select'
 import statetabs from './statetabs'
 import tag from './tag'
@@ -56,4 +57,5 @@ register(input)
 register(datepicker)
 register(datetimepicker)
 register(statetabs)
+register(searchtag)
 export default ycloud

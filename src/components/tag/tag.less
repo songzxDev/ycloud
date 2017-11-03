@@ -2,7 +2,7 @@
   display: inline-block;
   height: 22px;
   line-height: 22px;
-  margin: 2px 4px 2px 0;
+  margin: 0px 4px 2px 0;
   padding: 0 8px;
   border: 1px solid #e9eaec;
   border-radius: 3px;
@@ -12,6 +12,21 @@
   opacity: 1;
   overflow: hidden;
   cursor: pointer;
+  &.y-tag-blank{
+    background: transparent;
+    border: 1px solid transparent;
+  }
+  &.y-tag-ghost{
+    background: transparent;
+    border: 1px solid @primary-color;
+  }
+  &.y-tag-ghost .y-tag-text{
+    color: @primary-color;
+  }
+  &.y-tag-active, &.y-tag-active .y-tag-text{
+    background: @primary-color;
+    color: #FFF
+  }
   .y-tag-text{
     color: @f-color-normal;
     max-width: 150px;
@@ -20,6 +35,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    user-select: none;
   }
   .y-tag-close{
     display: inline-block;

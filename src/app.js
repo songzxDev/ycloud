@@ -342,6 +342,41 @@ let viewmodel = {
       ]
     }
   ],
+  tagClick (item, isActive) {
+    console.log(item)
+    console.log(isActive)
+  },
+  tagList: ko.observableArray([{
+    title: '深圳',
+    value: 1,
+    handleClick: function (item, isActive) {
+      viewmodel.tagClick(item, isActive)
+    }
+  }, {
+    title: '北京',
+    value: 2,
+    handleClick: function (item, isActive) {
+      viewmodel.tagClick(item, isActive)
+    }
+  }, {
+    title: '上海',
+    value: 3,
+    handleClick: function (item, isActive) {
+      viewmodel.tagClick(item, isActive)
+    }
+  }, {
+    title: '上海',
+    value: 3,
+    handleClick: function (item, isActive) {
+      viewmodel.tagClick(item, isActive)
+    }
+  }, {
+    title: '上海',
+    value: 3,
+    handleClick: function (item, isActive) {
+      viewmodel.tagClick(item, isActive)
+    }
+  }]),
   rows: ko.observableArray([
     {id: ko.observable(1), name: ko.observable('张三')},
     {id: ko.observable(2), name: ko.observable('张李四')},
@@ -475,8 +510,8 @@ setTimeout(() => {
   viewmodel.singleselect({value:1,label:'北京'})
 }, 500)
 setTimeout(() => {
-  ycloud.notice.info('info', {timeout: 30000})
-}, 0)
+  ycloud.notice.info('info', {timeout: 2000})
+}, 1000)
 setTimeout(() => {
   ycloud.notice.error('here has some error！here has some error！here has some error！here has some error！here has some error！here has some error！')
-}, 20000)
+}, 3000)

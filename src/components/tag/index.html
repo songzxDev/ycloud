@@ -1,4 +1,4 @@
-<div class="y-tag">
-  <span class="y-tag-text" data-bind="text:text"></span>
+<div class="y-tag" data-bind="css:typeClass,style:style">
+  <span class="y-tag-text" data-bind="text:text,click:handleClick"></span>
   <i data-bind="visible:closeable,click:handleClose" class="y-tag-close">+</i>
 </div>
