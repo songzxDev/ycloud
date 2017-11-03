@@ -8,7 +8,7 @@
       <i class="y-select-arrow fa fa-caret-down" data-bind="css: {'y-select-showdrop': showCloseIcon}"></i>
     </div>
   </div>
-  <div class="y-cascader-dropdown animated" data-bind="css:{slideInUp: casitmevisible, slideOutDown: !casitmevisible()}">
+  <div class="y-cascader-dropdown animated" data-bind="css:{slideInUp: casitmevisible, slideOutDown: !casitmevisible(), hidden: hidden}">
     <y-casitem params="data: data, selectedValue:selectedValue, casitmevisible: casitmevisible"></y-casitem>
   </div>
 </div>
