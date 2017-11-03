@@ -21,7 +21,8 @@ function init (params) {
   this.isStripe = params.isStripe || false
   // 是否启用分页组件
   this.pagination = ko.observable(params.pagination || false)
-  this.onPageChage = params.onPageChange
+  this.onPageChange = params.onPageChange
+  this.onSizeChange = params.onPageChange
   this.pageSize = params.pageSize || ko.observable(PAGESIZE)
   this.pageIndex = params.pageIndex || ko.observable(PAGEINDEX)
   this.totalCount = params.totalCount || ko.observable(0)

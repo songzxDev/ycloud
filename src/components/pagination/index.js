@@ -16,6 +16,9 @@ function init (params) {
   this.pageChange = () => {
     params.onPageChage && params.onPageChage(this.pageIndex() - INDEX_DIFF, this.pageSize())
   }
+  this.sizeChange = () => {
+    params.onSizeChange && params.onSizeChange(this.pageIndex() - INDEX_DIFF, this.pageSize())
+  }
   // 进入某一页
   this.handlePageChange = function (destIndex) {
     params.pageIndex(destIndex - 1)
