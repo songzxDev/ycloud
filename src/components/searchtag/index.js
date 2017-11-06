@@ -2,7 +2,8 @@ import template from './index.html'
 import $ from 'jquery'
 import ko from 'knockout'
 function computedHeight (element) {
-  if ($(element).find('.y-searchtag-ctn').height() > 30) {
+  this.height = $(element).find('.y-searchtag-ctn').height()
+  if (this.height > 30) {
     this.showMore(true)
   } else {
     this.showMore(false)
@@ -14,13 +15,14 @@ function _init (params, el) {
   this.tagList.subscribe(val => {
     computedHeight.call(this, _el)
   })
+  this.height = 'auto'
   this.showMore = ko.observable(false)
   this.expandMore = ko.observable(false)
   this.operation = ko.observable('展开')
   this.style = ko.computed(() => {
     if (this.expandMore()) {
       return {
-        height: 'auto'
+        height: this.height + 'px'
       }
     } else {
       return {

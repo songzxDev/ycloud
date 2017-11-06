@@ -1,4 +1,18 @@
 .y-searchtag-wrapper{
   position: relative;
   overflow: hidden;
+  transition: height .5s;
+}
+.y-searchtag-expand{
+  position: absolute;
+  right: 0;
+  top:1px;
+  cursor: pointer;
+  color: @primary-color;
+  .fa{
+    transition: transform .5s;
+  }
+  .y-searchtag-expanded {
+    transform: rotate(180deg);
+  }
 }
