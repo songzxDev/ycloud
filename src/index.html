@@ -160,8 +160,8 @@
     <h1 id="form">8.表单</h1>
     <div class="row">
       <div class="col-md-4">
-        <y-form params="model:$root.formData,labelWidth:'200px',labelAlign:'right'">
-          <y-formitem params="label:'输入框'">
+        <y-form params="ref:'form1', vRules:{name: {type: 'string', required: true}},model:$root.formData,labelWidth:'200px',labelAlign:'right'">
+          <y-formitem params="label:'输入框',vMap:validateList,vKey:'name'">
             <y-input params="onBlur:$root.onInputBlur,placeholder:'请输入文本',class:'y-inline-block',type:'text',value:$parent.model.title"></y-input>
           </y-formitem>
           <y-formitem params="label:'带图标'">
@@ -196,6 +196,9 @@
           <y-formitem params="label: '级联'">
             <y-cascader params='data: $root.cascaderData, selectedValue: $root.cascaderValue, clearable: true'>
             </y-cascader>
+          </y-formitem>
+          <y-formitem params="label: ''">
+            <y-button params="type:'primary',click:$root.formValidate">提交</y-button>
           </y-formitem>
         </y-form>
       </div>

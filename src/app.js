@@ -113,6 +113,12 @@ let viewmodel = {
     console.log(11)
   },
   formData: {title: ko.observable('')},
+  formValidate: function () {
+    var form1 = ycloud.getRef('form1')
+    form1.formValidate({}, function (data) {
+      debugger
+    })
+  },
   showModal: function () {
     viewmodel.modalVisible(true)
   },

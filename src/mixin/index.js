@@ -18,6 +18,18 @@ function validatemixin (params) {
     }
   }
 }
+function refmixin (params) {
+  if (params.ref) {
+    if (window.YCLOUD_REFS) {
+      let refs = window.YCLOUD_REFS
+      refs[params.ref] = this
+    } else {
+      window.YCLOUD_REFS = {}
+      window.YCLOUD_REFS[params.ref] = this
+    }
+  }
+}
 export {
+  refmixin,
   validatemixin
 }

@@ -16,7 +16,16 @@ Date.prototype._format = function (fmt) { // author: songhlc
   }
   return fmt
 }
+// 获取组件引用
+function getRef (ref) {
+  if (ref && window.YCLOUD_REFS) {
+    return window.YCLOUD_REFS[ref]
+  } else {
+    return {}
+  }
+}
 /* eslint-disable */
 export default {
-  notice
+  notice,
+  getRef
 }
