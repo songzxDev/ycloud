@@ -12,8 +12,9 @@ function init (params) {
   } else {
     this.dataList = ko.observableArray(params.dataList || [])
   }
-  this.value = params.value || ko.observableArray([])
+  this.value = params.value || ko.observable()
   this.direction = params.direction || 'horizontal'
+  this.radioname = 'y-radio' + Math.random()
 }
 
 export default {

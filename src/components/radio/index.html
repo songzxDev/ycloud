@@ -1,4 +1,3 @@
 <div id="y-radio" class="y-radio" data-bind="foreach: {data: dataList, as: 'item'}, css:{'y-radio-hor':direction == 'horizontal','y-radio-ver':direction == 'vertical'}">
-  <y-radio-item params="label: item.label, value: item.value, 
-  parent: $parent.dataList "></y-radio-item>
+  <y-radio-item params="radioname: $parent.radioname, value: item, currentValue: $parent.value"></y-radio-item>
 </div>
