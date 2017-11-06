@@ -1,6 +1,7 @@
 import ko from 'knockout'
 import casitem from './casitem'
 import cascader from './cascader'
+import radio from './radio'
 import checkbox from './checkbox'
 import box from './box'
 import boxcontent from './boxcontent'
@@ -25,7 +26,7 @@ import tag from './tag'
 import tree from './tree'
 import yswitch from './switch'
 import ycloud from './base'
-
+import cascaderSearch from './cascader-search'
 const PREFIX = 'y-'
 function register (model) {
   ko.components.register(PREFIX + model.name, {
@@ -33,6 +34,7 @@ function register (model) {
     template: model.template
   })
 }
+register(cascaderSearch)
 register(box)
 register(boxcontent)
 register(boxfilter)
@@ -42,6 +44,7 @@ register(dropdown)
 register(yswitch)
 register(select)
 register(button)
+register(radio)
 register(checkbox)
 register(tag)
 register(boxsticky)
