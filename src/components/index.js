@@ -1,6 +1,7 @@
 import ko from 'knockout'
 import casitem from './casitem'
 import cascader from './cascader'
+import radio from './radio'
 import checkbox from './checkbox'
 import box from './box'
 import boxcontent from './boxcontent'
@@ -43,6 +44,7 @@ register(dropdown)
 register(yswitch)
 register(select)
 register(button)
+register(radio)
 register(checkbox)
 register(tag)
 register(boxsticky)

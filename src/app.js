@@ -453,6 +453,8 @@ let viewmodel = {
   selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
   checkboxDataList: ko.observableArray([{value: 1,label:'北京'},{value: 2,label:'上海'}]),
+  radioValue: ko.observableArray([]),
+  radioDataList: ko.observableArray([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}]),
   stateTabsItems:ko.observableArray([
     {
       title: '待收货',
