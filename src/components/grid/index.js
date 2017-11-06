@@ -35,6 +35,22 @@ function init (params) {
   // event binding
   // 行选中
   this.onRowSelect = params.onRowSelect
+  this.allRowChecked = ko.observable(false)
+  // 监听全选和反选
+  this.allRowChecked.subscribe(isChecked => {
+    // 集成datatable
+    this.rows().forEach(row => {
+      if (this.isDataTable) {
+        if (isChecked) {
+          row.parent.addRowSelect(row)
+        } else {
+          row.parent.setRowUnSelect(row)
+        }
+      } else {
+        row._selected(isChecked)
+      }
+    })
+  })
 }
 export default {
   name: 'grid',

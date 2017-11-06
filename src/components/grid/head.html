@@ -6,8 +6,15 @@
     <thead>
       <tr data-bind="foreach:{data: columns,as: 'col'}">
         <th>
+          <!-- ko if: col.type == 'checkbox' -->
+          <div class="y-cell">
+            <y-checkbox-item class="y-grid-checkbox" params="value:'',label:'',checked:$parentContext.$parent.allRowChecked"></y-checkbox-item>
+          </div>
+          <!-- /ko -->
+          <!-- ko ifnot: col.type == 'checkbox' -->
           <div class="y-cell" data-bind="text:col.title,css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
           </div>
+          <!-- /ko -->
         </th>
       </tr>
     </thead>
