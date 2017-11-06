@@ -33,6 +33,21 @@
     border: none;
     background: transparent;
   }
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color:@f-color-light;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:@f-color-light;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:@f-color-light;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:@f-color-light;
+  }
+  &:focus{
+    outline: 0
+  }
 }
 .y-input:hover,.y-input:focus,.selected .y-input{
   border-color: @primary-color;
