@@ -3,6 +3,7 @@ import ko from 'knockout'
 function init (params) {
   this.title = params.title
   this.vm = params.vm
+  this.style = params.style
   this.animated = params.animated || ko.observable(false)
   // 外界动态改变动画效果
   this.classes = ko.computed(() => {
