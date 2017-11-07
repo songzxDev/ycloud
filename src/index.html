@@ -245,6 +245,12 @@
           <div data-bind="text:row.ref('name')"></div>
         </y-grid>
       </div>
+      <div class="col-md-12">
+        <h4>rowspan datatable</h4>
+        <y-grid params="isStripe:true,rowspan:{maxCol: 2},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrows">
+
+        </y-grid>
+      </div>
 
     </div>
   </y-boxcontent>

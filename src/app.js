@@ -391,6 +391,92 @@ let viewmodel = {
   pureRows: ko.observableArray([{
     id: 1, name: 2
   }]),
+  rowspancol: [
+    {
+      title: '第一列',
+      width: '100',
+      field: 'field1',
+      type: 'render',
+      renderFn: function (row) {
+        let template = `<div>${row.field1}</div>
+          <span>第一列是由多列组成</span>
+        `
+        return template
+      }
+    }, {
+      title: '第二列',
+      width: '100',
+      field: 'field2'
+    }, {
+      title: '第三列',
+      width: '100',
+      field: 'field3'
+    }, {
+      title: '第四列',
+      width: '100',
+      field: 'field4'
+    }, {
+      title: '第五列',
+      width: '50%',
+      field: 'field5'
+    }, {
+      title: '第六列',
+      width: '50%',
+      field: 'field6'
+    }
+  ],
+  rowspanrows: ko.observableArray([
+    {
+      field1: 'A',
+      field2: 'A',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }, {
+      field1: 'A',
+      field2: 'A',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F1'
+    }, {
+      field1: 'A',
+      field2: 'C',
+      field3: 'D',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F2'
+    }, {
+      field1: 'A',
+      field2: 'C',
+      field3: 'E',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }, {
+      field1: 'B',
+      field2: 'B',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }, {
+      field1: 'B',
+      field2: 'B',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }, {
+      field1: 'B',
+      field2: 'B',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }
+  ]),
   pureColumns: ko.observableArray([
     {
       title: '',

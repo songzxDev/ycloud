@@ -14,6 +14,9 @@
   font-size: @f-size-base;
   background-color: #fff;
   box-sizing: border-box;
+  &.y-grid-border th, &.y-grid-border td{
+    border-right: 1px solid #e9eaec;
+  }
   .y-grid-operation{
     cursor: pointer;
     color: @primary-color;
@@ -84,6 +87,9 @@
       white-space: normal;
       word-break: break-all;
       box-sizing: border-box;
+    }
+    .y-grid-head .y-cell{
+      line-height: 16px;
     }
     .y-cell-overflow-auto{
       overflow: visible;
