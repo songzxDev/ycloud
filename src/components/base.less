@@ -13,7 +13,6 @@
 
 body{
   font-size: @f-size-base;
-  font-family: tahoma,arial,"Hiragino Sans GB", "Microsoft YaHei", "\5b8b\4f53" !important;
 }
 a{
   color: @f-color-normal;
@@ -34,5 +33,8 @@ ul, ul li {
   padding: 0;
 }
 .disable-select-text{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
