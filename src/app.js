@@ -414,7 +414,8 @@ let viewmodel = {
     }, {
       title: '第四列',
       width: '100',
-      field: 'field4'
+      field: 'field4',
+      align: 'right'
     }, {
       title: '第五列',
       width: '50%',
