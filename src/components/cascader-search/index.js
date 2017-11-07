@@ -13,8 +13,13 @@ function init (params) {
   var self = this
   this.data = params.data
   this.callback = params.callback
-  this.mouseout = function () {
-    $('.cascader-searchboxIteam').hide()
+  this.parentMouseover = function () {
+    $('.sub-cascader-searchbox').show()
+    return false
+  }
+  this.parentMouseout = function () {
+    $('.sub-cascader-searchbox').hide()
+    return false
   }
   this.mouseover = function (row, event) {
     var tagrget = event.currentTarget
@@ -24,7 +29,7 @@ function init (params) {
   this.clickCallbk = function (data) {
     if (self.callback) {
       self.callback(data)
-      $('.cascader-searchboxIteam').hide()
+      $('.cascader-searchboxIteam').hide(300)
     }
   }
 }
