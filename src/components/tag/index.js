@@ -12,7 +12,7 @@ function init (params) {
   })
   this.handleClose = params.handleClose
   this.handleClick = () => {
-    if (this.type === 'blank') {
+    if (this.type === 'blank' && params.enableActive) {
       this.active(!this.active())
     }
     params.handleClick && params.handleClick(this.item, this.active())

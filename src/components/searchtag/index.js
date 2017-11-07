@@ -17,6 +17,7 @@ function _init (params, el) {
   })
   this.height = 'auto'
   this.showMore = ko.observable(false)
+  this.enableActive = params.enableActive || false
   this.expandMore = ko.observable(false)
   this.operation = ko.observable('展开')
   this.style = ko.computed(() => {
