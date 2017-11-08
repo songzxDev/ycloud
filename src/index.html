@@ -129,22 +129,25 @@
 
     </div>
     <div class="row">
-      <div class="col-md-4">
+
       <y-form params="model:$root.formData,labelWidth:'200px',labelAlign:'right'">
+        <div class="col-md-12">
         <y-formitem params="label:'普通标签:'">
           <y-tag params="text:'tag1'"></y-tag>
-          <y-tag params="text:'tag2', type:'ghost'"></y-tag>
+          <y-tag params="text:'tag2', type:'ghost',closeable:true"></y-tag>
           <y-tag params="enableActive:true,text:'可点击选中', type:'blank',style:{marginLeft:'15px'}"></y-tag>
           <y-tag params="text:'tag4',closeable:true,handleClose:vm.handleClose"></y-tag>
         </y-formitem>
+        </div>
+        <div class="col-md-4">
         <y-formitem params="label:'不可选择标签:'">
           <y-searchtag params="tagList: $root.tagList"></y-searchtag>
         </y-formitem>
         <y-formitem params="label:'可选择标签:'">
           <y-searchtag params="enableActive:true,tagList: $root.tagList"></y-searchtag>
         </y-formitem>
+        </div>
       </y-form>
-      </div>
     </div>
     <h1 id="container">7.容器组件</h1>
     <h2>7.1 box</h2>

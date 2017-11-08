@@ -22,9 +22,16 @@
   &.y-tag-ghost{
     background: transparent;
     border: 1px solid @primary-color;
-  }
-  &.y-tag-ghost .y-tag-text{
-    color: @primary-color;
+    .y-tag-text{
+      color: @primary-color;
+    }
+    .y-tag-close{
+      color: @primary-color;
+      &:hover{
+        color: @primary-color;
+        opacity: 1;
+      }
+    }
   }
   &.y-tag-active, &.y-tag-active .y-tag-text{
     background: @primary-color;
