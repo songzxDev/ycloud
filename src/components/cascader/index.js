@@ -11,7 +11,7 @@ import ko from 'knockout'
 function init (params) {
   this.data = params.data
   this.selectedValue = params.selectedValue
-  this.hidden = ko.observable(false)
+  this.hidden = ko.observable(true)
   this.casitmevisible = ko.observable(false)
   this.casitmevisible.subscribe((val) => {
     if (val) {
@@ -25,7 +25,7 @@ function init (params) {
   this.clearable = params.clearable || false
   // 用于判断是否显示关闭按钮
   this.showCloseIcon = ko.computed(() => {
-    return this.clearable && this.selectedValue()
+    return this.clearable && this.selectedValue().id
   })
   this.handlerClear = (e) => {
     window.event ? window.event.cancelBubble = true : e.stopPropagation()
