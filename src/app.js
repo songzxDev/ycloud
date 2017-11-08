@@ -391,7 +391,7 @@ let viewmodel = {
   pureRows: ko.observableArray([{
     id: 1, name: 2
   }]),
-  rowspancol: [
+  rowspancol: ko.observableArray([
     {
       title: '第一列',
       width: '100',
@@ -412,7 +412,7 @@ let viewmodel = {
       width: '100',
       field: 'field3'
     }, {
-      title: '第四列',
+      title: '第四列折行的列名',
       width: '100',
       field: 'field4',
       align: 'right'
@@ -425,7 +425,7 @@ let viewmodel = {
       width: '50%',
       field: 'field6'
     }
-  ],
+  ]),
   rowspanrows: ko.observableArray([
     {
       field1: 'A',

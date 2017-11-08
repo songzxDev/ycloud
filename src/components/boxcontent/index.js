@@ -1,6 +1,6 @@
-import template from './index.html'
 import ko from 'knockout'
-function init (params) {
+import template from './index.html'
+function initialize (params) {
   this.title = params.title
   this.vm = params.vm
   this.style = params.style
@@ -14,9 +14,8 @@ function init (params) {
     }
   })
 }
-
 export default {
   name: 'boxcontent',
-  init,
+  init: initialize,
   template
 }
