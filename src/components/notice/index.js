@@ -1,5 +1,5 @@
 import $ from 'jquery'
-let notice = {
+let $notice = {
   init: function (msg, type) {
     let infoTemplate = `
       <div id="y-notice" class="y-notice">
@@ -42,5 +42,5 @@ let notice = {
     $('#y-notice').remove()
   }
 }
-window.closenotice = notice.close
-export default notice
+window.closenotice = $notice.close
+export let notice = $notice

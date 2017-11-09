@@ -25,7 +25,7 @@ import statetabs from './statetabs'
 import tag from './tag'
 import tree from './tree'
 import yswitch from './switch'
-import ycloud from './base'
+import {notice, $refs} from './base'
 const PREFIX = 'y-'
 function register (model) {
   ko.components.register(PREFIX + model.name, {
@@ -59,4 +59,8 @@ register(datepicker)
 register(datetimepicker)
 register(statetabs)
 register(searchtag)
+let ycloud = {
+  notice,
+  $refs
+}
 export default ycloud

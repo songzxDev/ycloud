@@ -1,4 +1,4 @@
-import notice from './notice'
+export {notice} from './notice'
 /* eslint-disable */
 Date.prototype._format = function (fmt) { // author: songhlc
   var o = {
@@ -19,9 +19,5 @@ Date.prototype._format = function (fmt) { // author: songhlc
 
 window.YCLOUD_REFS = {}
 // 获取组件引用
-let $refs = window.YCLOUD_REFS
+export let $refs = window.YCLOUD_REFS
 /* eslint-disable */
-export default {
-  notice,
-  $refs
-}
