@@ -114,7 +114,7 @@ let viewmodel = {
   },
   formData: {title: ko.observable('')},
   formValidate: function () {
-    var form1 = ycloud.getRef('form1')
+    var form1 = ycloud.$refs['form1']
     form1.formValidate({}, function (data) {
       debugger
     })

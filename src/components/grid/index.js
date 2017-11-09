@@ -2,7 +2,7 @@ import template from './index.html'
 import ko from 'knockout'
 import head from './head'
 import body from './body'
-import Base from '../core/base'
+import Base from '@/core/base'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + head.name, {
   viewModel: head.init,

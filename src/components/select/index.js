@@ -8,7 +8,7 @@ import ko from 'knockout'
 import 'ko-bindinghandler'
 import {lockScrollEffect, resetScrollEffect} from '@/util/scrollable'
 import option from './option'
-import Base from '../core/base'
+import Base from '@/core/base'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + option.name, {
   viewModel: option.init,

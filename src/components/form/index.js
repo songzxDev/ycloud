@@ -1,5 +1,5 @@
 import template from './index.html'
-import Base from '../core/base'
+import Base from '@/core/base'
 import ko from 'knockout'
 import Schema from 'async-validator'
 class Form extends Base {
