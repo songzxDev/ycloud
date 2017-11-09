@@ -11,7 +11,12 @@ function _init (params, el) {
   this.style = ko.computed(() => {
     let style = {}
     if (params.width) {
-      style.width = params.width + 'px'
+      // 存在传入 100%的情况
+      if (isNaN(params.width)) {
+        style.width = params.width
+      } else {
+        style.width = params.width + 'px'
+      }
     }
     if (params.maxHeight) {
       style.maxHeight = params.maxHeight + 'px'
