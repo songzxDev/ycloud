@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`box.test.js y-box snapshot 1`] = `
+<body>
+  <y-boxcontent
+    params="title: title"
+  >
+    <div
+      class="y-box-content"
+      data-bind="css:classes,style:style"
+    >
+      
+  
+      <!-- ko if: title -->
+      
+  
+      <div
+        class="y-box-content-title"
+        data-bind="text:title"
+      >
+        test
+      </div>
+      
+  
+      <!-- /ko -->
+      
+  
+      <!-- ko template: { nodes: $componentTemplateNodes } -->
+      <span>
+        content
+      </span>
+      <!-- /ko -->
+      
+
+    </div>
+    
+
+  </y-boxcontent>
+</body>
+`;
