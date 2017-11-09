@@ -31,16 +31,37 @@ class Grid extends Base {
     this.pageSize = params.pageSize || ko.observable(PAGESIZE)
     this.pageIndex = params.pageIndex || ko.observable(PAGEINDEX)
     this.totalCount = params.totalCount || ko.observable(0)
-    // 只有表格数据大于10条才显示分页
-    this.isShowPagination = ko.computed(() => {
-      return params.pagination && this.totalCount() > 10
-    })
     this.allRowChecked = ko.observable(false)
     // event binding
     // 行选中
     this.onRowSelect = params.onRowSelect
     this.onPageChange = params.onPageChange
     this.onSizeChange = params.onPageChange
+  }
+  computed (params) {
+    // 只有表格数据大于10条才显示分页
+    this.isShowPagination = ko.computed(() => {
+      return params.pagination && this.totalCount() > 10
+    })
+    // 表格的宽度
+    this.tableWidth = ko.computed(() => {
+      let cols
+      if (this.columns.subscribe) {
+        cols = this.columns()
+      } else {
+        cols = this.columns
+      }
+      // 如果存在width不为数字的情况，则认为使用外层的容器宽度，即table宽度是100%
+      // 只有在所有列都设置了固定宽度的情况下才支持横向滚动条
+      const isUseOuterWidth = cols.some(cell => isNaN(cell.width))
+      if (isUseOuterWidth) {
+        return '100%'
+      } else {
+        return cols.map(cell => cell.width).reduce((a, b) => a + b, 0)
+      }
+    })
+  }
+  subscribe (params) {
     // 监听全选和反选
     this.allRowChecked.subscribe(isChecked => {
       // 集成datatable

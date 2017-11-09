@@ -4,8 +4,20 @@ class Base {
     this.$el = params.$el
     refmixin.call(this, params)
     this.initialize(params)
+    this.computed(params)
+    this.subscribe(params)
+    this.methods(params)
+    this.created(params)
   }
   initialize (params) {
+  }
+  computed (params) {
+  }
+  created (params) {
+  }
+  subscribe (params) {
+  }
+  methods (params) {
   }
   static createViewModel (Component) {
     return {

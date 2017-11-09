@@ -563,7 +563,38 @@ let viewmodel = {
     debugger
     console.log(data)
   },
-  curStateIndex: ko.observable(0)
+  curStateIndex: ko.observable(0),
+  scrollColumn: [
+    {
+      title: '宽度600',
+      width: 600,
+      field: 'a'
+    },
+    {
+      title: '宽度400',
+      width: 400,
+      field: 'a'
+    },
+    {
+      title: '宽度300',
+      width: 500,
+      field: 'b'
+    },
+    {
+      title: '宽度300',
+      width: 500,
+      field: 'b'
+    },
+    {
+      title: '宽度300',
+      width: 500
+    }
+  ],
+  scrollRows: ko.observableArray([
+    {a: 1, b: 2},
+    {a: 1, b: 2},
+    {a: 1, b: 2}
+  ])
 }
 setTimeout(() => {
   viewmodel.loading(!viewmodel.loading())
