@@ -15,6 +15,7 @@ function _init (params, el) {
   this.tagList.subscribe(val => {
     computedHeight.call(this, _el)
   })
+  this.titleKey = params.titleKey || 'title'
   this.height = 'auto'
   this.showMore = ko.observable(false)
   this.enableActive = params.enableActive || false

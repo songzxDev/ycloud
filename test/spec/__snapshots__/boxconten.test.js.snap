@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`box.test.js y-box snapshot 1`] = `
+exports[`y-box-content组件 快照 1`] = `
 <body>
   <y-boxcontent
     params="title: title"
