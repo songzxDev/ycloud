@@ -393,7 +393,7 @@ let viewmodel = {
   }]),
   rowspancol: ko.observableArray([
     {
-      title: '第一列',
+      title: '<div title="第一列">第一列</div>',
       width: '100',
       field: 'field1',
       type: 'render',

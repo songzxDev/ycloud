@@ -3,6 +3,8 @@ var config = require('./webpack.base.config'),
 var merge = require('webpack-merge')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var uglifyjs = require('uglifyjs-webpack-plugin')
+var fastuglifyjsplugin = require('fast-uglifyjs-plugin')
+var path = require('path')
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // 去除重复的css
@@ -40,6 +42,19 @@ config = merge(config, {
         verbose:  true,        　　　　　　　　　　//开启在控制台输出信息
         dry:      false        　　　　　　　　　　//启用删除文件
       }),
+    // new fastuglifyjsplugin({
+    //   compress: {
+    //     warnings: false
+    //   },
+    //   // set debug as true to output detail cache information
+    //   debug: false,
+    //   // enable cache by default to improve uglify performance. set false to turn it off
+    //   cache: true,
+    //   // root directory is the default cache path. it can be configured by following setting
+    //   cacheFolder: path.resolve(__dirname, '.otherFolder'),
+    //   // num of worker process default ,os.cpus().length
+    //   workerNum: 2
+    // }),
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
       mangle: {
@@ -58,7 +73,7 @@ config = merge(config, {
     new CopyWebpackPlugin([
       { from: 'src/components/bootstrap.css', to: '' }
     ]),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
         safe: true

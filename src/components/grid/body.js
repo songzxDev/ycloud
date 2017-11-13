@@ -19,6 +19,14 @@ class Body extends Base {
     this.onRowSelect = params.onRowSelect
   }
   computed (params) {
+    // 计算暂无数据的单元格合并
+    this.nodataColSpan = ko.computed(() => {
+      if (params.columns && params.columns.subscribe) {
+        return params.columns().length
+      } else {
+        return params.columns.length
+      }
+    })
     // 是否支持多选
     this.isMultiSelect = ko.computed(() => {
       if (params.columns.subscribe) {
