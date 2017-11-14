@@ -181,6 +181,10 @@ let viewmodel = {
     debugger
     console.log(pageIndex + ' '+ pageSize)
   },
+  onSizeChange: function (pageIndex, pageSize) {
+    debugger
+    console.log(pageIndex + ' '+ pageSize)
+  },
   columns: ko.observableArray([
     {
       title: '',

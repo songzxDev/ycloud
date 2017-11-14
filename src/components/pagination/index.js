@@ -9,14 +9,31 @@ function init (params) {
   // 对齐
   this.align = params.align || 'center'
   this.pageSize = params.pageSize
+  this.curPage = ko.observable({value: 10, label: '10'})
   this.totalCount = params.totalCount
+  this.pageList = [
+    {
+      value: 10,
+      label: '10'
+    }, {
+      value: 20,
+      label: '20'
+    }, {
+      value: 50,
+      label: '50'
+    }, {
+      value: 100,
+      label: '100'
+    }
+  ]
   this.totalPage = ko.computed(() => {
     return Math.ceil(this.totalCount() / this.pageSize())
   })
   this.pageChange = () => {
     params.onPageChage && params.onPageChage(this.pageIndex() - INDEX_DIFF, this.pageSize())
   }
-  this.sizeChange = () => {
+  this.sizeChange = (page) => {
+    this.pageSize(page.value)
     params.onSizeChange && params.onSizeChange(this.pageIndex() - INDEX_DIFF, this.pageSize())
   }
   // 进入某一页

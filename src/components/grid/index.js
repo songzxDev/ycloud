@@ -36,7 +36,7 @@ class Grid extends Base {
     // 行选中
     this.onRowSelect = params.onRowSelect
     this.onPageChange = params.onPageChange
-    this.onSizeChange = params.onPageChange
+    this.onSizeChange = params.onSizeChange
   }
   computed (params) {
     // 只有表格数据大于10条才显示分页

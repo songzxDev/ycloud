@@ -1,26 +1,4 @@
 <div class="y-pagination" data-bind="css:{'text-left':align == 'left','text-center':align == 'center','text-left':align == 'right'}">
-  <!--&lt;!&ndash; ko if: type == 'small' &ndash;&gt;-->
-  <!--<ul>-->
-    <!--<li title="上一页" class="y-page-prev" data-bind="click: handlePrev">-->
-      <!--<a><i class="fa fa-caret-left"></i></a>-->
-    <!--</li>-->
-    <!--<div title="currentPage + '/' + allPages">-->
-      <!--<input-->
-        <!--type="text"-->
-        <!--:value="currentPage"-->
-        <!--@keydown="keyDown"-->
-        <!--@keyup="keyUp"-->
-        <!--@change="keyUp">-->
-      <!--<span>/</span>-->
-      <!--{{ allPages }}-->
-    <!--</div>-->
-    <!--<li-->
-      <!--:title="t('i.page.next')"-->
-      <!--:class="nextClasses"-->
-      <!--@click="next">-->
-      <!--<a><i class="ivu-icon ivu-icon-ios-arrow-right"></i></a>-->
-    <!--</li>-->
-  <!--</ul>-->
   <ul :class="wrapClasses" :style="styles" v-else>
     <!--<span :class="[prefixCls + '-total']" v-if="showTotal">-->
         <!--<slot>{{ t('i.page.total') }} {{ total }} <template v-if="total <= 1">{{ t('i.page.item') }}</template><template v-else>{{ t('i.page.items') }}</template></slot>-->
@@ -40,18 +18,10 @@
     <li title="下一页" class="y-page-next" data-bind="click: handleNext, css:{'y-page-disable':pageIndex()==totalPage()}">
       <a><i class="fa fa-caret-right"></i></a>
     </li>
-    <!--<Options-->
-      <!--:show-sizer="showSizer"-->
-      <!--:page-size="currentPageSize"-->
-      <!--:page-size-opts="pageSizeOpts"-->
-      <!--:placement="placement"-->
-      <!--:show-elevator="showElevator"-->
-      <!--:_current.once="currentPage"-->
-      <!--:current="currentPage"-->
-      <!--:all-pages="allPages"-->
-      <!--:is-small="isSmall"-->
-      <!--@on-size="onSize"-->
-      <!--@on-page="onPage">-->
-    <!--</Options>-->
+    <li class="y-inline-block" style="margin-left:5px;">
+      <span class="y-inline-block">每页显示</span>
+      <y-select class="y-inline-block" style="width: 60px;position: relative;top:2px;vertical-align: middle" params="dataList: pageList,value:curPage,onChange:sizeChange"></y-select>
+      <span class="y-inline-block">条</span>
+    </li>
   </ul>
 </div>
