@@ -13,7 +13,10 @@ function _init (params, el) {
   let _el = el.element
   this.tagList = params.tagList
   this.tagList.subscribe(val => {
-    computedHeight.call(this, _el)
+    setTimeout(() => {
+      // 确保渲染完再计算
+      computedHeight.call(this, _el)
+    }, 100)
   })
   this.titleKey = params.titleKey || 'title'
   this.height = 'auto'

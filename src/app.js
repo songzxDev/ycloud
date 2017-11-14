@@ -426,58 +426,7 @@ let viewmodel = {
       field: 'field6'
     }
   ]),
-  rowspanrows: ko.observableArray([
-    {
-      field1: 'A',
-      field2: 'A',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }, {
-      field1: 'A',
-      field2: 'A',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F1'
-    }, {
-      field1: 'A',
-      field2: 'C',
-      field3: 'D',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F2'
-    }, {
-      field1: 'A',
-      field2: 'C',
-      field3: 'E',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }, {
-      field1: 'B',
-      field2: 'B',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }, {
-      field1: 'B',
-      field2: 'B',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }, {
-      field1: 'B',
-      field2: 'B',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }
-  ]),
+  rowspanrows: ko.observableArray(),
   pureColumns: ko.observableArray([
     {
       title: '',
@@ -602,7 +551,59 @@ setTimeout(() => {
   item.num = 0
   viewmodel.stateTabsItems.splice(0, 1)
   viewmodel.stateTabsItems.splice(0, 0, item)
-}, 3000)
+  viewmodel.rowspanrows([
+    {
+      field1: 'A',
+      field2: 'A',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }, {
+      field1: 'A',
+      field2: 'A',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F1'
+    }, {
+      field1: 'A',
+      field2: 'C',
+      field3: 'D',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F2'
+    }, {
+      field1: 'A',
+      field2: 'C',
+      field3: 'E',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }, {
+      field1: 'B',
+      field2: 'B',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }, {
+      field1: 'B',
+      field2: 'B',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }, {
+      field1: 'B',
+      field2: 'B',
+      field3: 'C',
+      field4: 'D',
+      field5: 'E',
+      field6: 'F'
+    }
+  ])
+}, 1000)
 // 打印每次单选的内容
 viewmodel.singleselect.subscribe(function (item) {
   console.log('单选：')

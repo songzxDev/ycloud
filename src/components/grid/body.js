@@ -81,7 +81,10 @@ class Body extends Base {
         this.caculateRowspan(params.rowspan.maxCol, params.domId)
       })
       params.rows.subscribe(val => {
-        this.caculateRowspan(params.rowspan.maxCol, params.domId)
+        // 确保页面重绘之后再进行合并单元格
+        setTimeout(function () {
+          this.caculateRowspan(params.rowspan.maxCol, params.domId)
+        }.bind(this), 50)
       })
     }
   }
