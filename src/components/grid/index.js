@@ -22,7 +22,7 @@ class Grid extends Base {
     this.domId = params.id
     this.isTableBorder = params.isTableBorder || params.rowspan
     this.rowspan = params.rowspan
-    this.maxheight = params.maxheight || '484px'
+    this.maxheight = params.maxheight || '486px'
     this.minheight = params.minheight || 'auto'
     this.isStripe = params.isStripe || false
     this.expand = params.expand || true

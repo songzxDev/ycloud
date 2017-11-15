@@ -54,6 +54,7 @@ class Select extends Base {
     this.curValue = ko.observable()
     // 是否已经设置过默认值防止重复调用（
     this.hasSetDefault = false
+    this.stopLockScroll = params.stopLockScroll || false
   }
   computed (params) {
     // 显示暂无数据
@@ -98,12 +99,14 @@ class Select extends Base {
     this.isKeyDownEffect = false
     // 是否显示下拉
     this.showDropdown.subscribe(val => {
-      if (val) {
-        this.isKeyDownEffect = true
-        lockScrollEffect() // 显示下拉的时候滚动的时候父容器(body)默认锁定不可滚动
-      } else {
-        this.isKeyDownEffect = false
-        resetScrollEffect() // 收齐下拉的时候滚动的时候父容器（body）可滚动
+      if (!this.stopLockScroll) {
+        if (val) {
+          this.isKeyDownEffect = true
+          lockScrollEffect() // 显示下拉的时候滚动的时候父容器(body)默认锁定不可滚动
+        } else {
+          this.isKeyDownEffect = false
+          resetScrollEffect() // 收齐下拉的时候滚动的时候父容器（body）可滚动
+        }
       }
     })
     // 数据改变时需要重新设置默认值
