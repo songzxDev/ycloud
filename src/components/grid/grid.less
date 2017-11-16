@@ -23,12 +23,18 @@
   }
   .y-grid-operation{
     cursor: pointer;
-    color: @primary-color;
-    margin-right: 4px;
+    color: @f-color-primary;
+    margin-right: 10px;
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
     user-select:none;
+    font-size: @f-size-xs;
+    padding-right: 10px;
+    border-right: solid 1px #d8d8d8;
+  }
+  .y-cell .y-grid-operation:last-child{
+    border-right: none;
   }
   &:after, &:before {
     content: "";
