@@ -17,6 +17,7 @@ class Body extends Base {
     this.columns = params.columns
     this.domId = params.domId
     this.onRowSelect = params.onRowSelect
+    this.defaultExpand = params.defaultExpand || false
   }
   computed (params) {
     // 计算暂无数据的单元格合并
@@ -44,7 +45,7 @@ class Body extends Base {
       params.rows().forEach((row) => {
         row._hover = ko.observable(false)
         row._disabled = ko.observable(false)
-        row._expand = ko.observable(false)
+        row._expand = ko.observable(this.defaultExpand)
         if (this.isDataTable) {
           // 如果是dataTable设置成计算属性
           row._selected = ko.pureComputed({

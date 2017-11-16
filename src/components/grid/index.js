@@ -26,6 +26,11 @@ class Grid extends Base {
     this.minheight = params.minheight || 'auto'
     this.isStripe = params.isStripe || false
     this.expand = params.expand || true
+    // 是否隐藏表头
+    this.nohead = params.nohead || false
+    this.noborder = params.noborder || false
+    // expand是否默认展开
+    this.defaultExpand = params.defaultExpand || false
     // 是否启用分页组件
     this.pagination = ko.observable(params.pagination || false)
     this.pageSize = params.pageSize || ko.observable(PAGESIZE)

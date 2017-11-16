@@ -247,9 +247,11 @@ let viewmodel = {
         return {
           name: 'y-grid',
           params: {
-            isStripe: true,
+            isStripe: false,
             maxheight: 'auto',
-            columns:viewmodel.columns,
+            noborder: true,
+            nohead: true,
+            columns: viewmodel.columns,
             rows: viewmodel.rows
           }
         }
@@ -431,6 +433,27 @@ let viewmodel = {
     }
   ]),
   rowspanrows: ko.observableArray(),
+  noheadCols: ko.observableArray([
+    {
+      field: 'a',
+      width: 100
+    }, {
+      field: 'b',
+      width: 200
+    }, {
+      field: 'a',
+      width: 300
+    }, {
+      field: 'b',
+      width: 400
+    }
+  ]),
+  noheadRows: ko.observableArray([
+    {
+      a: '1',
+      b: '2'
+    }
+  ]),
   pureColumns: ko.observableArray([
     {
       title: '',

@@ -4,6 +4,10 @@
   border-bottom: 0;
   border-right: 0;
   margin-bottom: 10px;
+  &.y-grid-noborder{
+    margin-bottom: 0;
+    border:none;
+  }
 }
 .y-grid{
   width: 100%;
@@ -100,6 +104,12 @@
   }
 }
 .y-grid-stripe .y-grid-body tr:nth-child(2n) td{
+  background-color: #f8f8f9;
+}
+.y-grid-stripe .y-grid-body tr td tr:nth-child(2n + 1) td{
+  background-color: #fff;
+}
+.y-grid-stripe .y-grid-body tr td tr:nth-child(2n) td{
   background-color: #f8f8f9;
 }
 .y-grid-empty{

@@ -14,8 +14,8 @@
       </tr>
       <!-- ko if: $parent.expand && row._expand() -->
         <tr>
-          <td data-bind="attr:{colspan: $parentContext.$parent.columns.length}">
-            <div class="y-cell" data-bind="component: $parentContext.$parent.columns[0].expandCompFn(row)">
+          <td style="border-bottom: none" data-bind="attr:{colspan: $parentContext.$parent.columns.length}">
+            <div data-bind="component: $parentContext.$parent.columns[0].expandCompFn(row)">
             </div>
           </td>
         </tr>
