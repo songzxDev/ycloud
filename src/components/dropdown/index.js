@@ -9,13 +9,15 @@ function _init (params, el) {
   this.scrollTop.subscribe(val => {
     _el.children[0].scrollTop = val
   })
+  this.isTransferDom = params.isTransferDom || false
   this.targetEl = params.targetEl
   this.top = ko.observable()
   this.left = ko.observable()
   this.width = ko.observable(params.width || '100%')
   // 切换时重新设置下拉的未知
   this.isShow.subscribe(val => {
-    if (val) {
+    // 多选情况比较复杂，暂不支持穿越overflowhidden
+    if (val && this.isTransferDom) {
       let el = this.targetEl.children[0]
       let position = el.getBoundingClientRect()
       if (!params.width) {
@@ -46,6 +48,8 @@ function _init (params, el) {
     if (this.top()) {
       style.top = this.top() + 'px'
       style.left = this.left() + 'px'
+    } else {
+      style.position = 'absolute'
     }
     return style
   })

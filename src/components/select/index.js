@@ -165,7 +165,7 @@ class Select extends Base {
       this.handleShowDrop(true)
     }
     // 点击外部收起下拉
-    this.clickoutside = () => {
+    this.clickoutside = (e) => {
       this.showDropdown(false)
       if (this.value() && this.value()[this.labelkey]) {
         this.key(this.value()[this.labelkey])
