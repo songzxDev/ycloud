@@ -17,7 +17,20 @@ const PAGEINDEX = 0
 class Grid extends Base {
   initialize (params) {
     this.isDataTable = params.isDataTable || false
-    this.columns = params.columns
+    this.columns = ko.computed(() => {
+      // 出事化列内置一些属性 _show 用来隐藏和显示列
+      if (params.columns && params.columns.subscribe) {
+        params.columns().forEach((col) => {
+          col._show = ko.observable(!col.hidden)
+        })
+        return params.columns()
+      } else {
+        params.columns.forEach((col) => {
+          col._show = ko.observable(!col.hidden)
+        })
+        return params.columns
+      }
+    })
     this.rows = params.rows
     this.domId = params.id
     this.isTableBorder = params.isTableBorder || params.rowspan
@@ -82,6 +95,15 @@ class Grid extends Base {
         }
       })
     })
+  }
+  methods (params) {
+    this.setColVisibleByField = (field, visible) => {
+      this.columns().forEach((col) => {
+        if (col.field === field) {
+          col._show(visible)
+        }
+      })
+    }
   }
 }
 export default {

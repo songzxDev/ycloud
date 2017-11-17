@@ -40,6 +40,15 @@ class Body extends Base {
         }).length > 0
       }
     })
+    this.expandColspan = ko.computed(() => {
+      let count = 0
+      this.columns().forEach(col => {
+        if (col._show()) {
+          count++
+        }
+      })
+      return count
+    })
     // 行数据
     this.rows = ko.computed(() => {
       params.rows().forEach((row) => {

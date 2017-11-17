@@ -9,7 +9,7 @@ function _init (params, el) {
   this.scrollTop.subscribe(val => {
     _el.children[0].scrollTop = val
   })
-  this.isTransferDom = params.isTransferDom || false
+  this.isTransferDom = !params.isStopTransferDom
   this.targetEl = params.targetEl
   this.top = ko.observable()
   this.left = ko.observable()
@@ -48,6 +48,7 @@ function _init (params, el) {
     if (this.top()) {
       style.top = this.top() + 'px'
       style.left = this.left() + 'px'
+      style.position = 'fixed'
     } else {
       style.position = 'absolute'
     }

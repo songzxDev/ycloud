@@ -1,11 +1,11 @@
 <div class="y-grid-head">
   <table  cellspacing="0" cellpadding="0" border="0" data-bind="style:{width:tableWidth}">
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
-      <col data-bind="visible: !col.hidden, attr:{width:col.width}">
+      <col data-bind="visible: col._show, attr:{width:col.width}">
     </colgroup>
     <thead>
       <tr data-bind="foreach:{data: columns,as: 'col'}">
-        <th>
+        <th data-bind="visible: col._show">
           <!-- ko if: col.type == 'checkbox' -->
           <div class="y-cell" style="position: relative;top: 2px;">
             <y-checkbox-item class="y-grid-checkbox" params="value:'',label:'',checked:$parentContext.$parent.allRowChecked"></y-checkbox-item>

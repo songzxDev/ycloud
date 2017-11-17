@@ -260,7 +260,8 @@ let viewmodel = {
     {
       title: '序号',
       width: 70,
-      type: 'index'
+      type: 'index',
+      hidden: false
     },
     {
       title: 'date',
@@ -278,7 +279,7 @@ let viewmodel = {
       title: 'y-input',
       hidden: false,
       align: 'left',
-      width: '20%',
+      width: '120',
       type: 'component',
       compFn: function (row) {
         return {
@@ -294,7 +295,7 @@ let viewmodel = {
     {
       title: 'component',
       hidden: false,
-      width: '15%',
+      width: '150',
       type: 'component',
       compFn: function (row) {
         return {
@@ -314,6 +315,7 @@ let viewmodel = {
       title: 'renderFn',
       type: 'render',
       hidden: false,
+      width: '100',
       renderFn: function (row, index) {
         window.evt_setDisabeld = function (rowId) {
           let row = dt.getRowByRowId(rowId)
@@ -325,6 +327,7 @@ let viewmodel = {
       field: 'id',
       title: 'operationList',
       type: 'operation',
+      width: '200',
       operationList: [
         {
           title: '操作1',
@@ -570,7 +573,15 @@ let viewmodel = {
     {a: 1, b: 2},
     {a: 1, b: 2},
     {a: 1, b: 2}
-  ])
+  ]),
+  hideByField () {
+    var grid = ycloud.$refs['reftable']
+    grid.setColVisibleByField('createdate', false)
+  },
+  showByField () {
+    var grid = ycloud.$refs['reftable']
+    grid.setColVisibleByField('createdate', true)
+  }
 }
 setTimeout(() => {
   viewmodel.loading(!viewmodel.loading())

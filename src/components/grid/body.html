@@ -1,21 +1,21 @@
 <div class="y-grid-body">
   <table cellspacing="0" cellpadding="0" border="0" data-bind="attr:{id:domId},style:{width:tableWidth}">
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
-      <col data-bind="visible: !col.hidden, attr:{width:col.width}">
+      <col data-bind="visible: col._show, attr:{width:col.width}">
     </colgroup>
     <tbody data-bind="foreach: {data: rows, as: 'row'}">
 
       <tr data-bind="css:{'y-grid-row-hover':row._hover,'y-grid-row-selected':row._selected},event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
         <!-- ko foreach:{data: $parent.columns, as: 'col'} -->
-        <td>
+        <td data-bind="visible: col._show">
           <y-grid-td params="isDataTable:$parentContext.$parent.isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
         </td>
         <!-- /ko -->
       </tr>
       <!-- ko if: $parent.expand && row._expand() -->
         <tr>
-          <td style="border-bottom: none" data-bind="attr:{colspan: $parentContext.$parent.columns.length}">
-            <div data-bind="component: $parentContext.$parent.columns[0].expandCompFn(row)">
+          <td style="border-bottom: none" data-bind="attr:{colspan: $parent.expandColspan()}">
+            <div data-bind="component: $parent.columns()[0].expandCompFn(row)">
             </div>
           </td>
         </tr>
