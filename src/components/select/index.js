@@ -32,7 +32,6 @@ class Select extends Base {
     this.filterable = ko.observable(params.filterable || false)
     // 是否支持多选
     this.multiple = params.multiple || false
-    this.width = params.dropWidth || '100%'
     // 是否有更多按钮（一般用于各种参照）
     this.hasmore = params.hasmore || false
     // 设置placeholder提示
