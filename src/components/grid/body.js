@@ -107,7 +107,7 @@ class Body extends Base {
     if (evt.target.tagName === 'A') {
       return false
     }
-    if (evt.target.classList.contains('y-grid-operation') || evt.target.classList.contains('y-select-single')) {
+    if (evt.target.classList.contains('y-grid-stoprowselect') || evt.target.classList.contains('y-grid-operation') || evt.target.classList.contains('y-select-single')) {
       return false
     }
     return true

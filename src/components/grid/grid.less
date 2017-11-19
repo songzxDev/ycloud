@@ -33,6 +33,45 @@
     padding-right: 10px;
     border-right: solid 1px #d8d8d8;
   }
+  .y-grid-operation-more{
+    position: absolute;
+    display: none;
+    background: @bg-color;
+    padding: 3px 0;
+    z-index: 1;
+    border-radius: 2px;
+    box-shadow:0 0 5px 0 rgba(0,0,0,0.20);
+    li{
+      padding: 3px 20px;
+      cursor: pointer;
+      background: @bg-color;
+      &:hover{
+        background: #fff;
+      }
+    }
+  }
+  .y-grid-operation-morectn {
+    .fa{
+      position: relative;
+      right: 10px;
+      top: -3px;
+      color: @f-color-primary;
+      transition: all .2s ease-in-out;
+    }
+    .y-grid-operation{
+      border-right: none;
+      padding-right: 0;
+    }
+    &:hover {
+      .y-grid-operation-more{
+        display: block;
+      }
+      .fa{
+        top: 2px;
+        transform: rotate(-180deg);
+      }
+    }
+  }
   .y-cell .y-grid-operation:last-child{
     border-right: none;
   }

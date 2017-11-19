@@ -223,17 +223,46 @@ let viewmodel = {
       field: 'id',
       title: 'operation',
       hidden: false,
-      type: 'render',
-      renderFn: function (row, index) {
-        window.clickme = function (event) {
-          console.log(row.id)
+      type: 'operation',
+      operationList: [
+        {
+          title: '操作1',
+          click: function (row, evt) {
+            row._disabled(true)
+            return false
+          },
+          visible: function (row) {
+            return !row._disabled()
+          }
+        }, {
+          title: '操作2',
+          click: function (row, evt) {
+            row._disabled(false)
+            return false
+          },
+          visible: function (row) {
+            return row._disabled()
+          }
+        }, {
+          title: '操作3',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
+        }, {
+          title: '操作4',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
+        }, {
+          title: '操作5',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
         }
-        var links = `<a class="y-grid-operation" href="http://www.baidu.com?id=${row.id}">新增</a>
-          <a class="y-grid-operation"  href="http://www.baidu.com?id=${row.id}">修改</a>
-          <span class="y-grid-operation" onclick="clickme(event)">删除</span>
-        `
-        return links
-      }
+      ]
     }
   ]),
   columnsdt: [
@@ -489,17 +518,34 @@ let viewmodel = {
       field: 'id',
       title: 'operation',
       hidden: false,
-      type: 'render',
-      renderFn: function (row, index) {
-        window.clickme = function (event) {
-          console.log(row.id)
+      type: 'operation',
+      operationList: [
+        {
+          title: '操作1',
+          click: function (row, evt) {
+            row._disabled(true)
+            return false
+          },
+          visible: function (row) {
+            return !row._disabled()
+          }
+        }, {
+          title: '操作2',
+          click: function (row, evt) {
+            row._disabled(false)
+            return false
+          },
+          visible: function (row) {
+            return row._disabled()
+          }
+        }, {
+          title: '子表',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
         }
-        var links = `<a class="y-grid-operation" href="http://www.baidu.com?id=${row.id}">新增</a>
-          <a class="y-grid-operation"  href="http://www.baidu.com?id=${row.id}">修改</a>
-          <span class="y-grid-operation" onclick="clickme(event)">删除</span>
-        `
-        return links
-      }
+      ]
     }
   ]),
   datatable: dt.rows,
