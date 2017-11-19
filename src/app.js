@@ -252,14 +252,12 @@ let viewmodel = {
         }, {
           title: '操作4',
           click: function (row, evt) {
-            row._expand(!row._expand())
-            return false
+            alert('操作4')
           }
         }, {
           title: '操作5',
           click: function (row, evt) {
-            row._expand(!row._expand())
-            return false
+            alert('操作5')
           }
         }
       ]
@@ -273,6 +271,12 @@ let viewmodel = {
       hidden: false,
       width: 50,
       expandCompFn (row) {
+        // get subRow by row.id
+        var _rows = [{
+          id: 4, name: 2 + row.getValue('id')
+        },{
+          id: 5, name: 6 + row.getValue('id')
+        }]
         return {
           name: 'y-grid',
           params: {
@@ -280,8 +284,8 @@ let viewmodel = {
             maxheight: 'auto',
             noborder: true,
             nohead: true,
-            columns: viewmodel.columns,
-            rows: viewmodel.rows
+            columns: viewmodel.pureColumns2,
+            rows: ko.observable(_rows)
           }
         }
       }
@@ -429,6 +433,13 @@ let viewmodel = {
   pureRows: ko.observableArray([{
     id: 1, name: 2
   }]),
+  pureRows2: ko.observableArray([{
+    id: 1, name: 2
+  }, {
+    id: 2, name: 4
+  }, {
+    id: 3, name: 5
+  }]),
   rowspancol: ko.observableArray([
     {
       title: '<div title="第一列">第一列</div>',
@@ -491,7 +502,67 @@ let viewmodel = {
       title: '',
       field: '',
       type: 'checkbox',
+      width: 50
+    },
+    {
+      title: '序号',
+      width: 70,
+      type: 'index'
+    },
+    {
+      title: 'name',
+      field: 'name',
       hidden: false,
+      align: 'right',
+      width: '20%'
+    },
+    {
+      field: 'id',
+      title: 'renderFn',
+      type: 'render',
+      hidden: false,
+      renderFn: function (row, index) {
+        return `<div onclick="clickme(event)" data-id='${row.id}'>${index + row.name + row.id + '通过render函数生成的html片段'}</div>`
+      }
+    }, {
+      field: 'id',
+      title: 'operation',
+      hidden: false,
+      type: 'operation',
+      operationList: [
+        {
+          title: '操作1',
+          click: function (row, evt) {
+            row._disabled(true)
+            return false
+          },
+          visible: function (row) {
+            return !row._disabled()
+          }
+        }, {
+          title: '操作2',
+          click: function (row, evt) {
+            row._disabled(false)
+            return false
+          },
+          visible: function (row) {
+            return row._disabled()
+          }
+        }, {
+          title: '子表',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
+        }
+      ]
+    }
+  ]),
+  pureColumns2: ko.observableArray([
+    {
+      title: '',
+      field: '',
+      type: 'checkbox',
       width: 50
     },
     {

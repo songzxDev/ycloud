@@ -233,14 +233,14 @@
   <y-boxcontent>
     <h1>13.表格</h1>
     <div class="row">
-      <div class="col-md-6">
-        <h4>普通ko对象，每个属性也是ko对象，为了支持可编辑</h4>
-        <y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>
-      </div>
-      <div class="col-md-6">
-        <h4>普通ko对象，由普通json对象set获得，不支持可编辑</h4>
-        <y-grid params="onSizeChange:$root.onSizeChange,onPageChange: $root.onPageChange,columns:$root.pureColumns,rows: $root.pureRows,maxheight:'auto',pagination:true,totalCount: $root.totalCount"></y-grid>
-      </div>
+      <!--<div class="col-md-6">-->
+        <!--<h4>普通ko对象，每个属性也是ko对象，为了支持可编辑</h4>-->
+        <!--<y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>-->
+      <!--</div>-->
+      <!--<div class="col-md-6">-->
+        <!--<h4>普通ko对象，由普通json对象set获得，不支持可编辑</h4>-->
+        <!--<y-grid params="onSizeChange:$root.onSizeChange,onPageChange: $root.onPageChange,columns:$root.pureColumns,rows: $root.pureRows,maxheight:'auto',pagination:true,totalCount: $root.totalCount"></y-grid>-->
+      <!--</div>-->
       <div class="col-md-12">
         <h4>datatable</h4>
         <y-state-tabs params="hideNum: true,index:$root.curStateIndex,items:$root.stateTabsItems,handler: $root.stateTabsHandler"></y-state-tabs>
@@ -252,22 +252,22 @@
           <div data-bind="text:row.ref('name')"></div>
         </y-grid>
       </div>
-      <div class="col-md-12">
-        <h4>rowspan datatable</h4>
-        <y-grid params="isStripe:true,rowspan:{maxCol: 2},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrows">
+      <!--<div class="col-md-12">-->
+        <!--<h4>rowspan datatable</h4>-->
+        <!--<y-grid params="isStripe:true,rowspan:{maxCol: 2},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrows">-->
 
-        </y-grid>
-      </div>
-      <div class="col-md-12">
-        <h4>横向滚动条 datatable 需固定每一列的宽度</h4>
-        <y-grid params="isStripe:true,columns:$root.scrollColumn,rows: $root.scrollRows">
+        <!--</y-grid>-->
+      <!--</div>-->
+      <!--<div class="col-md-12">-->
+        <!--<h4>横向滚动条 datatable 需固定每一列的宽度</h4>-->
+        <!--<y-grid params="isStripe:true,columns:$root.scrollColumn,rows: $root.scrollRows">-->
 
-        </y-grid>
-      </div>
-      <div class="col-md-12">
-        <h4>datatable无表头</h4>
-        <y-grid params="nohead:true, columns:$root.noheadCols,rows: $root.noheadRows"></y-grid>
-      </div>
+        <!--</y-grid>-->
+      <!--</div>-->
+      <!--<div class="col-md-12">-->
+        <!--<h4>datatable无表头</h4>-->
+        <!--<y-grid params="nohead:true, columns:$root.noheadCols,rows: $root.noheadRows"></y-grid>-->
+      <!--</div>-->
     </div>
   </y-boxcontent>
   <y-boxcontent>
