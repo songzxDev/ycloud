@@ -4,6 +4,7 @@ function init (params) {
   this.columns = params.columns
   this.tableWidth = params.tableWidth
   this.allRowChecked = params.allRowChecked
+  this.lockhead = params.lockhead
 }
 
 export default {

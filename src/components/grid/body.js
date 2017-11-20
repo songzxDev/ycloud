@@ -19,6 +19,7 @@ class Body extends Base {
     this.onRowSelect = params.onRowSelect
     this.defaultExpand = params.defaultExpand || false
     this.isNoDataCustomTpl = params.isNoDataCustomTpl || false
+    this.lockhead = params.lockhead
   }
   computed (params) {
     // 计算暂无数据的单元格合并

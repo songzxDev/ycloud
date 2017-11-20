@@ -275,6 +275,14 @@
           </div>
         </y-grid>
       </div>
+      <div class="col-md-12">
+        <h4>锁定表头</h4>
+        <y-grid params="lockhead:true,columns:$root.lockheadCols,rows: $root.lockheadRows">
+          <div>
+            <y-button params="click: $root.handleSupplyApply">邀请供应商</y-button>
+          </div>
+        </y-grid>
+      </div>
     </div>
   </y-boxcontent>
   <y-boxcontent>

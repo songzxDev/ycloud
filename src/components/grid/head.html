@@ -1,4 +1,4 @@
-<div class="y-grid-head">
+<div class="y-grid-head" data-bind="css:{'y-grid-head-lock':lockhead}">
   <table  cellspacing="0" cellpadding="0" border="0" data-bind="style:{width:tableWidth}">
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
       <col data-bind="visible: col._show, attr:{width:col.width}">

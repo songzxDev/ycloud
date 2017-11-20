@@ -706,7 +706,18 @@ let viewmodel = {
   showByField () {
     var grid = ycloud.$refs['reftable']
     grid.setColVisibleByField('createdate', true)
-  }
+  },
+  lockheadCols: [{
+    title: 'lockhead',
+    field: 'name',
+    width: 200
+  }],
+  lockheadRows: ko.observableArray([
+    {name: '第一列'}, {name: '第一列'}, {name: '第0列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第2列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第4列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'}
+  ])
 }
 setTimeout(() => {
   viewmodel.loading(!viewmodel.loading())
