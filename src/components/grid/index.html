@@ -2,7 +2,8 @@
   <div class="y-grid-wrapper" data-bind="css: {'y-grid-noborder':noborder}">
     <div class="y-grid" data-bind="css:{'y-grid-stripe':isStripe,'y-grid-border': isTableBorder},style:{height:maxheight,minHeight:minheight}">
       <y-grid-head data-bind="visible:!nohead" params="columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
-      <y-grid-body params="defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:maxheight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect">
+      <y-grid-body params="isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:maxheight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect">
+        <!-- ko template: { nodes: $parent.$templateNodes } --><!-- /ko -->
       </y-grid-body>
     </div>
   </div>

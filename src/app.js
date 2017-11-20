@@ -106,6 +106,9 @@ let viewmodel = {
   handleClose: function (item) {
     console.log(item)
   },
+  handleSupplyApply: function () {
+    alert('邀请供应商！！')
+  },
   callback: function(val) {
     debugger
   },
@@ -476,6 +479,11 @@ let viewmodel = {
     }
   ]),
   rowspanrows: ko.observableArray(),
+  noDataCols: [{
+    title: 'field1',
+    field: 'title'
+  }],
+  noDataRows: ko.observableArray(),
   noheadCols: ko.observableArray([
     {
       field: 'a',

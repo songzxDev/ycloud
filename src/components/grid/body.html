@@ -23,11 +23,16 @@
 
     </tbody>
     <tbody class="y-grid-empty">
-      <tr>
-        <td data-bind="attr:{colspan: nodataColSpan},style:{height: noDataHeight}">
+    <tr>
+      <td data-bind="attr:{colspan: nodataColSpan},style:{height: noDataHeight, padding: '12px'}">
+        <!-- ko if: isNoDataCustomTpl -->
+          <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko ifnot: isNoDataCustomTpl -->
           暂无数据
-        </td>
-      </tr>
+        <!-- /ko -->
+      </td>
+    </tr>
     </tbody>
   </table>
 </div>

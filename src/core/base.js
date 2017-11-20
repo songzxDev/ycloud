@@ -2,6 +2,7 @@ import {refmixin} from '@/mixin'
 class Base {
   constructor (params) {
     this.$el = params.$el
+    this.$templateNodes = params.$templateNodes
     refmixin.call(this, params)
     this.initialize(params)
     this.computed(params)
@@ -23,6 +24,7 @@ class Base {
     return {
       createViewModel: function (params, componentInfo) {
         params.$el = componentInfo.element
+        params.$templateNodes = componentInfo.templateNodes
         return new Component(params)
       }
     }

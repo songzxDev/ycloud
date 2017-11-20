@@ -78,6 +78,17 @@ class Grid extends Base {
         return cols.map(cell => cell.width).reduce((a, b) => a + b, 0)
       }
     })
+    // grid下有传入自定义组件
+    this.hasMarkup = ko.computed(() => {
+      if (this.$templateNodes.length > 0) {
+        let nodeList = this.$templateNodes.filter((node) => {
+          return node.nodeName !== '#text' && node.nodeName !== '#comment'
+        })
+        return nodeList.length > 0
+      } else {
+        return false
+      }
+    })
   }
   subscribe (params) {
     // 监听全选和反选

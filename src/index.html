@@ -249,7 +249,6 @@
         <y-button params="click:$root.showByField">显示列</y-button>
         </div>
         <y-grid params="ref:'reftable',defaultExpand:true,minheight:'484px',maxheight:'auto',isStripe: false,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount">
-          <div data-bind="text:row.ref('name')"></div>
         </y-grid>
       </div>
       <div class="col-md-12">
@@ -267,6 +266,14 @@
       <div class="col-md-12">
         <h4>datatable无表头</h4>
         <y-grid params="nohead:true, columns:$root.noheadCols,rows: $root.noheadRows"></y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>datatable无数据内容自定义</h4>
+        <y-grid params="maxheight:'auto',columns:$root.noDataCols,rows: $root.noDataRows">
+          <div>
+            <y-button params="click: $root.handleSupplyApply">邀请供应商</y-button>
+          </div>
+        </y-grid>
       </div>
     </div>
   </y-boxcontent>
