@@ -285,7 +285,7 @@ let viewmodel = {
           params: {
             isStripe: false,
             maxheight: 'auto',
-            noborder: true,
+            style: {marginTop: '-11px'},
             nohead: true,
             columns: viewmodel.pureColumns2,
             rows: ko.observable(_rows)
@@ -571,25 +571,29 @@ let viewmodel = {
       title: '',
       field: '',
       type: 'checkbox',
-      width: 50
+      width: 50,
+      _show: true
     },
     {
       title: '序号',
       width: 70,
-      type: 'index'
+      type: 'index',
+      _show: true
     },
     {
       title: 'name',
       field: 'name',
       hidden: false,
       align: 'right',
-      width: '20%'
+      width: '20%',
+      _show: true
     },
     {
       field: 'id',
       title: 'renderFn',
       type: 'render',
       hidden: false,
+      _show: true,
       renderFn: function (row, index) {
         return `<div onclick="clickme(event)" data-id='${row.id}'>${index + row.name + row.id + '通过render函数生成的html片段'}</div>`
       }
@@ -597,6 +601,7 @@ let viewmodel = {
       field: 'id',
       title: 'operation',
       hidden: false,
+      _show: true,
       type: 'operation',
       operationList: [
         {

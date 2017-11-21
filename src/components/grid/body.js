@@ -20,6 +20,8 @@ class Body extends Base {
     this.defaultExpand = params.defaultExpand || false
     this.isNoDataCustomTpl = params.isNoDataCustomTpl || false
     this.lockhead = params.lockhead
+    this.tdstyle = params.tdstyle
+    this.isSeparate = params.isSeparate
   }
   computed (params) {
     // 计算暂无数据的单元格合并

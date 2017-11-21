@@ -51,11 +51,14 @@ class Grid extends Base {
     this.pageIndex = params.pageIndex || ko.observable(PAGEINDEX)
     this.totalCount = params.totalCount || ko.observable(0)
     this.allRowChecked = ko.observable(false)
+    this.tdstyle = params.tdstyle || {}
     // event binding
     // 行选中
     this.onRowSelect = params.onRowSelect
     this.onPageChange = params.onPageChange
     this.onSizeChange = params.onSizeChange
+    this.isSeparate = params.isSeparate || false
+    this.style = params.style || {}
   }
   computed (params) {
     // 只有表格数据大于10条才显示分页

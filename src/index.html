@@ -242,13 +242,18 @@
         <y-grid params="onSizeChange:$root.onSizeChange,onPageChange: $root.onPageChange,columns:$root.pureColumns,rows: $root.pureRows,maxheight:'auto',pagination:true,totalCount: $root.totalCount"></y-grid>
       </div>
       <div class="col-md-12">
-        <h4>datatable</h4>
+        <h4>datatable + 复杂主子表</h4>
         <y-state-tabs params="style:{marginBottom: 0},hideNum: true,index:$root.curStateIndex,items:$root.stateTabsItems,handler: $root.stateTabsHandler"></y-state-tabs>
         <div>
         <y-button params="click:$root.hideByField">隐藏列</y-button>
         <y-button params="click:$root.showByField">显示列</y-button>
         </div>
-        <y-grid params="ref:'reftable',defaultExpand:true,minheight:'484px',maxheight:'auto',isStripe: false,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount">
+        <div class="y-grid-wrapper">
+          <div class="y-grid">
+          <y-grid-head params="columns: $root.pureColumns2"></y-grid-head>
+          </div>
+        </div>
+        <y-grid params="nohead:true,isSeparate:true,tdstyle:{backgroundColor:'#eeeff1',marginTop:'10px'},ref:'reftable',defaultExpand:true,minheight:'484px',maxheight:'auto',isStripe: false,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount">
         </y-grid>
       </div>
       <div class="col-md-12">
