@@ -6,6 +6,7 @@ function init (params) {
     this.index(_index)
     params.handler(msg)
   }
+  this.style = params.style || {}
   this.hideNum = params.hideNum || false
 }
 export default {
