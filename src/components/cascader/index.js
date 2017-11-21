@@ -28,7 +28,7 @@ function init (params) {
     return this.clearable && this.selectedValue().id
   })
   this.handlerClear = (e) => {
-    window.event ? window.event.cancelBubble = true : e.stopPropagation()
+    // window.event ? window.event.cancelBubble = true : e.stopPropagation()
     let obj = {}
     for (let key in this.selectedValue()) {
       obj[key] = ''

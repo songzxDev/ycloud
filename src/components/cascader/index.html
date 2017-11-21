@@ -4,7 +4,7 @@
       <div class="y-select-single" data-bind="text: selectedValue().name || '请选择', style: {color: selectedValue().name? '':'#999'}"></div>
       <!-- 待完善 -->
       <!-- <input class="y-select-filter" type="text" data-bind="textInput: selectedValue().name"> -->
-      <i class="y-select-arrow fa fa-close" data-bind="css: {'y-select-showclose': showCloseIcon}, click: function(data, event){handlerClear(event)}"></i>
+      <i class="y-select-arrow fa fa-close" data-bind="css: {'y-select-showclose': showCloseIcon}, click: function(data, event){handlerClear(event)}, clickBubble: false"></i>
       <i class="y-select-arrow fa fa-caret-down" data-bind="css: {'y-select-showdrop': showCloseIcon}"></i>
     </div>
   </div>
