@@ -4,32 +4,77 @@
 
 # ycloud
 
-## 来自友云采前端团队的为什么要上云（why cloud）ui 框架
+## Links
 
-开发须知：
+- Demo and Document
+    - ycloud-admin [yonyouyc.github.io/ycloud-admin/dist/index.html#buyofferlist](yonyouyc.github.io/ycloud-admin/dist/index.html#buyofferlist)
+    - document [https://github.com/yonyouyc/ycloud-document](https://github.com/yonyouyc/ycloud-document)
 
-1. 引用lodash代码时请通过修改 util/lodash.js直接引入lodash对应的包的方式来引入
-代码中其他地方需要引入lodash 都通过
+## Install
+
 ```
-import _ from '@/util/lodash'
+yarn add ycloud
 ```
-的方式来引入，需要的包按需引入
+or
+```
+npm install ylcoud -S
 
-2. 目录结构请参考demo文件夹，组件js和html都请命名成index.xx
+```
+## Quick Start
 
-3. ko通用指令目前是写在yonyouyc/ko-bindinghander下有需求向songhlc@yonyou.com提
+### ES6
 
-4. 所有鼠标键盘交互事件使用handle开头
+``` 
+<html>
+<head>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+</head>
+</html>
+```
 
-5. 组件维护信息开头注释
-  ```
-  /*
-  * @author: songhlc
-  * @date: 2017-10-23
-  * @description: 下拉组件
-  * */
-  ```
-  
-  依赖第三方包：knockout,jquery,ko-bindinghandler
+and
+```
+import 'ycloud/dist/ycloud.min.css'
+import ko from 'knockout'
+import ycloud from 'ycloud'
 
+```
+
+### UMD
+
+```
+<html>
+<head>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+    <link href="--pathto--/ycloud/dist/ycloud.min.css" rel="stylesheet">
+    <script src="--pathto--/knockout.min.js"></script>
+    <script src="--pathto--/ycloud/dist/ycloud.min.js"></script>
+</head>
+</html>
+```
+
+
+For more information, please refer to Quick Start in our [documentation](https://github.com/yonyouyc/ycloud-document).
+
+## Broswer support
+
+Modern browsers and Internet Explorer 9+.
+
+## Development
+
+to be continue
+
+## Changelog
+
+to be continue
+
+## Contribution
+
+to be continue
+
+## LICENSE
+
+MIT
 
