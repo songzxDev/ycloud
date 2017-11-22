@@ -4,25 +4,25 @@
 
 # ycloud
 
-[English](https://github.com/yonyouyc/ycloud/blob/master/readme-en.md)
 
-## 相关链接
 
-- 示例工程和文档
+## Links
+
+- Demo and Document
     - ycloud-admin [yonyouyc.github.io/ycloud-admin/dist/index.html#buyofferlist](yonyouyc.github.io/ycloud-admin/dist/index.html#buyofferlist)
     - document [https://github.com/yonyouyc/ycloud-document](https://github.com/yonyouyc/ycloud-document)
 
-## 安装
+## Install
 
 ```
 yarn add ycloud
 ```
-或者
+or
 ```
 npm install ylcoud -S
 
 ```
-## 快速开始
+## Quick Start
 
 ### ES6
 
@@ -35,7 +35,7 @@ npm install ylcoud -S
 </html>
 ```
 
-
+and
 ```
 import 'ycloud/dist/ycloud.min.css'
 import ko from 'knockout'
@@ -58,23 +58,23 @@ import ycloud from 'ycloud'
 ```
 
 
-获取更多信息请访问我们的 [开发文档](https://github.com/yonyouyc/ycloud-document).
+For more information, please refer to Quick Start in our [documentation](https://github.com/yonyouyc/ycloud-document).
 
-## 浏览器支持
+## Broswer support
 
-现代浏览器，IE9+
+Modern browsers and Internet Explorer 9+.
 
-## 开发说明
+## Development
 
-待补充
+to be continue
 
-## 更新说明
+## Changelog
 
-待补充
+to be continue
 
-## 参与贡献
+## Contribution
 
-待补充
+to be continue
 
 ## LICENSE
 
