@@ -9,7 +9,7 @@ function init (params) {
     return this.currentValue() === this.value.value
   })
   this.change = (data) => {
-    this.currentValue(this.value)
+    this.currentValue(this.value.value)
   }
 }
 export default {
