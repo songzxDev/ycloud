@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`y-radio组件 快照 1`] = `
+<body>
+  <y-radio
+    params="dataList:radioDataList,value:radioValue"
+  >
+    <div
+      class="y-radio y-radio-hor"
+      data-bind="foreach: {data: dataList, as: 'item'}, css:{'y-radio-hor':direction == 'horizontal','y-radio-ver':direction == 'vertical'}"
+      id="y-radio"
+    >
+      
+  
+      <y-radio-item
+        params="radioname: $parent.radioname, value: item, currentValue: $parent.value"
+      />
+      
+
+      
+  
+      <y-radio-item
+        params="radioname: $parent.radioname, value: item, currentValue: $parent.value"
+      />
+      
+
+    </div>
+    
+
+  </y-radio>
+</body>
+`;

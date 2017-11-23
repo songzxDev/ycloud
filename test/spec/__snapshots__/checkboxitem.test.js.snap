@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`y-checkboxitem组件 快照 1`] = `
+<body>
+  <y-checkbox-item
+    params="label: item.label, value: item.value, valueList: valueList"
+  >
+    <label
+      class="y-checkbox-item y-checkbox-item-checked"
+      data-bind="css:{'y-checkbox-item-checked': checked}"
+    >
+      
+  
+      <span
+        class="y-checkbox-item--inner-warpper"
+      >
+        
+    
+        <span
+          class="y-checkbox-item-inner"
+        >
+          
+      
+          <input
+            data-bind="checked: checked, event:{change:change}"
+            type="checkbox"
+          />
+          
+    
+        </span>
+        
+  
+      </span>
+      
+  
+      <span
+        class="y-checkbox-label"
+        data-bind="text:label"
+      >
+        男
+      </span>
+      
+
+    </label>
+    
+
+  </y-checkbox-item>
+</body>
+`;

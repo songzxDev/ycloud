@@ -5,7 +5,8 @@ function init (params) {
   this.currentValue = params.currentValue
   this.radioname = params.radioname
   this.checked = ko.computed(() => {
-    return this.currentValue() === this.value
+    // todo 默认是value/label 后续要改成其他自定义格式
+    return this.currentValue() === this.value.value
   })
   this.change = (data) => {
     this.currentValue(this.value)

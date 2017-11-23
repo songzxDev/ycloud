@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`y-checkbox组件 快照 1`] = `
+<body>
+  <y-checkbox
+    params="dataList:checkboxDataList,value:checkboxValue"
+  >
+    <div
+      class="y-checkbox y-checkbox-hor"
+      data-bind="foreach: {data: dataList, as: 'item'}, css:{'y-checkbox-hor':direction == 'horizontal','y-checkbox-ver':direction == 'vertical'}"
+    >
+      
+  
+      <y-checkbox-item
+        params="label: item.label, value: item.value, valueList: $parent.value"
+      />
+      
+
+      
+  
+      <y-checkbox-item
+        params="label: item.label, value: item.value, valueList: $parent.value"
+      />
+      
+
+    </div>
+    
+
+  </y-checkbox>
+</body>
+`;

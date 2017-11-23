@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`y-radioitem组件 快照 1`] = `
+<body>
+  <y-radio-item
+    params="radioname: radioname, value: item, currentValue: currentValue"
+  >
+    <label
+      class="y-radio-item y-radio-item-checked"
+      data-bind="css:{'y-radio-item-checked': checked}"
+    >
+      
+  
+      <span
+        class="y-radio-item--inner-warpper"
+      >
+        
+    
+        <span
+          class="y-radio-item-inner"
+        >
+          
+      
+          <input
+            data-bind="attr:{name:radioname},checked: checked, event:{change:change }"
+            name="y-radio-123"
+            type="radio"
+          />
+          
+    
+        </span>
+        
+  
+      </span>
+      
+  
+      <span
+        class="y-radio-label"
+        data-bind="text:value.label"
+      >
+        男
+      </span>
+      
+
+    </label>
+    
+
+  </y-radio-item>
+</body>
+`;

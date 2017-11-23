@@ -1,6 +1,5 @@
 import ko from 'knockout'
 import ycloud from './index'
-console.log('test')
 var dt = new u.DataTable({
   meta:{
     id: "",
@@ -650,7 +649,7 @@ let viewmodel = {
   selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
   checkboxDataList: ko.observableArray([{value: 1,label:'北京'},{value: 2,label:'上海'}]),
-  radioValue: ko.observable(),
+  radioValue: ko.observable(2),
   radioDataList: ko.observableArray([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}]),
   stateTabsItems:ko.observableArray([
     {
