@@ -39,9 +39,13 @@
       </y-input>
     </div>
   </y-boxfilter>
-  <y-boxcontent params="title:'boxcontent', animated:true" id="demo">
+  <y-boxcontent params="title:'辅助样式', animated:true" id="demo">
     <a href="/yuncai/mobile/login.html?r=/">yc测试登录链接</a>
-    <y-demo></y-demo>
+    <p class="y-text-link">class="y-text-link"</p>
+    <p class="y-text-primary">class="y-text-primary"</p>
+    <p class="y-text-assist">class="y-text-assist"</p>
+    <p class="y-text-danger">class="y-text-danger"</p>
+
   </y-boxcontent>
   <y-boxcontent params="title:'boxcontent带样式',vm:$root,style:{marginTop:'-11px'}" id="dropdown">
     <div data-bind="clickoutside:vm.clickoutside" style="width: 300px">
