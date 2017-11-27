@@ -242,6 +242,11 @@ class Select extends Base {
       this.value({})
       this.multiValue([])
       this.key('')
+      if (this.multiple) {
+        this.onChange([])
+      } else {
+        this.onChange({})
+      }
     }
     // 点击清空已选择的
     this.handleDeleteSelected = (item) => {
