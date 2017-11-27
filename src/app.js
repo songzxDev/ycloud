@@ -332,6 +332,7 @@ let viewmodel = {
       hidden: false,
       width: '150',
       type: 'component',
+      style: {height: '32px'},
       compFn: function (row) {
         return {
           name: 'y-select',
@@ -340,7 +341,8 @@ let viewmodel = {
             dataList: viewmodel.selectList,
             clearable: true,
             label: row.ref('name'),
-            id: row.ref('id')
+            id: row.ref('id'),
+            disabled: row._disabled
           }
         }
       }

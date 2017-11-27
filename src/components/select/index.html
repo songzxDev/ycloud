@@ -1,5 +1,5 @@
 <div class="y-inline-block y-relative y-width-100" data-bind="clickoutside:clickoutside,css:{selected:showDropdown}">
-  <div class="y-select-ctn y-input" data-bind="click:handleShowDrop">
+  <div class="y-select-ctn y-input" data-bind="click:handleShowDrop, css:{'y-select-disabled':disabled}, attr:{disabled:disabled}">
     <div data-bind="foreach:{data: multiValue, as: 'tag'}">
       <y-tag params="item: tag,text: tag.label,closeable:true,handleClose:$parent.handleDeleteSelected"></y-tag>
     </div>

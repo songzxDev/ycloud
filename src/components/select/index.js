@@ -54,6 +54,8 @@ class Select extends Base {
     // 是否已经设置过默认值防止重复调用（
     this.hasSetDefault = false
     this.stopLockScroll = params.stopLockScroll || false
+    // 是否禁用下拉框，在级联和行可编辑场景均可用到
+    this.disabled = params.disabled || ko.observable(false)
   }
   computed (params) {
     // 显示暂无数据
@@ -155,7 +157,11 @@ class Select extends Base {
     }
     // 点击显示下拉
     this.handleShowDrop = () => {
-      this.showDropdown(true)
+      if (this.disabled()) {
+        return false
+      } else {
+        this.showDropdown(true)
+      }
     }
     // 鼠标移入的时候如果是从后端获取数据，则直接开始查询
     this.handleFocus = () => {
