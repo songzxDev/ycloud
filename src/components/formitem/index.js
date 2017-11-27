@@ -3,6 +3,7 @@ import ko from 'knockout'
 function init (params) {
   this.model = params.model
   this.label = params.label
+  this.style = params.style
   this.visible = params.visible || ko.observable(true)
   this.validate = ko.computed(() => {
     if (params.vMap) {
