@@ -79,7 +79,7 @@ config = merge(config, {
         safe: true
       }
     }),
-    new webpack.BannerPlugin('ycloud v1.2.15 author by 友云采FED')
+    new webpack.BannerPlugin('ycloud v1.2.16 author by 友云采FED')
   ]
 })
 module.exports = config
