@@ -78,5 +78,5 @@ import ycloud from 'ycloud'
 
 ## LICENSE
 
-MIT
+BSD
 
