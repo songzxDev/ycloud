@@ -216,6 +216,7 @@
     <y-button params="click:$root.showModal">显示弹框</y-button>
     <y-modal params="visible: $root.modalVisible, width:'500px',errormsg:'请选择组织',title:'组织选择！'">
       <y-tree params="data:$root.treeData, height:'200px',onSelect: $root.onTreeSelect,validate:onModalOkValidate"></y-tree>
+      <y-pagination params="onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>
     </y-modal>
   </y-boxcontent>
   <y-boxcontent>

@@ -11,7 +11,7 @@
     <i class="y-select-arrow fa fa-list y-select-hasmore" data-bind="visible: hasmore,click:function(data, event){handleMore(data, event);return false;}"></i>
   </div>
   <y-dropdown params="targetEl:$el, isShow:showDropdown,scrollTop:scrollTop,isStopTransferDom: multiple">
-     <div class="option-ctn" data-bind="foreach:{data: $parent.filterDataList, as: 'item'}">
+     <div class="y-option-ctn" data-bind="foreach:{data: $parent.filterDataList, as: 'item'}">
        <y-option params="value: item,label:$parentContext.$parent.labelkey,itemClick:$parentContext.$parent.handleOptClick,index:$index, curIndex:$parentContext.$parent.curIndex, curValue:$parentContext.$parent.curValue, curMultiValue:$parentContext.$parent.multiValue"></y-option>
      </div>
      <div class="y-select-nodata" data-bind="visible: $parent.isNoData">暂无匹配数据</div>

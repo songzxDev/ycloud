@@ -1,7 +1,7 @@
-<label class="y-radio-item" data-bind="css:{'y-radio-item-checked': checked}">
+<label class="y-radio-item" data-bind="css:{'y-radio-item-checked': checked,'y-radio-item-disabled':disabled}">
   <span class="y-radio-item--inner-warpper">
     <span class="y-radio-item-inner">
-      <input type="radio" data-bind="attr:{name:radioname},checked: checked, event:{change:change }">
+      <input type="radio" data-bind="attr:{disabled:disabled,name:radioname},checked: checked, event:{change:change }">
     </span>
   </span>
   <span class="y-radio-label" data-bind="text:value.label"></span>

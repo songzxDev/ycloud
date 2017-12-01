@@ -652,7 +652,7 @@ let viewmodel = {
   checkboxValue: ko.observableArray([]),
   checkboxDataList: ko.observableArray([{value: 1,label:'北京'},{value: 2,label:'上海'}]),
   radioValue: ko.observable(2),
-  radioDataList: ko.observableArray([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}]),
+  radioDataList: ko.observableArray([{value: 1,label:'无发票',disabled:'disabled'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}]),
   stateTabsItems:ko.observableArray([
     {
       title: '待收货',
@@ -818,6 +818,7 @@ setTimeout(() => {
 }, 500)
 setTimeout(() => {
   ycloud.notice.info('info', {timeout: 2000})
+  // viewmodel.radioDataList([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}])
 }, 1000)
 setTimeout(() => {
   ycloud.notice.error('here has some error！here has some error！here has some error！here has some error！here has some error！here has some error！')

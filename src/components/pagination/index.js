@@ -9,9 +9,13 @@ function init (params) {
   // 对齐
   this.align = params.align || 'center'
   this.pageSize = params.pageSize
-  this.curPage = ko.observable({value: 10, label: '10'})
+  this.curPage = ko.observable(params.curPage || {value: 10, label: '10'})
   this.totalCount = params.totalCount
   this.pageList = [
+    {
+      value: 8,
+      label: '8'
+    },
     {
       value: 10,
       label: '10'
