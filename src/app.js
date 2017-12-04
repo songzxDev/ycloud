@@ -66,6 +66,25 @@ let viewmodel = {
     }
   ]),
   cascaderValue: ko.observable({name: '', id: ''}),
+  loadData: function(data) {
+    debugger
+    setTimeout(() => {
+      data.children = [
+        {
+          value: 'talkingdata',
+          label: 'TalkingData'
+        },
+        {
+          value: 'baidu',
+          label: '百度'
+        },
+        {
+          value: 'sina',
+          label: '新浪'
+        }
+      ]
+    }, 2000);
+  },
   list: ko.observableArray([
     {
       id: 1,

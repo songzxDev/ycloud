@@ -11,6 +11,7 @@ import ko from 'knockout'
 function init (params) {
   this.data = params.data
   this.selectedValue = params.selectedValue
+  this.loadData = params.loadData
   this.hidden = ko.observable(true)
   this.casitmevisible = ko.observable(false)
   this.casitmevisible.subscribe((val) => {
