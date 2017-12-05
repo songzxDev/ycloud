@@ -214,9 +214,8 @@
   <y-boxcontent>
     <h1>9.弹框</h1>
     <y-button params="click:$root.showModal">显示弹框</y-button>
-    <y-modal params="visible: $root.modalVisible, width:'500px',errormsg:'请选择组织',title:'组织选择！'">
-      <y-tree params="data:$root.treeData, height:'200px',onSelect: $root.onTreeSelect,validate:onModalOkValidate"></y-tree>
-      <y-pagination params="onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>
+    <y-modal params="visible: $root.modalVisible, width:'700px',errormsg:'请选择组织',title:'组织选择！'">
+      <y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>
     </y-modal>
   </y-boxcontent>
   <y-boxcontent>
@@ -240,7 +239,7 @@
     <div class="row">
       <div class="col-md-6">
         <h4>普通ko对象，每个属性也是ko对象，为了支持可编辑</h4>
-        <y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>
+        <!--<y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>-->
       </div>
       <div class="col-md-6">
         <h4>普通ko对象，由普通json对象set获得，不支持可编辑</h4>
