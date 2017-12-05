@@ -7,7 +7,7 @@ exports[`y-radioitem组件 快照 1`] = `
   >
     <label
       class="y-radio-item y-radio-item-checked"
-      data-bind="css:{'y-radio-item-checked': checked}"
+      data-bind="css:{'y-radio-item-checked': checked,'y-radio-item-disabled':disabled}"
     >
       
   
@@ -22,7 +22,7 @@ exports[`y-radioitem组件 快照 1`] = `
           
       
           <input
-            data-bind="attr:{name:radioname},checked: checked, event:{change:change }"
+            data-bind="attr:{disabled:disabled,name:radioname},checked: checked, event:{change:change }"
             name="y-radio-123"
             type="radio"
           />

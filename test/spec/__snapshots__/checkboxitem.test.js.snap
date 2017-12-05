@@ -22,7 +22,7 @@ exports[`y-checkboxitem组件 快照 1`] = `
           
       
           <input
-            data-bind="checked: checked, event:{change:change}"
+            data-bind="event:{click:hanldeClick}"
             type="checkbox"
           />
           
