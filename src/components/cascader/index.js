@@ -9,6 +9,9 @@ import template from './index.html'
 import ko from 'knockout'
 
 function init (params) {
+  params.data().forEach((item) => {
+    item.isLoading = ko.observable(false)
+  })
   this.data = params.data
   this.selectedValue = params.selectedValue
   this.loadData = params.loadData
@@ -26,7 +29,15 @@ function init (params) {
   this.clearable = params.clearable || false
   // 用于判断是否显示关闭按钮
   this.showCloseIcon = ko.computed(() => {
-    return this.clearable && this.selectedValue().id
+    let isClear = false
+    // 选中数据有一个属性不为空就可清除
+    for (let key in this.selectedValue()) {
+      if (this.selectedValue()[key] !== '') {
+        isClear = true
+        break
+      }
+    }
+    return this.clearable && isClear
   })
   this.handlerClear = (e) => {
     // window.event ? window.event.cancelBubble = true : e.stopPropagation()
