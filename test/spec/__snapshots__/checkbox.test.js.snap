@@ -12,14 +12,14 @@ exports[`y-checkbox组件 快照 1`] = `
       
   
       <y-checkbox-item
-        params="label: item.label, value: item.value, valueList: $parent.value"
+        params="secondarylabel: item.secondarylabel, label: item.label, value: item.value, valueList: $parent.value"
       />
       
 
       
   
       <y-checkbox-item
-        params="label: item.label, value: item.value, valueList: $parent.value"
+        params="secondarylabel: item.secondarylabel, label: item.label, value: item.value, valueList: $parent.value"
       />
       
 

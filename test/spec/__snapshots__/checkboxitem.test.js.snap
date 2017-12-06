@@ -40,6 +40,14 @@ exports[`y-checkboxitem组件 快照 1`] = `
         男
       </span>
       
+  
+      <span
+        class="y-checkbox-second-secondarylabel"
+        data-bind="text:secondarylabel"
+      >
+        
+      </span>
+      
 
     </label>
     
