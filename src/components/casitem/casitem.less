@@ -25,6 +25,10 @@
       background-color: #eee;
       color: #1baede !important;
     }
+    &:hover{
+      background-color: #eee;
+      // color: #1baede !important;
+    }
     i{
       font-size: 14px;
       position: absolute;
@@ -38,4 +42,11 @@
   .y-casitem {
     margin-left: -4px;
   }
+}
+.y-casitem-isloading{
+  animation:rotating 1.2s linear infinite
+}
+@keyframes rotating{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
 }

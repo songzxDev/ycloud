@@ -34,6 +34,7 @@ let viewmodel = {
     {
       id: 1,
       name: '1',
+      children: []
     }, {
       id: 2,
       name: '有下级',
@@ -69,24 +70,17 @@ let viewmodel = {
     }
   ]),
   cascaderValue: ko.observable({name: '', id: ''}),
-  loadData: function(data) {
-    debugger
+  loadData: function(data, cb) {
     setTimeout(() => {
-      data.children = [
+      var children = [
         {
-          value: 'talkingdata',
-          label: 'TalkingData'
-        },
-        {
-          value: 'baidu',
-          label: '百度'
-        },
-        {
-          value: 'sina',
-          label: '新浪'
+          id: 555,
+          name: 'yyy',
+          children: []
         }
       ]
-    }, 2000);
+      cb(children)
+    }, 1000);
   },
   list: ko.observableArray([
     {
