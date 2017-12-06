@@ -222,90 +222,90 @@
       <y-grid params="ref:'modalgrid',onRowSelect:$root.onRowSelect,isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>
     </y-modal>
   </y-boxcontent>
-  <!--<y-boxcontent>-->
-    <!--<h1>10.icon图标</h1>-->
-    <!--<y-icon params="type: 'glass', size: 20, color: 'red'"></y-icon>-->
-    <!--<y-button params="type: 'primary'"><y-icon params="type: 'star', color: 'yellow'"></y-icon>你有freestyle吗？</y-button>-->
-    <!--<y-button params="type: 'primary'"><y-icon params="type: 'cog', padding: {right: '5px'}"></y-icon>设定</y-button>-->
-    <!--<y-button params="type: 'primary'"><y-icon params="type: 'cog', padding: '5px'"></y-icon>设定</y-button>-->
-  <!--</y-boxcontent>-->
-  <!--<y-boxcontent>-->
-    <!--<h1>11.树</h1>-->
-    <!--<h2>11.1 单选</h2>-->
-    <!--<y-tree params="data:$root.treeData, height:'200px',onSelect: $root.onTreeSelect"></y-tree>-->
-    <!--<p>当前选中的节点是：<span data-bind="text:$root.treeSelectedData"></span></p>-->
-    <!--<h2>11.2 异步加载</h2>-->
-    <!--<y-tree params="data:$root.asyncTreeData, height:'200px',onSelect: $root.onTreeSelect, loadData:$root.loadTreeData"></y-tree>-->
+  <y-boxcontent>
+    <h1>10.icon图标</h1>
+    <y-icon params="type: 'glass', size: 20, color: 'red'"></y-icon>
+    <y-button params="type: 'primary'"><y-icon params="type: 'star', color: 'yellow'"></y-icon>你有freestyle吗？</y-button>
+    <y-button params="type: 'primary'"><y-icon params="type: 'cog', padding: {right: '5px'}"></y-icon>设定</y-button>
+    <y-button params="type: 'primary'"><y-icon params="type: 'cog', padding: '5px'"></y-icon>设定</y-button>
+  </y-boxcontent>
+  <y-boxcontent>
+    <h1>11.树</h1>
+    <h2>11.1 单选</h2>
+    <y-tree params="data:$root.treeData, height:'200px',onSelect: $root.onTreeSelect"></y-tree>
+    <p>当前选中的节点是：<span data-bind="text:$root.treeSelectedData"></span></p>
+    <h2>11.2 异步加载</h2>
+    <y-tree params="data:$root.asyncTreeData, height:'200px',onSelect: $root.onTreeSelect, loadData:$root.loadTreeData"></y-tree>
 
-  <!--</y-boxcontent>-->
-  <!--<y-boxcontent>-->
-    <!--<h1>13.表格</h1>-->
-    <!--<div class="row">-->
-      <!--<div class="col-md-6">-->
-        <!--<h4>普通ko对象，每个属性也是ko对象，为了支持可编辑</h4>-->
-        <!--&lt;!&ndash;<y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>&ndash;&gt;-->
-      <!--</div>-->
-      <!--<div class="col-md-6">-->
-        <!--<h4>普通ko对象，由普通json对象set获得，不支持可编辑</h4>-->
-        <!--<y-grid params="onSizeChange:$root.onSizeChange,onPageChange: $root.onPageChange,columns:$root.pureColumns,rows: $root.pureRows,maxheight:'auto',pagination:true,totalCount: $root.totalCount"></y-grid>-->
-      <!--</div>-->
-      <!--<div class="col-md-12">-->
-        <!--<h4>datatable + 复杂主子表</h4>-->
-        <!--<y-state-tabs params="style:{marginBottom: 0},hideNum: true,index:$root.curStateIndex,items:$root.stateTabsItems,handler: $root.stateTabsHandler"></y-state-tabs>-->
-        <!--<div>-->
-        <!--<y-button params="click:$root.hideByField">隐藏列</y-button>-->
-        <!--<y-button params="click:$root.showByField">显示列</y-button>-->
-        <!--</div>-->
-        <!--<div class="y-grid-wrapper">-->
-          <!--<div class="y-grid">-->
-          <!--<y-grid-head params="columns: $root.pureColumns2"></y-grid-head>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<y-grid params="onRowSelect:$root.onRowSelect,nohead:true,isSeparate:true,tdstyle:{backgroundColor:'#eeeff1',marginTop:'10px'},ref:'reftable',defaultExpand:true,minheight:'484px',maxheight:'auto',isStripe: false,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount">-->
-        <!--</y-grid>-->
-      <!--</div>-->
-      <!--<div class="col-md-12">-->
-        <!--<h4>rowspan datatable</h4>-->
-        <!--<y-grid params="isStripe:true,rowspan:{maxCol: 2},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrows">-->
+  </y-boxcontent>
+  <y-boxcontent>
+    <h1>13.表格</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>普通ko对象，每个属性也是ko对象，为了支持可编辑</h4>
+        <!--<y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>-->
+      </div>
+      <div class="col-md-6">
+        <h4>普通ko对象，由普通json对象set获得，不支持可编辑</h4>
+        <y-grid params="onSizeChange:$root.onSizeChange,onPageChange: $root.onPageChange,columns:$root.pureColumns,rows: $root.pureRows,maxheight:'auto',pagination:true,totalCount: $root.totalCount"></y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>datatable + 复杂主子表</h4>
+        <y-state-tabs params="style:{marginBottom: 0},hideNum: true,index:$root.curStateIndex,items:$root.stateTabsItems,handler: $root.stateTabsHandler"></y-state-tabs>
+        <div>
+        <y-button params="click:$root.hideByField">隐藏列</y-button>
+        <y-button params="click:$root.showByField">显示列</y-button>
+        </div>
+        <div class="y-grid-wrapper">
+          <div class="y-grid">
+          <y-grid-head params="columns: $root.pureColumns2"></y-grid-head>
+          </div>
+        </div>
+        <y-grid params="onRowSelect:$root.onRowSelect,nohead:true,isSeparate:true,tdstyle:{backgroundColor:'#eeeff1',marginTop:'10px'},ref:'reftable',defaultExpand:true,minheight:'484px',maxheight:'auto',isStripe: false,columns:$root.columnsdt,rows: $root.datatable,isDataTable:true,pagination:true,totalCount: $root.totalCount">
+        </y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>rowspan datatable</h4>
+        <y-grid params="isStripe:true,rowspan:{maxCol: 2},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrows">
 
-        <!--</y-grid>-->
-      <!--</div>-->
-      <!--<div class="col-md-12">-->
-        <!--<h4>横向滚动条 datatable 需固定每一列的宽度</h4>-->
-        <!--<y-grid params="isStripe:true,columns:$root.scrollColumn,rows: $root.scrollRows">-->
+        </y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>横向滚动条 datatable 需固定每一列的宽度</h4>
+        <y-grid params="isStripe:true,columns:$root.scrollColumn,rows: $root.scrollRows">
 
-        <!--</y-grid>-->
-      <!--</div>-->
-      <!--<div class="col-md-12">-->
-        <!--<h4>datatable无表头</h4>-->
-        <!--<y-grid params="nohead:true, columns:$root.noheadCols,rows: $root.noheadRows"></y-grid>-->
-      <!--</div>-->
-      <!--<div class="col-md-12">-->
-        <!--<h4>datatable无数据内容自定义</h4>-->
-        <!--<y-grid params="maxheight:'auto',columns:$root.noDataCols,rows: $root.noDataRows">-->
-          <!--<div>-->
-            <!--<y-button params="click: $root.handleSupplyApply">邀请供应商</y-button>-->
-          <!--</div>-->
-        <!--</y-grid>-->
-      <!--</div>-->
-      <!--<div class="col-md-12">-->
-        <!--<h4>锁定表头</h4>-->
-        <!--<y-grid params="lockhead:true,columns:$root.lockheadCols,rows: $root.lockheadRows">-->
-          <!--<div>-->
-            <!--<y-button params="click: $root.handleSupplyApply">邀请供应商</y-button>-->
-          <!--</div>-->
-        <!--</y-grid>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</y-boxcontent>-->
-  <!--<y-boxcontent>-->
-    <!--<h1>14.分页</h1>-->
-    <!--<y-pagination params="onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>-->
-  <!--</y-boxcontent>-->
-  <!--<y-boxcontent>-->
-    <!--<h1>15.单选</h1>-->
-    <!--<y-radio params="dataList:$root.radioDataList,value:$root.radioValue"></y-radio>-->
-  <!--</y-boxcontent>-->
+        </y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>datatable无表头</h4>
+        <y-grid params="nohead:true, columns:$root.noheadCols,rows: $root.noheadRows"></y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>datatable无数据内容自定义</h4>
+        <y-grid params="maxheight:'auto',columns:$root.noDataCols,rows: $root.noDataRows">
+          <div>
+            <y-button params="click: $root.handleSupplyApply">邀请供应商</y-button>
+          </div>
+        </y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>锁定表头</h4>
+        <y-grid params="lockhead:true,columns:$root.lockheadCols,rows: $root.lockheadRows">
+          <div>
+            <y-button params="click: $root.handleSupplyApply">邀请供应商</y-button>
+          </div>
+        </y-grid>
+      </div>
+    </div>
+  </y-boxcontent>
+  <y-boxcontent>
+    <h1>14.分页</h1>
+    <y-pagination params="onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>
+  </y-boxcontent>
+  <y-boxcontent>
+    <h1>15.单选</h1>
+    <y-radio params="dataList:$root.radioDataList,value:$root.radioValue"></y-radio>
+  </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
