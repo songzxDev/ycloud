@@ -54,11 +54,12 @@ class Grid extends Base {
     this.tdstyle = params.tdstyle || {}
     // event binding
     // 行选中
-    this.onRowSelect = params.onRowSelect
+    this.onRowSelect = params.onRowSelect || function () {}
     this.onPageChange = params.onPageChange
     this.onSizeChange = params.onSizeChange
     this.isSeparate = params.isSeparate || false
     this.style = params.style || {}
+    this.forbitRowSelect = ko.observable(params.forbitRowSelect || false)
   }
   computed (params) {
     // 只有表格数据大于10条才显示分页
@@ -108,6 +109,7 @@ class Grid extends Base {
         } else {
           row._selected(isChecked)
         }
+        this.onRowSelect(row)
       })
     })
   }
@@ -118,6 +120,9 @@ class Grid extends Base {
           col._show(visible)
         }
       })
+    }
+    this.setRowSelectEnable = (isEnable) => {
+      this.forbitRowSelect(isEnable)
     }
   }
 }

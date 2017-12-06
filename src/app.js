@@ -27,6 +27,9 @@ let viewmodel = {
   submitFn: function () {
     alert ('submit:' + viewmodel.formData.title())
   },
+  onRowSelect: function (row) {
+    debugger
+  },
   cascaderData: ko.observableArray([
     {
       id: 1,
@@ -209,7 +212,7 @@ let viewmodel = {
   columns: ko.observableArray([
     {
       title: '',
-      field: '',
+      field: 'id',
       type: 'checkbox',
       hidden: false,
       width: 50
@@ -840,5 +843,8 @@ setTimeout(() => {
   // viewmodel.radioDataList([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}])
 }, 1000)
 setTimeout(() => {
+  // var grid2 = ycloud.$refs['modalgrid']
+  // grid2.setColVisibleByField('id', false)
   ycloud.notice.error('here has some error！here has some error！here has some error！here has some error！here has some error！here has some error！')
 }, 3000)
+

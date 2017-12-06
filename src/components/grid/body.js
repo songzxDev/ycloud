@@ -22,6 +22,7 @@ class Body extends Base {
     this.lockhead = params.lockhead
     this.tdstyle = params.tdstyle
     this.isSeparate = params.isSeparate
+    this.forbitRowSelect = params.forbitRowSelect
   }
   computed (params) {
     // 计算暂无数据的单元格合并
@@ -71,10 +72,14 @@ class Body extends Base {
               } else {
                 row.parent.setRowUnSelect(row)
               }
+              params.onRowSelect(row)
             }
           })
         } else {
           row._selected = ko.observable(false)
+          row._selected.subscribe(function (val) {
+            params.onRowSelect(row)
+          })
         }
         // todo:行是否选中要和cacheData里的数据进行合并
       })
@@ -161,6 +166,10 @@ class Body extends Base {
       row._hover(true)
     }
     this.handleClick = (row, evt) => {
+      // 如果组织行选中则直接返回不选中任何行
+      if (this.forbitRowSelect()) {
+        return false
+      }
       // 对于一些输入框不选中
       if (!this.isTriggerRowSelect(evt)) {
         return true
@@ -169,9 +178,10 @@ class Body extends Base {
       if (this.isMultiSelect()) {
         let _selected = !row._selected()
         row._selected(_selected)
+      } else {
+        // 一些单行选中的场景
+        this.onRowSelect && this.onRowSelect(row)
       }
-      // 触发行选中事件
-      this.onRowSelect && this.onRowSelect(row)
       return true
     }
   }
