@@ -21,11 +21,18 @@ class Grid extends Base {
       // 出事化列内置一些属性 _show 用来隐藏和显示列
       if (params.columns && params.columns.subscribe) {
         params.columns().forEach((col) => {
+          // checkbox设定特殊宽度
+          if (col.type === 'checkbox') {
+            col.width = 35
+          }
           col._show = ko.observable(!col.hidden)
         })
         return params.columns()
       } else {
         params.columns.forEach((col) => {
+          if (col.type === 'checkbox') {
+            col.width = 35
+          }
           col._show = ko.observable(!col.hidden)
         })
         return params.columns

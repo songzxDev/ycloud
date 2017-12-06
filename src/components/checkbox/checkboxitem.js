@@ -2,6 +2,7 @@ import template from './checkboxitem.html'
 import ko from 'knockout'
 function init (params) {
   this.label = params.label
+  this.secondarylabel = params.secondarylabel || ''
   this.value = params.value
   this.checked = params.checked || ko.observable(false)
   params.valueList = params.valueList || []
