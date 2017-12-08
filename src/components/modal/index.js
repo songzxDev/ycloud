@@ -6,6 +6,10 @@ function init (params) {
   this.visible = params.visible || ko.observable(false)
   this.width = params.width || '400px'
   this.title = params.title || '提示'
+  this.top = window.innerHeight * 0.06 + 'px'
+  var headAndFootHeightRate = (43 + 57) / window.innerHeight
+  // 容器最大高度等于 屏幕可视高度 - 头部 - 尾部 - 内存padding - 距离顶部距离10% - 距离底部最小距离10%
+  this.bodyMaxHeight = window.innerHeight * (1 - 0.12 - headAndFootHeightRate) + 'px'
   // 关闭事件
   this.handleClose = (data, event) => {
     const className = event.target.getAttribute('class')

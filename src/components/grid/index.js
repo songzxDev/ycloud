@@ -67,6 +67,9 @@ class Grid extends Base {
     this.isSeparate = params.isSeparate || false
     this.style = params.style || {}
     this.forbitRowSelect = ko.observable(params.forbitRowSelect || false)
+    // 放在弹框内部的需要动态内部高度
+    this.modalBodyModalHeight = params.modalBodyModalHeight || 0
+    this.modalBodyExtraHeight = params.modalBodyExtraHeight || '0'
   }
   computed (params) {
     // 只有表格数据大于10条才显示分页
@@ -131,6 +134,33 @@ class Grid extends Base {
     this.setRowSelectEnable = (isEnable) => {
       this.forbitRowSelect(isEnable)
     }
+    this.computeMaxHeight = () => {
+      var maxheight = this.maxheight
+      // 如果是在modal中，maxheight = 外层height - extraHeight - paginationHeight - 内层padding高度
+      if (maxheight === 'auto') {
+        return 'auto'
+      } else if (this.modalBodyModalHeight) {
+        var _modalBodyModalHeight = this.modalBodyModalHeight.toString().replace('px', '')
+        var _modalBodyExtraHeight = this.modalBodyExtraHeight.replace('px', '')
+        var _paginationHeight = 0
+        var _paddingHeight = 33 // padding+border高度
+        if (this.pagination()) {
+          _paginationHeight = 36
+        }
+        var result = _modalBodyModalHeight - _modalBodyExtraHeight - _paginationHeight - _paddingHeight
+        // 如果超过允许外层的最大高度
+        if (maxheight.replace('px', '') - 0 > result) {
+          return result + 'px'
+        } else {
+          return maxheight
+        }
+      } else {
+        return maxheight
+      }
+    }
+  }
+  created (params) {
+    this.computedMaxHeight = this.computeMaxHeight()
   }
 }
 export default {

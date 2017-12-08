@@ -219,7 +219,7 @@
     <h1>9.弹框</h1>
     <y-button params="click:$root.showModal">显示弹框</y-button>
     <y-modal params="visible: $root.modalVisible, width:'700px',errormsg:'请选择组织',title:'组织选择！'">
-      <y-grid params="ref:'modalgrid',onRowSelect:$root.onRowSelect,isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>
+      <y-grid params="modalBodyModalHeight:bodyMaxHeight,modalBodyExtraHeight:'10px',ref:'modalgrid',onRowSelect:$root.onRowSelect,isStripe: true,columns:$root.columns,rows: $root.rows,lockhead:true"></y-grid>
     </y-modal>
   </y-boxcontent>
   <y-boxcontent>
