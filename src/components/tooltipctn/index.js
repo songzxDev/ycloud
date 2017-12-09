@@ -27,7 +27,7 @@ class TooltipCtn extends Base {
       let position = el.getBoundingClientRect()
       if (this.position === 'top' || this.position === 'topleft') {
         if (this.height) {
-          this.top(position.top - el.offsetHeight * .5 - this.height + 'px')
+          this.top(position.top - el.offsetHeight * 0.5 - this.height + 'px')
         } else {
           this.top(position.top - el.offsetHeight * 2.5 + 'px')
         }
