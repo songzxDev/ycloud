@@ -306,6 +306,29 @@
     <h1>15.单选</h1>
     <y-radio params="dataList:$root.radioDataList,value:$root.radioValue"></y-radio>
   </y-boxcontent>
+  <y-boxcontent>
+    <h1>16.tooltip</h1>
+    <y-tooltip params="title:'上面出现tooltip',class:'y-text'">
+    </y-tooltip>
+    <y-tooltip params="title:'下面出现tooltip',position:'bottom'">
+    </y-tooltip>
+    <y-tooltip params="title:'topleft+内容自定义'">
+      <y-tooltipctn params="targetEl:$el,title:title,show:isShow,position:'topleft',height:213">
+        <div>
+          不限定报价品范围：不进行报价范围的指定，供应商可以为本次寻源项目的所有物料报价。
+        </div>
+        <br>
+        <div>
+          手动分配：在被邀请的供应商中，采购员手动为供应商分配可报价的物料范围，供应商报价时仅可对已被分配的物料范围进行报价，其他未被分配的物料供应商报价时不可见不可报价。
+        </div>
+        <br>
+        <div>
+          按供货目录自动分配：按照供货目录自动分配报价范围给自有合格供应商（供应商的供货目录数据来源供应商档案中的主供物料分类数据）。不接受盘外供应商报价。
+        </div>
+      </y-tooltipctn>
+      <i class="fa fa-edit"></i>
+    </y-tooltip>
+  </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>

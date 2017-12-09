@@ -1,0 +1,7 @@
+<span class="y-tooltip" data-bind="event:{mouseenter:handleHover,mouseout: handleLeave}">
+  <span data-bind="text:title"></span>
+  <!-- ko template: { nodes: $componentTemplateNodes} --><!-- /ko -->
+  <!-- ko if:!hasMarkup() -->
+  <y-tooltipctn params="targetEl:$el,title:title,show:isShow,position:position"></y-tooltipctn>
+  <!-- /ko -->
+</span>

@@ -25,6 +25,7 @@ import statetabs from './statetabs'
 import tag from './tag'
 import tree from './tree'
 import yswitch from './switch'
+import tooltip from './tooltip'
 import {notice, $refs} from './base'
 const PREFIX = 'y-'
 function register (model) {
@@ -59,6 +60,7 @@ register(datepicker)
 register(datetimepicker)
 register(statetabs)
 register(searchtag)
+register(tooltip)
 let ycloud = {
   notice,
   $refs

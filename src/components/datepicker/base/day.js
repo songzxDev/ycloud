@@ -21,10 +21,8 @@ function init (params) {
   }, this)
   this.disabledDate = function (time) {
     if (params.minDate() && clearHours(time) <= clearHours(new Date(params.minDate()))) {
-      debugger
       return true
     } else if (params.maxDate() && clearHours(time) >= clearHours(new Date(params.maxDate()))) {
-      debugger
       return true
     } else {
       return false
