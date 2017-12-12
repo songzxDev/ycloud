@@ -23,32 +23,45 @@ y-tooltip{
     bottom: -5px;
     left: 50%;
     border-width: 5px 5px 0;
-    border-top-color: rgba(60,167,227,.9);
+    border-top-color: #7ebef2;
     margin-left: -5px;
   }
   &.y-tooltip-topleft .y-tooltip-arrow{
     bottom: -5px;
     left: 10%;
     border-width: 5px 5px 0;
-    border-top-color: rgba(60,167,227,.9);
+    border-top-color: #7ebef2;
     margin-left: -5px;
   }
   &.y-tooltip-bottom .y-tooltip-arrow{
     top: -5px;
     left: 50%;
     border-width: 0 5px 5px;
-    border-bottom-color: rgba(60,167,227,.9);
+    border-bottom-color: #7ebef2;
     margin-left: -5px;
   }
   .y-tooltip-ctn-inner{
     max-width: 350px;
     min-height: 34px;
     padding: 8px 12px;
-    color: #fff;
+    color: @f-color-normal;
     text-align: left;
     text-decoration: none;
-    background-color: rgba(60,167,227, 0.9);
-    border-radius: 4px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    background-color: #ecf6fd;
+    border: 1px solid #7ebef2;
+    border-radius: 2px;
+    box-shadow:0 2px 6px 0 rgba(0,0,0,0.15);
+  }
+  .y-tooltip-cover{
+    position: absolute;
+    color: #ecf6fd;
+  }
+  &.y-tooltip-top .y-tooltip-cover,&.y-tooltip-topleft .y-tooltip-cover{
+    top: -15px;
+    left: -6px;
+  }
+  &.y-tooltip-bottom .y-tooltip-cover{
+    top: -2px;
+    left: -6px;
   }
 }
