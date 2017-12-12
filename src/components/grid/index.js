@@ -119,7 +119,6 @@ class Grid extends Base {
         } else {
           row._selected(isChecked)
         }
-        this.onRowSelect(row)
       })
     })
   }

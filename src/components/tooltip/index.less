@@ -55,13 +55,28 @@ y-tooltip{
   .y-tooltip-cover{
     position: absolute;
     color: #ecf6fd;
+    width: 8px;
+    height: 8px;
+    background-color: #ecf6fd;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
   }
-  &.y-tooltip-top .y-tooltip-cover,&.y-tooltip-topleft .y-tooltip-cover{
-    top: -15px;
-    left: -6px;
+  &.y-tooltip-topleft .y-tooltip-cover{
+    bottom: -2px;
+    left: 10%;
+    margin-left: -4px;
+  }
+  &.y-tooltip-top .y-tooltip-cover{
+    bottom: -2px;
+    left: 50%;
+    margin-left: -4px;
   }
   &.y-tooltip-bottom .y-tooltip-cover{
     top: -2px;
-    left: -6px;
+    left: 50%;
+    margin-left: -4px;
   }
 }
