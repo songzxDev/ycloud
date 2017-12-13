@@ -110,15 +110,7 @@ class Grid extends Base {
     this.allRowChecked.subscribe(isChecked => {
       // 集成datatable
       this.rows().forEach(row => {
-        if (this.isDataTable) {
-          if (isChecked) {
-            row.parent.addRowSelect(row)
-          } else {
-            row.parent.setRowUnSelect(row)
-          }
-        } else {
-          row._selected(isChecked)
-        }
+        row._selected(isChecked)
       })
     })
   }
