@@ -19,7 +19,7 @@ function init (params) {
   this.defaultFormatText = ko.computed(() => {
     let result
     if (this.isDataTable && params.col.field) {
-      result = params.row.getValue(params.col.field)
+      result = params.row.ref(params.col.field)() // 使用ko属性数值改变才能被监听到
     } else {
       result = params.row[params.col.field]
     }

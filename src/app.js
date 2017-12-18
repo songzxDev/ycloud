@@ -7,6 +7,21 @@ var dt = new u.DataTable({
     createdate: ""
   }
 })
+var table = new u.DataTable({
+  meta: {
+    id: '',
+    name: '',
+    price: '',
+    num: '',
+    total: ''
+  }
+})
+table.on('price.valueChange', function (obj) {
+  var price = obj.rowObj.getValue('price')
+  var num = obj.rowObj.getValue('num')
+  let total = price * num
+  obj.rowObj.setValue('total', total)
+})
 setTimeout(function () {
   dt.setSimpleData([{id:1,name:2,createdate:'2014-01-06'},{id:2,name:1,createdate:'2014-01-06 00:02:03'},{id:3,name:4,createdate:''},{id:3,name:4,createdate:1509610089885}])
   // dt.setAllRowsUnSelect()
@@ -281,6 +296,37 @@ let viewmodel = {
       ]
     }
   ]),
+  ComputeRows: table.rows,
+  ComputeColumns: [{
+    title: 'id',
+    field: 'id'
+  }, {
+    title: 'name',
+    field: 'name',
+    type: 'render',
+    renderFn: function (row) {
+      return row.ref('name')() + row.ref('price')()
+    }
+  }, {
+    title: '单价',
+    field: 'price',
+    type: 'component',
+    compFn: function (row) {
+      return {
+        name: 'y-input',
+        params: {
+          type: 'text',
+          value: row.ref('price')
+        }
+      }
+    }
+  }, {
+    title: '数量',
+    field: 'num'
+  }, {
+    title: '总价',
+    field: 'total'
+  }],
   columnsdt: [
     {
       title: '',
@@ -831,6 +877,13 @@ setTimeout(() => {
     {value:11,label:'等等9912.。想，'}])
   viewmodel.multiselect([{value:1}, {value:2}])
   viewmodel.singleselect({value:1,label:'北京'})
+  table.setSimpleData([{
+    id: 1,
+    name: 'name',
+    price: 23,
+    num: 2,
+    total: 46
+  }])
 }, 500)
 setTimeout(() => {
   ycloud.notice.info('info', {timeout: 2000})
