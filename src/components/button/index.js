@@ -20,8 +20,9 @@ function init (params) {
   this.type = params.type ? (PREFIX + params.type) : ''
   this.size = params.size ? (PREFIX + params.size) : ''
   this.shape = params.shape ? (PREFIX + params.shape) : ''
+  this.long = params.long ? (PREFIX + 'long') : ''
   this.classes = ko.computed(() => {
-    return `${this.type} ${this.size} ${this.shape}`
+    return `${this.type} ${this.size} ${this.shape} ${this.long}`
   })
   this.btnType = params.btnType || 'button'
   this.disabled = params.disabled || ko.observable(false)
