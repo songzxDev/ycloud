@@ -2,7 +2,7 @@
 * @author: liuxu7
 * @date: 2017-10-25
 * @description: 按钮组件
-* type: glyphicons类名
+* type: fa类名
 * size: 图标大小
 * color: 图标颜色
 * padding: 图标内间距
@@ -10,7 +10,7 @@
 import template from './index.html'
 
 function init (params) {
-  const PREFIX = 'glyphicon-'
+  const PREFIX = 'fa-'
   this.type = params.type ? (PREFIX + params.type) : ''
   this.size = (params.size || '') + 'px'
   this.color = params.color || '#333'

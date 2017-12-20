@@ -10,9 +10,9 @@
           <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
         </div>
         <div class="y-modal-foot">
-          <sapn class="y-modal-error-msg" data-bind="text:errormsg"></sapn>
+          <span class="y-modal-error-msg" data-bind="text:errormsg"></span>
           <y-button params="type:'primary', click: handleOk">确定</y-button>
-          <y-button params="click: handleCancel">取消</y-button>
+          <y-button params="type:'ghost', click: handleCancel">取消</y-button>
         </div>
       </div>
 

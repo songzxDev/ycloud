@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ycloud</title>
   <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <style>
     .inline-block {
       display: inline-block !important;
@@ -114,7 +114,7 @@
     <h1 id="button">5.button</h1>
     <div class="row">
       <div class="col-md-12">
-        <y-button>1</y-button>
+        <y-button params="long: true">1</y-button>
         <y-button params="type: 'primary', size: 'large', shape: 'circle', btnType: 'submit', click: vm._console">2
         </y-button>
         <y-button params="type: 'dashed', click: $root._console, wait: 3000">3</y-button>
@@ -122,7 +122,7 @@
         <y-button params="type: 'info'">5</y-button>
         <y-button params="type: 'success'">6</y-button>
         <y-button params="type: 'warning', disabled: true">7</y-button>
-        <y-button params="type: 'error', loading: vm.loading">啊</y-button>
+        <y-button params="type: 'error', loading: vm.loading, loadingText: '等待中'">啊</y-button>
         <y-button params="btnType: 'a', url: 'www.baidu.com', target: '_blank'">a标签相对路径跳转</y-button>
         <y-button params="type: 'warning', btnType: 'a', url: 'www.baidu.com', rootPath: true">a标签绝对路径跳转</y-button>
         <a href="www.baidu.com">百度一下</a>
@@ -224,10 +224,10 @@
   </y-boxcontent>
   <y-boxcontent>
     <h1>10.icon图标</h1>
-    <y-icon params="type: 'glass', size: 20, color: 'red'"></y-icon>
-    <y-button params="type: 'primary'"><y-icon params="type: 'star', color: 'yellow'"></y-icon>你有freestyle吗？</y-button>
-    <y-button params="type: 'primary'"><y-icon params="type: 'cog', padding: {right: '5px'}"></y-icon>设定</y-button>
-    <y-button params="type: 'primary'"><y-icon params="type: 'cog', padding: '5px'"></y-icon>设定</y-button>
+    <y-icon params="type: 'repeat', size: 20, color: 'red'"></y-icon>
+    <y-button params="type: 'primary'"><y-icon params="type: 'etsy', color: 'yellow'"></y-icon>你有freestyle吗？</y-button>
+    <y-button params="type: 'primary'"><y-icon params="type: 'etsy', padding: {right: '5px'}"></y-icon>设定</y-button>
+    <y-button params="type: 'primary'"><y-icon params="type: 'etsy', padding: '5px'"></y-icon>设定</y-button>
   </y-boxcontent>
   <y-boxcontent>
     <h1>11.树</h1>
