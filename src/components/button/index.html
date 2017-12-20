@@ -7,7 +7,7 @@
 <!-- ko if: btnType!=='a' -->
 <button class="y-button" data-bind="css: classes, attr: {type: btnType, disabled: disabled}, style: {opacity: loading()?0.7:1}, click: handleReClick">
   <span data-bind="visible: loading">
-      <span class="glyphicon glyphicon-repeat y-load-loop"></span> loading..
+      <span class="fa fa-repeat y-load-loop"></span> <span data-bind="text: loadingText"></span>
   </span>
   <span data-bind="visible: !loading()">
       <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
