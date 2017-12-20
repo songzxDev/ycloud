@@ -492,7 +492,7 @@ let viewmodel = {
     }
   }]),
   rows: ko.observableArray([
-    {id: ko.observable(1), name: ko.observable('张三')},
+    {id: ko.observable(1), name: ko.observable('张三'), _selected: ko.observable(true)},
     {id: ko.observable(2), name: ko.observable('张李四')},
     {id: ko.observable(3), name: ko.observable('张李')}
   ]),

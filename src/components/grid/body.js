@@ -57,12 +57,13 @@ class Body extends Base {
     // 行数据
     this.rows = ko.computed(() => {
       params.rows().forEach((row) => {
-        row._hover = ko.observable(false)
-        row._disabled = ko.observable(false)
-        row._expand = ko.observable(this.defaultExpand)
+        // 减轻重复赋值的压力
+        !row._hover && (row._hover = ko.observable(false))
+        !row._disabled && (row._disabled = ko.observable(false))
+        !row._expand && (row._expand = ko.observable(this.defaultExpand))
         if (this.isDataTable) {
           // 如果是dataTable设置成计算属性
-          row._selected = ko.pureComputed({
+          !row._selected && (row._selected = ko.pureComputed({
             read: function () {
               return row.selected()
             },
@@ -74,17 +75,19 @@ class Body extends Base {
               }
               params.onRowSelect(row)
             }
-          })
+          }))
         } else {
-          row._selected = ko.observable(false)
-          row._selected.subscribe(function (val) {
-            params.onRowSelect(row)
-          })
+          if (!row._selected) {
+            !row._selected && (row._selected = ko.observable(false))
+            row._selected.subscribe(function (val) {
+              params.onRowSelect(row)
+            })
+          }
         }
         // todo:行是否选中要和cacheData里的数据进行合并
       })
       return params.rows()
-    })
+    }).extend({ deferred: true })
     // 暂无数据区域的高度
     this.noDataHeight = ko.computed(() => {
       if (params.maxheight === 'auto') {
