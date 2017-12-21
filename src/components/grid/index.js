@@ -39,6 +39,7 @@ class Grid extends Base {
       }
     })
     this.rows = params.rows
+    this.selectedRows = params.selectedRows || ko.observableArray([])
     this.lockhead = params.lockhead || false
     this.domId = params.id
     this.isTableBorder = params.isTableBorder || params.rowspan

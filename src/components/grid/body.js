@@ -2,6 +2,7 @@ import template from './body.html'
 import ko from 'knockout'
 import td from './td'
 import Base from '@/core/base'
+import _ from '@/util/lodash'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + td.name, {
   viewModel: td.init,
@@ -56,7 +57,7 @@ class Body extends Base {
     })
     // 行数据
     this.rows = ko.computed(() => {
-      params.rows().forEach((row) => {
+      params.rows().forEach((row, index) => {
         // 减轻重复赋值的压力
         !row._hover && (row._hover = ko.observable(false))
         !row._disabled && (row._disabled = ko.observable(false))
@@ -77,12 +78,16 @@ class Body extends Base {
             }
           }))
         } else {
-          if (!row._selected) {
-            !row._selected && (row._selected = ko.observable(false))
-            row._selected.subscribe(function (val) {
-              params.onRowSelect(row)
-            })
-          }
+          // 初始化
+          row._selected = ko.observable(false)
+          row._selected.subscribe(function (val) {
+            if (val) {
+              params.selectedRows.push(row)
+            } else {
+              params.selectedRows(_.difference(params.selectedRows(), [row]))
+            }
+            params.onRowSelect(row)
+          })
         }
         // todo:行是否选中要和cacheData里的数据进行合并
       })
