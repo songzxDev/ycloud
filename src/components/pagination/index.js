@@ -34,10 +34,14 @@ function init (params) {
     return Math.ceil(this.totalCount() / this.pageSize())
   })
   this.pageChange = () => {
+    // 以前写错了，这里保留旧版代码兼容以前版本
     params.onPageChage && params.onPageChage(this.pageIndex() - INDEX_DIFF, this.pageSize())
+    params.onPageChange && params.onPageChange(this.pageIndex() - INDEX_DIFF, this.pageSize())
   }
   this.sizeChange = (page) => {
     this.pageSize(page.value)
+    // fix #55 size Change之后要从第一页重新开始
+    this.pageIndex(0 + INDEX_DIFF)
     params.onSizeChange && params.onSizeChange(this.pageIndex() - INDEX_DIFF, this.pageSize())
   }
   // 进入某一页
