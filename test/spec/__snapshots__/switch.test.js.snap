@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`y-switch组件 快照 1`] = `
+<body>
+   
+  <y-switch
+    params="checked:switchChecked, disabled:switchDisabled "
+  >
+    <div
+      class="inline-block"
+    >
+      
+  
+      <span
+        class="y-switch y-switch-"
+        data-bind="css:sizeClass, click: checkSelect"
+      >
+        
+    
+        <input
+          type="hidden"
+          value="false"
+        />
+        
+    
+        <span
+          class="y-switch-inner"
+        >
+          
+          
+          <!-- ko template: { nodes: $componentTemplateNodes } -->
+          <!-- /ko -->
+          
+    
+        </span>
+        
+  
+      </span>
+      
+
+    </div>
+    
+
+  </y-switch>
+</body>
+`;
