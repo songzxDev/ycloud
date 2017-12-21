@@ -71,6 +71,7 @@ class Grid extends Base {
     // 放在弹框内部的需要动态内部高度
     this.modalBodyModalHeight = params.modalBodyModalHeight || 0
     this.modalBodyExtraHeight = params.modalBodyExtraHeight || '0'
+    this.onModalOkValidate = params.onModalOkValidate || function () {}
   }
   computed (params) {
     // 只有表格数据大于10条才显示分页
