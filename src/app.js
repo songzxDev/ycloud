@@ -43,7 +43,8 @@ let viewmodel = {
     alert ('submit:' + viewmodel.formData.title())
   },
   onRowSelect: function (row) {
-    console.log(viewmodel.selectedRows())
+    let grid = ycloud.$refs['modalgrid']
+    console.log(grid.getSelectedRows())
   },
   cascaderData: ko.observableArray([
     {
@@ -496,7 +497,6 @@ let viewmodel = {
     {id: ko.observable(2), name: ko.observable('张李四')},
     {id: ko.observable(3), name: ko.observable('张李')}
   ]),
-  selectedRows: ko.observableArray([]),
   pureRows: ko.observableArray([{
     id: 1, name: 2
   }]),

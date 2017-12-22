@@ -2,7 +2,7 @@
   <div class="y-grid-wrapper" data-bind="css: {'y-grid-noborder':noborder, 'y-grid-separate': isSeparate},style:style">
     <div class="y-grid" data-bind="css:{'y-grid-stripe':isStripe,'y-grid-border': isTableBorder},style:{height:computedMaxHeight,minHeight:minheight}">
       <y-grid-head data-bind="visible:!nohead" params="lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
-      <y-grid-body params="forbitRowSelect:forbitRowSelect,isSeparate:isSeparate,tdstyle: tdstyle, lockhead:lockhead,isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect, selectedRows:selectedRows">
+      <y-grid-body params="forbitRowSelect:forbitRowSelect,isSeparate:isSeparate,tdstyle: tdstyle, lockhead:lockhead,isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect">
         <!-- ko template: { nodes: $parent.$templateNodes } --><!-- /ko -->
       </y-grid-body>
     </div>

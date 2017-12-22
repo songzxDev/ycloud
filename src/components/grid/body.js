@@ -2,7 +2,7 @@ import template from './body.html'
 import ko from 'knockout'
 import td from './td'
 import Base from '@/core/base'
-import _ from '@/util/lodash'
+// import _ from '@/util/lodash'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + td.name, {
   viewModel: td.init,
@@ -79,13 +79,8 @@ class Body extends Base {
           }))
         } else {
           // 初始化
-          row._selected = ko.observable(false)
+          !row._selected && (row._selected = ko.observable(false))
           row._selected.subscribe(function (val) {
-            if (val) {
-              params.selectedRows.push(row)
-            } else {
-              params.selectedRows(_.difference(params.selectedRows(), [row]))
-            }
             params.onRowSelect(row)
           })
         }

@@ -39,7 +39,6 @@ class Grid extends Base {
       }
     })
     this.rows = params.rows
-    this.selectedRows = params.selectedRows || ko.observableArray([])
     this.lockhead = params.lockhead || false
     this.domId = params.id
     this.isTableBorder = params.isTableBorder || params.rowspan
@@ -117,6 +116,15 @@ class Grid extends Base {
     })
   }
   methods (params) {
+    this.getSelectedRows = () => {
+      let selectedRows = []
+      this.rows().forEach((item) => {
+        if (item._selected && item._selected()) {
+          selectedRows.push(item)
+        }
+      })
+      return selectedRows
+    }
     this.setColVisibleByField = (field, visible) => {
       this.columns().forEach((col) => {
         if (col.field === field) {
