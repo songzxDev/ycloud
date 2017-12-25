@@ -10,7 +10,7 @@
 
 - 示例工程和文档
     - ycloud-admin [https://yonyouyc.github.io/ycloud-admin/dist/index.html#buyofferlist](https://yonyouyc.github.io/ycloud-admin/dist/index.html#buyofferlist)
-    - document [https://github.com/yonyouyc/ycloud-document](https://github.com/yonyouyc/ycloud-document)
+    - document [https://yonyouyc.github.io/ycloud-document/dist](https://yonyouyc.github.io/ycloud-document/dist)
 
 ## 安装
 
