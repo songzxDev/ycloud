@@ -9,6 +9,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // 去除重复的css
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var packageConfig = require('../package.json')
 // ...
 config = merge(config, {
   externals: {
@@ -79,7 +80,7 @@ config = merge(config, {
         safe: true
       }
     }),
-    new webpack.BannerPlugin('ycloud v1.2.36 author by 友云采FED')
+    new webpack.BannerPlugin('ycloud v' + packageConfig.version + ' author by 友云采FED')
   ]
 })
 module.exports = config
