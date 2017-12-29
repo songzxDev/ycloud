@@ -861,6 +861,9 @@ window.clickme = function clickme (event) {
   console.log(event)
 }
 ko.applyBindings(viewmodel, document.getElementById('app'))
+setTimeout(function () {
+  ycloud.$refs['loadingGrid'].showLoading(true)
+})
 setTimeout(() => {
   viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])
   viewmodel.selectList([
@@ -884,8 +887,15 @@ setTimeout(() => {
     price: 23,
     num: 2,
     total: 46
+  }, {
+    id: 1,
+    name: 'name',
+    price: 23,
+    num: 2,
+    total: 46
   }])
-}, 500)
+  ycloud.$refs['loadingGrid'].showLoading(false)
+}, 5000)
 setTimeout(() => {
   ycloud.notice.info('info', {timeout: 2000})
   // viewmodel.radioDataList([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}])

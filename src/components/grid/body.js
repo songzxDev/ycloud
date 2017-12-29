@@ -24,6 +24,7 @@ class Body extends Base {
     this.tdstyle = params.tdstyle
     this.isSeparate = params.isSeparate
     this.forbitRowSelect = params.forbitRowSelect
+    this.isShowLoading = params.isShowLoading
   }
   computed (params) {
     // 计算暂无数据的单元格合并

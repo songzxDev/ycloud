@@ -47,6 +47,8 @@ class Grid extends Base {
     this.minheight = params.minheight || 'auto'
     this.isStripe = params.isStripe || false
     this.expand = params.expand || true
+    // 是否显示loading图标
+    this.isShowLoading = ko.observable(false)
     // 是否隐藏表头
     this.nohead = params.nohead || false
     this.noborder = params.noborder || false
@@ -116,6 +118,11 @@ class Grid extends Base {
     })
   }
   methods (params) {
+    // 设置loading图标是否显示
+    this.showLoading = (isShow) => {
+      this.isShowLoading(isShow)
+    }
+    // 获取所有选中的行数据
     this.getSelectedRows = () => {
       let selectedRows = []
       this.rows().forEach((item) => {
@@ -125,6 +132,7 @@ class Grid extends Base {
       })
       return selectedRows
     }
+    // 设置列显示隐藏
     this.setColVisibleByField = (field, visible) => {
       this.columns().forEach((col) => {
         if (col.field === field) {
@@ -132,6 +140,7 @@ class Grid extends Base {
         }
       })
     }
+    // 切换行是否禁止选中
     this.setRowSelectEnable = (isEnable) => {
       this.forbitRowSelect(isEnable)
     }

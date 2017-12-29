@@ -25,14 +25,28 @@
     <tbody class="y-grid-empty">
     <tr>
       <td data-bind="attr:{colspan: nodataColSpan},style:{height: noDataHeight, padding: '12px'}">
-        <!-- ko if: isNoDataCustomTpl -->
-          <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
-        <!-- /ko -->
-        <!-- ko ifnot: isNoDataCustomTpl -->
-          暂无数据
+        <!-- ko ifnot: isShowLoading -->
+          <!-- ko if: isNoDataCustomTpl -->
+            <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+          <!-- /ko -->
+          <!-- ko ifnot: isNoDataCustomTpl -->
+            暂无数据
+          <!-- /ko -->
         <!-- /ko -->
       </td>
     </tr>
     </tbody>
   </table>
+  <div class="y-loading-letter-ctn" data-bind="visible:isShowLoading">
+    <span class="l-1 y-loading-letter">L</span>
+    <span class="l-2 y-loading-letter">o</span>
+    <span class="l-3 y-loading-letter">a</span>
+    <span class="l-4 y-loading-letter">d</span>
+    <span class="l-5 y-loading-letter">i</span>
+    <span class="l-6 y-loading-letter">n</span>
+    <span class="l-7 y-loading-letter">g</span>
+    <span class="l-8 y-loading-letter">.</span>
+    <span class="l-9 y-loading-letter">.</span>
+    <span class="l-10 y-loading-letter">.</span>
+  </div>
 </div>
