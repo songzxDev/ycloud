@@ -1,4 +1,4 @@
-import {refmixin} from '@/mixin'
+import {refmixin} from '../mixin'
 class Base {
   constructor (params) {
     this.$el = params.$el

@@ -13,6 +13,7 @@ class Tooltip extends Base {
     this.class = params.class
     this.isShow = ko.observable(false)
     this.position = params.position || 'top'
+    this.question = params.question || false
   }
   computed () {
     // 是否使用自己内部的tooltipctn

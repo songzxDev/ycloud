@@ -1,5 +1,6 @@
 <span class="y-tooltip" data-bind="event:{mouseenter:handleHover,mouseout: handleLeave}">
-  <span data-bind="text:title"></span>
+  <span class="fa fa-question-circle y-text-link" data-bind="event:{mouseenter:handleHover},visible: question"></span>
+  <span data-bind="text:title,event:{mouseenter:handleHover}"></span>
   <!-- ko template: { nodes: $componentTemplateNodes} --><!-- /ko -->
   <!-- ko if:!hasMarkup() -->
   <y-tooltipctn params="targetEl:$el,title:title,show:isShow,position:position"></y-tooltipctn>

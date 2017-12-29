@@ -1,7 +1,7 @@
 import template from './body.html'
 import ko from 'knockout'
 import td from './td'
-import Base from '@/core/base'
+import Base from '../../core/base'
 // import _ from '@/util/lodash'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + td.name, {
@@ -24,6 +24,7 @@ class Body extends Base {
     this.tdstyle = params.tdstyle
     this.isSeparate = params.isSeparate
     this.forbitRowSelect = params.forbitRowSelect
+    this.isShowLoading = params.isShowLoading
   }
   computed (params) {
     // 计算暂无数据的单元格合并

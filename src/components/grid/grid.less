@@ -194,3 +194,35 @@
 .y-grid-body-lock{
   margin-top: 45px;
 }
+@keyframes yloading {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+.y-loading-letter-ctn{
+  text-align: center;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  padding-top: 20%;
+  line-height: 100%;
+  color: #333;
+  background-color: rgba(0,0,0,.1);
+}
+.y-loading-letter {
+  font-size: 14px;
+  animation-name: yloading;
+  animation-duration: 1.6s;
+  animation-iteration-count: infinite;
+  letter-spacing: -1px;
+}
+.l-1 {animation-delay: .48s;}
+.l-2 {animation-delay: .6s;}
+.l-3 {animation-delay: .72s;}
+.l-4 {animation-delay: .84s;}
+.l-5 {animation-delay: .96s;}
+.l-6 {animation-delay: 1.08s;}
+.l-7 {animation-delay: 1.2s;}
+.l-8 {animation-delay: 1.32s;}
+.l-9 {animation-delay: 1.44s;}
+.l-10 {animation-delay: 1.56s;}

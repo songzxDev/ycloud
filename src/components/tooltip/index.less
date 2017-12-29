@@ -33,12 +33,33 @@ y-tooltip{
     border-top-color: #7ebef2;
     margin-left: -5px;
   }
+  &.y-tooltip-topright .y-tooltip-arrow{
+    bottom: -5px;
+    right: 10%;
+    border-width: 5px 5px 0;
+    border-top-color: #7ebef2;
+    margin-right: -5px;
+  }
   &.y-tooltip-bottom .y-tooltip-arrow{
     top: -5px;
     left: 50%;
     border-width: 0 5px 5px;
     border-bottom-color: #7ebef2;
     margin-left: -5px;
+  }
+  &.y-tooltip-bottomleft .y-tooltip-arrow{
+    top: -5px;
+    left: 10%;
+    border-width: 0 5px 5px;
+    border-bottom-color: #7ebef2;
+    margin-left: -5px;
+  }
+  &.y-tooltip-bottomright .y-tooltip-arrow{
+    top: -5px;
+    right: 10%;
+    border-width: 0 5px 5px;
+    border-bottom-color: #7ebef2;
+    margin-right: -5px;
   }
   .y-tooltip-ctn-inner{
     max-width: 350px;
@@ -69,6 +90,11 @@ y-tooltip{
     left: 10%;
     margin-left: -4px;
   }
+  &.y-tooltip-topright .y-tooltip-cover{
+    bottom: -2px;
+    right: 10%;
+    margin-right: -4px;
+  }
   &.y-tooltip-top .y-tooltip-cover{
     bottom: -2px;
     left: 50%;
@@ -78,5 +104,15 @@ y-tooltip{
     top: -2px;
     left: 50%;
     margin-left: -4px;
+  }
+  &.y-tooltip-bottomleft .y-tooltip-cover{
+    top: -2px;
+    left: 10%;
+    margin-left: -4px;
+  }
+  &.y-tooltip-bottomright .y-tooltip-cover{
+    top: -2px;
+    right: 10%;
+    margin-right: -4px;
   }
 }
