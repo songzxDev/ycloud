@@ -5,11 +5,15 @@ function init (params) {
   this.label = params.label
   this.style = params.style
   this.visible = params.visible || ko.observable(true)
+  this.errorMsg = ko.observable('error msg')
   this.validate = ko.computed(() => {
     if (params.vMap) {
       let filteList = params.vMap().filter((item) => {
         return item.key === params.vKey
       })
+      if (filteList.length > 0) {
+        this.errorMsg(filteList[0].message)
+      }
       return filteList.length > 0
     } else {
       return false

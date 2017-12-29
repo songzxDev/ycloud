@@ -16,9 +16,11 @@ class Form extends Base {
       if (errors) {
         this.validateList([])
         errors.forEach(error => {
-          this.validateList.push({key: error.field})
+          this.validateList.push({key: error.field, message: error.message})
         })
         return handleCallback(errors, fields)
+      } else {
+        this.validateList([])
       }
     })
   }
