@@ -1,7 +1,7 @@
 import template from './body.html'
 import ko from 'knockout'
 import td from './td'
-import Base from '@/core/base'
+import Base from '../../core/base'
 // import _ from '@/util/lodash'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + td.name, {

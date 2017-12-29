@@ -1,19 +1,14 @@
 import ko from 'knockout'
 import boxcontent from '../../src/components/boxcontent/index.js'
 import $ from 'jquery'
+import kest from '../utils/kest'
 describe('y-box-content组件', () => {
   const PREFIX = 'y-'
-  ko.components.register(PREFIX + boxcontent.name, {
-    viewModel: boxcontent.init,
-    template: boxcontent.template,
-    synchronous: true
-  })
-  ko.cleanNode(document.getElementsByTagName('body')[0])
-  let vm = {
+  kest.init(boxcontent)
+  kest.tpl('<y-boxcontent params="title: title"><span>content</span></y-boxcontent>')
+  kest.bind({
     title: ko.observable('test')
-  }
-  document.body.innerHTML = '<y-boxcontent params="title: title"><span>content</span></y-boxcontent>'
-  ko.applyBindings(vm)
+  })
   var el = $('body').find('.y-box-content')
   it('内部样式测试', () => {
     expect(el.hasClass('y-box-content')).toEqual(true)
