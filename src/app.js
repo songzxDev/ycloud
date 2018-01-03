@@ -16,6 +16,15 @@ var table = new u.DataTable({
     total: ''
   }
 })
+var crossRows = new u.DataTable({
+  meta: {
+    id: '',
+    name: '',
+    price: '',
+    num: '',
+    total: ''
+  }
+})
 table.on('price.valueChange', function (obj) {
   var price = obj.rowObj.getValue('price')
   var num = obj.rowObj.getValue('num')
@@ -297,6 +306,10 @@ let viewmodel = {
       ]
     }
   ]),
+  crossRows: crossRows.rows,
+  crossKoRows: ko.observableArray([]),
+  crossPageSelectedRows: ko.observableArray([]),
+  crossPageSelectedRows2: ko.observableArray([]),
   ComputeRows: table.rows,
   ComputeColumns: [{
     title: 'id',
@@ -732,6 +745,45 @@ let viewmodel = {
       num: 3
     }
   ]),
+  handleCrossRows () {
+    console.log(viewmodel.crossPageSelectedRows())
+  },
+  handleCrossRows2 () {
+    console.log(viewmodel.crossPageSelectedRows2())
+  },
+  crossPageChange (pageIndex, pageSize) {
+    var data1 = [{
+      id: 1,
+      name: 'name',
+      price: 23,
+      num: 2,
+      total: 46
+    }, {
+      id: 2,
+      name: 'name',
+      price: 23,
+      num: 2,
+      total: 46
+    }]
+    var data2 = [{
+      id: 3,
+      name: 'name',
+      price: 23,
+      num: 2,
+      total: 46
+    }]
+    if (pageIndex === 0) {
+      viewmodel.crossKoRows(data1)
+      crossRows.setSimpleData(data1, {
+        'unSelect': 'true'
+      })
+    } else {
+      viewmodel.crossKoRows(data2)
+      crossRows.setSimpleData(data2, {
+        'unSelect': 'true'
+      })
+    }
+  },
   stateTabsHandler (data) {
     debugger
     console.log(data)

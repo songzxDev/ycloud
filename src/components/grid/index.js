@@ -73,6 +73,12 @@ class Grid extends Base {
     this.modalBodyModalHeight = params.modalBodyModalHeight || 0
     this.modalBodyExtraHeight = params.modalBodyExtraHeight || '0'
     this.onModalOkValidate = params.onModalOkValidate || function () {}
+    // add by songhlc 2018-01-02 添加grid跨页选中功能
+    this.crossPageSelectedRows = params.crossPageSelectedRows // 如果rows的是datatable那么这里存的row就是datatable的row
+    // 默认使用id属性做为行唯一标识符
+    this.crossPageRowPrimaryKey = params.crossPageRowPrimaryKey || 'id'
+    // 用于判断是否启用跨页选择
+    this.isEnableCrossPage = Boolean(this.crossPageSelectedRows)
   }
   computed (params) {
     // 只有表格数据大于10条才显示分页

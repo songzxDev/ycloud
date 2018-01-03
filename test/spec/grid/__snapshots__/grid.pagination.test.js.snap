@@ -28,7 +28,7 @@ exports[`y-grid组件 快照 1`] = `
           
       
           <y-grid-body
-            params="isShowLoading:isShowLoading,forbitRowSelect:forbitRowSelect,isSeparate:isSeparate,tdstyle: tdstyle, lockhead:lockhead,isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect"
+            params="isEnableCrossPage:isEnableCrossPage,crossPageRowPrimaryKey:crossPageRowPrimaryKey,crossPageSelectedRows:crossPageSelectedRows,isShowLoading:isShowLoading,forbitRowSelect:forbitRowSelect,isSeparate:isSeparate,tdstyle: tdstyle, lockhead:lockhead,isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect"
           >
             
         
