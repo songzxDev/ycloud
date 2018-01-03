@@ -155,10 +155,10 @@ let viewmodel = {
   _console: function() {
     console.log(11)
   },
-  formData: {title: ko.observable('')},
+  formData: {title: ko.observable(''), name: ko.observable('')},
   formValidate: function () {
     var form1 = ycloud.$refs['form1']
-    form1.formValidate({}, function (data) {
+    form1.formValidate({name: viewmodel.formData.name()}, function (data) {
       debugger
     })
   },
