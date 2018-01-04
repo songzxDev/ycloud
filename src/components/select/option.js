@@ -5,6 +5,7 @@ function init (params) {
   this.label = params.label || 'label'
   this.curIndex = params.curIndex
   this.index = params.index
+  this.valuekey = params.valuekey || 'value'
   this.labelsecond = params.labelsecond || ''
   this.itemClick = (item, evt) => {
     params.itemClick(item, evt)
@@ -13,10 +14,14 @@ function init (params) {
   this.multiActive = ko.observable()
   this.curValue = params.curValue
   this.curValue.subscribe(item => {
-    this.active(item === this.value.value)
+    this.active(item === this.value[this.valuekey])
   })
-  params.curMultiValue.subscribe(items => {
-    this.multiActive(items.indexOf(this.value) >= 0)
+  // 用valuekey判断 不能用整个item判断
+  this.multiActive = ko.computed(() => {
+    var keys = params.curMultiValue().map((item) => {
+      return item[this.valuekey]
+    })
+    return keys.indexOf(this.value[this.valuekey]) >= 0
   })
 }
 export default {

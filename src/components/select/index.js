@@ -6,9 +6,9 @@
 import template from './index.html'
 import ko from 'knockout'
 import 'ko-bindinghandler'
-import {lockScrollEffect, resetScrollEffect} from '@/util/scrollable'
+import {lockScrollEffect, resetScrollEffect} from '../../util/scrollable'
 import option from './option'
-import Base from '@/core/base'
+import Base from '../../core/base'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + option.name, {
   viewModel: option.init,
@@ -56,6 +56,8 @@ class Select extends Base {
     this.stopLockScroll = params.stopLockScroll || false
     // 是否禁用下拉框，在级联和行可编辑场景均可用到
     this.disabled = params.disabled || ko.observable(false)
+    // 用于判断是否要重新查询
+    this.oldSearchKey = undefined
   }
   computed (params) {
     // 显示暂无数据
@@ -164,11 +166,15 @@ class Select extends Base {
       }
     }
     // 鼠标移入的时候如果是从后端获取数据，则直接开始查询
+    // 需要先判断key是否改变 改变了才重新查询否则每次进来都查询效率低
     this.handleFocus = () => {
-      params.loadData && params.loadData(this.key(), (remoteData) => {
-        this.filterDataList(remoteData)
-      })
-      this.handleShowDrop(true)
+      if (this.oldSearchKey !== this.key()) {
+        this.oldSearchKey = this.key()
+        params.loadData && params.loadData(this.key(), (remoteData) => {
+          this.filterDataList(remoteData)
+        })
+        this.handleShowDrop(true)
+      }
     }
     // 点击外部收起下拉
     this.clickoutside = (e) => {
@@ -276,11 +282,20 @@ function setDefaultValue () {
   if (this.multiple) {
     // 有值才查询
     if (this.multiValue().length > 0 && this.filterDataList().length > 0) {
-      var _defaultItem = this.filterDataList().filter(item => {
-        let _list = this.multiValue().filter(_val => {
-          return item[this.valuekey] === _val[this.valuekey]
+      // 如果存在old值（old值可能内容比查询出列表里的值少，比如除了value,label还有一些其他的字段）
+      // 则需要进行过滤后重新赋值
+      // 这里考虑到filterDataList可能是通过loadData服务端动态筛选查询出来的（有些值已选中但不在当前lodaData返回的列表里）
+      // 所以需要进行过滤筛选，重新对multiValue赋值
+      var _defaultItem = this.multiValue().map(item => {
+        let _list = this.filterDataList().filter(data => {
+          return item[this.valuekey] === data[this.valuekey]
         })
-        return _list.length > 0
+        // 如果filterDataList（下拉列表中存在）则用下拉的值代替，如果不存在则返回当前值
+        if (_list.length > 0) {
+          return _list[0]
+        } else {
+          return item
+        }
       })
       if (_defaultItem.length > 0) {
         this.hasSetDefault = true
