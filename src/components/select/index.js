@@ -278,7 +278,7 @@ function setDefaultValue () {
     if (this.multiValue().length > 0 && this.filterDataList().length > 0) {
       var _defaultItem = this.filterDataList().filter(item => {
         let _list = this.multiValue().filter(_val => {
-          return item.value === _val[this.valuekey]
+          return item[this.valuekey] === _val[this.valuekey]
         })
         return _list.length > 0
       })
