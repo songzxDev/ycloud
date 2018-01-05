@@ -723,6 +723,8 @@ let viewmodel = {
   onInputBlur: function (data) {
     alert('blur')
   },
+  checkboxkey: ko.observableArray(),
+  radiokey: ko.observable(),
   asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
@@ -957,4 +959,5 @@ setTimeout(() => {
   // grid2.setColVisibleByField('id', false)
   ycloud.notice.error('here has some error！here has some error！here has some error！here has some error！here has some error！here has some error！')
 }, 3000)
+window.vm = viewmodel
 

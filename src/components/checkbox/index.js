@@ -12,7 +12,14 @@ function init (params) {
   } else {
     this.dataList = ko.observableArray(params.dataList || [])
   }
+
   this.value = params.value || ko.observableArray([])
+  this.valuebydot = params.valuebydot
+  this.value.subscribe((val) => {
+    if (this.valuebydot) {
+      this.valuebydot(val.toString())
+    }
+  })
   this.direction = params.direction || 'horizontal'
 }
 

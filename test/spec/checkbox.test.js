@@ -12,9 +12,10 @@ describe('y-checkbox组件', () => {
   let vm = {
     title: ko.observable('test'),
     checkboxDataList: ko.observableArray([{value: 1,label:'男'}, {value: 0,label:'女'}]),
-    checkboxValue: ko.observable(1)
+    checkboxValue: ko.observableArray([1]),
+    valuebydot: ko.observable('')
   }
-  document.body.innerHTML = '<y-checkbox params="dataList:checkboxDataList,value:checkboxValue"></y-checkbox>'
+  document.body.innerHTML = '<y-checkbox params="dataList:checkboxDataList,value:checkboxValue,valuebydot:valuebydot"></y-checkbox><div data-bind="text:valuebydot"></div>'
   ko.applyBindings(vm)
   var el = $('body')
   it("组件注册测试", () => {
@@ -26,6 +27,10 @@ describe('y-checkbox组件', () => {
   })
   it('hor默认属性设置', () => {
     expect($('body').find('.y-checkbox-hor').length > 0).toEqual(true)
+  })
+  it('valuebydot测试', () => {
+    vm.checkboxValue([1,2])
+    expect(vm.valuebydot() == '1,2').toEqual(true)
   })
   // todo radio方向测试
   it('快照', () => {

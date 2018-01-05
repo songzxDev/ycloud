@@ -3,7 +3,7 @@
 exports[`y-checkbox组件 快照 1`] = `
 <body>
   <y-checkbox
-    params="dataList:checkboxDataList,value:checkboxValue"
+    params="dataList:checkboxDataList,value:checkboxValue,valuebydot:valuebydot"
   >
     <div
       class="y-checkbox y-checkbox-hor"
@@ -27,5 +27,10 @@ exports[`y-checkbox组件 快照 1`] = `
     
 
   </y-checkbox>
+  <div
+    data-bind="text:valuebydot"
+  >
+    1,2
+  </div>
 </body>
 `;
