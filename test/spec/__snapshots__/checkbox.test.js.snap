@@ -3,7 +3,7 @@
 exports[`y-checkbox组件 快照 1`] = `
 <body>
   <y-checkbox
-    params="dataList:checkboxDataList,value:checkboxValue,valuebydot:valuebydot"
+    params="dataList:checkboxDataList,value:checkboxValue,stringValue:valuebydot"
   >
     <div
       class="y-checkbox y-checkbox-hor"

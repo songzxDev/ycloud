@@ -15,7 +15,7 @@ describe('y-checkbox组件', () => {
     checkboxValue: ko.observableArray([1]),
     valuebydot: ko.observable('')
   }
-  document.body.innerHTML = '<y-checkbox params="dataList:checkboxDataList,value:checkboxValue,valuebydot:valuebydot"></y-checkbox><div data-bind="text:valuebydot"></div>'
+  document.body.innerHTML = '<y-checkbox params="dataList:checkboxDataList,value:checkboxValue,stringValue:valuebydot"></y-checkbox><div data-bind="text:valuebydot"></div>'
   ko.applyBindings(vm)
   var el = $('body')
   it("组件注册测试", () => {
