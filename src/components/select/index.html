@@ -10,10 +10,12 @@
     <i class="y-select-arrow fa fa-caret-down" data-bind="css: {'y-select-showdrop':clearable && showCloseIcon()}, visible:!hasmore"></i>
     <i class="y-select-arrow fa fa-list y-select-hasmore" data-bind="visible: hasmore,click:function(data, event){handleMore(data, event);return false;}, clickBubble: false"></i>
   </div>
-  <y-dropdown params="targetEl:$el, isShow:showDropdown,scrollTop:scrollTop,isStopTransferDom: multiple">
-     <div class="y-option-ctn" data-bind="foreach:{data: $parent.filterDataList, as: 'item'}">
-       <y-option params="value: item,valuekey:$parentContext.$parent.valuekey, label:$parentContext.$parent.labelkey,itemClick:$parentContext.$parent.handleOptClick,index:$index, curIndex:$parentContext.$parent.curIndex, curValue:$parentContext.$parent.curValue, curMultiValue:$parentContext.$parent.multiValue"></y-option>
-     </div>
-     <div class="y-select-nodata" data-bind="visible: $parent.isNoData">暂无匹配数据</div>
-  </y-dropdown>
+  <div data-bind="let: {isNoData:isNoData,curIndex:curIndex,curValue:curValue,valuekey:valuekey,labelkey:labelkey,handleOptClick:handleOptClick,multiValue:multiValue}" >
+    <y-dropdown params="targetEl:$el, isShow:showDropdown,scrollTop:scrollTop,isStopTransferDom: multiple">
+      <div class="y-option-ctn" data-bind="foreach:{data: $parent.filterDataList, as: 'item'}">
+        <y-option params="value: item,valuekey:valuekey, label:labelkey,itemClick:handleOptClick,index:$index, curIndex:curIndex, curValue:curValue, curMultiValue:multiValue"></y-option>
+      </div>
+      <div class="y-select-nodata" data-bind="visible: isNoData">暂无匹配数据</div>
+    </y-dropdown>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="y-grid-body" data-bind="css:{'y-grid-body-lock':lockhead}">
+<div class="y-grid-body" data-bind="css:{'y-grid-body-lock':lockhead},let:{tdstyle:tdstyle,isDataTable:isDataTable}">
   <table cellspacing="0" cellpadding="0" border="0" data-bind="attr:{id:domId},style:{width:tableWidth},css:{'y-table-separate':isSeparate}">
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
       <col data-bind="visible: col._show, attr:{width:col.width}">
@@ -7,8 +7,8 @@
 
       <tr data-bind="css:{'y-grid-row-hover':row._hover,'y-grid-row-selected':row._selected},event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
         <!-- ko foreach:{data: $parent.columns, as: 'col'} -->
-        <td data-bind="visible: col._show, style: $parentContext.$parent.tdstyle">
-          <y-grid-td params="isDataTable:$parentContext.$parent.isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
+        <td data-bind="visible: col._show, style: tdstyle">
+          <y-grid-td params="isDataTable:isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
         </td>
         <!-- /ko -->
       </tr>

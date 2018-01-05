@@ -3,7 +3,6 @@ var config = require('./webpack.base.config'),
 var merge = require('webpack-merge')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var uglifyjs = require('uglifyjs-webpack-plugin')
-var fastuglifyjsplugin = require('fast-uglifyjs-plugin')
 var path = require('path')
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
