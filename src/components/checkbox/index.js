@@ -14,10 +14,17 @@ function init (params) {
   }
 
   this.value = params.value || ko.observableArray([])
-  this.stringValue = params.stringValue
+  this.stringValue = params.stringValue || ko.observable('')
   this.value.subscribe((val) => {
     if (this.stringValue) {
       this.stringValue(val.toString())
+    }
+  })
+  this.stringValue.subscribe((val) => {
+    if (val) {
+      this.value(val.split(','))
+    } else {
+      this.value([])
     }
   })
   this.direction = params.direction || 'horizontal'
