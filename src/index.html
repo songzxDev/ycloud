@@ -236,7 +236,8 @@
     <p>当前选中的节点是：<span data-bind="text:$root.treeSelectedData"></span></p>
     <h2>11.2 异步加载</h2>
     <y-tree params="data:$root.asyncTreeData, height:'200px',onSelect: $root.onTreeSelect, loadData:$root.loadTreeData"></y-tree>
-
+    <h2>11.3 异步加载 + checkbox</h2>
+    <y-tree params="showChecked: true, data:$root.asyncTreeData, height:'200px',onSelect: $root.onTreeSelect, loadData:$root.loadTreeData"></y-tree>
   </y-boxcontent>
   <y-boxcontent>
     <h1>13.表格</h1>

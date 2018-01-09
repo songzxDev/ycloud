@@ -12,6 +12,7 @@ function init (params) {
   this.data = params.data
   this.height = params.height || 'auto'
   this.loadData = params.loadData
+  this.showChecked = params.showChecked || false
   this.selectedItem = params.selectedItem || ko.observable({})
   this.selectedItem.subscribe(val => {
     if (params.onSelect) {

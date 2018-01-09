@@ -23,9 +23,9 @@ function init (params) {
   })
   this.checked.subscribe(val => {
     // 统一需要转成字符串来判断
-    var stringArray = params.valueList().map((item) => {
+    var stringArray = ko.isObservable(params.valueList) ? params.valueList().map((item) => {
       return item ? (item + '') : ''
-    })
+    }) : []
     let index = stringArray.indexOf(this.value + '')
     if (index < 0 && val) {
       params.valueList.push(this.value)

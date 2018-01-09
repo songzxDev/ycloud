@@ -1,6 +1,6 @@
-<div class="y-tree" data-bind="style: {height:height}">
+<div class="y-tree" data-bind="style: {height:height},let: {showChecked:showChecked}">
   <ul data-bind="foreach: {data:data, as:'item'}">
-    <y-treenode params="data: item, loadData: $parent.loadData, selectedItem: $parent.selectedItem">
+    <y-treenode params="showChecked: showChecked,data: item, loadData: $parent.loadData, selectedItem: $parent.selectedItem">
     </y-treenode>
   </ul>
 </div>

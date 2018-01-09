@@ -1,7 +1,10 @@
 import template from './treenode.html'
 import ko from 'knockout'
 function init (params) {
-  this.data = ko.observable(params.data)
+  this.showChecked = params.showChecked
+  var data = params.data
+  data._checked = ko.isObservable(data._checked) ? data._checked : ko.observable(!!data._checked)
+  this.data = ko.observable(data)
   this.loadData = params.loadData
   this.selectedItem = params.selectedItem
   this.loaded = ko.observable(params.loadData === undefined)
@@ -29,11 +32,16 @@ function init (params) {
     let item = data.data()
     // 直返会当前项不返回子节点
     item.children = []
-    // todo 如果是多选则需要重新处理
-    if (this.selectedItem() === item) {
-      this.selectedItem({})
+    // 表示多选
+    if (this.showChecked) {
+      item._checked(!item._checked())
     } else {
-      this.selectedItem(item)
+      // todo 如果是多选则需要重新处理
+      if (this.selectedItem() === item) {
+        this.selectedItem({})
+      } else {
+        this.selectedItem(item)
+      }
     }
   }
   this.expanded = ko.observable(false)

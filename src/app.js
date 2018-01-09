@@ -949,7 +949,7 @@ setTimeout(() => {
     total: 46
   }])
   ycloud.$refs['loadingGrid'].showLoading(false)
-}, 5000)
+}, 1000)
 setTimeout(() => {
   viewmodel.checkboxkey("1,2")
   ycloud.notice.info('info', {timeout: 2000})
