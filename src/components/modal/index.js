@@ -17,12 +17,13 @@ function init (params) {
       this.visible(false)
     }
   }
+  this.validateFn = params.validateFn || function () { return true }
   // 时间
   this.handleCancel = () => {
     this.visible(false)
   }
   this.handleOk = (data, event) => {
-    if (this.isValidate) {
+    if (this.isValidate && this.validateFn()) {
       this.errormsg('')
       this.visible(false)
       if (params.ok) {

@@ -183,6 +183,13 @@ let viewmodel = {
     ]
   }]),
   modalVisible: ko.observable(false),
+  validateFn: function () {
+    if (1 > 2) {
+      return true
+    } else {
+      return false
+    }
+  },
   treeSelectedData: ko.observable(''),
   onTreeSelect: function (data) {
     viewmodel.treeSelectedData(JSON.stringify(data))
