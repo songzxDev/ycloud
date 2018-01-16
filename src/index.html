@@ -311,6 +311,10 @@
         <y-grid params="maxheight:'auto',crossPageSelectedRows:$root.crossPageSelectedRows2,pagination:true,totalCount: ko.observable(100),onPageChange:$root.crossPageChange,columns:$root.pureColumns,rows: $root.crossKoRows">
         </y-grid>
       </div>
+      <div class="col-md-12">
+        <div>expand-true</div>
+        <y-grid params="columns: $root.editformcolumns, rows: $root.editformrows"></y-grid>
+      </div>
     </div>
   </y-boxcontent>
   <y-boxcontent>

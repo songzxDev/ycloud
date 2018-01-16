@@ -28,6 +28,7 @@ function init (params) {
   this.disabled = params.disabled || ko.observable(false)
   this.loading = params.loading || ko.observable(false)
   this.loadingText = params.loadingText || 'loading..'
+  this.label = params.label || ''
   this.handleClick = params.click || defaultFun
   this.handleReClick = _.debounce(() => {
     this.handleClick()

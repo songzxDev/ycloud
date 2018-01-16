@@ -1,5 +1,6 @@
 import ko from 'knockout'
 import ycloud from './index'
+import './formComp'
 var dt = new u.DataTable({
   meta:{
     id: "",
@@ -730,14 +731,53 @@ let viewmodel = {
   onInputBlur: function (data) {
     alert('blur')
   },
+  editformrows: ko.observableArray([{
+    id: ko.observable('1'),
+    name: ko.observable('name')
+  }, {
+    id: ko.observable('2'),
+    name: ko.observable('name2')
+  }]),
+  editformcolumns: [
+    {
+      title: '可扩展id',
+      field: 'id',
+      expandCompFn (row) {
+        return {
+          name: 'demo-form',
+          params: {
+            value: row
+          }
+        }
+      }
+    }, {
+      title: '可扩展name',
+      field: 'name',
+    }, {
+      title: '操作',
+      field: 'id',
+      type: 'component',
+      compFn (row) {
+        return {
+          name: 'y-button',
+          params: {
+            label: '编辑',
+            click () {
+              row._expand(!row._expand())
+            }
+          }
+        }
+      }
+    }
+  ],
   checkboxkey: ko.observableArray(),
   radiokey: ko.observable(),
   asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
   checkboxDataList: ko.observableArray([{value: '1',label:'北京',secondarylabel:'(we are)'},{value: 2,label:'上海'}]),
-  radioValue: ko.observable(2),
-  radioDataList: ko.observableArray([{value: 1,label:'无发票',disabled:'disabled'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}]),
+  radioValue: ko.observable("3"),
+  radioDataList: ko.observableArray([{value: 1,label:'无发票',disabled:'disabled'},{value: "2",label:'普通发票'},{value: "3",label:'增值锐发票'}]),
   stateTabsItems:ko.observableArray([
     {
       title: '待收货',
