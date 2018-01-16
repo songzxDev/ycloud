@@ -1,5 +1,9 @@
 .y-input-ctn{
   position: relative;
+  .y-input-clear{
+    color: @danger-color !important;
+    display: none;
+  }
   i{
     position: absolute;
     top: 50%;
@@ -10,6 +14,9 @@
     cursor: pointer;
     color: @f-color-normal;
     transition: all 0.2s ease-in-out;
+  }
+  &:hover .y-input-clear{
+    display: block;
   }
   &:hover i, .y-input:focus ~ i {
     color: @primary-color;
@@ -61,3 +68,4 @@
 .y-input.lg{
   height: 34px;
 }
+

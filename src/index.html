@@ -171,6 +171,12 @@
           <y-formitem params="label:'输入框',vMap:validateList,vKey:'name'">
             <y-input params="onBlur:$root.onInputBlur,placeholder:'请输入文本',class:'y-inline-block',type:'text',value:$parent.model.name"></y-input>
           </y-formitem>
+          <y-formitem params="label:'输入框可删除'">
+            <y-input params="clearable:true,placeholder:'请输入文本',class:'y-inline-block',type:'text',value:$parent.model.name"></y-input>
+          </y-formitem>
+          <y-formitem params="label:'输入框submit'">
+            <y-input params="placeholder:'输入后回车',class:'y-inline-block',type:'text',value:$parent.model.name, onSubmit:function(){alert('trigger submit')}"></y-input>
+          </y-formitem>
           <y-formitem params="label:'带图标'">
             <y-input params="onSubmit:$root.submitFn,onIconClick:$root.submitFn,type:'text',value:$parent.model.title, iconClass:'fa fa-search'"></y-input>
           </y-formitem>
