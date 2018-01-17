@@ -4,6 +4,7 @@
       <col data-bind="visible: col._show, attr:{width:col.width}">
     </colgroup>
     <thead>
+      <!-- ko if: columns1().length == 0 -->
       <tr data-bind="foreach:{data: columns,as: 'col'}">
         <th data-bind="visible: col._show">
           <!-- ko if: col.type == 'checkbox' -->
@@ -15,6 +16,19 @@
           <div class="y-cell" data-bind="html:col.title,css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
           </div>
           <!-- /ko -->
+        </th>
+      </tr>
+      <!-- /ko -->
+      <tr data-bind="foreach:{data:columns1, as: 'col'}">
+        <th data-bind="attr:{rowspan:col.rowspan || 1,colspan:col.colspan || 1}">
+        <div class="y-cell" data-bind="html:col.title,css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+        </div>
+        </th>
+      </tr>
+      <tr data-bind="foreach:{data:columns2, as: 'col'}">
+        <th>
+        <div class="y-cell" data-bind="html:col.title,css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+        </div>
         </th>
       </tr>
     </thead>

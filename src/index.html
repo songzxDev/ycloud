@@ -318,8 +318,14 @@
         </y-grid>
       </div>
       <div class="col-md-12">
-        <div>expand-true</div>
+        <h4>expand-true</h4>
         <y-grid params="columns: $root.editformcolumns, rows: $root.editformrows"></y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>head rowspan</h4>
+        <y-grid params="isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">
+
+        </y-grid>
       </div>
     </div>
   </y-boxcontent>

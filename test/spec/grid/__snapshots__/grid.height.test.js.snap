@@ -23,7 +23,7 @@ exports[`y-grid组件 快照 1`] = `
       
           <y-grid-head
             data-bind="visible:!nohead"
-            params="lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"
+            params="columns1:columns1,columns2:columns2,lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"
           />
           
       

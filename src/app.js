@@ -236,6 +236,46 @@ let viewmodel = {
     debugger
     console.log(pageIndex + ' '+ pageSize)
   },
+  columnsrowspan1: ko.observableArray([
+    {
+      title: 'col1',
+      field: 'id',
+      rowspan: 2
+    }, {
+      title: 'col2',
+      field: 'name1',
+      rowspan: 2
+    }, {
+      title: '横跨三列',
+      rowspan: 1,
+      colspan: 3
+    }
+  ]),
+  columnsrowspan2: ko.observableArray([
+    {
+      title: 'colA',
+      field: 'name1'
+    }, {
+      title: 'colB',
+      field: 'name2'
+    }, {
+      title: 'colC',
+      field: 'name3'
+    }
+  ]),
+  headRowspanRows: ko.observableArray([
+    {
+      id: 1,
+      name1: 'name1',
+      name2: 'name2',
+      name3: 'name3'
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23'
+    }
+  ]),
   columns: ko.observableArray([
     {
       title: '',

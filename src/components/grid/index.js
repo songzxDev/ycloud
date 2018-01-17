@@ -17,10 +17,33 @@ const PAGEINDEX = 0
 class Grid extends Base {
   initialize (params) {
     this.isDataTable = params.isDataTable || false
+    // 只有当columns1和columns2一起启用的时候才认为是启用了rowspanhead
+    this.isRowspanHead = !!params.columns1 && !!params.columns2
+    this.columns1 = params.columns1 // 暂定只支持ko对象
+    this.columns2 = params.columns2
+    window.col1 = this.columns1
+    window.col2 = this.columns2
     this.columns = ko.computed(() => {
+      var columns = []
+      // 先判断是否启用columns1和columns2
+      if (this.isRowspanHead) {
+        var columns2 = [].concat(this.columns2())
+        this.columns1().forEach((col) => {
+          if (col.colspan > 1) {
+            var colspanlength = col.colspan
+            var row2columns = columns2.splice(0, colspanlength)
+            columns = columns.concat(row2columns)
+          } else {
+            columns.push(col)
+          }
+        })
+      }
+      if (columns.length === 0) {
+        columns = params.columns
+      }
       // 出事化列内置一些属性 _show 用来隐藏和显示列
-      if (params.columns && params.columns.subscribe) {
-        params.columns().forEach((col) => {
+      if (ko.isObservable(columns)) {
+        columns().forEach((col) => {
           // checkbox设定特殊宽度
           if (col.type === 'checkbox') {
             col.width = 35
@@ -29,13 +52,13 @@ class Grid extends Base {
         })
         return params.columns()
       } else {
-        params.columns.forEach((col) => {
+        columns.forEach((col) => {
           if (col.type === 'checkbox') {
             col.width = 35
           }
           col._show = ko.observable(!col.hidden)
         })
-        return params.columns
+        return columns
       }
     })
     this.rows = params.rows
