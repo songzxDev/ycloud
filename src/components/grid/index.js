@@ -21,8 +21,7 @@ class Grid extends Base {
     this.isRowspanHead = !!params.columns1 && !!params.columns2
     this.columns1 = params.columns1 // 暂定只支持ko对象
     this.columns2 = params.columns2
-    window.col1 = this.columns1
-    window.col2 = this.columns2
+    this.headtransform = ko.observable('translateX(0)')
     this.columns = ko.computed(() => {
       var columns = []
       // 先判断是否启用columns1和columns2
@@ -147,6 +146,13 @@ class Grid extends Base {
     })
   }
   methods (params) {
+    this.handleScroll = (vm, event) => {
+      // 仅当锁定表头时才自动滚动列
+      if (this.lockhead) {
+        var scrollLeft = event.currentTarget.scrollLeft
+        this.headtransform('translateX(-' + scrollLeft + 'px)')
+      }
+    }
     // 设置loading图标是否显示
     this.showLoading = (isShow) => {
       this.isShowLoading(isShow)

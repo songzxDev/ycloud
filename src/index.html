@@ -322,6 +322,29 @@
         <y-grid params="columns: $root.editformcolumns, rows: $root.editformrows"></y-grid>
       </div>
       <div class="col-md-12">
+        <h4>lockhead+verticalscroll</h4>
+        <y-grid params="columns: [
+          {
+            title: 'col1',
+            width: 400,
+            field: 'name'
+          }, {
+            title: 'col1',
+            width: 400,
+            field: 'name'
+          }, {
+            title: 'col1',
+            width: 400,
+            field: 'name'
+          }, {
+            title: 'col1',
+            width: 400,
+            field: 'name'
+          }
+        ], rows: ko.observableArray([{name:'ttt'},{name:'ttt2'},{name:'ttt2'},
+        {name:'ttt2'},{name:'ttt2'},{name:'ttt2'},{name:'ttt2'}]), lockhead:true, maxheight:'200px'"></y-grid>
+      </div>
+      <div class="col-md-12">
         <h4>head rowspan</h4>
         <y-grid params="isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">
 

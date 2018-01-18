@@ -1,5 +1,5 @@
-<div class="y-grid-head" data-bind="css:{'y-grid-head-lock':lockhead},let:{allRowChecked:allRowChecked}">
-  <table  cellspacing="0" cellpadding="0" border="0" data-bind="style:{width:tableWidth}">
+<div class="y-grid-head" data-bind="css:{'y-grid-head-lock':lockhead},let:{allRowChecked:allRowChecked},style:{width:outterWidth}">
+  <table  cellspacing="0" cellpadding="0" border="0" data-bind="style:{width:tableWidth,transform:headtransform}">
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
       <col data-bind="visible: col._show, attr:{width:col.width}">
     </colgroup>

@@ -240,11 +240,13 @@ let viewmodel = {
     {
       title: 'col1',
       field: 'id',
-      rowspan: 2
+      rowspan: 2,
+      width: 500
     }, {
       title: 'col2',
       field: 'name1',
-      rowspan: 2
+      rowspan: 2,
+      width: 500
     }, {
       title: '横跨三列',
       rowspan: 1,
@@ -252,7 +254,8 @@ let viewmodel = {
     }, {
       title: 'col3',
       field: 'name1',
-      rowspan: 2
+      rowspan: 2,
+      width: 500
     }, {
       title: '横跨两列',
       rowspan: 1,
@@ -262,19 +265,24 @@ let viewmodel = {
   columnsrowspan2: ko.observableArray([
     {
       title: 'colA',
-      field: 'name1'
+      field: 'name1',
+      width: 200
     }, {
       title: 'colB',
-      field: 'name2'
+      field: 'name2',
+      width: 200
     }, {
       title: 'colC',
-      field: 'name3'
+      field: 'name3',
+      width: 200
     }, {
       title: 'colD',
-      field: 'name2'
+      field: 'name2',
+      width: 200
     }, {
       title: 'colE',
-      field: 'name3'
+      field: 'name3',
+      width: 200
     }
   ]),
   headRowspanRows: ko.observableArray([

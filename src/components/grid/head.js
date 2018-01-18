@@ -7,8 +7,16 @@ function init (params) {
   // 用于多行的rowspan
   this.columns2 = params.columns2 || ko.observableArray([])
   this.tableWidth = params.tableWidth
+  this.outterWidth = ko.observable()
+  if (params.lockhead) {
+    setTimeout(function () {
+      // 要减掉纵向滚动条的宽度
+      params.el && (this.outterWidth(params.el.firstElementChild.offsetWidth - 15 + 'px'))
+    }.bind(this))
+  }
   this.allRowChecked = params.allRowChecked
   this.lockhead = params.lockhead
+  this.headtransform = params.headtransform
 }
 
 export default {

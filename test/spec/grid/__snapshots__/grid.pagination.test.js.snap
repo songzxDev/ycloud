@@ -16,14 +16,14 @@ exports[`y-grid组件 快照 1`] = `
     
         <div
           class="y-grid"
-          data-bind="css:{'y-grid-stripe':isStripe,'y-grid-border': isTableBorder},style:{height:computedMaxHeight,minHeight:minheight}"
+          data-bind="event:{scroll:handleScroll},css:{'y-grid-stripe':isStripe,'y-grid-border': isTableBorder},style:{height:computedMaxHeight,minHeight:minheight}"
           style="height: 486px; min-height: auto;"
         >
           
       
           <y-grid-head
             data-bind="visible:!nohead"
-            params="columns1:columns1,columns2:columns2,lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"
+            params="headtransform:headtransform,el:$el,columns1:columns1,columns2:columns2,lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"
           />
           
       
