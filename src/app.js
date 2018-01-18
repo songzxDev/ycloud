@@ -249,6 +249,14 @@ let viewmodel = {
       title: '横跨三列',
       rowspan: 1,
       colspan: 3
+    }, {
+      title: 'col3',
+      field: 'name1',
+      rowspan: 2
+    }, {
+      title: '横跨两列',
+      rowspan: 1,
+      colspan: 2
     }
   ]),
   columnsrowspan2: ko.observableArray([
@@ -260,6 +268,12 @@ let viewmodel = {
       field: 'name2'
     }, {
       title: 'colC',
+      field: 'name3'
+    }, {
+      title: 'colD',
+      field: 'name2'
+    }, {
+      title: 'colE',
       field: 'name3'
     }
   ]),
