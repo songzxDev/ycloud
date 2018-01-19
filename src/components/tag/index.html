@@ -1,4 +1,4 @@
-<div class="y-tag" data-bind="css:typeClass,style:color?{background: 'white',borderColor: color}:style">
-  <span class="y-tag-text" data-bind="text:text,click:handleClick,style:{color: color}"></span>
-  <i data-bind="visible:closeable,click:handleClose,style:{color: color}" class="y-tag-close">+</i>
+<div class="y-tag" data-bind="css:typeClass,style:style">
+  <span class="y-tag-text" data-bind="text:text,click:handleClick,style:{color: style.color}"></span>
+  <i data-bind="visible:closeable,click:handleClose,style:{color: style.color}" class="y-tag-close">+</i>
 </div>
