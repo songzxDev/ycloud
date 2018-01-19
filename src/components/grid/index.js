@@ -3,6 +3,7 @@ import ko from 'knockout'
 import head from './head'
 import body from './body'
 import Base from '../../core/base'
+import _ from '../../util/lodash'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + head.name, {
   viewModel: head.init,
@@ -19,47 +20,7 @@ class Grid extends Base {
     this.isDataTable = params.isDataTable || false
     // 只有当columns1和columns2一起启用的时候才认为是启用了rowspanhead
     this.isRowspanHead = !!params.columns1 && !!params.columns2
-    this.columns1 = params.columns1 // 暂定只支持ko对象
-    this.columns2 = params.columns2
     this.headtransform = ko.observable('translateX(0)')
-    this.columns = ko.computed(() => {
-      var columns = []
-      // 先判断是否启用columns1和columns2
-      if (this.isRowspanHead) {
-        var columns2 = [].concat(this.columns2())
-        this.columns1().forEach((col) => {
-          if (col.colspan > 1) {
-            var colspanlength = col.colspan
-            var row2columns = columns2.splice(0, colspanlength)
-            columns = columns.concat(row2columns)
-          } else {
-            columns.push(col)
-          }
-        })
-      }
-      if (columns.length === 0) {
-        columns = params.columns
-      }
-      // 出事化列内置一些属性 _show 用来隐藏和显示列
-      if (ko.isObservable(columns)) {
-        columns().forEach((col) => {
-          // checkbox设定特殊宽度
-          if (col.type === 'checkbox') {
-            col.width = 35
-          }
-          col._show = ko.observable(!col.hidden)
-        })
-        return params.columns()
-      } else {
-        columns.forEach((col) => {
-          if (col.type === 'checkbox') {
-            col.width = 35
-          }
-          col._show = ko.observable(!col.hidden)
-        })
-        return columns
-      }
-    })
     this.rows = params.rows
     this.lockhead = params.lockhead || false
     this.domId = params.id
@@ -103,6 +64,115 @@ class Grid extends Base {
     this.isEnableCrossPage = Boolean(this.crossPageSelectedRows)
   }
   computed (params) {
+    // 用于存储对应关系
+    this.columns1UniqueKeys = {}
+    this.columns1 = ko.computed(() => {
+      if (params.columns1) {
+        var _columns1 = []
+        params.columns1().forEach((col) => {
+          if (!col.loop) {
+            _columns1.push(col)
+          } else {
+            // 有数据才根据数据显示loop列
+            if (this.rows().length > 0) {
+              var looplength = col.looplength(this.rows()[0])
+              for (var i = 0; i < looplength; i++) {
+                var _col = Object.assign({}, col, {title: col.title.replace('{n}', i + 1)})
+                _columns1.push(_col)
+              }
+              if (ko.isObservable(this.columns1UniqueKeys[col.uniqueKey])) {
+                this.columns1UniqueKeys[col.uniqueKey](looplength)
+              } else {
+                this.columns1UniqueKeys[col.uniqueKey] = ko.observable(looplength)
+              }
+            } else {
+              this.columns1UniqueKeys[col.uniqueKey] = ko.observable(0)
+            }
+          }
+        })
+        return _columns1
+      } else {
+        return []
+      }
+    })
+    // 暂定只支持ko对象
+    this.columns2 = ko.computed(() => {
+      if (params.columns2) {
+        var _columns2 = []
+        params.columns2().forEach((col) => {
+          if (!col.loop) {
+            _columns2.length++
+          } else {
+            _columns2.length += this.columns1UniqueKeys[col.uniqueKey]()
+          }
+        })
+        var crossLength = _.groupBy(params.columns2().map((col) => {
+          return {key: col.uniqueKey}
+        }), 'key')
+        var index = 0
+        params.columns2().forEach((col) => {
+          // 找到第一个没有赋值的列然后塞入
+          while (_columns2[index]) {
+            index++
+          }
+          if (!col.loop) {
+            _columns2[index] = col
+            index++
+          } else {
+            var _length = this.columns1UniqueKeys[col.uniqueKey]()
+            for (var i = 0; i < _length; i++) {
+              _columns2[index + i * crossLength[col.uniqueKey].length] = Object.assign({}, col, {_childIndex: i})
+            }
+            // 计算索引
+            if (_length > 0) {
+              index++
+            }
+          }
+        })
+        return _columns2
+      } else {
+        return []
+      }
+    })
+    // 计算真是的columns列
+    this.columns = ko.computed(() => {
+      var columns = []
+      // 先判断是否启用columns1和columns2
+      if (this.isRowspanHead) {
+        var columns2 = [].concat(this.columns2())
+        this.columns1().forEach((col) => {
+          if (col.colspan > 1) {
+            var colspanlength = col.colspan
+            var row2columns = columns2.splice(0, colspanlength)
+            columns = columns.concat(row2columns)
+          } else {
+            columns.push(col)
+          }
+        })
+      }
+      if (columns.length === 0) {
+        columns = params.columns
+      }
+      // 出事化列内置一些属性 _show 用来隐藏和显示列
+      if (ko.isObservable(columns)) {
+        columns().forEach((col) => {
+          // checkbox设定特殊宽度
+          if (col.type === 'checkbox') {
+            col.width = 35
+          }
+          col._show = ko.observable(!col.hidden)
+        })
+        return params.columns()
+      } else {
+        columns.forEach((col) => {
+          if (col.type === 'checkbox') {
+            col.width = 35
+          }
+          col._show = ko.observable(!col.hidden)
+        })
+        return columns
+      }
+    })
     // 只有表格数据大于10条才显示分页
     this.isShowPagination = ko.computed(() => {
       return params.pagination && this.totalCount() > 10
