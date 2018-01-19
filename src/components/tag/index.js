@@ -4,6 +4,7 @@ function init (params) {
   this.item = params.item
   this.text = params.text
   this.style = params.style
+  this.color = params.color || ''
   this.closeable = params.closeable || false
   this.type = params.type || 'default'
   this.active = params.active || ko.observable(false)
