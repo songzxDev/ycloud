@@ -241,62 +241,77 @@ let viewmodel = {
       title: 'col1',
       field: 'id',
       rowspan: 2,
-      width: 500
+      width: 100
     }, {
       title: 'col2',
       field: 'name1',
       rowspan: 2,
-      width: 500
+      width: 100
     }, {
-      title: '横跨三列',
+      title: '横跨三列,第{n}行',
       rowspan: 1,
-      colspan: 3
+      colspan: 3,
+      uniqueKey: 'col1',
+      loop: true,
+      looplength: function (row) {
+        return row.quotation ? row.quotation.length : 0
+      }
     }, {
       title: 'col3',
       field: 'name1',
       rowspan: 2,
-      width: 500
+      width: 300
     }, {
       title: '横跨两列',
       rowspan: 1,
-      colspan: 2
+      colspan: 2,
+      uniqueKey: 'col2'
     }
   ]),
   columnsrowspan2: ko.observableArray([
     {
       title: 'colA',
-      field: 'name1',
-      width: 200
+      width: 100,
+      uniqueKey: 'col1',
+      loop: true,
+      type: 'render',
+      renderFn: function (row, index, col) {
+        return row.quotation[col._childIndex].name1
+      }
     }, {
       title: 'colB',
       field: 'name2',
-      width: 200
+      width: 100,
+      uniqueKey: 'col1',
+      loop: true,
+      type: 'render',
+      renderFn: function (row, index, col) {
+        return row.quotation[col._childIndex].name2
+      }
     }, {
       title: 'colC',
       field: 'name3',
-      width: 200
+      width: 100,
+      uniqueKey: 'col1',
+      loop: true,
+      type: 'render',
+      renderFn: function (row, index, col) {
+        return row.quotation[col._childIndex].name3
+      }
     }, {
       title: 'colD',
       field: 'name2',
-      width: 200
+      width: 200,
+      uniqueKey: 'col2'
     }, {
       title: 'colE',
       field: 'name3',
-      width: 200
+      width: 200,
+      uniqueKey: 'col2'
     }
   ]),
   headRowspanRows: ko.observableArray([
-    {
-      id: 1,
-      name1: 'name1',
-      name2: 'name2',
-      name3: 'name3'
-    }, {
-      id: 2,
-      name1: 'name21',
-      name2: 'name22',
-      name3: 'name23'
-    }
+
   ]),
   columns: ko.observableArray([
     {
@@ -1062,6 +1077,37 @@ setTimeout(() => {
 setTimeout(() => {
   viewmodel.checkboxkey("1,2")
   ycloud.notice.info('info', {timeout: 2000})
+  viewmodel.headRowspanRows([
+    {
+      id: 1,
+      name1: 'name1',
+      name2: 'name2',
+      name3: 'name3',
+      quotation: [{
+        name1: 'test',
+        name2: 'tes2',
+        name3: 'test3'
+      }, {
+        name1: '2test1',
+        name2: '3tes21',
+        name3: '1test31'
+      }]
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }
+  ])
   // viewmodel.radioDataList([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}])
 }, 1000)
 setTimeout(() => {
