@@ -1,7 +1,7 @@
 import './index.less'
 import ko from 'knockout'
 import template from './index.html'
-import Base from '@/core/base'
+import Base from '../../core/base'
 const PREIFX = 'y-'
 ko.components.register(PREIFX + 'datepicker-year', {
   viewModel: require('./base/year').default,
@@ -49,6 +49,7 @@ class DatePicker extends Base {
     this.minDate = minDate || ko.observable('1600-01-01')
     this.maxDate = maxDate || ko.observable('2099-12-31')
     this.isPopup = ko.observable(false)
+    this.initFlag = true
     // 显示对应输入框
     this.showyear = ko.observable(false)
     this.showmonth = ko.observable(false)
@@ -95,7 +96,15 @@ class DatePicker extends Base {
   methods (params) {
     // 生成初始化的值
     this.generateDate = (v) => {
-      var _date = v ? (new Date(v.replace(/-/g, '/'))) : (new Date())
+      var _date
+      if (v) {
+        // 支持数字
+        _date = isNaN(v - 0) ? (new Date(v.replace(/-/g, '/'))) : (new Date(v - 0))
+      } else {
+        _date = new Date()
+        // 如果没有默认值 需要优先设置默认值，防止后续触发到bindModelValue
+        this.initFlag = false
+      }
       this.year(_date.getFullYear())
       this.month(_date.getMonth() + 1)
       this.day(_date.getDate())
@@ -104,6 +113,8 @@ class DatePicker extends Base {
         this.minutes(_date.getMinutes())
         this.seconds(_date.getSeconds())
       }
+      // 第一次初始化完之后设置flag
+      this.initFlag = false
     }
     // 选中输入框
     this.focus = (data, event) => {
@@ -142,8 +153,10 @@ class DatePicker extends Base {
       } else {
         _date = new Date(this.year(), this.month() - 1, this.day())._format(DATEFORMAT)
       }
-
-      this.data(_date)
+      // 如果还处于初始化则不重新赋值
+      if (this.initFlag) {
+        this.data(_date)
+      }
     }
     //
     this.confirm = () => {
@@ -173,7 +186,7 @@ class DatePicker extends Base {
   }
   created (params) {
     // 初始化值
-    this.generateDate()
+    this.generateDate(this.data())
   }
 }
 export default {

@@ -84,7 +84,7 @@
       </div>
       <div class="col-md-3">
         <y-select
-          params="dataList:vm.selectList,multiValue:vm.multiselect,clearable:true,multiple:true"></y-select>
+          params="onSelectChange:$root.onSelectChange, dataList:vm.selectList,multiValue:vm.multiselect,clearable:true,multiple:true"></y-select>
       </div>
     </div>
     <div class="row m-b-xs">
@@ -198,8 +198,29 @@
           <y-formitem params="label:'checkbox垂直',style:{height:'auto'}">
             <y-checkbox params="dataList:$root.checkboxDataList,value:$root.checkboxValue, direction:'vertical'"></y-checkbox>
           </y-formitem>
-          <y-formitem params="label: '日期'">
+          <y-formitem params="label: 'String日期'">
             <y-datepicker params='placeholder:"请选择日期",data: $root.datepicker'>
+            </y-datepicker>
+          </y-formitem>
+          <y-formitem params="label: 'Number日期'">
+            <y-datepicker params='placeholder:"请选择日期",data: $root.numericDate'>
+            </y-datepicker>
+          </y-formitem>
+
+          <y-formitem params="label: '无日期'">
+            <y-datepicker params='placeholder:"请选择日期",data: ko.observable()'>
+            </y-datepicker>
+          </y-formitem>
+          <y-formitem params="label: '不能早于2017-05-06'">
+            <y-datepicker params='minDate:ko.observable("2017-05-06"),placeholder:"请选择时间",data: ko.observable()'>
+            </y-datepicker>
+          </y-formitem>
+          <y-formitem params="label: '不能晚于2018-05-01'">
+            <y-datepicker params='maxDate:ko.observable("2018-05-01"),placeholder:"请选择时间",data: ko.observable()'>
+            </y-datepicker>
+          </y-formitem>
+          <y-formitem params="label: '日期带时分秒'">
+            <y-datepicker params='placeholder:"请选择日期",data: ko.observable("2015-01-02 00:00:00")'>
             </y-datepicker>
           </y-formitem>
           <y-formitem params="label: '时间'">
@@ -329,15 +350,15 @@
             width: 400,
             field: 'name'
           }, {
-            title: 'col1',
+            title: 'col2',
             width: 400,
             field: 'name'
           }, {
-            title: 'col1',
+            title: 'col3',
             width: 400,
             field: 'name'
           }, {
-            title: 'col1',
+            title: 'col4',
             width: 400,
             field: 'name'
           }

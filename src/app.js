@@ -804,7 +804,9 @@ let viewmodel = {
   onPageChage: function (pageIndex, pageSize) {
     console.log('pageIndex:' + pageIndex + ' ,pageSize:' + pageSize)
   },
-  datepicker: ko.observable(),
+  datepicker: ko.observable('2017-02-19 02:00:00'),
+  numericDate: ko.observable('1516009970361'),
+  dynamicDate: ko.observable(),
   onInputBlur: function (data) {
     alert('blur')
   },
@@ -966,65 +968,69 @@ let viewmodel = {
     {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'}
   ])
 }
+var rowspanrowsdata = [
+  {
+    field1: 'A',
+    field2: 'A',
+    field3: 'C',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F5'
+  }, {
+    field1: 'A',
+    field2: 'A',
+    field3: 'C',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F1'
+  }, {
+    field1: 'A',
+    field2: 'C',
+    field3: 'D',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F2'
+  }, {
+    field1: 'A',
+    field2: 'C',
+    field3: 'E',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F'
+  }, {
+    field1: 'B',
+    field2: 'B',
+    field3: 'C',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F'
+  }, {
+    field1: 'B',
+    field2: 'B',
+    field3: 'C',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F'
+  }, {
+    field1: 'B',
+    field2: 'B',
+    field3: 'C',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F'
+  }
+]
 setTimeout(() => {
   viewmodel.loading(!viewmodel.loading())
   var item = viewmodel.stateTabsItems()[0]
   item.num = 0
   viewmodel.stateTabsItems.splice(0, 1)
   viewmodel.stateTabsItems.splice(0, 0, item)
-  viewmodel.rowspanrows([
-    {
-      field1: 'A',
-      field2: 'A',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }, {
-      field1: 'A',
-      field2: 'A',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F1'
-    }, {
-      field1: 'A',
-      field2: 'C',
-      field3: 'D',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F2'
-    }, {
-      field1: 'A',
-      field2: 'C',
-      field3: 'E',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }, {
-      field1: 'B',
-      field2: 'B',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }, {
-      field1: 'B',
-      field2: 'B',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }, {
-      field1: 'B',
-      field2: 'B',
-      field3: 'C',
-      field4: 'D',
-      field5: 'E',
-      field6: 'F'
-    }
-  ])
+  viewmodel.rowspanrows(rowspanrowsdata)
 }, 1000)
+setTimeout(function () {
+  viewmodel.rowspanrows(rowspanrowsdata.filter(function (item) {return item.field6 !== 'F5'}))
+}, 3000)
 // 打印每次单选的内容
 viewmodel.singleselect.subscribe(function (item) {
   console.log('单选：')

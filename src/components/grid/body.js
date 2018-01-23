@@ -189,6 +189,10 @@ class Body extends Base {
       val = ''
       // 需要减掉用于显示暂无数据的那一行
       for (var i = 0; i < tab.rows.length - 1; i++) {
+        // fixed rowspan 在数据切换之后产生的bug
+        if (tab.rows[i].cells[col].style.display === 'none') {
+          tab.rows[i].cells[col].style.display = 'table-cell'
+        }
         if (val === tab.rows[i].cells[col].innerHTML) {
           count++
         } else {
