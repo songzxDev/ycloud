@@ -23,7 +23,7 @@ class Body extends Base {
     this.lockhead = params.lockhead
     this.tdstyle = params.tdstyle
     this.isSeparate = params.isSeparate
-    this.forbitRowSelect = params.forbitRowSelect
+    this.forbitRowSelect = params.forbitRowSelect || function () {}
     this.isShowLoading = params.isShowLoading
     this.crossPageSelectedRows = params.crossPageSelectedRows
     this.fixColumnTransform = params.fixColumnTransform
