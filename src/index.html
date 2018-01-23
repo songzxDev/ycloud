@@ -137,8 +137,10 @@
       <y-form params="model:$root.formData,labelWidth:'200px',labelAlign:'right'">
         <div class="col-md-12">
         <y-formitem params="label:'普通标签:'">
-          <y-tag params="text:'tag1'"></y-tag>
+          <y-tag params="text:'tag1',color:'red'"></y-tag>
+          <y-tag params="text:'tag1',color:'red',fill:true"></y-tag>
           <y-tag params="text:'tag2', type:'ghost',closeable:true"></y-tag>
+          <y-tag params="text:'tag2', color:'#3ca7e3', fill:true, closeable:true"></y-tag>
           <y-tag params="enableActive:true,text:'可点击选中', type:'blank',style:{marginLeft:'15px'}"></y-tag>
           <y-tag params="text:'tag4',closeable:true,handleClose:vm.handleClose"></y-tag>
         </y-formitem>
