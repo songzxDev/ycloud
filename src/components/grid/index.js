@@ -21,11 +21,11 @@ class Grid extends Base {
     // 只有当columns1和columns2一起启用的时候才认为是启用了rowspanhead
     this.isRowspanHead = !!params.columns1 && !!params.columns2
     this.headtransform = ko.observable('translateX(0)')
-    this.rows = params.rows
-    this.lockhead = params.lockhead || false
-    this.domId = params.id
-    this.isTableBorder = params.isTableBorder || params.rowspan
+    this.fixColumnTransform = ko.observable('translateY(0)')
     this.rowspan = params.rowspan
+    this.rows = params.rows
+    this.domId = params.rowspan ? Math.random() : ''
+    this.isTableBorder = params.isTableBorder || params.rowspan
     this.maxheight = params.maxheight || '486px'
     this.minheight = params.minheight || 'auto'
     this.isStripe = params.isStripe || false
@@ -39,6 +39,13 @@ class Grid extends Base {
     this.defaultExpand = params.defaultExpand || false
     // 是否启用分页组件
     this.pagination = ko.observable(params.pagination || false)
+    // 是否启用固定列
+    this.lockcolumn = params.lockcolumn || false
+    // 固定表头
+    this.lockhead = params.lockhead || params.lockcolumn
+
+    this.headHeight = params.headHeight || '45px'
+    this.scrollHeight = params.scrollHeight || '15px'
     this.pageSize = params.pageSize || ko.observable(PAGESIZE)
     this.pageIndex = params.pageIndex || ko.observable(PAGEINDEX)
     this.totalCount = params.totalCount || ko.observable(0)
@@ -191,7 +198,30 @@ class Grid extends Base {
       if (isUseOuterWidth) {
         return '100%'
       } else {
-        return cols.map(cell => cell.width).reduce((a, b) => a + b, 0)
+        return cols.map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0) + 'px'
+      }
+    })
+    this.fixBodyHeight = ko.pureComputed(() => {
+      if (this.height !== 'auto') {
+        return this.computeMaxHeight().replace('px', '') - this.scrollHeight.replace('px', '') + 'px'
+      } else {
+        return 'auto'
+      }
+    })
+    // 计算锁定列的宽度
+    this.fixedTableWidth = ko.pureComputed(() => {
+      let cols
+      if (this.columns.subscribe) {
+        cols = this.columns()
+      } else {
+        cols = this.columns
+      }
+      // lock列需要指定宽度
+      const isUseOuterWidth = cols.filter(cell => cell.lock).some(cell => isNaN(cell.width))
+      if (isUseOuterWidth) {
+        return '0px'
+      } else {
+        return cols.filter(cell => cell.lock).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0) + 'px'
       }
     })
     // grid下有传入自定义组件
@@ -218,9 +248,11 @@ class Grid extends Base {
   methods (params) {
     this.handleScroll = (vm, event) => {
       // 仅当锁定表头时才自动滚动列
-      if (this.lockhead) {
-        var scrollLeft = event.currentTarget.scrollLeft
+      if (this.lockhead || this.lockcolumn) {
+        let scrollLeft = event.currentTarget.scrollLeft
+        let scrollTop = event.currentTarget.scrollTop
         this.headtransform('translateX(-' + scrollLeft + 'px)')
+        this.fixColumnTransform('translateY(-' + scrollTop + 'px)')
       }
     }
     // 设置loading图标是否显示

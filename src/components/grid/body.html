@@ -1,5 +1,5 @@
-<div class="y-grid-body" data-bind="css:{'y-grid-body-lock':lockhead},let:{tdstyle:tdstyle,isDataTable:isDataTable}">
-  <table cellspacing="0" cellpadding="0" border="0" data-bind="attr:{id:domId},style:{width:tableWidth},css:{'y-table-separate':isSeparate}">
+<div class="y-grid-body" data-bind="style:gridBodyStyle,css:{'y-grid-body-lock':lockhead},let:{tdstyle:tdstyle,isDataTable:isDataTable}">
+  <table cellspacing="0" cellpadding="0" border="0" data-bind="attr:{id:domId},style:{width:tableWidth,transform:fixColumnTransform},css:{'y-table-separate':isSeparate}">
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
       <col data-bind="visible: col._show, attr:{width:col.width}">
     </colgroup>

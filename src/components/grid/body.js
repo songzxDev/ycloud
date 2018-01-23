@@ -26,8 +26,17 @@ class Body extends Base {
     this.forbitRowSelect = params.forbitRowSelect
     this.isShowLoading = params.isShowLoading
     this.crossPageSelectedRows = params.crossPageSelectedRows
+    this.fixColumnTransform = params.fixColumnTransform
+    this.headHeight = params.headHeight
   }
   computed (params) {
+    this.gridBodyStyle = ko.pureComputed(() => {
+      let style = {}
+      if (this.lockhead) {
+        style.marginTop = this.headHeight
+      }
+      return style
+    })
     // 计算暂无数据的单元格合并
     this.nodataColSpan = ko.computed(() => {
       if (params.columns && params.columns.subscribe) {

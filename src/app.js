@@ -259,10 +259,12 @@ let viewmodel = {
       title: 'col1',
       field: 'id',
       rowspan: 2,
+      lock: true,
       width: 100
     }, {
       title: 'col2',
       field: 'name1',
+      lock: true,
       rowspan: 2,
       width: 100
     }, {
@@ -444,6 +446,135 @@ let viewmodel = {
     title: '总价',
     field: 'total'
   }],
+  lockcolcolumns: [
+    {
+      lock: true,
+      title: '姓名',
+      field: 'name',
+      width: 200
+    },  {
+      lock: true,
+      title: '性别',
+      field: 'sex',
+      width: 220
+    }, {
+      title: '年龄',
+      field: 'age',
+      width: 400
+    }, {
+      title: '地址',
+      field: 'address',
+      width: 500
+    }
+  ],
+  lockcolrows: ko.observableArray([
+    {
+      name: 'col1',
+      sex: '男',
+      age: 14,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '女',
+      age: 17,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 23,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 23,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 23,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '女',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 23,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '女',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 23,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '女',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '女',
+      age: 23,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '女',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 23,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '女',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 18,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '女',
+      age: 23,
+      address: 'tttttt'
+    }, {
+      name: 'col1',
+      sex: '男',
+      age: 18,
+      address: 'tttttt'
+    }
+  ]),
   columnsdt: [
     {
       title: '',
@@ -531,7 +662,7 @@ let viewmodel = {
       title: 'renderFn',
       type: 'render',
       hidden: false,
-      width: '100',
+
       renderFn: function (row, index) {
         window.evt_setDisabeld = function (rowId) {
           let row = dt.getRowByRowId(rowId)
@@ -976,8 +1107,7 @@ let viewmodel = {
   },
   lockheadCols: [{
     title: 'lockhead',
-    field: 'name',
-    width: 200
+    field: 'name'
   }],
   lockheadRows: ko.observableArray([
     {name: '第一列'}, {name: '第一列'}, {name: '第0列'}, {name: '第一列'}, {name: '第一列'},
@@ -1155,6 +1285,146 @@ setTimeout(() => {
         name1: '2test1',
         name2: '3tes21',
         name3: '1test31'
+      }]
+    }, {
+      id: 2,
+      name1: 'name24',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }, {
+      id: 2,
+      name1: 'name24',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
+      }]
+    }, {
+      id: 2,
+      name1: 'name21',
+      name2: 'name22',
+      name3: 'name23',
+      quotation: [{
+        name1: 'test2',
+        name2: 'tes22',
+        name3: 'test23'
+      }, {
+        name1: '4test13',
+        name2: '5tes213',
+        name3: '6test331'
       }]
     }, {
       id: 2,

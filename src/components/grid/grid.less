@@ -30,6 +30,18 @@
   &.y-grid-border th, &.y-grid-border td{
     border-right: 1px solid @border-color;
   }
+  .y-grid-fixed{
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 2px 0 6px -2px rgba(0, 0, 0, 0.2);
+    .y-grid-fixed-body{
+      overflow: hidden;
+      position: relative;
+    }
+  }
   .y-grid-operation{
     cursor: pointer;
     color: @f-color-primary;
@@ -193,7 +205,7 @@
   overflow: hidden;
 }
 .y-grid-body-lock{
-  margin-top: 45px;
+  /* margin-top: 45px;*/
 }
 @keyframes yloading {
   0% {opacity: 0;}

@@ -11,7 +11,7 @@ function init (params) {
   if (params.lockhead) {
     setTimeout(function () {
       // 要减掉纵向滚动条的宽度
-      params.el && (this.outterWidth(params.el.firstElementChild.offsetWidth - 15 + 'px'))
+      params.el && (this.outterWidth(params.el.firstElementChild.offsetWidth + 'px'))
     }.bind(this))
   }
   this.allRowChecked = params.allRowChecked

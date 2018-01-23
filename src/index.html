@@ -369,13 +369,17 @@
       </div>
       <div class="col-md-12">
         <h4>head rowspan</h4>
-        <y-grid params="isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">
+        <y-grid params="rowspan:{maxCol:2},headHeight:'90px',lockcolumn:true,isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">
 
         </y-grid>
       </div>
       <div class="col-md-12">
         <h4>grid 设置rowstatus字段</h4>
         <y-grid params="ref:'rowstatusDt',isDataTable:true,rows: $root.rowstatusrow,columns: $root.rowstatuscol"></y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>锁定列</h4>
+        <y-grid params="rows: $root.lockcolrows, columns: $root.lockcolcolumns, lockcolumn: true"></y-grid>
       </div>
     </div>
   </y-boxcontent>
