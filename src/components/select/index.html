@@ -11,7 +11,7 @@
     <i class="y-select-arrow fa fa-list y-select-hasmore" data-bind="visible: hasmore,click:function(data, event){handleMore(data, event);return false;}, clickBubble: false"></i>
   </div>
   <div data-bind="let: {isNoData:isNoData,curIndex:curIndex,curValue:curValue,valuekey:valuekey,labelkey:labelkey,handleOptClick:handleOptClick,multiValue:multiValue}" >
-    <y-dropdown params="targetEl:$el, isShow:showDropdown,scrollTop:scrollTop,isStopTransferDom: multiple">
+    <y-dropdown params="targetEl:$el, isShow:showDropdown,scrollTop:scrollTop">
       <div class="y-option-ctn" data-bind="foreach:{data: $parent.filterDataList, as: 'item'}">
         <y-option params="value: item,valuekey:valuekey, label:labelkey,itemClick:handleOptClick,index:$index, curIndex:curIndex, curValue:curValue, curMultiValue:multiValue"></y-option>
       </div>

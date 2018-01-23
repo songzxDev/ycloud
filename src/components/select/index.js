@@ -9,6 +9,7 @@ import 'ko-bindinghandler'
 import {lockScrollEffect, resetScrollEffect} from '../../util/scrollable'
 import option from './option'
 import Base from '../../core/base'
+import $ from 'jquery'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + option.name, {
   viewModel: option.init,
@@ -178,6 +179,10 @@ class Select extends Base {
     }
     // 点击外部收起下拉
     this.clickoutside = (e) => {
+      // 多选的时候 点击option不收起 下拉
+      if ($(e.target).parents('.v-transfer-dom').length > 0 && this.multiple) {
+        return
+      }
       this.showDropdown(false)
       if (this.value() && this.value()[this.labelkey]) {
         this.key(this.value()[this.labelkey])
