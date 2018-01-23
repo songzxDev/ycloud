@@ -17,6 +17,15 @@ var table = new u.DataTable({
     total: ''
   }
 })
+var dtRowStatus = new u.DataTable({
+  meta: {
+    id: '',
+    name: '',
+    price: '',
+    num: '',
+    rowStatus: ''
+  }
+})
 var crossRows = new u.DataTable({
   meta: {
     id: '',
@@ -34,6 +43,15 @@ table.on('price.valueChange', function (obj) {
 })
 setTimeout(function () {
   dt.setSimpleData([{id:1,name:2,createdate:'2014-01-06'},{id:2,name:1,createdate:'2014-01-06 00:02:03'},{id:3,name:4,createdate:''},{id:3,name:4,createdate:1509610089885}])
+  dtRowStatus.setSimpleData([{
+    name: 'test'
+  }, {
+    name: 'test4'
+  }, {
+    name: 'test'
+  }, {
+    name: 'test2'
+  }])
   // dt.setAllRowsUnSelect()
 }, 1000)
 window.dt = dt
@@ -966,7 +984,47 @@ let viewmodel = {
     {name: '第一列'}, {name: '第一列'}, {name: '第2列'}, {name: '第一列'}, {name: '第一列'},
     {name: '第一列'}, {name: '第一列'}, {name: '第4列'}, {name: '第一列'}, {name: '第一列'},
     {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'}
-  ])
+  ]),
+  rowstatusrowOld: dtRowStatus.rows,
+  rowstatusrow: ko.computed(function () {
+    return dtRowStatus.rows().filter(function (row) {
+      return row.getValue('rowStatus') !== 'del'
+    })
+  }),
+  rowstatuscol: [
+    {
+      title: 'colA',
+      field: 'name'
+    }, {
+      title: 'colB',
+      type: 'component',
+      compFn (row) {
+        return {
+          name: 'y-input',
+          params: {
+            value: row.ref('name')
+          }
+        }
+      }
+    }, {
+      title: '操作',
+      type: 'operation',
+      operationList: [
+        {
+          title: '删除',
+          click: function (row, evt) {
+            debugger
+            row.setValue('rowStatus', 'del')
+            var index = dtRowStatus.rows.indexOf(row)
+            if (index >= 0) {
+              dtRowStatus.rows.splice(index, 1, row)
+            }
+            return false
+          }
+        }
+      ]
+    }
+  ]
 }
 var rowspanrowsdata = [
   {

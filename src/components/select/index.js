@@ -180,7 +180,7 @@ class Select extends Base {
     // 点击外部收起下拉
     this.clickoutside = (e) => {
       // 多选的时候 点击option不收起 下拉
-      if ($(e.target).parents('.v-transfer-dom').length > 0 && this.multiple) {
+      if ($(e.target).parents('.y-option-ctn').length > 0 && this.multiple) {
         return
       }
       this.showDropdown(false)
