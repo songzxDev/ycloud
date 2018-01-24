@@ -339,7 +339,6 @@ let viewmodel = {
       field: 'id',
       type: 'checkbox',
       hidden: false,
-      width: 50
     },
     {
       title: 'component',
@@ -363,6 +362,7 @@ let viewmodel = {
       field: 'id',
       title: 'renderFn',
       type: 'render',
+      width: '30%',
       hidden: false,
       renderFn: function (row, index) {
         return `<div onclick="clickme(event)" data-id='${row.id()}'>${index + row.name() + row.id() + '通过render函数生成的html片段'}</div>`
@@ -371,6 +371,7 @@ let viewmodel = {
       field: 'id',
       title: 'operation',
       hidden: false,
+      width: '30%',
       type: 'operation',
       operationList: [
         {
