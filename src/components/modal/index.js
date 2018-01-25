@@ -4,6 +4,7 @@ import 'ko-bindinghandler'
 import {lockScrollEffect, resetScrollEffect} from '@/util/scrollable'
 function init (params) {
   this.visible = params.visible || ko.observable(false)
+  this.isShow = ko.observable(false)
   this.width = params.width || '400px'
   this.title = params.title || '提示'
   this.top = window.innerHeight * 0.06 + 'px'
@@ -40,10 +41,17 @@ function init (params) {
       resetScrollEffect()
     }
   })
+  // 仅当visible第一次是true的时候切换if
+  ko.when(() => {
+    return this.visible()
+  }, () => {
+    this.isShow(true)
+  }, this)
   // 添加外层错误校验
   this.errormsg = ko.observable('')
   this.isValidate = true
   this.onModalOkValidate = function (validateResult) {
+    ko.when()
     if (validateResult) {
       this.isValidate = true
     } else {

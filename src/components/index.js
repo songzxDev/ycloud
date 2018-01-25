@@ -27,6 +27,7 @@ import tree from './tree'
 import yswitch from './switch'
 import tooltip from './tooltip'
 import {notice, $refs} from './base'
+import './konewfeature'
 const PREFIX = 'y-'
 function register (model) {
   ko.components.register(PREFIX + model.name, {
