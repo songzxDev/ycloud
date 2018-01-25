@@ -202,6 +202,8 @@ class Body extends Base {
         if (tab.rows[i].cells[col].style.display === 'none') {
           tab.rows[i].cells[col].style.display = 'table-cell'
         }
+        // 每次初始化之前要把当前rowSpan重置
+        tab.rows[i].cells[col].rowSpan = 1
         if (val === tab.rows[i].cells[col].innerHTML) {
           count++
         } else {
