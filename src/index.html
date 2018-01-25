@@ -173,6 +173,16 @@
           <y-formitem params="label:'输入框',vMap:validateList,vKey:'name'">
             <y-input params="onBlur:$root.onInputBlur,placeholder:'请输入文本',class:'y-inline-block',type:'text',value:$parent.model.name"></y-input>
           </y-formitem>
+          <y-formitem params="label:'整数输入框'">
+            <y-input params="placeholder:'请输入文本',class:'y-inline-block',type:'integer',value:ko.observable('')"></y-input>
+          </y-formitem>
+          <y-formitem params="label:'正整数输入框'">
+            <y-input params="placeholder:'请输入文本',class:'y-inline-block',type:'positiveinteger',value:ko.observable('')"></y-input>
+          </y-formitem>
+          <y-formitem params="label:'正数输入框'">
+            <y-input params="placeholder:'请输入文本',class:'y-inline-block',type:'positivenumber',value:ko.observable('')"></y-input>
+          </y-formitem>
+
           <y-formitem params="label:'输入框可删除'">
             <y-input params="clearable:true,placeholder:'请输入文本',class:'y-inline-block',type:'text',value:$parent.model.name"></y-input>
           </y-formitem>
