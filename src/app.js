@@ -949,6 +949,7 @@ let viewmodel = {
   totalCount: ko.observable(112),
   pageSize: ko.observable(10),
   onSelectChange: function (data) {
+    debugger
     console.log('change:' + JSON.stringify(data))
   },
   onPageChage: function (pageIndex, pageSize) {

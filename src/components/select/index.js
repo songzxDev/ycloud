@@ -120,7 +120,10 @@ class Select extends Base {
   }
   methods (params) {
     // 点击更多事件
-    this.handleMore = params.onmore
+    this.handleMore = () => {
+      this.showDropdown(false)
+      params.onmore && params.onmore()
+    }
     // 选中数据改变事件 单选多选都会触发给外部回调使用
     this.onChange = params.onChange || function () {}
     // filterable + 键盘上下键的时候需要重新设置滚动高度
@@ -263,6 +266,7 @@ class Select extends Base {
     this.handleDeleteSelected = (item) => {
       var index = this.multiValue.indexOf(item.item)
       this.multiValue.splice(index, 1)
+      this.onChange(this.multiValue())
     }
   }
   created (params) {
