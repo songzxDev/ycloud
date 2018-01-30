@@ -8,7 +8,7 @@
       <tr data-bind="foreach:{data: columns,as: 'col'}">
         <th data-bind="visible: col._show">
           <!-- ko if: col.type == 'checkbox' -->
-          <div class="y-cell" style="position: relative;top: 2px;">
+          <div class="y-cell y-cell-checkbox" style="position: relative;top: 2px;">
             <y-checkbox-item class="y-grid-checkbox" params="value:'',label:'',checked:allRowChecked"></y-checkbox-item>
           </div>
           <!-- /ko -->
