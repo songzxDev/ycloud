@@ -59,6 +59,7 @@ class Select extends Base {
     this.disabled = params.disabled || ko.observable(false)
     // 用于判断是否要重新查询
     this.oldSearchKey = undefined
+    this.isStopTransferDom = params.isStopTransferDom || false
   }
   computed (params) {
     // 显示暂无数据
