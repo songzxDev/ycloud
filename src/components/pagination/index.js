@@ -13,10 +13,6 @@ function init (params) {
   this.totalCount = params.totalCount
   this.pageList = [
     {
-      value: 8,
-      label: '8'
-    },
-    {
       value: 10,
       label: '10'
     }, {
@@ -41,7 +37,7 @@ function init (params) {
   this.sizeChange = (page) => {
     this.pageSize(page.value)
     // fix #55 size Change之后要从第一页重新开始
-    this.pageIndex(0 + INDEX_DIFF)
+    params.pageIndex(0 + INDEX_DIFF)
     params.onSizeChange && params.onSizeChange(this.pageIndex() - INDEX_DIFF, this.pageSize())
   }
   // 进入某一页

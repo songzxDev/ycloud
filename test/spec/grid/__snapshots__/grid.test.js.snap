@@ -40,7 +40,7 @@ exports[`y-grid组件 快照 1`] = `
           </y-grid-body>
           
       
-          <!-- ko if:lockcolumn-->
+          <!-- ko if:lockcolumn && rows().length &gt; 0-->
           <!-- /ko -->
           
     

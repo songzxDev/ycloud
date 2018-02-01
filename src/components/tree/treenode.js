@@ -25,7 +25,11 @@ var init = function (params) {
     }
   })
   this.isNodeSelected = ko.computed(() => {
-    return this.selectedItem().id === this.data().id
+    if (this.multiple) {
+      return this.selectedItem() && this.selectedItem.indexOf(this.data()) > -1
+    } else {
+      return this.selectedItem() && this.selectedItem().id === this.data().id
+    }
   })
   this.expanded = ko.observable(false)
   this.selectedId = params.selectedId

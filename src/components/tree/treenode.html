@@ -14,7 +14,7 @@
       <span class="y-tree-title" data-bind="click:handleClickNode, text:data().name,css:{'y-tree-node-selected':isNodeSelected}"></span>
       <!-- ko if: data().children && data().children.length > 0 -->
       <ul data-bind="foreach: {data:data().children, as:'item'},css:{'y-tree-icon-expand':expanded}">
-        <y-treenode params="selectedId:selectedId,multiple: multiple,data:item,loadData:$parent.loadData,expand:$parent.expand,selectedItem: $parent.selectedItem">
+        <y-treenode params="selectedId:$parent.selectedId,multiple: multiple,data:item,loadData:$parent.loadData,expand:$parent.expand,selectedItem: $parent.selectedItem">
         </y-treenode>
       </ul>
       <!-- /ko -->

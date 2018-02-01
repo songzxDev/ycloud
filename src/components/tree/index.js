@@ -1,7 +1,7 @@
 import template from './index.html'
 import ko from 'knockout'
 import treenode from './treenode'
-import {validatemixin} from '@/mixin'
+import {validatemixin} from '../../mixin'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + treenode.name, {
   viewModel: treenode.init,
@@ -11,6 +11,7 @@ function init (params) {
   validatemixin.call(this, params)
   this.data = params.data
   this.height = params.height || 'auto'
+  this.minHeight = params.minHeight || '0'
   this.loadData = params.loadData
   this.multiple = params.multiple || false
   this.selectedItem = params.selectedItem || (this.multiple ? ko.observableArray() : ko.observable({}))
