@@ -1,0 +1,9 @@
+<div class="y-breadcrumb" data-bind="foreach: { data: data(), as: 'row' }">
+    <!-- ko if: row.link -->
+    <a data-bind="attr:{href:row.link},text:row.text"></a>
+    <i class='fa fa-angle-right'></i>
+    <!-- /ko -->
+    <!-- ko if: !row.link -->
+    <span data-bind="text:row.text"></span>
+    <!-- /ko -->
+</div>

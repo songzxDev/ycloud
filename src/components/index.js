@@ -27,6 +27,7 @@ import tree from './tree'
 import yswitch from './switch'
 import tooltip from './tooltip'
 import {notice, $refs} from './base'
+import breadcrumb from './breadcrumb'
 import './konewfeature'
 const PREFIX = 'y-'
 function register (model) {
@@ -62,6 +63,7 @@ register(datetimepicker)
 register(statetabs)
 register(searchtag)
 register(tooltip)
+register(breadcrumb)
 let ycloud = {
   notice,
   $refs
