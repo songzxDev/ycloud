@@ -1,9 +1,9 @@
-<div class="y-breadcrumb" data-bind="foreach: { data: data(), as: 'row' }">
+<div class="y-breadcrumb" data-bind="foreach: { data: data, as: 'row' }">
     <!-- ko if: row.link -->
     <a data-bind="attr:{href:row.link},text:row.text"></a>
-    <i class='fa fa-angle-right'></i>
+    <span class="y-breadcrumb-separate" data-bind="text:$parent.separator"></span>
     <!-- /ko -->
     <!-- ko if: !row.link -->
-    <span data-bind="text:row.text"></span>
+    <span class="y-breadcrumb-last"><span data-bind="text:row.text"></span></span>
     <!-- /ko -->
 </div>

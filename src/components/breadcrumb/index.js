@@ -8,6 +8,7 @@ import template from './index.html'
 
 function init (params) {
   this.data = params.data
+  this.separator = params.separator || '>'
 }
 export default {
   name: 'breadcrumb',

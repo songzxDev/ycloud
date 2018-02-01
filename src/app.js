@@ -74,9 +74,10 @@ let viewmodel = {
     let grid = ycloud.$refs['modalgrid']
     console.log(grid.getSelectedRows())
   },
-  breadcrumbData:ko.observableArray([{text:'首页',link:'https://www.baidu.com/'},
+  breadcrumbData:
+  [{text:'首页',link:'https://www.baidu.com/'},
   {text:'第二页',link:'http://ie.sogou.com/'},
-  {text:'第三页'}]),
+  {text:'第三页'}],
   cascaderData: ko.observableArray([
     {
       id: 1,

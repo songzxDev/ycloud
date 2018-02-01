@@ -1,21 +1,23 @@
 .y-breadcrumb {
     font-size: 12px;
     font-weight: normal;
+    line-height: 16px;
     margin: 5px 0 10px 0;
 }
 .y-breadcrumb a{
-    color:#0377c1 !important;
+    color:@f-color-primary;
 }
 .y-breadcrumb a:hover{
     text-decoration: underline;
 }
 .y-breadcrumb span{
-    color:#333;
+    color:@f-color-dark;
 }
-.y-breadcrumb i{
+.y-breadcrumb-separate{
     padding: 0 4px;
+    line-height: 14px;
 }
-.y-breadcrumb span:after {
+.y-breadcrumb-last span:after {
     content: "\f005";
     color: rgb(252,196,73);
     padding:0 6px ;
