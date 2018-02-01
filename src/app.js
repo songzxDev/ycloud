@@ -213,6 +213,11 @@ let viewmodel = {
   onTreeSelect: function (data) {
     viewmodel.treeSelectedData(JSON.stringify(data))
   },
+  treeSelectedData2: ko.observableArray(),
+  onTreeMultiSelect: function (data) {
+    viewmodel.treeSelectedData2(JSON.stringify(data))
+  },
+  selectedItems: ko.observableArray(),
   loadSelectData: function (params, cb) {
     if (params) {
       setTimeout(() => {
@@ -237,8 +242,13 @@ let viewmodel = {
   },
   loadTreeData: function (params, cb) {
     if (params.name !== 'nodeadd') {
+      if (window.count) {
+        window.count++
+      } else {
+        window.count = 3
+      }
       setTimeout(()=> {
-        cb([{id:Math.random(),name:'nodeadd'}, {id:Math.random(),name:'nodeadd2'}])
+        cb([{id: window.count, name: 'nodeadd'}, {id: window.count + '_1',name: 'nodeadd2'}])
       }, 500)
 
     } else {

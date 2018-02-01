@@ -13,3 +13,11 @@ if (!ko.when) {
     return subscription
   }
 }
+// 用于判断是否是ObservableArray
+if (!ko.isObservableArray) {
+  ko.isObservableArray = function (instance) {
+    return ko.isObservable(instance) &&
+      typeof instance['remove'] === 'function' &&
+      typeof instance['push'] === 'function'
+  }
+}

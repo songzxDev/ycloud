@@ -1,7 +1,7 @@
 import template from './treenode.html'
 import ko from 'knockout'
-function init (params) {
-  this.showChecked = params.showChecked
+var init = function (params) {
+  this.multiple = params.multiple
   var data = params.data
   data._checked = ko.isObservable(data._checked) ? data._checked : ko.observable(!!data._checked)
   this.data = ko.observable(data)
@@ -17,7 +17,7 @@ function init (params) {
       return false
     } else {
       // 需要异步加载切还没有点击过加载，也需要显示
-      if (params.loadData && !this.loaded()) {
+      if (this.loadData && !this.loaded()) {
         return true
       } else {
         return false
@@ -27,40 +27,74 @@ function init (params) {
   this.isNodeSelected = ko.computed(() => {
     return this.selectedItem().id === this.data().id
   })
-  // 选中子节点 将选中值赋值给选中的
-  this.handleClickNode = (data, event) => {
-    let item = data.data()
-    // 直返会当前项不返回子节点
-    item.children = []
-    // 表示多选
-    if (this.showChecked) {
-      item._checked(!item._checked())
-    } else {
-      // todo 如果是多选则需要重新处理
-      if (this.selectedItem() === item) {
-        this.selectedItem({})
-      } else {
-        this.selectedItem(item)
-      }
+  this.expanded = ko.observable(false)
+  this.selectedId = params.selectedId
+  // 多选场景下需要默认选中
+  if (ko.isObservableArray(this.selectedId)) {
+    if (this.selectedId().indexOf(data.id) > -1) {
+      data._checked(true)
+      // 添加到已选中的项之中
+      this.selectedItem.indexOf(data) < 0 && this.selectedItem.push(data)
     }
   }
-  this.expanded = ko.observable(false)
-  // 展开子节点
-  this.handleExpand = (data, event) => {
-    if (this.loaded()) {
+  data._checked.subscribe((val) => {
+    this.handleClickNode(this, null, true)
+  })
+}
+// 展开子节点
+init.prototype.handleExpand = function (data, event) {
+  if (this.loaded()) {
+    this.expanded(!this.expanded())
+  } else {
+    this.isLoading(true)
+    this.loadData(data.data(), function (childrenData) {
+      this.isLoading(false)
+      var _data = this.data()
+      // 设置默认勾选
+      if (this.multiple) {
+        childrenData && childrenData.forEach((child) => {
+          // 如果选中的id存在则勾选
+          if (this.selectedId().indexOf(child.id) > -1) {
+            child._checked = ko.observable(true)
+            this.selectedItem.indexOf(data) < 0 && this.selectedItem.push(child)
+          }
+        })
+      }
+      if (childrenData && childrenData.length > 0) {
+        _data.children = childrenData
+      }
+      this.data(_data)
       this.expanded(!this.expanded())
+      this.loaded(true)
+    }.bind(this))
+  }
+}
+// 选中子节点 将选中值赋值给选中的
+init.prototype.handleClickNode = function (data, event, checkFlag) {
+  let item = this.data()
+  // 直返会当前项不返回子节点
+  item.children = []
+  // 表示多选
+  if (this.multiple) {
+    if (!checkFlag) {
+      item._checked(!item._checked())
+    }
+    var _index = this.selectedItem.indexOf(item)
+    // 如果选中，加入已选中列表中，如果反宣，将其
+    if (item._checked()) {
+      if (_index < 0) {
+        this.selectedItem.push(item)
+      }
     } else {
-      this.isLoading(true)
-      params.loadData(data.data(), function (childrenData) {
-        this.isLoading(false)
-        var _data = this.data()
-        if (childrenData && childrenData.length > 0) {
-          _data.children = childrenData
-        }
-        this.data(_data)
-        this.expanded(!this.expanded())
-        this.loaded(true)
-      }.bind(this))
+      if (_index >= 0) {
+        this.selectedItem.splice(_index, 1)
+      }
+    }
+  } else {
+    if (this.selectedItem() === item) {
+      this.selectedItem({})
+    } else {
+      this.selectedItem(item)
     }
   }
 }

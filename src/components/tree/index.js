@@ -12,11 +12,17 @@ function init (params) {
   this.data = params.data
   this.height = params.height || 'auto'
   this.loadData = params.loadData
-  this.showChecked = params.showChecked || false
-  this.selectedItem = params.selectedItem || ko.observable({})
+  this.multiple = params.multiple || false
+  this.selectedItem = params.selectedItem || (this.multiple ? ko.observableArray() : ko.observable({}))
+  if (!this.multiple) {
+    if (ko.isObservableArray(this.selectedItem)) {
+      throw new Error('y-tree: selectedItem should be ko.observableArray while multiple = true')
+    }
+  }
+  this.selectedId = params.selectedId || (this.multiple ? ko.observableArray() : ko.observable())
   this.selectedItem.subscribe(val => {
-    if (params.onSelect) {
-      params.onSelect(val)
+    if (params.onChange) {
+      params.onChange(val)
     }
     // validate校验 用于通知父容器校验信息
     this.judgeValidate(val.id)
