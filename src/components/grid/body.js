@@ -10,8 +10,7 @@ ko.components.register(PREFIX + td.name, {
 })
 class Body extends Base {
   initialize (params) {
-    // 为跨页选择做准备
-    // let cacheData = []
+    this.hasSummaryRow = params.hasSummaryRow || false
     this.isDataTable = params.isDataTable
     this.tableWidth = params.tableWidth
     this.expand = params.expand

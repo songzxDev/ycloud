@@ -1,10 +1,17 @@
-<div class="y-grid-body" data-bind="style:gridBodyStyle,css:{'y-grid-body-lock':lockhead},let:{tdstyle:tdstyle,isDataTable:isDataTable}">
+<div class="y-grid-body" data-bind="style:gridBodyStyle,css:{'y-grid-body-lock':lockhead, 'y-grid-summary':hasSummaryRow},let:{tdstyle:tdstyle,isDataTable:isDataTable, hasSummaryRow:hasSummaryRow}">
   <table cellspacing="0" cellpadding="0" border="0" data-bind="attr:{id:domId},style:{width:tableWidth,transform:fixColumnTransform},css:{'y-table-separate':isSeparate}">
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
       <col data-bind="visible: col._show, attr:{width:col.width}">
     </colgroup>
     <tbody data-bind="foreach: {data: rows, as: 'row'}">
-
+      <!-- ko if: hasSummaryRow-->
+      <tr>
+        <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
+          <div class="y-cell y-cell-summary" data-bind="html: $parent.columns()[0].summaryRowFn(row)">
+          </div>
+        </td>
+      </tr>
+      <!-- /ko -->
       <tr data-bind="css:{'y-grid-row-hover':row._hover,'y-grid-row-selected':row._selected},event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
         <!-- ko foreach:{data: $parent.columns, as: 'col'} -->
         <td data-bind="visible: col._show, style: tdstyle">

@@ -15,6 +15,7 @@ import dropdown from './dropdown'
 import form from './form'
 import formitem from './formitem'
 import grid from './grid'
+import editgrid from './gridedit'
 import icon from './icon'
 import input from './input'
 import modal from './modal'
@@ -57,6 +58,7 @@ register(casitem)
 register(cascader)
 register(pagination)
 register(grid)
+register(editgrid)
 register(input)
 register(datepicker)
 register(datetimepicker)

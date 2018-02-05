@@ -44,6 +44,7 @@ class Input extends Base {
     this.placeholder = params.placeholder || ''
     // 是否支持可清楚
     this.clearable = params.clearable || false
+    this.align = params.align || 'left'
     this.isHasForm = !!params.onSubmit
     this.handleSubmit = params.onSubmit || function () {}
     this.handleIconClick = params.onIconClick || function () {}
