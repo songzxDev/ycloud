@@ -7,7 +7,7 @@ function init (params) {
   this.isShow = ko.observable(false)
   this.width = params.width || '400px'
   this.title = params.title || '提示'
-  this.isNotLazy = !params.lazy
+  this.isNotLazy = params.lazy === undefined ? false : !params.lazy
   this.top = window.innerHeight * 0.06 + 'px'
   var headAndFootHeightRate = (43 + 57) / window.innerHeight
   // 容器最大高度等于 屏幕可视高度 - 头部 - 尾部 - 内存padding - 距离顶部距离10% - 距离底部最小距离10%
@@ -35,7 +35,7 @@ function init (params) {
       this.errormsg(params.errormsg || '校验失败！')
     }
   }
-  this.visible.subscribe(val => {
+  this.visible.subscribe(function (val) {
     if (val) {
       lockScrollEffect()
     } else {
@@ -57,7 +57,6 @@ function init (params) {
   this.errormsg = ko.observable('')
   this.isValidate = true
   this.onModalOkValidate = function (validateResult) {
-    ko.when()
     if (validateResult) {
       this.isValidate = true
     } else {

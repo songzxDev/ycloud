@@ -9,11 +9,13 @@
 </div>
 <!-- /ko -->
 <!-- ko if:col.type == 'render' -->
-  <div class="y-cell" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},html: col.renderFn(row, rowIndex, col),style:col.style">
+  <div class="y-cell" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},
+  html: col.renderFn(row, rowIndex, col),style:col.style">
   </div>
 <!-- /ko -->
 <!-- ko if:col.type == 'component' -->
-  <div class="y-cell y-cell-overflow-auto" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},component: col.compFn(row),style:col.style">
+  <div class="y-cell y-cell-overflow-auto" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},
+  component: col.compFn(row),style:col.style">
   </div>
 <!-- /ko -->
 <!-- ko if:col.type == 'operation' -->
