@@ -14,7 +14,21 @@ function init (params) {
   this.disabled = params.disabled ? params.disabled : ko.observable(false)
   this.checked = params.checked || ko.observable(false) // 请传入ko对象 Boolean 值
   this.size = params.size ? (PREFIX + params.size) : '' // 尺寸  String 类型
-  this.stringChecked = params.checked ? '1' : '0' // 返回值  String 类型
+  this.stringChecked = params.stringChecked || ko.observable('')
+  this.checked.subscribe((val) => {
+    if (val) {
+      this.stringChecked('1')
+    } else {
+      this.stringChecked('0')
+    }
+  })
+  this.stringChecked.subscribe((val) => {
+    if (val === '1') {
+      this.checked(true)
+    } else {
+      this.checked(false)
+    }
+  })
   this.sizeClass = ko.computed(() => {
     return self.disabled() ? self.checked() ? `${this.size} ${PREFIX}checked ${PREFIX}disabled` : `${this.size} ${PREFIX}disabled` : self.checked() ? `${this.size} ${PREFIX}checked` : `${this.size} ${PREFIX}`
   }, this)
