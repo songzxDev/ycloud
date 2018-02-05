@@ -196,19 +196,24 @@ class Select extends Base {
     }
     // 选中事件
     this.handleOptClick = (item, evt) => {
-      if (!this.multiple) {
-        this.value(item.value)
-        this.key(item.value[this.labelkey])
-        this.showDropdown(false)
-        this.onChange(item.value)
-      } else {
-        var index = this.multiValue.indexOf(item.value)
-        if (index >= 0) {
-          this.multiValue.splice(index, 1)
+      // enter事件无值情况
+      if (item && evt) {
+        if (!this.multiple) {
+          this.value(item.value)
+          this.key(item.value[this.labelkey])
+          this.showDropdown(false)
+          this.onChange(item.value)
         } else {
-          this.multiValue.push(item.value)
+          var index = this.multiValue.indexOf(item.value)
+          if (index >= 0) {
+            this.multiValue.splice(index, 1)
+          } else {
+            this.multiValue.push(item.value)
+          }
+          this.onChange(this.multiValue())
         }
-        this.onChange(this.multiValue())
+      } else {
+        return false
       }
     }
     // 在中文输入法期间不触发查询
