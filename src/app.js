@@ -104,13 +104,20 @@ let viewmodel = {
       title: '品牌产地/材质',
       field: 'product',
       _show: true,
-      summaryRowFn: (row) => {
+      summaryType: 'render',
+      summaryFn: (row) => {
         var template = `<div><div>${row.materialName}</div>
         <div>${row.num}${row.unit}
           需求组织：${row.reqOrg}
         </div>
         <div>规格：${row.spec}</div></div>`
         return template
+        // return {
+        //   name: 'y-input',
+        //   params: {
+        //     value: row.reqDate
+        //   }
+        // }
       },
       type: 'component',
       compFn: (row) => {
