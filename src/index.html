@@ -204,8 +204,9 @@
             </y-switch>
             <y-switch params="checked: $root.checked3, size: 'small'">
             </y-switch>
-            <y-switch params="customChecked: $root.checked4, size: 'large', checkedValue:'1', unCheckedValue:'0'">
+            <y-switch params="checked: $root.checked4, size: 'large', checkedValue:'1', unCheckedValue:'0'">
             </y-switch>
+            <span data-bind="text:$root.checked4"></span>
           </y-formitem>
           <y-formitem params="label:'checkbox水平'">
             <y-checkbox params="stringValue:$root.checkboxkey,dataList:$root.checkboxDataList,value:$root.checkboxValue"></y-checkbox>
