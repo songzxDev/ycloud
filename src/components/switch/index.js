@@ -2,7 +2,7 @@
 * author: ZJJ
 * description: switch 组件
 * 参数说明:
-* @checked2: ko对象 Boolean 类型(组件内控制显示的值)
+* @checkedInside: ko对象 Boolean 类型(组件内控制显示的值)
 * @disabled: ko对象 Boolean 类型
 * @size: String类型:large, small (大, 小)
 * @checkedValue: 自定义选中状态的值
@@ -15,50 +15,44 @@ function init (params) {
   var self = this
   const PREFIX = 'y-switch-' // 通用前缀
   this.disabled = params.disabled ? params.disabled : ko.observable(false)
-  this.checkedValue = params.checkedValue || null
-  this.unCheckedValue = params.unCheckedValue || null
+  this.checkedValue = params.checkedValue ? params.checkedValue : true
+  this.unCheckedValue = params.unCheckedValue ? params.unCheckedValue : false
   this.checked = params.checked || ko.observable(false) // 请传入ko对象 Boolean 值
-  // 初始化选中状态
-  this.checked2 = params.checked2 ? params.checked2 : params.checked() ? ko.observable(true) : ko.observable(false) // 请传入ko对象 Boolean 值
-  this.checked2.subscribe((val) => {
-    if (this.checkedValue || this.unCheckedValue) {
-      if (this.checkedValue && this.checked2()) {
-        this.checked(this.checkedValue)
-      }
-      if (!this.checkedValue && this.checked2()) {
-        this.checked(true)
-      }
-      if (this.unCheckedValue && !this.checked2()) {
-        this.checked(this.unCheckedValue)
-      }
-      if (!this.unCheckedValue && !this.checked2()) {
-        this.checked(false)
-      }
+  this.checkedInside = ko.observable()
+  this.checkedInside.subscribe((val) => {
+    if (val) {
+      this.checked(this.checkedValue)
     } else {
-      this.checked(val)
+      this.checked(this.unCheckedValue)
+    }
+  })
+  this.checked.subscribe((val) => {
+    if (val === this.checkedValue) {
+      this.checkedInside(true)
+    }
+    if (val === this.unCheckedValue) {
+      this.checkedInside(false)
     }
   })
   this.size = params.size ? (PREFIX + params.size) : '' // 尺寸  String 类型
   this.sizeClass = ko.computed(() => {
-    return self.disabled() ? self.checked2() ? `${this.size} ${PREFIX}checked ${PREFIX}disabled` : `${this.size} ${PREFIX}disabled` : self.checked2() ? `${this.size} ${PREFIX}checked` : `${this.size} ${PREFIX}`
+    return self.disabled() ? self.checkedInside() ? `${this.size} ${PREFIX}checked ${PREFIX}disabled` : `${this.size} ${PREFIX}disabled` : self.checkedInside() ? `${this.size} ${PREFIX}checked` : `${this.size} ${PREFIX}`
   }, this)
   this.checkSelect = function () {
     if (self.disabled()) {
       return false
     } else {
-      this.checked2() ? this.checked2(false) : this.checked2(true)
+      this.checkedInside(!this.checkedInside())
     }
   }
   // 初始化checked的返回值
-  if (params.checked) {
-    if (params.checked() && this.checkedValue) {
-      this.checked(this.checkedValue)
-    }
-    if (!params.checked() && this.unCheckedValue) {
-      this.checked(this.unCheckedValue)
-    }
+  if (this.checked() === this.checkedValue) {
+    this.checkedInside(true)
+  } else {
+    this.checkedInside(false)
   }
 }
+
 export default {
   name: 'switch',
   init,
