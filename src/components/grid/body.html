@@ -7,8 +7,14 @@
       <!-- ko if: hasSummaryRow-->
       <tr>
         <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
-          <div class="y-cell y-cell-summary" data-bind="html: $parent.columns()[0].summaryRowFn(row)">
+          <!-- ko if: $parent.columns()[0].summaryType === 'render' -->
+          <div class="y-cell y-cell-summary" data-bind="html: $parent.columns()[0].summaryFn(row)">
           </div>
+          <!-- /ko -->
+          <!-- ko if: $parent.columns()[0].summaryType === 'comp'-->
+          <div class="y-cell y-cell-summary" data-bind="component: $parent.columns()[0].summaryFn(row)">
+          </div>
+          <!-- /ko -->
         </td>
       </tr>
       <!-- /ko -->

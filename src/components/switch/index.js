@@ -12,7 +12,6 @@
 import template from './index.html'
 import ko from 'knockout'
 function init (params) {
-  var self = this
   const PREFIX = 'y-switch-' // 通用前缀
   this.disabled = params.disabled ? params.disabled : ko.observable(false)
   this.checkedValue = params.checkedValue ? params.checkedValue : true
@@ -36,20 +35,21 @@ function init (params) {
   })
   this.size = params.size ? (PREFIX + params.size) : '' // 尺寸  String 类型
   this.sizeClass = ko.computed(() => {
-    return self.disabled() ? self.checkedInside() ? `${this.size} ${PREFIX}checked ${PREFIX}disabled` : `${this.size} ${PREFIX}disabled` : self.checkedInside() ? `${this.size} ${PREFIX}checked` : `${this.size} ${PREFIX}`
+    return this.disabled() ? this.checkedInside() ? `${this.size} ${PREFIX}checked ${PREFIX}disabled` : `${this.size} ${PREFIX}disabled` : this.checkedInside() ? `${this.size} ${PREFIX}checked` : `${this.size} ${PREFIX}`
   }, this)
-  this.checkSelect = function () {
-    if (self.disabled()) {
-      return false
-    } else {
-      this.checkedInside(!this.checkedInside())
-    }
-  }
   // 初始化checked的返回值
   if (this.checked() === this.checkedValue) {
     this.checkedInside(true)
   } else {
     this.checkedInside(false)
+  }
+}
+// 点击开关
+init.prototype.checkSelect = function () {
+  if (this.disabled()) {
+    return false
+  } else {
+    this.checkedInside(!this.checkedInside())
   }
 }
 

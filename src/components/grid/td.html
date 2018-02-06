@@ -13,7 +13,7 @@
   html: col.renderFn(row, rowIndex, col),style:col.style">
   </div>
 <!-- /ko -->
-<!-- ko if:col.type == 'component' -->
+<!-- ko if:col.type == 'component' || col.type == 'comp' -->
   <div class="y-cell y-cell-overflow-auto" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},
   component: col.compFn(row),style:col.style">
   </div>
