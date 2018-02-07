@@ -7,6 +7,7 @@ function init (params) {
   this.style = params.style
   this.visible = params.visible || ko.observable(true)
   this.errorMsg = ko.observable('error msg')
+  this.vMap = params.vMap || false
   this.validate = ko.computed(() => {
     if (params.vMap) {
       let filteList = params.vMap().filter((item) => {
