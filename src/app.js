@@ -599,7 +599,8 @@ let viewmodel = {
   ComputeRows: table.rows,
   ComputeColumns: [{
     title: 'id',
-    field: 'id'
+    field: 'id',
+    type: 'checkbox'
   }, {
     title: 'name',
     field: 'name',
@@ -1002,7 +1003,10 @@ let viewmodel = {
       title: '',
       field: '',
       type: 'checkbox',
-      width: 50
+      width: 50,
+      expandCompFn: function (row) {
+        return {}
+      }
     },
     {
       title: '序号',
@@ -1627,9 +1631,29 @@ setTimeout(() => {
   // viewmodel.radioDataList([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}])
 }, 1000)
 setTimeout(() => {
+  debugger
+  viewmodel.rows(
+    [
+      {id: ko.observable(4), name: ko.observable('张2')},
+      {id: ko.observable(5), name: ko.observable('张3四')}
+    ]
+  )
+  table.setSimpleData([{
+    id: 1,
+    name: 'name2',
+    price: 23,
+    num: 2,
+    total: 46
+  }, {
+    id: 1,
+    name: 'name3',
+    price: 23,
+    num: 2,
+    total: 46
+  }])
   // var grid2 = ycloud.$refs['modalgrid']
   // grid2.setColVisibleByField('id', false)
   ycloud.notice.error('here has some error！here has some error！here has some error！here has some error！here has some error！here has some error！')
-}, 3000)
+}, 5000)
 window.vm = viewmodel
 

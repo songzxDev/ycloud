@@ -50,7 +50,6 @@ class Grid extends Base {
     this.pageSize = params.pageSize || ko.observable(PAGESIZE)
     this.pageIndex = params.pageIndex || ko.observable(PAGEINDEX)
     this.totalCount = params.totalCount || ko.observable(0)
-    this.allRowChecked = ko.observable(false)
     this.tdstyle = params.tdstyle || {}
     this.verticalAlign = params.verticalAlign || 'middle'
     // event binding
@@ -237,15 +236,38 @@ class Grid extends Base {
         return false
       }
     })
+    // 全选
+    this.allRowChecked = ko.pureComputed({
+      read: function () {
+        var flag = this.rows().length > 0
+        for (var i = 0; i < this.rows().length; i++) {
+          if (this.isDataTable) {
+            if (!this.rows()[i].selected()) {
+              flag = false
+              break
+            }
+          } else {
+            if (this.rows()[i]._selected) {
+              if (!this.rows()[i]._selected()) {
+                flag = false
+                break
+              }
+            } else {
+              flag = false
+            }
+          }
+        }
+        return flag
+      },
+      write: function (isChecked) {
+        this.rows().forEach(row => {
+          row._selected(isChecked)
+        })
+      },
+      owner: this
+    })
   }
   subscribe (params) {
-    // 监听全选和反选
-    this.allRowChecked.subscribe(isChecked => {
-      // 集成datatable
-      this.rows().forEach(row => {
-        row._selected(isChecked)
-      })
-    })
   }
   methods (params) {
     this.handleScroll = (vm, event) => {
