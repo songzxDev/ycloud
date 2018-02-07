@@ -6,8 +6,13 @@
    </form>
   <!-- /ko -->
   <!-- ko ifnot: isHasForm -->
-  <input class="y-input" data-bind="css:{'text-right': align === 'right'},click:onClick,event:{keyup:onKeyup,blur:onBlur,input:onInput,focus: onFocus},attr:{maxlength:maxlength,type: type, placeholder:placeholder,disabled:disabled},value:value">
-  <i data-bind="visible: showIcon, css:iconClass,click: handleIconClick"></i>
+    <!-- ko if: prepend -->
+    <div class="y-input-prepend">
+      <span data-bind="text: prepend"></span>
+    </div>
+    <!-- /ko -->
+    <input class="y-input" data-bind="css:{'text-right': align === 'right'},click:onClick,event:{keyup:onKeyup,blur:onBlur,input:onInput,focus: onFocus},attr:{maxlength:maxlength,type: type, placeholder:placeholder,disabled:disabled},value:value">
+    <i data-bind="visible: showIcon, css:iconClass,click: handleIconClick"></i>
   <!-- /ko -->
   <i class="fa fa-close y-input-clear" data-bind="visible:clearable, click:handleClose"></i>
 </div>

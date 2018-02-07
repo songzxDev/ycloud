@@ -42,6 +42,7 @@ class Input extends Base {
   initialize (params) {
     this.value = params.value
     this.placeholder = params.placeholder || ''
+    this.prepend = params.prepend || false
     // 是否支持可清楚
     this.clearable = params.clearable || false
     this.align = params.align || 'left'

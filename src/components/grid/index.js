@@ -52,6 +52,7 @@ class Grid extends Base {
     this.totalCount = params.totalCount || ko.observable(0)
     this.allRowChecked = ko.observable(false)
     this.tdstyle = params.tdstyle || {}
+    this.verticalAlign = params.verticalAlign || 'middle'
     // event binding
     // 行选中
     this.onRowSelect = params.onRowSelect || function () {}

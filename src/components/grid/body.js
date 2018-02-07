@@ -27,6 +27,7 @@ class Body extends Base {
     this.crossPageSelectedRows = params.crossPageSelectedRows
     this.fixColumnTransform = params.fixColumnTransform
     this.headHeight = params.headHeight
+    this.verticalAlign = params.verticalAlign
   }
   computed (params) {
     this.gridBodyStyle = ko.pureComputed(() => {

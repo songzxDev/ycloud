@@ -3,7 +3,7 @@
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
       <col data-bind="visible: col._show, attr:{width:col.width}">
     </colgroup>
-    <tbody data-bind="foreach: {data: rows, as: 'row'}">
+    <tbody data-bind="foreach: {data: rows, as: 'row'}, css:{'y-grid-body-verticaltop':verticalAlign === 'top'}">
       <!-- ko if: hasSummaryRow-->
       <tr>
         <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
