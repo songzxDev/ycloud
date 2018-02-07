@@ -135,7 +135,14 @@ class Select extends Base {
       if (this.isKeyDownEffect) {
         var e = event || window.event
         if (e && e.keyCode === 13) { // 按 enter
-          this.handleOptClick({value: this.filterDataList()[this.curIndex()]})
+          var item = this.filterDataList()[this.curIndex()]
+          if (item) {
+            this.handleOptClick({value: item})
+          } else {
+            if (this.filterDataList().length > 0) {
+              this.handleOptClick({value: this.filterDataList()[0]})
+            }
+          }
           this.curIndex(-1)
         }
         if (e && e.keyCode === 40) { // 按 arrow down
@@ -195,9 +202,9 @@ class Select extends Base {
       }
     }
     // 选中事件
-    this.handleOptClick = (item, evt) => {
+    this.handleOptClick = (item) => {
       // enter事件无值情况
-      if (item && evt) {
+      if (item) {
         if (!this.multiple) {
           this.value(item.value)
           this.key(item.value[this.labelkey])
