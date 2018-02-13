@@ -6260,9 +6260,9 @@ webpack-merge@^4.1.0:
   dependencies:
     lodash "^4.17.4"
 
-webpack-parallel-uglify-plugin@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/webpack-parallel-uglify-plugin/-/webpack-parallel-uglify-plugin-1.0.0.tgz#9775d32e2b57ee8e1d402d55b759c3ddd4d174bf"
+webpack-parallel-uglify-plugin@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/webpack-parallel-uglify-plugin/-/webpack-parallel-uglify-plugin-1.0.2.tgz#f0213872f870d50063c717c7bcff6374a4aa9068"
   dependencies:
     glob "^7.0.5"
     mkdirp "^0.5.1"

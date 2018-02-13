@@ -2,6 +2,7 @@ import template from './index.html'
 import ko from 'knockout'
 function init (params) {
   this.model = params.model
+  this.tooltip = params.tooltip
   this.required = params.required || false
   this.label = params.label
   this.style = params.style

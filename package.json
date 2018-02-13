@@ -1,6 +1,6 @@
 {
   "name": "ycloud",
-  "version": "1.5.1-beta",
+  "version": "1.5.3-beta",
   "description": "",
   "main": "dist/ycloud.min.js",
   "author": "windknow <songhlc@yonyou.com>",
@@ -42,6 +42,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-loader": "^0.5.1",
+    "html-loader-jest": "^0.2.1",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^21.2.1",
     "jquery": "^3.2.1",
@@ -57,8 +58,7 @@
     "webpack-dashboard": "^1.0.0-5",
     "webpack-dev-server": "^2.7.1",
     "webpack-merge": "^4.1.0",
-    "webpack-parallel-uglify-plugin": "^1.0.0",
-    "html-loader-jest": "^0.2.1"
+    "webpack-parallel-uglify-plugin": "^1.0.2"
   },
   "dependencies": {
     "async-validator": "^1.8.1",
