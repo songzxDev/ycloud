@@ -52,7 +52,7 @@ class Input extends Base {
     this.iconClass = params.iconClass || ''
     this.ctnClass = params.class || ''
     this.disabled = params.disabled || ko.observable(false)
-    this.typeList = ['text', 'textarea', 'password', 'url', 'email', 'date']
+    this.typeList = ['text', 'textarea', 'password', 'url', 'email', 'date', 'number']
     this.maxlength = params.maxlength || 250
   }
   computed (params) {
