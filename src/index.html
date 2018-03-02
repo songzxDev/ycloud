@@ -263,7 +263,8 @@
     <h1>9.弹框</h1>
     <y-button params="click:$root.showModal">显示弹框</y-button>
     <y-modal params="visible: $root.modalVisible, title:'组织选择！', width:'700px', errormsg:'请选择组织', validateFn: $root.validateFn">
-      <y-grid params="modalBodyModalHeight:bodyMaxHeight,modalBodyExtraHeight:'10px',ref:'modalgrid',onRowSelect:$root.onRowSelect,isStripe: true,columns:$root.columns,rows: $root.rows,lockhead:true"></y-grid>
+      <y-radio params="dataList:$root.radioDataList,value:$root.radioValue"></y-radio>
+      <!-- <y-grid params="modalBodyModalHeight:bodyMaxHeight,modalBodyExtraHeight:'10px',ref:'modalgrid',onRowSelect:$root.onRowSelect,isStripe: true,columns:$root.columns,rows: $root.rows,lockhead:true"></y-grid> -->
     </y-modal>
   </y-boxcontent>
   <y-boxcontent>

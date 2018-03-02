@@ -18,6 +18,7 @@ function init (params) {
     if (className && className.indexOf('modal-wrap') > -1) {
       this.visible(false)
     }
+    return true
   }
   this.validateFn = params.validateFn || function () { return true }
   // 时间
