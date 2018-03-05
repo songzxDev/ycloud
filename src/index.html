@@ -15,7 +15,7 @@
 
     body {
       padding: 0px;
-      background-color: #efeff1; 
+      background-color: #efeff1;
     }
   </style>
 </head>
@@ -69,6 +69,14 @@
       </div>
       <div class="col-md-3">
         <y-select params="dropWidth:'400',dataList:vm.selectList,value:vm.singleselect,onChange:$root.onSelectChange"></y-select>
+      </div>
+    </div>
+    <div class="row m-b-xs">
+      <div class="col-md-1">
+        默认值下拉：
+      </div>
+      <div class="col-md-3">
+        <y-select params="dropWidth:'400',dataList:vm.selectList,id:vm.selectId,onChange:$root.onSelectChange"></y-select>
       </div>
     </div>
     <div class="row m-b-xs">

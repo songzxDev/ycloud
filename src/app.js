@@ -56,6 +56,7 @@ setTimeout(function () {
 }, 1000)
 window.dt = dt
 let viewmodel = {
+  selectId: ko.observable(),
   editgridrows: ko.observableArray([
     {
       materialName: '硫酸钾',
@@ -1395,6 +1396,7 @@ var rowspanrowsdata = [
   }
 ]
 setTimeout(() => {
+  viewmodel.selectId(10)
   viewmodel.loading(!viewmodel.loading())
   var item = viewmodel.stateTabsItems()[0]
   item.num = 0
@@ -1453,7 +1455,7 @@ setTimeout(() => {
     total: 46
   }])
   ycloud.$refs['loadingGrid'].showLoading(false)
-}, 1000)
+}, 500)
 setTimeout(() => {
   viewmodel.checkboxkey("1,2")
   ycloud.notice.info('info', {timeout: 2000})
