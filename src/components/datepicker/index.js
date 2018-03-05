@@ -58,6 +58,25 @@ class DatePicker extends Base {
     this.alignright = ko.observable(false)
   }
   computed (params) {
+    // 最终显示的值为计算属性 close #88
+    this.computedData = ko.pureComputed({
+      read: () => {
+        var _date
+        if (this.isTimer) {
+          _date = new Date(this.year(), this.month() - 1, this.day(), this.hour(), this.minutes(), this.seconds())._format(DATETIMEFORMAT)
+        } else {
+          _date = new Date(this.year(), this.month() - 1, this.day())._format(DATEFORMAT)
+        }
+        if (this.data()) {
+          return _date
+        } else {
+          return ''
+        }
+      },
+      write: (val) => {
+        this.data(val)
+      }
+    })
   }
   subscribe (params) {
     this.data.subscribe((value) => {
@@ -146,7 +165,6 @@ class DatePicker extends Base {
       if (!(this.isTimer)) {
         this.closeModal()
       }
-
       let _date
       if (this.isTimer) {
         _date = new Date(this.year(), this.month() - 1, this.day(), this.hour(), this.minutes(), this.seconds())._format(DATETIMEFORMAT)
