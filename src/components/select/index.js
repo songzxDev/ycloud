@@ -93,6 +93,12 @@ class Select extends Base {
         setDefaultValue.apply(this)
       }
     })
+    // 如果只绑定了id则需要监听（没有绑定value属性）fix
+    if (!params.value) {
+      this.selectedValue.subscribe(selectedId => {
+        setDefaultValue.apply(this)
+      })
+    }
     // 多选数据改变
     this.multiValue.subscribe(() => {
       // 另一种场景value 多选默认值设置 vm.value({label:'x',id:'x'})
@@ -336,6 +342,17 @@ function setDefaultValue () {
       if (defaultItem.length > 0) {
         this.hasSetDefault = true
         this.selectedLabel(defaultItem[0][this.labelkey])
+      }
+    } else if (this.selectedValue()) { // 单选时有可能是只绑定了id属性，同样需要 fix error #86
+      var __defaultItem = this.filterDataList().filter(item => {
+        if (this.selectedValue()) {
+          return item[this.valuekey] === this.selectedValue()
+        } else {
+          return false
+        }
+      })
+      if (__defaultItem.length > 0) {
+        this.selectedLabel(__defaultItem[0][this.labelkey])
       }
     }
   }
