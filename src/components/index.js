@@ -29,6 +29,7 @@ import yswitch from './switch'
 import tooltip from './tooltip'
 import {notice, $refs} from './base'
 import breadcrumb from './breadcrumb'
+import showdetail from './showdetail'
 import './konewfeature'
 const PREFIX = 'y-'
 function register (model) {
@@ -66,6 +67,7 @@ register(statetabs)
 register(searchtag)
 register(tooltip)
 register(breadcrumb)
+register(showdetail)
 let ycloud = {
   notice,
   $refs
