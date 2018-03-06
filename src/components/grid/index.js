@@ -23,6 +23,13 @@ class Grid extends Base {
     this.isRowspanHead = !!params.columns1 && !!params.columns2
     this.headtransform = ko.observable('translateX(0)')
     this.fixColumnTransform = ko.observable('translateY(0)')
+    this.lockRightWidth = 0
+    if (params.columns) {
+      let columns = ko.isObservable(params.columns) ? params.columns() : params.columns
+      this.lockRightWidth = columns.filter(col => !col.lockright).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0)
+    }
+    this.fixRightHeadtransform = ko.observable('translateX(-' + this.lockRightWidth + 'px)')
+    this.fixRightTransform = ko.observable('translate(-' + this.lockRightWidth + 'px,0)')
     this.rowspan = params.rowspan
     this.rows = params.rows
     this.domId = params.rowspan ? Math.random() : ''
@@ -42,6 +49,7 @@ class Grid extends Base {
     this.pagination = ko.observable(params.pagination || false)
     // 是否启用固定列
     this.lockcolumn = params.lockcolumn || false
+    this.lockright = params.lockright || false
     // 固定表头
     this.lockhead = params.lockhead || params.lockcolumn
 
@@ -225,6 +233,21 @@ class Grid extends Base {
         return cols.filter(cell => cell.lock).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0) + 'px'
       }
     })
+    this.fixedLockRightTableWidth = ko.pureComputed(() => {
+      let cols
+      if (this.columns.subscribe) {
+        cols = this.columns()
+      } else {
+        cols = this.columns
+      }
+      // lock列需要指定宽度
+      const isUseOuterWidth = cols.filter(cell => cell.lockright).some(cell => isNaN(cell.width))
+      if (isUseOuterWidth) {
+        return '0px'
+      } else {
+        return cols.filter(cell => cell.lockright).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0) + 15 + 'px'
+      }
+    })
     // grid下有传入自定义组件
     this.hasMarkup = ko.computed(() => {
       if (this.$templateNodes.length > 0) {
@@ -277,6 +300,7 @@ class Grid extends Base {
         let scrollTop = event.currentTarget.scrollTop
         this.headtransform('translateX(-' + scrollLeft + 'px)')
         this.fixColumnTransform('translateY(-' + scrollTop + 'px)')
+        this.fixRightTransform('translate(-' + this.lockRightWidth + 'px, -' + scrollTop + 'px)')
       }
     }
     // 设置loading图标是否显示

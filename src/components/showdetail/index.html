@@ -3,10 +3,11 @@
        style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
   </div>
   <div style="position:absolute;right: 0;top:0;" class="y-text-link">
-    <y-tooltip params="title:'查看详情'" data-bind="visible:visible">
+    <y-tooltip params="title:'详细'" data-bind="visible:visible">
       <y-tooltipctn params="targetEl:$el,show:isShow,position:'bottomleft'">
         <div data-bind="text:$parentContext.$parent.text"></div>
       </y-tooltipctn>
     </y-tooltip>
+    <span class="fa fa-angle-down"></span>
   </div>
 </div>

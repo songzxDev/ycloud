@@ -648,6 +648,39 @@ let viewmodel = {
       title: '地址',
       field: 'address',
       width: 500
+    }, {
+      field: 'id',
+      title: 'operationList',
+      type: 'operation',
+      lockright: true,
+      width: '200',
+      operationList: [
+        {
+          title: '操作1',
+          click: function (row, evt) {
+            row._disabled(true)
+            return false
+          },
+          visible: function (row) {
+            return !row._disabled()
+          }
+        }, {
+          title: '操作2',
+          click: function (row, evt) {
+            row._disabled(false)
+            return false
+          },
+          visible: function (row) {
+            return row._disabled()
+          }
+        }, {
+          title: '子表',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
+        }
+      ]
     }
   ],
   lockcolrows: ko.observableArray([
@@ -1134,7 +1167,6 @@ let viewmodel = {
   totalCount: ko.observable(112),
   pageSize: ko.observable(10),
   onSelectChange: function (data) {
-    debugger
     console.log('change:' + JSON.stringify(data))
   },
   onPageChage: function (pageIndex, pageSize) {
@@ -1250,7 +1282,6 @@ let viewmodel = {
     }
   },
   stateTabsHandler (data) {
-    debugger
     console.log(data)
   },
   curStateIndex: ko.observable(0),
@@ -1331,7 +1362,6 @@ let viewmodel = {
         {
           title: '删除',
           click: function (row, evt) {
-            debugger
             row.setValue('rowStatus', 'del')
             var index = dtRowStatus.rows.indexOf(row)
             if (index >= 0) {
@@ -1634,7 +1664,6 @@ setTimeout(() => {
   // viewmodel.radioDataList([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}])
 }, 1000)
 setTimeout(() => {
-  debugger
   viewmodel.rows(
     [
       {id: ko.observable(4), name: ko.observable('张2')},

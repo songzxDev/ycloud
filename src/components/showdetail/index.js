@@ -17,7 +17,7 @@ class Showdetail extends Base {
     this.style = ko.computed(() => {
       let style = {}
       if (this.visible()) {
-        style.marginRight = '50px'
+        style.marginRight = '30px'
       }
       return style
     })
