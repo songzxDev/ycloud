@@ -1437,7 +1437,6 @@ setTimeout(() => {
   viewmodel.rowspanrows(rowspanrowsdata)
 }, 1000)
 setTimeout(function () {
-  debugger
   ycloud.$refs['lockright'].setColVisibleByField('address', false)
   viewmodel.rowspanrows(rowspanrowsdata.filter(function (item) {return item.field6 !== 'F5'}))
 }, 3000)
