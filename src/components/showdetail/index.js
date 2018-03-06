@@ -22,9 +22,11 @@ class Showdetail extends Base {
     })
   }
   subscribe (params) {
-    this.text.subscribe(val => {
-      this.computedVisible()
-    })
+    if (ko.isObservable(this.text)) {
+      this.text.subscribe(val => {
+        this.computedVisible()
+      })
+    }
   }
   methods (params) {
     this.computedVisible = () => {
