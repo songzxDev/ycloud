@@ -245,7 +245,7 @@ class Grid extends Base {
       if (isUseOuterWidth) {
         return '0px'
       } else {
-        return cols.filter(cell => cell.lockright).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0) + 15 + 'px'
+        return cols.filter(cell => cell.lockright).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0) + 'px'
       }
     })
     // grid下有传入自定义组件
