@@ -21,3 +21,28 @@ if (!ko.isObservableArray) {
       typeof instance['push'] === 'function'
   }
 }
+// 文本显示空值显示成--
+if (!ko.bindingHandlers.nullValueDisplay) {
+  ko.bindingHandlers.nullValueDisplay = {
+    init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+      return {'controlsDescendantBindings': true}
+    },
+    update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+      if (valueAccessor() === null || valueAccessor() === undefined || valueAccessor() === '') {
+        ko.utils.setTextContent(element, '——')
+      } else {
+        if (ko.isObservable(valueAccessor())) {
+          // valueAccessor()为监听对象
+          if (valueAccessor()() === null || valueAccessor()() === undefined || valueAccessor()() === '') {
+            ko.utils.setTextContent(element, '--')
+          } else {
+            ko.utils.setTextContent(element, valueAccessor())
+          }
+        } else {
+          // valueAccessor()为一个值
+          ko.utils.setTextContent(element, valueAccessor())
+        }
+      }
+    }
+  }
+}

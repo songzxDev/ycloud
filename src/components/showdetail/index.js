@@ -7,7 +7,6 @@ import template from './index.html'
 import ko from 'knockout'
 import 'ko-bindinghandler'
 import Base from '../../core/base'
-
 class Showdetail extends Base {
   initialize (params) {
     this.text = params.text
@@ -17,7 +16,7 @@ class Showdetail extends Base {
     this.style = ko.computed(() => {
       let style = {}
       if (this.visible()) {
-        style.marginRight = '30px'
+        style.marginRight = '33px'
       }
       return style
     })
