@@ -85,6 +85,7 @@ class Body extends Base {
     this.rows = ko.computed(() => {
       params.rows().forEach((row, index) => {
         // 减轻重复赋值的压力
+        !row._delete && (row._delete = ko.observable(false))
         !row._hover && (row._hover = ko.observable(false))
         !row._disabled && (row._disabled = ko.observable(false))
         !row._expand && (row._expand = ko.observable(this.defaultExpand))

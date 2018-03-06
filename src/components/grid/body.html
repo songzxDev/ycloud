@@ -4,6 +4,7 @@
       <col data-bind="visible: col._show, attr:{width:col.width}">
     </colgroup>
     <tbody data-bind="foreach: {data: rows, as: 'row'}, css:{'y-grid-body-verticaltop':verticalAlign === 'top'}">
+      <!-- ko ifnot: row._delete -->
       <!-- ko if: hasSummaryRow-->
       <tr>
         <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
@@ -33,7 +34,7 @@
           </td>
         </tr>
       <!-- /ko -->
-
+      <!-- /ko -->
     </tbody>
     <tbody class="y-grid-empty">
     <tr>

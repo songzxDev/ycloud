@@ -24,12 +24,8 @@ class Grid extends Base {
     this.headtransform = ko.observable('translateX(0)')
     this.fixColumnTransform = ko.observable('translateY(0)')
     this.lockRightWidth = 0
-    if (params.columns) {
-      let columns = ko.isObservable(params.columns) ? params.columns() : params.columns
-      this.lockRightWidth = columns.filter(col => !col.lockright).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0)
-    }
-    this.fixRightHeadtransform = ko.observable('translateX(-' + this.lockRightWidth + 'px)')
-    this.fixRightTransform = ko.observable('translate(-' + this.lockRightWidth + 'px,0)')
+    this.fixRightHeadtransform = ko.observable('translateX(0)')
+    this.fixRightTransform = ko.observable('translate(0,0)')
     this.rowspan = params.rowspan
     this.rows = params.rows
     this.domId = params.rowspan ? Math.random() : ''
@@ -78,6 +74,8 @@ class Grid extends Base {
     this.crossPageRowPrimaryKey = params.crossPageRowPrimaryKey || 'id'
     // 用于判断是否启用跨页选择
     this.isEnableCrossPage = Boolean(this.crossPageSelectedRows)
+    // 用于触发宽度重新计算
+    this.reComputedTableWidth = ko.observable(false)
   }
   computed (params) {
     // 用于存储对应关系
@@ -195,19 +193,15 @@ class Grid extends Base {
     })
     // 表格的宽度
     this.tableWidth = ko.computed(() => {
-      let cols
-      if (this.columns.subscribe) {
-        cols = this.columns()
-      } else {
-        cols = this.columns
-      }
+      let cols = this.columns()
+      this.reComputedTableWidth && this.reComputedTableWidth()
       // 如果存在width不为数字的情况，则认为使用外层的容器宽度，即table宽度是100%
       // 只有在所有列都设置了固定宽度的情况下才支持横向滚动条
       const isUseOuterWidth = cols.some(cell => isNaN(cell.width))
       if (isUseOuterWidth) {
         return '100%'
       } else {
-        return cols.map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0) + 'px'
+        return cols.filter(cell => cell._show()).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0) + 'px'
       }
     })
     this.fixBodyHeight = ko.pureComputed(() => {
@@ -219,12 +213,7 @@ class Grid extends Base {
     })
     // 计算锁定列的宽度
     this.fixedTableWidth = ko.pureComputed(() => {
-      let cols
-      if (this.columns.subscribe) {
-        cols = this.columns()
-      } else {
-        cols = this.columns
-      }
+      let cols = this.columns()
       // lock列需要指定宽度
       const isUseOuterWidth = cols.filter(cell => cell.lock).some(cell => isNaN(cell.width))
       if (isUseOuterWidth) {
@@ -234,12 +223,7 @@ class Grid extends Base {
       }
     })
     this.fixedLockRightTableWidth = ko.pureComputed(() => {
-      let cols
-      if (this.columns.subscribe) {
-        cols = this.columns()
-      } else {
-        cols = this.columns
-      }
+      let cols = this.columns()
       // lock列需要指定宽度
       const isUseOuterWidth = cols.filter(cell => cell.lockright).some(cell => isNaN(cell.width))
       if (isUseOuterWidth) {
@@ -291,8 +275,19 @@ class Grid extends Base {
     })
   }
   subscribe (params) {
+    this.columns.subscribe(val => {
+      if (this.lockright) {
+        this.recomputedLockRight()
+      }
+    })
   }
   methods (params) {
+    this.recomputedLockRight = () => {
+      let columns = this.columns()
+      this.lockRightWidth = columns.filter(col => !col.lockright).filter(col => col._show()).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0)
+      this.fixRightHeadtransform('translateX(-' + this.lockRightWidth + 'px)')
+      this.fixRightTransform('translate(-' + this.lockRightWidth + 'px,0)')
+    }
     this.handleScroll = (vm, event) => {
       // 仅当锁定表头时才自动滚动列
       if (this.lockhead || this.lockcolumn) {
@@ -324,6 +319,10 @@ class Grid extends Base {
           col._show(visible)
         }
       })
+      if (this.lockright) {
+        this.recomputedLockRight()
+      }
+      this.reComputedTableWidth(!this.reComputedTableWidth())
     }
     // 切换行是否禁止选中
     this.setRowSelectEnable = (isEnable) => {
@@ -356,6 +355,9 @@ class Grid extends Base {
   }
   created (params) {
     this.computedMaxHeight = this.computeMaxHeight()
+    if (this.lockright) {
+      this.recomputedLockRight()
+    }
   }
 }
 export default {

@@ -565,9 +565,9 @@ let viewmodel = {
             return !row._disabled()
           }
         }, {
-          title: '操作2',
+          title: '删除',
           click: function (row, evt) {
-            row._disabled(false)
+            row._delete(true)
             return false
           },
           visible: function (row) {
@@ -629,60 +629,7 @@ let viewmodel = {
     title: '总价',
     field: 'total'
   }],
-  lockcolcolumns: [
-    {
-      lock: true,
-      title: '姓名',
-      field: 'name',
-      width: 200
-    },  {
-      lock: true,
-      title: '性别',
-      field: 'sex',
-      width: 220
-    }, {
-      title: '年龄',
-      field: 'age',
-      width: 400
-    }, {
-      title: '地址',
-      field: 'address',
-      width: 500
-    }, {
-      field: 'id',
-      title: 'operationList',
-      type: 'operation',
-      lockright: true,
-      width: '200',
-      operationList: [
-        {
-          title: '操作1',
-          click: function (row, evt) {
-            row._disabled(true)
-            return false
-          },
-          visible: function (row) {
-            return !row._disabled()
-          }
-        }, {
-          title: '操作2',
-          click: function (row, evt) {
-            row._disabled(false)
-            return false
-          },
-          visible: function (row) {
-            return row._disabled()
-          }
-        }, {
-          title: '子表',
-          click: function (row, evt) {
-            row._expand(!row._expand())
-            return false
-          }
-        }
-      ]
-    }
-  ],
+  lockcolcolumns: ko.observableArray([]),
   lockcolrows: ko.observableArray([
     {
       name: 'col1',
@@ -1427,6 +1374,60 @@ var rowspanrowsdata = [
   }
 ]
 setTimeout(() => {
+  viewmodel.lockcolcolumns([
+    {
+      lock: true,
+      title: '姓名',
+      field: 'name',
+      width: 200
+    },  {
+      lock: true,
+      title: '性别',
+      field: 'sex',
+      width: 220
+    }, {
+      title: '年龄',
+      field: 'age',
+      width: 800
+    }, {
+      title: '地址',
+      field: 'address',
+      width: 500
+    }, {
+      field: 'id',
+      title: 'operationList',
+      type: 'operation',
+      lockright: true,
+      width: '200',
+      operationList: [
+        {
+          title: '操作1',
+          click: function (row, evt) {
+            row._disabled(true)
+            return false
+          },
+          visible: function (row) {
+            return !row._disabled()
+          }
+        }, {
+          title: '操作2',
+          click: function (row, evt) {
+            row._disabled(false)
+            return false
+          },
+          visible: function (row) {
+            return row._disabled()
+          }
+        }, {
+          title: '子表',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
+        }
+      ]
+    }
+  ])
   viewmodel.selectId(10)
   viewmodel.loading(!viewmodel.loading())
   var item = viewmodel.stateTabsItems()[0]
@@ -1436,6 +1437,8 @@ setTimeout(() => {
   viewmodel.rowspanrows(rowspanrowsdata)
 }, 1000)
 setTimeout(function () {
+  debugger
+  ycloud.$refs['lockright'].setColVisibleByField('address', false)
   viewmodel.rowspanrows(rowspanrowsdata.filter(function (item) {return item.field6 !== 'F5'}))
 }, 3000)
 // 打印每次单选的内容
