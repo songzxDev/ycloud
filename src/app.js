@@ -605,10 +605,8 @@ let viewmodel = {
     type: 'checkbox'
   }, {
     title: function () {
-      debugger
       return viewmodel.columnsname
     },
-    observeTitle: true,
     field: 'name',
     type: 'render',
     renderFn: function (row) {
