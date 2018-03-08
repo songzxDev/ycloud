@@ -444,7 +444,9 @@ let viewmodel = {
       lock: true,
       width: 100
     }, {
-      title: 'col2',
+      title: function () {
+        return viewmodel.columnsname
+      },
       field: 'name1',
       lock: true,
       rowspan: 2,
@@ -481,7 +483,7 @@ let viewmodel = {
         return row.quotation[col._childIndex].name1
       }
     }, {
-      title: 'colB',
+      title: 'col222',
       field: 'name2',
       width: 100,
       uniqueKey: 'col1',

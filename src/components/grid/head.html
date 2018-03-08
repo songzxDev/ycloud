@@ -25,14 +25,26 @@
       <!-- /ko -->
       <tr data-bind="foreach:{data:columns1, as: 'col'}">
         <th data-bind="attr:{rowspan:col.rowspan || 1,colspan:col.colspan || 1}">
-        <div class="y-cell" data-bind="html:col.title,css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
-        </div>
+          <!-- ko if: typeof col.title == 'function'-->
+          <div class="y-cell" data-bind="text:col.title(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+          </div>
+          <!-- /ko -->
+          <!-- ko ifnot: typeof col.title == 'function' -->
+          <div class="y-cell" data-bind="html:col.title,css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+          </div>
+          <!-- /ko -->
         </th>
       </tr>
       <tr data-bind="foreach:{data:columns2, as: 'col'}">
         <th>
-        <div class="y-cell" data-bind="html:col.title,css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
-        </div>
+          <!-- ko if: typeof col.title == 'function'-->
+          <div class="y-cell" data-bind="text:col.title(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+          </div>
+          <!-- /ko -->
+          <!-- ko ifnot: typeof col.title == 'function' -->
+          <div class="y-cell" data-bind="html:col.title,css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+          </div>
+          <!-- /ko -->
         </th>
       </tr>
     </thead>

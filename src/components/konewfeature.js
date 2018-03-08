@@ -29,7 +29,7 @@ if (!ko.bindingHandlers.nullValueDisplay) {
     },
     update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
       if (valueAccessor() === null || valueAccessor() === undefined || valueAccessor() === '') {
-        ko.utils.setTextContent(element, '——')
+        ko.utils.setTextContent(element, '--')
       } else {
         if (ko.isObservable(valueAccessor())) {
           // valueAccessor()为监听对象
