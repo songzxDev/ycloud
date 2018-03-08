@@ -6,10 +6,10 @@
     color: @danger-color !important;
     display: none;
   }
-  .y-input, .y-input-prepend{
+  .y-input, .y-input-prepend, .y-input-append{
     display: table-cell;
   }
-  .y-input-prepend{
+  .y-input-prepend, .y-input-append{
     width: 1px;
     white-space: nowrap;
     vertical-align: middle;
@@ -23,10 +23,17 @@
     border: 1px solid @border-color;
     border-radius: 2px 0 0 2px;
     border-right: none;
-    ~ .y-input{
-      border-radius: 0 2px 2px 0;
-    }
   }
+  .y-input-append{
+    border-radius: 0 2px 2px 0;
+  }
+  .y-hasprepend{
+    border-radius: 0 2px 2px 0;
+  }
+  .y-hasappend{
+    border-radius: 2px 0 0 2px;
+  }
+
 
   i{
     position: absolute;

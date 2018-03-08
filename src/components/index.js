@@ -14,6 +14,7 @@ import demo from './demo'
 import dropdown from './dropdown'
 import form from './form'
 import formitem from './formitem'
+import formview from './formview'
 import grid from './grid'
 import editgrid from './gridedit'
 import icon from './icon'
@@ -68,6 +69,7 @@ register(searchtag)
 register(tooltip)
 register(breadcrumb)
 register(showdetail)
+register(formview)
 let ycloud = {
   notice,
   $refs

@@ -179,6 +179,13 @@
     <div class="row">
       <div class="col-md-5">
         <y-form params="labelWidth:'120px'">
+          <y-formview params="label:'你好世界：'">
+            <span>世界你好</span>
+          </y-formview>
+          <y-formview params="label:'你好世界2：'">
+            <span>世界你好</span>
+          </y-formview>
+          <y-showdetail params="text:'adfsaf:jklj1打开了圣诞节福利卡世纪东方adfsafjklj1打开了圣诞节福利卡世纪东方adfsafjklj1打开了圣诞节福利卡世纪东方'"></y-showdetail>
           <y-formitem>
             <span class="y-form-item-label y-text-view">输入整数框:</span>
             <span class="y-form-view">你好世界</span>
@@ -201,6 +208,9 @@
           </y-formitem>
           <y-formitem params="label:'prepend'">
             <y-input params="placeholder: '0.00',align:'right',prepend:'现金',type:'positivenumber',value:ko.observable('')"></y-input>
+          </y-formitem>
+          <y-formitem params="label:'append'">
+            <y-input params="placeholder: '0.00',align:'right',append:'%',type:'positivenumber',value:ko.observable('')"></y-input>
           </y-formitem>
           <y-formitem params="label:'输入框可删除'">
             <y-input params="clearable:true,placeholder:'请输入文本',type:'text',value:$parent.model.name"></y-input>
