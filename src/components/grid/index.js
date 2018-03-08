@@ -174,6 +174,7 @@ class Grid extends Base {
           if (col.type === 'checkbox') {
             col.width = 35
           }
+          col.observeTitle = col.observeTitle || false
           col._show = ko.observable(!col.hidden)
         })
         return params.columns()

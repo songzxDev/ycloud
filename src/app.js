@@ -56,6 +56,7 @@ setTimeout(function () {
 }, 1000)
 window.dt = dt
 let viewmodel = {
+  columnsname: ko.observable('name'),
   selectId: ko.observable(),
   editgridrows: ko.observableArray([
     {
@@ -603,7 +604,11 @@ let viewmodel = {
     field: 'id',
     type: 'checkbox'
   }, {
-    title: 'name',
+    title: function () {
+      debugger
+      return viewmodel.columnsname
+    },
+    observeTitle: true,
     field: 'name',
     type: 'render',
     renderFn: function (row) {
