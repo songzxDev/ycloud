@@ -9,11 +9,17 @@ function _init (params, el) {
   this.scrollTop.subscribe(val => {
     _el.children[0].scrollTop = val
   })
+  this.$el = el
   this.isTransferDom = !params.isStopTransferDom
   this.targetEl = params.targetEl
   this.top = ko.observable()
   this.left = ko.observable()
   this.width = ko.observable(params.width || '100%')
+  var scrollEvent = function () {
+    if (this.isShow()) {
+      this.top(this.targetEl.children[0].getBoundingClientRect().top + 32)
+    }
+  }.bind(this)
   // 切换时重新设置下拉的未知
   this.isShow.subscribe(val => {
     // 多选情况比较复杂，暂不支持穿越overflowhidden
@@ -26,6 +32,9 @@ function _init (params, el) {
       this.left(position.left)
       // select 默认高度 + 32
       this.top(position.top + 32)
+      document.addEventListener('scroll', scrollEvent)
+    } else {
+      document.removeEventListener('scroll', scrollEvent)
     }
   })
   this.style = ko.computed(() => {
