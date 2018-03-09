@@ -958,6 +958,7 @@ let viewmodel = {
     }
   ]),
   rowspanrows: ko.observableArray(),
+  rowspanrowstest: ko.observableArray(),
   noDataCols: [{
     title: 'field1',
     field: 'title'
@@ -1378,6 +1379,42 @@ var rowspanrowsdata = [
     field6: 'F'
   }
 ]
+var rowspantestdata =[
+  {
+    field1: 'A',
+    field2: 'A',
+    field3: 'C',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F5'
+  },
+  {
+    field1: 'A',
+    field2: 'A',
+    field3: 'B',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F5'
+  }
+  ,
+  {
+    field1: 'B',
+    field2: 'A',
+    field3: 'B',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F5'
+  }
+  ,
+  {
+    field1: 'B',
+    field2: 'A',
+    field3: 'C',
+    field4: 'D',
+    field5: 'E',
+    field6: 'F5'
+  }
+]
 setTimeout(() => {
   viewmodel.lockcolcolumns([
     {
@@ -1440,6 +1477,7 @@ setTimeout(() => {
   viewmodel.stateTabsItems.splice(0, 1)
   viewmodel.stateTabsItems.splice(0, 0, item)
   viewmodel.rowspanrows(rowspanrowsdata)
+  viewmodel.rowspanrowstest(rowspantestdata)
 }, 1000)
 setTimeout(function () {
   ycloud.$refs['lockright'].setColVisibleByField('address', false)
@@ -1460,7 +1498,7 @@ window.clickme = function clickme (event) {
 }
 ko.applyBindings(viewmodel, document.getElementById('app'))
 setTimeout(function () {
-  ycloud.$refs['loadingGrid'].showLoading(true)
+  // ycloud.$refs['loadingGrid'].showLoading(true)
 })
 setTimeout(() => {
   viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])

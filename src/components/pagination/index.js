@@ -10,6 +10,15 @@ function init (params) {
   this.align = params.align || 'center'
   this.pageSize = params.pageSize
   this.curPage = ko.observable(params.curPage || {value: 10, label: '10'})
+  this.pageSize.subscribe(val => {
+    if (isNaN(val - 0)) {
+      console.error('传入的pageSize,必须为数字')
+    } else {
+      this.curPage({
+        value: val - 0,
+        label: val.toString()})
+    }
+  })
   this.totalCount = params.totalCount
   this.pageList = [
     {
