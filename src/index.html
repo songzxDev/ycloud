@@ -183,16 +183,17 @@
       <div class="col-md-5">
         <y-form params="labelWidth:'120px'">
           <y-formview params="label:'你好世界：'">
-            <span>世界你好</span>
+            世界你好
           </y-formview>
           <y-formview params="label:'你好世界2：'">
-            <span>世界你好</span>
+            世界你好
           </y-formview>
-          <y-showdetail params="text:'adfsaf:jklj1打开了圣诞节福利卡世纪东方adfsafjklj1打开了圣诞节福利卡世纪东方adfsafjklj1打开了圣诞节福利卡世纪东方'"></y-showdetail>
-          <y-formitem>
-            <span class="y-form-item-label y-text-view">输入整数框:</span>
-            <span class="y-form-view">你好世界</span>
-          </y-formitem>
+          <y-formview params="label:'标题：',style:{width: '80%'}">
+            <y-showdetail params="multiple:true,text:'jklj1打开了圣诞节福利卡世纪东方adfsafjklj1打开了圣诞节福利卡世纪东方adfsafjklj1打开了圣诞节福利卡世纪东方'"></y-showdetail>
+          </y-formview>
+          <y-formview params="label:'你好世界2：'">
+            世界你好
+          </y-formview>
         </y-form>
         <y-form params="ref:'form1',
         vRules:{name: {type: 'string', required: true}},
@@ -499,10 +500,6 @@
       <div class="col-md-2">
       <y-showdetail params="text:$root.showdetail, multiple:true">
       </y-showdetail>
-      </div>
-      <div class="col-md-2">
-        <y-showdetail params="text:$root.showdetail">
-        </y-showdetail>
       </div>
     </div>
   </y-boxcontent>
