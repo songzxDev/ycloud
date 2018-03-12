@@ -1,8 +1,9 @@
 <div class="y-relative">
-  <div data-bind="nullValueDisplay:text,style:style"
-       style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
+  <div data-bind="nullValueDisplay:text,style:style, css:{'y-showdetail-single':!multiple,
+  'y-showdetail-multiple': multiple}">
   </div>
-  <div style="position:absolute;right: 0;top:0;" class="y-text-link" data-bind="visible:visible">
+  <div class="y-text-link" data-bind="visible:visible,css:{'y-showdetail-singlemore':!multiple,
+  'y-showdetail-multiplemore': multiple}">
     <y-tooltip params="title:'详细'">
       <y-tooltipctn params="targetEl:$el,show:isShow,position:'bottomleft'">
         <div data-bind="text:$parentContext.$parent.text"></div>

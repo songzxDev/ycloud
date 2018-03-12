@@ -11,6 +11,7 @@ class Showdetail extends Base {
   initialize (params) {
     this.text = params.text
     this.visible = ko.observable(false)
+    this.multiple = !!params.multiple
   }
   computed (params) {
     this.style = ko.computed(() => {
@@ -34,11 +35,22 @@ class Showdetail extends Base {
         var el = this.$el
         var scrollWidth = el.children[0].children[0].scrollWidth
         var offsetWidth = el.children[0].children[0].offsetWidth
-        // 有隐藏
-        if (scrollWidth > offsetWidth) {
-          this.visible(true)
+
+        if (!this.multiple) {
+          // 有隐藏
+          if (scrollWidth > offsetWidth) {
+            this.visible(true)
+          } else {
+            this.visible(false)
+          }
         } else {
-          this.visible(false)
+          var scrollHeight = el.children[0].children[0].scrollHeight
+          var offsetHeight = el.children[0].children[0].offsetHeight
+          if (scrollHeight > offsetHeight) {
+            this.visible(true)
+          } else {
+            this.visible(false)
+          }
         }
       })
     }
