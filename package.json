@@ -1,6 +1,6 @@
 {
   "name": "ycloud",
-  "version": "1.5.23",
+  "version": "1.5.25",
   "description": "",
   "main": "dist/ycloud.min.js",
   "author": "windknow <songhlc@yonyou.com>",

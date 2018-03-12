@@ -1131,7 +1131,7 @@ let viewmodel = {
   onInputBlur: function (data) {
     alert('blur')
   },
-  showdetail: '我们会很长很长很长的我们会很长很长很长的我们会很长很长很长的我们会很长很长很长的',
+  showdetail: ko.observable('我们会很长很长很长的我们会很长很长很长的我们会很长很长很长的我们会很长很长很长的'),
   editformrows: ko.observableArray([{
     id: ko.observable('1'),
     name: ko.observable('name')

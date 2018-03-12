@@ -3,6 +3,8 @@ import template from './index.html'
 function initialize (params) {
   this.title = params.title
   this.vm = params.vm
+  this.label = params.label
+  this.labelStyle = params.labelStyle
   this.style = params.style
   this.animated = params.animated || ko.observable(false)
   // 外界动态改变动画效果

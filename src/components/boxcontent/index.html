@@ -2,5 +2,10 @@
   <!-- ko if: title -->
   <div class="y-box-content-title" data-bind="text:title"></div>
   <!-- /ko -->
-  <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+  <!-- ko if: label -->
+  <div class="y-box-content-label" data-bind="text:label,style:labelStyle"></div>
+  <!-- /ko -->
+  <div>
+    <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+  </div>
 </div>
