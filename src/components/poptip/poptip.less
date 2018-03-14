@@ -1,0 +1,125 @@
+.y-poptip {
+  position: relative;
+  cursor: pointer;
+  .inline-block {
+    display: inline-block;
+  }
+  .y-poptip-ctn{
+    visibility: visible;
+    font-size: 12px;
+    line-height: 1.5;
+    position: fixed;
+    z-index: 1060;
+    transition: all .5s ease-in-out;
+    .y-poptip-arrow{
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
+    .y-poptip-ctn-inner{
+      max-width: 350px;
+      min-height: 34px;
+      padding: 8px 12px;
+      color: @f-color-normal;
+      text-align: left;
+      text-decoration: none;
+      background-color: #ecf6fd;
+      border: 1px solid #7ebef2;
+      border-radius: 2px;
+      box-shadow:0 2px 6px 0 rgba(0,0,0,0.15);
+    }
+    .y-poptip-cover{
+      position: absolute;
+      color: #ecf6fd;
+      width: 8px;
+      height: 8px;
+      background-color: #ecf6fd;
+      transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+    }
+    // 上方气泡
+    &.y-poptip-top {
+      top: -10px !important;
+      .y-poptip-arrow{
+        bottom: -5px;
+        left: 50%;
+        border-width: 5px;
+        border-bottom-width: 0;
+        border-top-color: #7ebef2;
+        margin-left: -5px;
+      }
+      .y-poptip-cover{
+        bottom: -2px;
+        left: 50%;
+        margin-left: -4px;
+      }
+    }
+    // 下方气泡
+    &.y-poptip-bottom {
+      top: 10px !important;
+      .y-poptip-arrow{
+        top: -5px;
+        left: 50%;
+        border-width: 5px;
+        border-top-width: 0;
+        border-bottom-color: #7ebef2;
+        margin-left: -5px;
+      }
+      .y-poptip-cover{
+        top: -2px;
+        left: 50%;
+        margin-left: -4px;
+      }
+    }
+    // 左方气泡
+    &.y-poptip-left {
+      left: -10px !important;
+      .y-poptip-arrow{
+        right: -5px;
+        top: 39%;
+        border-width: 5px;
+        border-right-width: 0;
+        border-left-color: #7ebef2;
+        margin-left: -5px;
+      }
+      .y-poptip-cover{
+        right: -2px;
+        top: 43%;
+        margin-left: -4px;
+      }
+    }
+    // 右方气泡
+    &.y-poptip-right {
+      left: 10px !important;
+      .y-poptip-arrow{
+        left: 0px;
+        top: 39%;
+        border-width: 5px;
+        border-left-width: 0;
+        border-right-color: #7ebef2;
+        margin-left: -5px;
+      }
+      .y-poptip-cover{
+        left: 2px;
+        top: 43%;
+        margin-left: -4px;
+      }
+    }
+  }
+}
+
+.y-poptip.trigger-hover {
+  .y-poptip-ctn {
+    opacity: 0;
+  }
+  &:hover {
+    .y-poptip-ctn {
+      opacity: 1;
+    }
+  }
+}

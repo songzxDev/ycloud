@@ -1,0 +1,22 @@
+<span class="y-poptip inline-block" data-bind="css: trigger=='hover'?'trigger-hover':''">
+  <span class="element inline-block" data-bind="click: handleVisible">
+    <!-- 其它元素 -->
+    <!-- ko template: { nodes: $componentTemplateNodes} --><!-- /ko -->
+
+    <!-- title span -->
+    <!-- ko if: !hasMarkup() -->
+      <!-- ko if: question -->
+      <span class="fa fa-question-circle y-text-link"></span>
+      <!-- /ko -->
+      <span data-bind="html: title"></span>
+    <!-- /ko -->
+  </span>
+  <div class="y-poptip-ctn" data-bind="css: thisClass, style: trigger=='hover'? {}:{opacity: visible}">
+    <div class="y-poptip-arrow">
+    </div>
+    <div class="y-poptip-cover"></div>
+    <div class="y-poptip-ctn-inner">
+      <span data-bind="html: title"></span>
+    </div>
+  </div>
+</span>
