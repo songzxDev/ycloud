@@ -11,7 +11,7 @@
         </div>
         <div class="y-modal-foot">
           <span class="y-modal-error-msg" data-bind="text:errormsg"></span>
-          <y-button params="type:'primary', click: handleOk">确定</y-button>
+          <y-button params="type:'primary', click: handleOk"><span data-bind="text: $parent.textOk"></span></y-button>
           <y-button params="type:'ghost', click: handleCancel">取消</y-button>
         </div>
       </div>
