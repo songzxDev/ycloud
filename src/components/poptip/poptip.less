@@ -30,6 +30,9 @@
       border-radius: 2px;
       box-shadow:0 2px 6px 0 rgba(0,0,0,0.15);
       word-wrap: break-word;
+      * {
+        white-space: initial;
+      }
     }
     .y-poptip-cover{
       position: absolute;
@@ -60,22 +63,6 @@
         margin-left: -4px;
       }
     }
-    // &.y-poptip-top-start {
-    //   .y-poptip-arrow{
-    //     left: 15%;
-    //   }
-    //   .y-poptip-cover{
-    //     left: 15%;
-    //   }
-    // }
-    // &.y-poptip-top-end {
-    //   .y-poptip-arrow{
-    //     left: 15%;
-    //   }
-    //   .y-poptip-cover{
-    //     left: 15%;
-    //   }
-    // }
     // 下方气泡
     &.y-poptip-bottom {
       top: 10px !important;
@@ -106,7 +93,7 @@
       }
       .y-poptip-cover{
         right: -2px;
-        top: 43%;
+        top: 40%;
         margin-left: -4px;
       }
     }
@@ -123,8 +110,40 @@
       }
       .y-poptip-cover{
         left: 2px;
-        top: 43%;
+        top: 40%;
         margin-left: -4px;
+      }
+    }
+    &.y-poptip-top-start, &.y-poptip-bottom-start {
+      .y-poptip-arrow{
+        left: 10% !important;
+      }
+      .y-poptip-cover{
+        left: 10% !important;
+      }
+    }
+    &.y-poptip-top-end, &.y-poptip-bottom-end {
+      .y-poptip-arrow{
+        left: 90% !important;
+      }
+      .y-poptip-cover{
+        left: 90% !important;
+      }
+    }
+    &.y-poptip-left-start, &.y-poptip-right-start {
+      .y-poptip-arrow{
+        top: 10% !important;
+      }
+      .y-poptip-cover{
+        top: 11% !important;
+      }
+    }
+    &.y-poptip-left-end, &.y-poptip-right-end {
+      .y-poptip-arrow{
+        top: 80% !important;
+      }
+      .y-poptip-cover{
+        top: 81% !important;
       }
     }
   }
