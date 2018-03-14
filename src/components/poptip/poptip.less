@@ -29,6 +29,7 @@
       border: 1px solid #7ebef2;
       border-radius: 2px;
       box-shadow:0 2px 6px 0 rgba(0,0,0,0.15);
+      word-wrap: break-word;
     }
     .y-poptip-cover{
       position: absolute;
@@ -59,6 +60,22 @@
         margin-left: -4px;
       }
     }
+    // &.y-poptip-top-start {
+    //   .y-poptip-arrow{
+    //     left: 15%;
+    //   }
+    //   .y-poptip-cover{
+    //     left: 15%;
+    //   }
+    // }
+    // &.y-poptip-top-end {
+    //   .y-poptip-arrow{
+    //     left: 15%;
+    //   }
+    //   .y-poptip-cover{
+    //     left: 15%;
+    //   }
+    // }
     // 下方气泡
     &.y-poptip-bottom {
       top: 10px !important;
@@ -115,10 +132,12 @@
 
 .y-poptip.trigger-hover {
   .y-poptip-ctn {
+    z-index: -1;
     opacity: 0;
   }
   &:hover {
     .y-poptip-ctn {
+      z-index: 1000;
       opacity: 1;
     }
   }

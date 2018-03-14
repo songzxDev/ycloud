@@ -19,6 +19,13 @@ class Poptip extends Base {
     this.visible = ko.observable(0)
     let reg = /(top)|(right)|(bottom)|(left)/g
     this.thisClass = 'y-poptip-' + this.position.match(reg)
+    if (this.position.length > 6) {
+      this.thisClass += ' y-poptip-' + this.position
+    }
+    // let el = $(this.$el).find('.element')[0]
+    // let position = el.getBoundingClientRect()
+    // let width = el.style.width
+    // console.log(width)
   }
   methods () {
     this.handleVisible = () => {}
@@ -56,9 +63,9 @@ class Poptip extends Base {
         onCreate: (data) => {},
         onUpdate: (data) => {},
         modifiers: {
-          flip: {
-            behavior: ['left', 'bottom', 'top']
-          }
+          // flip: {
+          //   behavior: ['left', 'bottom', 'top']
+          // }
         }
       }
     )

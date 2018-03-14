@@ -323,7 +323,7 @@ let viewmodel = {
       title: '河北'
     }
   ]),
-  sayHello: '<div style="color: red;">11</div>',
+  sayHello: '<div style="color: red;">1</div>',
   boxtitle: 'box and boxcontent',
   isShow: ko.observable(false),
   singleselect: ko.observable(),
