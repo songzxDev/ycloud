@@ -31,6 +31,7 @@ import tooltip from './tooltip'
 import {notice, $refs} from './base'
 import breadcrumb from './breadcrumb'
 import showdetail from './showdetail'
+import poptip from './poptip'
 import './konewfeature'
 const PREFIX = 'y-'
 function register (model) {
@@ -70,6 +71,7 @@ register(tooltip)
 register(breadcrumb)
 register(showdetail)
 register(formview)
+register(poptip)
 let ycloud = {
   notice,
   $refs

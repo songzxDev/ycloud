@@ -240,7 +240,6 @@ let viewmodel = {
   },
   onRowSelect: function (row) {
     let grid = ycloud.$refs['modalgrid']
-    console.log(grid.getSelectedRows())
   },
   breadcrumbData:
   [{text:'首页',link:'https://www.baidu.com/'},
@@ -324,6 +323,7 @@ let viewmodel = {
       title: '河北'
     }
   ]),
+  sayHello: `<div>11111111111</div><div>11111111111不限定报价品范围：报价品范报价品范报价品范报价品范不进行报价范围的指定，供应商可以为本次寻源项目的所有物料报价</div>`,
   boxtitle: 'box and boxcontent',
   isShow: ko.observable(false),
   singleselect: ko.observable(),
@@ -430,11 +430,9 @@ let viewmodel = {
   htmltemplate: '<div data-bind="text:function(){debugger;}"></div>',
   onPageChange: function (pageIndex, pageSize) {
     debugger
-    console.log(pageIndex + ' '+ pageSize)
   },
   onSizeChange: function (pageIndex, pageSize) {
     debugger
-    console.log(pageIndex + ' '+ pageSize)
   },
   columnsrowspan1: ko.observableArray([
     {
