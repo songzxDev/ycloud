@@ -26,6 +26,7 @@ function _init (params, el) {
     if (val && this.isTransferDom) {
       let el = this.targetEl.children[0]
       let position = el.getBoundingClientRect()
+      debugger
       if (!params.width) {
         this.width($(el).width())
       }

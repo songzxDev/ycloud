@@ -26,7 +26,7 @@ class Select extends Base {
     // 所以可以自定义传入labelkey 和valuekey
     this.labelkey = params.labelkey || 'label'
     this.valuekey = params.valuekey || 'value'
-
+    this.dropWidth = params.dropWidth
     // 是否支持清空
     this.clearable = params.clearable || false
     // 是否支持查询
