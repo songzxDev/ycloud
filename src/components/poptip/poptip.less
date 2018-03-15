@@ -1,9 +1,6 @@
 .y-poptip {
-  position: relative;
+  // position: relative;
   cursor: pointer;
-  .inline-block {
-    display: inline-block;
-  }
   .y-poptip-ctn{
     visibility: visible;
     font-size: 12px;
@@ -132,18 +129,20 @@
     }
     &.y-poptip-left-start, &.y-poptip-right-start {
       .y-poptip-arrow{
-        top: 10% !important;
+        top: 5px !important;
       }
       .y-poptip-cover{
-        top: 11% !important;
+        top: 6px !important;
       }
     }
     &.y-poptip-left-end, &.y-poptip-right-end {
       .y-poptip-arrow{
-        top: 80% !important;
+        top: auto;
+        bottom: 5px;
       }
       .y-poptip-cover{
-        top: 81% !important;
+        top: auto;
+        bottom: 6px;
       }
     }
   }
