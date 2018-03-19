@@ -496,20 +496,13 @@
         </y-tooltip>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-2">
-      <y-showdetail params="text:$root.showdetail, multiple:true">
-      </y-showdetail>
-      </div>
-    </div>
-
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-md-3">
             <y-poptip params="title: $root.sayHello, position: 'right-start'">
               <div style="height: 100px;width:100%;background:red;"></div>
             </y-poptip>
           </div>
-       
+
       <div class="col-md-3">
         <y-poptip params="title: $root.sayHello, position: 'top-start', trigger: 'click'">
           <div style="height: 100px;width:100%;background:red;"></div>
@@ -532,7 +525,7 @@
               <div style="height: 100px;width:100%;background:red;"></div>
             </y-poptip>
           </div>
-       
+
       <div class="col-md-3">
         <y-poptip params="title: $root.sayHello, position: 'top'">
           <div style="height: 100px;width:100%;background:red;"></div>
@@ -577,6 +570,26 @@
     <div class="row">
       <div class="col-md-4">
         <y-poptip params="title: '111111111111111111111111111111111111111111111', position: 'right', question: true"></y-poptip>
+      </div>
+    </div>
+  </y-boxcontent>
+  <y-boxcontent>
+    <h1>17.showdetail</h1>
+    <div class="row">
+      <div class="row">
+        <div class="col-md-2">
+          <y-showdetail params="text:$root.showdetail, multiple:true">
+          </y-showdetail>
+        </div>
+        <div class="col-md-2">
+          <y-showdetail params="text:$root.showdetail">
+          </y-showdetail>
+        </div>
+        <div class="col-md-2">
+          <y-showdetail params="text:ko.observable('')">
+          </y-showdetail>
+          <div data-bind="nullValueDisplay: ko.observable(0)"></div>
+        </div>
       </div>
     </div>
   </y-boxcontent>

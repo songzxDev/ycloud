@@ -1258,6 +1258,20 @@ let viewmodel = {
       field: 'b'
     },
     {
+      title: '日期',
+      width: 200,
+      field: 'b',
+      type: 'component',
+      compFn (row) {
+        return {
+          name: 'y-datepicker',
+          params: {
+            data: ko.observable()
+          }
+        }
+      }
+    },
+    {
       title: '宽度300',
       width: 500
     }

@@ -26,11 +26,15 @@ function _init (params, el) {
     if (val && this.isTransferDom) {
       let el = this.targetEl.children[0]
       let position = el.getBoundingClientRect()
-      debugger
+      var left = position.left
+      // 如果距离右侧屏幕宽度小于250
+      if (document.documentElement.clientWidth - position.left < 250) {
+        left = left - 100
+      }
       if (!params.width) {
         this.width($(el).width())
       }
-      this.left(position.left)
+      this.left(left)
       // select 默认高度 + 32
       this.top(position.top + 32)
       document.addEventListener('scroll', scrollEvent)
