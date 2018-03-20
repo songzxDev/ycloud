@@ -3,9 +3,11 @@ import ko from 'knockout'
 import 'ko-bindinghandler'
 import {lockScrollEffect, resetScrollEffect} from '@/util/scrollable'
 function init (params) {
+  this.addtionButton = params.textClear || false
   this.visible = params.visible || ko.observable(false)
   this.textOk = params.textOk || '确定'
   this.textCancel = params.textCancel || '取消'
+  this.textClear = params.textClear || '清空'
   this.isShow = ko.observable(false)
   this.width = params.width || '400px'
   this.title = params.title || '提示'
@@ -27,12 +29,17 @@ function init (params) {
   this.handleCancel = () => {
     this.visible(false)
   }
+  this.handleClear = function (data, event) {
+    if (params.handleClear) {
+      params.handleClear(data, event)
+    }
+  }
   this.handleOk = (data, event) => {
     if (this.isValidate && this.validateFn()) {
       this.errormsg('')
       this.visible(false)
       if (params.ok) {
-        params.ok(data)
+        params.ok(data, event)
       }
     } else {
       this.errormsg(params.errormsg || '校验失败！')

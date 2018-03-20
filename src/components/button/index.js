@@ -30,8 +30,8 @@ function init (params) {
   this.loadingText = params.loadingText || 'loading..'
   this.label = params.label || ''
   this.handleClick = params.click || defaultFun
-  this.handleReClick = _.debounce(() => {
-    this.handleClick()
+  this.handleReClick = _.debounce((data, event) => {
+    this.handleClick(data, event)
     this.disabled(true)
     setTimeout(() => {
       this.disabled(false)

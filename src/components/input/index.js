@@ -41,6 +41,7 @@ const isPositivenumber = function () {
 class Input extends Base {
   initialize (params) {
     this.value = params.value
+    this.size = params.size || 'md'
     this.placeholder = params.placeholder || ''
     this.prepend = params.prepend || false
     this.append = params.append || false
@@ -51,12 +52,20 @@ class Input extends Base {
     this.handleSubmit = params.onSubmit || function () {}
     this.handleIconClick = params.onIconClick || function () {}
     this.iconClass = params.iconClass || ''
-    this.ctnClass = params.class || ''
     this.disabled = params.disabled || ko.observable(false)
     this.typeList = ['text', 'textarea', 'password', 'url', 'email', 'date', 'number']
     this.maxlength = params.maxlength || 250
   }
   computed (params) {
+    // this.ctnClass = params.class || ''
+    this.ctnClass = ko.computed(() => {
+      var _ctnClass = ''
+      if (params.class) {
+        _ctnClass = params.class
+      }
+      _ctnClass += ' y-input-' + this.size
+      return _ctnClass
+    })
     this.type = ko.computed(() => {
       if (params.type && this.typeList.indexOf(params.type) > -1) {
         return params.type

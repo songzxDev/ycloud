@@ -55,10 +55,10 @@
 }
 .y-input{
   height: 32px;
+  line-height: 1;
   background-color: #FFF;
   background-image: none;
   border: 1px solid @border-color;
-  border-radius: 1px;
   color: #333;
   display: block;
   padding: 6px 12px;
@@ -86,6 +86,14 @@
   &:focus{
     outline: 0
   }
+}
+.y-input-sm {
+  height: 27px;
+  line-height: 27px;
+}
+.y-input-sm .y-input{
+  height: 27px;
+  padding: 3px 6px;
 }
 .y-input:hover,.y-input:focus,.selected .y-input{
   border-color: @primary-color;

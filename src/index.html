@@ -201,6 +201,9 @@
           <y-formitem params="required:true,tooltip:'这是一个还挺长的tooltip,这是一个还挺长的tooltip',label:'输入框:',vMap:validateList,vKey:'name'">
             <y-input params="onBlur:$root.onInputBlur,placeholder:'请输入文本',class:'y-inline-block',type:'text',value:$parent.model.name"></y-input>
           </y-formitem>
+          <y-formitem params="required:true,tooltip:'这是一个还挺长的tooltip,这是一个还挺长的tooltip',label:'小输入框:'">
+            <y-input params="prepend:'税率',append:'%',size:'sm',placeholder:'请输入文本',type:'text',value:$parent.model.name"></y-input>
+          </y-formitem>
           <y-formitem params="label:'整数输入框:'">
             <y-input params="placeholder:'请输入文本',type:'integer',value:ko.observable('')"></y-input>
           </y-formitem>
@@ -292,7 +295,7 @@
   <y-boxcontent>
     <h1>9.弹框</h1>
     <y-button params="click:$root.showModal">显示弹框</y-button>
-    <y-modal params="visible: $root.modalVisible, title:'组织选择！', width:'700px', errormsg:'请选择组织', validateFn: $root.validateFn">
+    <y-modal params="textOk: '是',handleClear:$root.handleClear, textCancel:'否', textClear:'不要了',visible: $root.modalVisible, title:'组织选择！', width:'700px', errormsg:'请选择组织', validateFn: $root.validateFn">
       <y-radio params="dataList:$root.radioDataList,value:$root.radioValue"></y-radio>
       <!-- <y-grid params="modalBodyModalHeight:bodyMaxHeight,modalBodyExtraHeight:'10px',ref:'modalgrid',onRowSelect:$root.onRowSelect,isStripe: true,columns:$root.columns,rows: $root.rows,lockhead:true"></y-grid> -->
     </y-modal>
@@ -443,7 +446,7 @@
   </y-boxcontent>
   <y-boxcontent>
     <h1>14.分页</h1>
-    <y-pagination params="onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>
+    <y-pagination params="pageSizeList:[4,8,16,20],onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>
   </y-boxcontent>
   <y-boxcontent>
     <h1>15.单选</h1>

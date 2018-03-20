@@ -56,6 +56,9 @@ setTimeout(function () {
 }, 1000)
 window.dt = dt
 let viewmodel = {
+  handleClear: function (data) {
+    debugger
+  },
   columnsname: ko.observable('name'),
   selectId: ko.observable(),
   editgridrows: ko.observableArray([
@@ -1116,7 +1119,7 @@ let viewmodel = {
   datatable: dt.rows,
   pageIndex: ko.observable(0),
   totalCount: ko.observable(112),
-  pageSize: ko.observable(10),
+  pageSize: ko.observable(20),
   onSelectChange: function (data) {
     console.log('change:' + JSON.stringify(data))
   },

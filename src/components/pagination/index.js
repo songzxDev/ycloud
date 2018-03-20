@@ -9,7 +9,8 @@ function init (params) {
   // 对齐
   this.align = params.align || 'center'
   this.pageSize = params.pageSize
-  this.curPage = ko.observable(params.curPage || {value: 10, label: '10'})
+  var _defaultCurPage = params.pageSize() ? {value: params.pageSize(), label: params.pageSize() + ''} : null
+  this.curPage = ko.observable(_defaultCurPage || {value: 10, label: '10'})
   this.pageSize.subscribe(val => {
     if (isNaN(val - 0)) {
       console.error('传入的pageSize,必须为数字')
@@ -20,21 +21,16 @@ function init (params) {
     }
   })
   this.totalCount = params.totalCount
-  this.pageList = [
-    {
-      value: 10,
-      label: '10'
-    }, {
-      value: 20,
-      label: '20'
-    }, {
-      value: 50,
-      label: '50'
-    }, {
-      value: 100,
-      label: '100'
+  var defaultList = [10, 20, 50, 100]
+  if (params.pageSizeList) {
+    defaultList = params.pageSizeList
+  }
+  this.pageList = defaultList.map(item => {
+    return {
+      value: item,
+      label: item + ''
     }
-  ]
+  })
   this.totalPage = ko.computed(() => {
     return Math.ceil(this.totalCount() / this.pageSize())
   })
