@@ -7,7 +7,7 @@ function init (params) {
   this.visible = params.visible || ko.observable(false)
   this.textOk = params.textOk || '确定'
   this.textCancel = params.textCancel || '取消'
-  this.textClear = params.textClear || '清空'
+  this.textClear = params.textClear
   this.isShow = ko.observable(false)
   this.width = params.width || '400px'
   this.title = params.title || '提示'
