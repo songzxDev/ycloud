@@ -1442,6 +1442,14 @@ setTimeout(() => {
       title: '性别',
       field: 'sex',
       width: 220
+    },  {
+      title: '性别',
+      field: 'sex',
+      width: 220
+    },  {
+      title: '性别',
+      field: 'sex',
+      width: 220
     }, {
       title: '年龄',
       field: 'age',

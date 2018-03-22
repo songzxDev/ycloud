@@ -295,7 +295,7 @@
   <y-boxcontent>
     <h1>9.弹框</h1>
     <y-button params="click:$root.showModal">显示弹框</y-button>
-    <y-modal params="textOk: '是',handleClear:$root.handleClear, textCancel:'否', textClear:'不要了',visible: $root.modalVisible, title:'组织选择！', width:'700px', errormsg:'请选择组织', validateFn: $root.validateFn">
+    <y-modal params="textOk: '是',handleClear:$root.handleClear, textCancel:'否',visible: $root.modalVisible, title:'组织选择！', width:'700px', errormsg:'请选择组织', validateFn: $root.validateFn">
       <y-radio params="dataList:$root.radioDataList,value:$root.radioValue"></y-radio>
       <!-- <y-grid params="modalBodyModalHeight:bodyMaxHeight,modalBodyExtraHeight:'10px',ref:'modalgrid',onRowSelect:$root.onRowSelect,isStripe: true,columns:$root.columns,rows: $root.rows,lockhead:true"></y-grid> -->
     </y-modal>
