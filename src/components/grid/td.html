@@ -23,11 +23,11 @@
 <!-- /ko -->
 <!-- ko ifnot: col.type-->
   <!-- ko ifnot: isDataTable -->
-  <div class="y-cell" data-bind="text: defaultFormatText(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+  <div class="y-cell" data-bind="style: col.computedStyle && col.computedStyle(row),text: defaultFormatText(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
   </div>
   <!-- /ko -->
   <!-- ko if: isDataTable -->
-  <div class="y-cell" data-bind="text: defaultFormatText(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+  <div class="y-cell" data-bind="style: col.computedStyle && col.computedStyle(row),text: defaultFormatText(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
   </div>
   <!-- /ko -->
 <!-- /ko -->

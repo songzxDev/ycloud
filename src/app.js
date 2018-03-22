@@ -630,7 +630,20 @@ let viewmodel = {
     }
   }, {
     title: '数量',
-    field: 'num'
+    field: 'num',
+    computedStyle: function (row) {
+      if (row._selected()) {
+        return {
+          color: 'red',
+          textDecoration: 'none'
+        }
+      } else {
+        return {
+          color: 'green',
+          textDecoration: 'line-through'
+        }
+      }
+    },
   }, {
     title: '总价',
     field: 'total'

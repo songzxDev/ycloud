@@ -40,7 +40,7 @@ const isPositivenumber = function () {
 }
 class Input extends Base {
   initialize (params) {
-    this.value = params.value
+    this.value = params.value || ko.observable()
     this.size = params.size || 'md'
     this.placeholder = params.placeholder || ''
     this.prepend = params.prepend || false
@@ -55,6 +55,7 @@ class Input extends Base {
     this.disabled = params.disabled || ko.observable(false)
     this.typeList = ['text', 'textarea', 'password', 'url', 'email', 'date', 'number']
     this.maxlength = params.maxlength || 250
+    this.required = params.required || false
   }
   computed (params) {
     // this.ctnClass = params.class || ''
@@ -64,6 +65,15 @@ class Input extends Base {
         _ctnClass = params.class
       }
       _ctnClass += ' y-input-' + this.size
+      if (this.required) {
+        if (ko.isObservable(this.value)) {
+          var _value = this.value()
+          // 如果输入值为空
+          if (_value === undefined || _value === null || _value === '') {
+            _ctnClass += ' y-input-required'
+          }
+        }
+      }
       return _ctnClass
     })
     this.type = ko.computed(() => {

@@ -202,7 +202,7 @@
             <y-input params="onBlur:$root.onInputBlur,placeholder:'请输入文本',class:'y-inline-block',type:'text',value:$parent.model.name"></y-input>
           </y-formitem>
           <y-formitem params="required:true,tooltip:'这是一个还挺长的tooltip,这是一个还挺长的tooltip',label:'小输入框:'">
-            <y-input params="prepend:'税率',append:'%',size:'sm',placeholder:'请输入文本',type:'text',value:$parent.model.name"></y-input>
+            <y-input params="required:true,prepend:'税率',append:'%',size:'sm',placeholder:'请输入文本',type:'text',value:$parent.model.name"></y-input>
           </y-formitem>
           <y-formitem params="label:'整数输入框:'">
             <y-input params="placeholder:'请输入文本',type:'integer',value:ko.observable('')"></y-input>
