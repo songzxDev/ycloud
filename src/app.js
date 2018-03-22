@@ -648,6 +648,78 @@ let viewmodel = {
     title: '总价',
     field: 'total'
   }],
+  childgridcolumns: [{
+    title: '姓名',
+    field: 'name',
+    width: '20%',
+    _show: true,
+    summaryType: 'render',
+    summaryFn: (row) => {
+      return '<div>' + row.title + '</div><p>这是一个summaryRow</p>'
+    },
+    childGridFn (row) {
+      return {
+        name: 'y-grid',
+        params: {
+          nohead: true,
+          noborder: true,
+          maxheight: 'auto',
+          columns: [{
+            field: 'name',
+            width: '20%',
+          }, {
+            field: 'age',
+            width: '10%'
+          }, {
+            field: 'sex',
+            width: '30%'
+          }],
+          rows: ko.observableArray(row.list)
+        }
+      }
+    }
+  }, {
+    title: '年龄',
+    _show: true,
+    field: 'age',
+    width: '10%'
+  }, {
+    title: '性别',
+    _show: true,
+    field: 'sex',
+    width: '30%'
+  }],
+  childgridrows: ko.observableArray([{
+    title: '第一行',
+    list: [
+      {
+        name: 'songjl',
+        age: 30,
+        sex: '男'
+      }, {
+        name: 'wuyg',
+        age: 35,
+        sex: '男'
+      }, {
+        name: 'wu2yg',
+        age: 15,
+        sex: '女'
+      }
+    ]
+  }, {
+    title: 'name2',
+    list: [
+      {
+        name: 'lixih',
+        age: 14,
+        sex: '女'
+      }, {
+        name: 'guotg',
+        age: 25,
+        sex: '男'
+      }
+    ]
+  }]),
   lockcolcolumns: ko.observableArray([]),
   lockcolrows: ko.observableArray([
     {

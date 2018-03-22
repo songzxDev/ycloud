@@ -11,6 +11,8 @@ ko.components.register(PREFIX + td.name, {
 class Body extends Base {
   initialize (params) {
     this.hasSummaryRow = params.hasSummaryRow || false
+    // 用在子表一对多的场景之中
+    this.hasChildGrid = params.hasChildGrid || false
     this.isDataTable = params.isDataTable
     this.tableWidth = params.tableWidth
     this.expand = params.expand

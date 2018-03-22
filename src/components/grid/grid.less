@@ -235,11 +235,11 @@
   padding: 5px 10px;
   overflow: inherit !important;
 }
-.y-grid-summary tr {
-  td:first-child{
+.y-grid-summary > table > tbody > tr > td {
+  &:first-child{
     border-left: solid 1px #e5e6e7;
   }
-  td:last-child{
+  &:last-child{
     border-right: solid 1px #e5e6e7;
   }
 }
