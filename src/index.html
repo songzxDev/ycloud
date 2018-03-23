@@ -325,8 +325,11 @@
     <h1>13.表格</h1>
     <div class="row">
       <div class="col-md-12">
+        <y-grid params="rows:$root.caculateRows, columns: $root.caculateMainColumns, caculateColumns: $root.caculateColumns">
+        </y-grid>
+      </div>
+      <div class="col-md-12">
         <y-grid params="isStripe:true,rowspan:{maxCol: 3},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrowstest">
-
         </y-grid>
       </div>
       <div class="col-md-6">

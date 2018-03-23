@@ -14,6 +14,7 @@ class Body extends Base {
     // 用在子表一对多的场景之中
     this.hasChildGrid = params.hasChildGrid || false
     this.isDataTable = params.isDataTable
+    this.caculateColumns = params.caculateColumns
     this.tableWidth = params.tableWidth
     this.expand = params.expand
     this.columns = params.columns

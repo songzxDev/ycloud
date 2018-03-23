@@ -20,6 +20,7 @@ class Grid extends Base {
     this.isDataTable = params.isDataTable || false
     this.hasSummaryRow = params.hasSummaryRow || false
     this.hasChildGrid = params.hasChildGrid || false
+    this.caculateColumns = params.caculateColumns
     // 只有当columns1和columns2一起启用的时候才认为是启用了rowspanhead
     this.isRowspanHead = !!params.columns1 && !!params.columns2
     this.headtransform = ko.observable('translateX(0)')

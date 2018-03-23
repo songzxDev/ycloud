@@ -5,45 +5,54 @@
     </colgroup>
     <tbody data-bind="foreach: {data: rows, as: 'row'}, css:{'y-grid-body-verticaltop':verticalAlign === 'top'}">
       <!-- ko ifnot: row._delete -->
-      <!-- ko if: hasSummaryRow-->
-      <tr>
-        <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
-          <!-- ko if: $parent.columns()[0].summaryType === 'render' -->
-          <div class="y-cell y-cell-summary" data-bind="html: $parent.columns()[0].summaryFn(row)">
-          </div>
+        <!-- ko if: hasSummaryRow-->
+        <tr>
+          <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
+            <!-- ko if: $parent.columns()[0].summaryType === 'render' -->
+            <div class="y-cell y-cell-summary" data-bind="html: $parent.columns()[0].summaryFn(row)">
+            </div>
+            <!-- /ko -->
+            <!-- ko if: $parent.columns()[0].summaryType === 'comp'-->
+            <div class="y-cell y-cell-summary" data-bind="component: $parent.columns()[0].summaryFn(row)">
+            </div>
+            <!-- /ko -->
+          </td>
+        </tr>
+        <!-- /ko -->
+        <!-- ko ifnot: $parent.hasChildGrid -->
+        <tr data-bind="css:{'y-grid-row-hover':row._hover,'y-grid-row-selected':row._selected},event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
+          <!-- ko foreach:{data: $parent.columns, as: 'col'} -->
+          <td data-bind="visible: col._show, style: tdstyle">
+            <y-grid-td params="isDataTable:isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
+          </td>
           <!-- /ko -->
-          <!-- ko if: $parent.columns()[0].summaryType === 'comp'-->
-          <div class="y-cell y-cell-summary" data-bind="component: $parent.columns()[0].summaryFn(row)">
-          </div>
-          <!-- /ko -->
-        </td>
-      </tr>
+        </tr>
+        <!-- /ko -->
+        <!-- ko if: $parent.expand && row._expand() -->
+        <tr>
+            <td style="border-bottom: none" data-bind="attr:{colspan: $parent.expandColspan()}">
+              <div data-bind="component: $parent.columns()[0].expandCompFn(row)">
+              </div>
+            </td>
+          </tr>
+        <!-- /ko -->
+        <!-- ko if: $parent.hasChildGrid -->
+        <tr>
+          <td style="border-bottom: none" data-bind="attr:{colspan: $parent.expandColspan()}">
+            <div data-bind="component: $parent.columns()[0].childGridFn(row)">
+            </div>
+          </td>
+        </tr>
+        <!-- /ko -->
       <!-- /ko -->
-      <!-- ko ifnot: $parent.hasChildGrid -->
-      <tr data-bind="css:{'y-grid-row-hover':row._hover,'y-grid-row-selected':row._selected},event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
-        <!-- ko foreach:{data: $parent.columns, as: 'col'} -->
+      <!-- ko if: $parent.caculateColumns && $index() ==  $parent.rows().length - 1-->
+      <tr>
+        <!-- ko foreach:{data: $parent.caculateColumns, as: 'col'} -->
         <td data-bind="visible: col._show, style: tdstyle">
           <y-grid-td params="isDataTable:isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
         </td>
         <!-- /ko -->
       </tr>
-      <!-- /ko -->
-      <!-- ko if: $parent.expand && row._expand() -->
-        <tr>
-          <td style="border-bottom: none" data-bind="attr:{colspan: $parent.expandColspan()}">
-            <div data-bind="component: $parent.columns()[0].expandCompFn(row)">
-            </div>
-          </td>
-        </tr>
-      <!-- /ko -->
-      <!-- ko if: $parent.hasChildGrid -->
-      <tr>
-        <td style="border-bottom: none" data-bind="attr:{colspan: $parent.expandColspan()}">
-          <div data-bind="component: $parent.columns()[0].childGridFn(row)">
-          </div>
-        </td>
-      </tr>
-      <!-- /ko -->
       <!-- /ko -->
     </tbody>
     <tbody class="y-grid-empty">

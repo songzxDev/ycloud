@@ -1,6 +1,7 @@
 import ko from 'knockout'
 import ycloud from './index'
 import './formComp'
+import _ from 'lodash'
 var dt = new u.DataTable({
   meta:{
     id: "",
@@ -602,6 +603,54 @@ let viewmodel = {
   crossPageSelectedRows: ko.observableArray([]),
   crossPageSelectedRows2: ko.observableArray([]),
   ComputeRows: table.rows,
+  caculateRows: ko.observableArray([
+    {
+      name: 'name',
+      age: 24,
+      sex: '男'
+    }, {
+      name: 'name',
+      age: 22,
+      sex: '男'
+    }, {
+      name: 'name',
+      age: 21,
+      sex: '男'
+    }, {
+      name: 'name',
+      age: 23,
+      sex: '男'
+    }
+  ]),
+  caculateMainColumns: [{
+    title: '姓名',
+    field: 'name',
+  }, {
+    title: '年龄',
+    field: 'age',
+  }, {
+    title: '性别',
+    field: 'sex',
+  }],
+  caculateColumns: [{
+    type: 'render',
+    _show: true,
+    renderFn (row) {
+      return '合计：'
+    }
+  }, {
+    _show: true,
+    type: 'render',
+    renderFn (row) {
+      return _.reduce(viewmodel.caculateRows(), function (a, b) {
+        return {age: (a.age - 0) + (b.age - 0)}
+      }, {
+        age: 0
+      }).age
+    }
+  }, {
+    _show: true
+  }],
   ComputeColumns: [{
     title: 'id',
     field: 'id',
