@@ -175,6 +175,10 @@ class DatePicker extends Base {
       if (this.initFlag) {
         this.data(_date)
       }
+      // 如果原来有值，打开日期只修改时间，则需要重新set
+      if (this.isTimer) {
+        this.data(_date)
+      }
     }
     //
     this.confirm = () => {
