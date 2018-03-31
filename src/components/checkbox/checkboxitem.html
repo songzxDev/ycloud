@@ -1,4 +1,4 @@
-<label class="y-checkbox-item" data-bind="css:{'y-checkbox-item-checked': checked}">
+<label class="y-checkbox-item" data-bind="css:{'y-checkbox-item-checked': checked() && checked() != 0 }">
   <span class="y-checkbox-item--inner-warpper">
     <span class="y-checkbox-item-inner">
       <input type="checkbox" data-bind="event:{click:hanldeClick}">

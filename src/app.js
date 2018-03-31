@@ -1311,6 +1311,7 @@ let viewmodel = {
   asyncTreeData: ko.observableArray([]),
   selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
+  checkboxItem: ko.observable('0'),
   checkboxDataList: ko.observableArray([{value: '1',label:'北京',secondarylabel:'(we are)'},{value: 2,label:'上海'}]),
   radioValue: ko.observable("3"),
   radioDataList: ko.observableArray([{value: 1,label:'无发票',disabled:'disabled'},{value: "2",label:'普通发票'},{value: "3",label:'增值锐发票'}]),
