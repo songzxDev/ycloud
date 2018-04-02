@@ -5,9 +5,11 @@ function init (params) {
   this.secondarylabel = params.secondarylabel || ''
   this.value = params.value
   this.checked = params.checked || ko.observable(false)
+  this.falseValue = params.falseValue || false
+  this.trueValue = params.trueValue ? params.trueValue : true
   params.valueList = params.valueList || []
   if (params.valueList.indexOf(this.value) >= 0) {
-    this.checked(true)
+    this.checked(this.trueValue)
   }
   params.valueList.subscribe && params.valueList.subscribe(val => {
     // 统一需要转成字符串来判断
@@ -16,9 +18,9 @@ function init (params) {
     })
     // 统一用string来判断
     if (stringArray.indexOf(this.value + '') >= 0) {
-      this.checked(true)
+      this.checked(this.trueValue)
     } else {
-      this.checked(false)
+      this.checked(this.falseValue)
     }
   })
   this.checked.subscribe(val => {
@@ -36,7 +38,11 @@ function init (params) {
   // checkbox重构，不和input进行绑定，在modal+checkbox-grid场景 全选始终无法选中，
   // 于是干脆不绑定了，直接用 试一下
   this.hanldeClick = (data, event) => {
-    data.checked(!data.checked())
+    if (data.checked() === this.trueValue) {
+      data.checked(this.falseValue)
+    } else {
+      data.checked(this.trueValue)
+    }
   }
 }
 export default {
