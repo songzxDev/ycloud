@@ -66,6 +66,7 @@ class Grid extends Base {
     this.isSeparate = params.isSeparate || false
     this.style = params.style || {}
     this.forbitRowSelect = ko.observable(params.forbitRowSelect || false)
+    this.forbitRowSelectFn = params.forbitRowSelectFn
     // 放在弹框内部的需要动态内部高度
     this.modalBodyModalHeight = params.modalBodyModalHeight || 0
     this.modalBodyExtraHeight = params.modalBodyExtraHeight || '0'

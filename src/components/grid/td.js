@@ -15,6 +15,7 @@ function init (params) {
   this.col = params.col
   this.colIndex = params.colIndex.subscribe ? params.colIndex() : params.colIndex
   this.rowIndex = params.rowIndex.subscribe ? params.rowIndex() : params.rowIndex
+  this.forbitRowSelectFn = params.forbitRowSelectFn || function () { return false }
   // 默认的数据格式化 支持date和datetime
   this.defaultFormatText = ko.computed(() => {
     let result

@@ -651,6 +651,9 @@ let viewmodel = {
   }, {
     _show: true
   }],
+  forbitRowSelectFn: function (row) {
+    return row.ref('name')() === 'name3'
+  },
   ComputeColumns: [{
     title: 'id',
     field: 'id',
@@ -692,7 +695,7 @@ let viewmodel = {
           textDecoration: 'line-through'
         }
       }
-    },
+    }
   }, {
     title: '总价',
     field: 'total'

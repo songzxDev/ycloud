@@ -5,7 +5,9 @@
 <!-- /ko -->
 <!-- ko if: col.type == 'checkbox' -->
 <div class="y-cell y-cell-checkbox">
+  <!-- ko if: !forbitRowSelectFn(row) -->
   <y-checkbox-item class="y-grid-checkbox" params="value:row._selected(),label:'',checked:row._selected"></y-checkbox-item>
+  <!-- /ko -->
 </div>
 <!-- /ko -->
 <!-- ko if:col.type == 'render' -->

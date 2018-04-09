@@ -26,6 +26,7 @@ class Body extends Base {
     this.tdstyle = params.tdstyle
     this.isSeparate = params.isSeparate
     this.forbitRowSelect = params.forbitRowSelect || function () {}
+    this.forbitRowSelectFn = params.forbitRowSelectFn || function () { return false }
     this.isShowLoading = params.isShowLoading
     this.crossPageSelectedRows = params.crossPageSelectedRows
     this.fixColumnTransform = params.fixColumnTransform
@@ -245,7 +246,7 @@ class Body extends Base {
     }
     this.handleClick = (row, evt) => {
       // 如果组织行选中则直接返回不选中任何行
-      if (this.forbitRowSelect()) {
+      if (this.forbitRowSelect() || this.forbitRowSelectFn(row)) {
         return false
       }
       // 对于一些输入框不选中
