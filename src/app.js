@@ -15,7 +15,8 @@ var table = new u.DataTable({
     name: '',
     price: '',
     num: '',
-    total: ''
+    total: '',
+    date: ''
   }
 })
 var dtRowStatus = new u.DataTable({
@@ -57,6 +58,7 @@ setTimeout(function () {
 }, 1000)
 window.dt = dt
 let viewmodel = {
+  table: table,
   handleClear: function (data) {
     debugger
   },

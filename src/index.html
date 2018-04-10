@@ -283,6 +283,14 @@
             <y-datetimepicker params='placeholder:"请选择时间",data: $root.datepicker'>
             </y-datetimepicker>
           </y-formitem>
+          <y-formitem params="label: '时间无默认值'">
+            <y-datetimepicker params='placeholder:"请选择时间",data: $root.dynamicDate'>
+            </y-datetimepicker>
+          </y-formitem>
+          <y-formitem params="label: '时间dataTable'">
+            <y-datetimepicker params='placeholder:"请选择时间dataTable",data: $root.table.ref("date")'>
+            </y-datetimepicker>
+          </y-formitem>
           <y-formitem params="label: '级联'">
             <y-cascader params='data: $root.cascaderData, selectedValue: $root.cascaderValue, clearable: true'>
             </y-cascader>

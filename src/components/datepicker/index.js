@@ -3,6 +3,13 @@ import ko from 'knockout'
 import template from './index.html'
 import Base from '../../core/base'
 const PREIFX = 'y-'
+// 日期组件要验证的点
+// 1.默认日期没有值
+// 2.默认日期有值
+// 3.动态修改日期的值
+// 4.只修改时间的值
+// 5.日期选择范围测试
+// 6.默认数字格式，默认日期格式，默认日期时间格式
 ko.components.register(PREIFX + 'datepicker-year', {
   viewModel: require('./base/year').default,
   template: require('./base/year.html')
@@ -171,12 +178,13 @@ class DatePicker extends Base {
       } else {
         _date = new Date(this.year(), this.month() - 1, this.day())._format(DATEFORMAT)
       }
-      // 如果还处于初始化则不重新赋值
+      // 如果还处于初始化则不重新赋值, 数据初始化的时候有默认值，则会重新设置一下日期格式
       if (this.initFlag) {
         this.data(_date)
       }
-      // 如果原来有值，打开日期只修改时间，则需要重新set
-      if (this.isTimer) {
+      // 如果有旧值，则存在只修改了时间没有修改日期的操作，需要动态更新值
+      var oldData = this.data()
+      if (oldData !== undefined && oldData !== '' && oldData !== null) {
         this.data(_date)
       }
     }
