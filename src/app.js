@@ -718,6 +718,9 @@ let viewmodel = {
           nohead: true,
           noborder: true,
           maxheight: 'auto',
+          rowspan: {
+            columnIndex: [2, 3]
+          },
           columns: [{
             field: 'name',
             width: '20%',
@@ -726,7 +729,10 @@ let viewmodel = {
             width: '10%'
           }, {
             field: 'sex',
-            width: '30%'
+            width: '10%'
+          }, {
+            field: 'addr',
+            width: '20%'
           }],
           rows: ko.observableArray(row.list)
         }
@@ -749,15 +755,18 @@ let viewmodel = {
       {
         name: 'songjl',
         age: 30,
-        sex: '男'
+        sex: '男',
+        addr: '地址合并'
       }, {
         name: 'wuyg',
         age: 35,
-        sex: '男'
+        sex: '男',
+        addr: '地址合并'
       }, {
         name: 'wu2yg',
         age: 15,
-        sex: '女'
+        sex: '女',
+        addr: '地址合并'
       }
     ]
   }, {
@@ -766,11 +775,13 @@ let viewmodel = {
       {
         name: 'lixih',
         age: 14,
-        sex: '女'
+        sex: '女',
+        addr: '地址合并'
       }, {
         name: 'guotg',
         age: 25,
-        sex: '男'
+        sex: '男',
+        addr: '地址合并'
       }
     ]
   }]),

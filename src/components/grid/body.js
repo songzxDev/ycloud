@@ -167,12 +167,20 @@ class Body extends Base {
   created (params) {
     if (params.rowspan) {
       setTimeout(() => {
-        this.caculateRowspan(params.rowspan.maxCol, params.domId)
+        if (params.rowspan.columnIndex) {
+          this.caculateRowspanByFields(params.rowspan.columnIndex, params.domId)
+        } else if (params.rowspan.maxCol) {
+          this.caculateRowspan(params.rowspan.maxCol, params.domId)
+        }
       })
       params.rows.subscribe(val => {
         // 确保页面重绘之后再进行合并单元格
         setTimeout(function () {
-          this.caculateRowspan(params.rowspan.maxCol, params.domId)
+          if (params.rowspan.columnIndex) {
+            this.caculateRowspanByFields(params.rowspan.columnIndex, params.domId)
+          } else if (params.rowspan.maxCol) {
+            this.caculateRowspan(params.rowspan.maxCol, params.domId)
+          }
         }.bind(this), 50)
       })
     }
@@ -190,6 +198,47 @@ class Body extends Base {
       return false
     }
     return true
+  }
+  caculateRowspanByFields (indexes, domId) {
+    debugger
+    var tab = document.getElementById(domId)
+    let val = ''
+    let count = 0
+    let start = 0
+    indexes.forEach(index => {
+      count = 1
+      // 需要减掉用于显示暂无数据的那一行
+      for (var i = 0; i < tab.rows.length - 1; i++) {
+        // fixed rowspan 在数据切换之后产生的bug
+        if (tab.rows[i].cells[index].style.display === 'none') {
+          tab.rows[i].cells[index].style.display = 'table-cell'
+        }
+        // 每次初始化之前要把当前rowSpan重置
+        tab.rows[i].cells[index].rowSpan = 1
+        // 第一列不需要校验左侧是否被合并了（display === 'none'表示被合并了）
+        if (val === tab.rows[i].cells[index].innerHTML) {
+          count++
+        } else {
+          if (count > 1) { // 合并
+            start = i - count
+            tab.rows[start].cells[index].rowSpan = count
+            for (let j = start + 1; j < i; j++) {
+              // 被合并的列隐藏
+              tab.rows[j].cells[index].style.display = 'none'
+            }
+            count = 1
+          }
+          val = tab.rows[i].cells[index].innerHTML
+        }
+      }
+      if (count > 1) { // 合并，最后几行相同的情况下
+        start = i - count
+        tab.rows[start].cells[index].rowSpan = count
+        for (let j = start + 1; j < i; j++) {
+          tab.rows[j].cells[index].style.display = 'none'
+        }
+      }
+    })
   }
   // 动态计算rowspan
   caculateRowspan (maxColumns, domId) {
