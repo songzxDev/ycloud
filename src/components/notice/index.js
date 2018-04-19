@@ -11,11 +11,12 @@ let $notice = {
       </div>`
     let errorTemplate = `
       <div id="y-notice" class="y-notice">
-        <div class="y-notice-ctn">
+        <div class="y-notice-ctn y-notice-error">
           <i class="fa fa-warning"></i>${msg}
           <span onclick="closenotice()">+</span>
         </div>
       </div>`
+    $('#y-notice').remove()
     if (type === 'info') {
       $('body').append(infoTemplate)
     } else if (type === 'error') {
@@ -29,17 +30,17 @@ let $notice = {
     this.init(msg, 'info')
     setTimeout(() => {
       this.close()
-    }, option.timeout || 2000)
+    }, option.timeout || 4000)
   },
   error: function (msg, option = {}) {
     this.init(msg, 'error')
     setTimeout(() => {
       this.close()
-    }, option.timeout || 2000)
+    }, option.timeout || 8000)
   },
   close: function () {
     $('#y-notice').removeClass('y-notice-active')
-    $('#y-notice').remove()
+    $('#y-notice').addClass('y-notice-hide')
   }
 }
 window.closenotice = $notice.close

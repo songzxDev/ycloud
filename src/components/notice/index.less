@@ -11,13 +11,22 @@
     top: 60px;
     opacity: 1;
   }
+  &.y-notice-hide{
+    display: none;
+  }
+  &:hover{
+    top: 60px;
+    opacity: 1;
+    display: block;
+  }
   .y-notice-ctn{
     display: inline-block;
     pointer-events: all;
     padding: 8px 16px;
     border-radius: 4px;
     box-shadow: 0 1px 6px rgba(0,0,0,.2);
-    background: #fff;
+    background: @primary-color;
+    color: #FFF;
     position: relative;
     min-width: 100px;
     max-width: 300px;
@@ -25,10 +34,10 @@
       margin-right: 6px;
     }
     .fa-info-circle{
-      color: @primary-color;
+      color: #FFF;
     }
     .fa-warning{
-      color: @danger-color
+      color: #FFF
     }
     span{
       position: absolute;
@@ -38,8 +47,11 @@
       font-size: 12px;
       transform: scale(1.8) rotate(45deg);
       cursor: pointer;
-      color: @f-color-normal;
+      color: #FFF;
       opacity: .66;
     }
+  }
+  .y-notice-error{
+    background-color: @danger-color;
   }
 }
