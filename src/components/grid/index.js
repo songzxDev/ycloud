@@ -274,6 +274,10 @@ class Grid extends Base {
         this.rows().forEach(row => {
           row._selected(isChecked)
         })
+        // 如果不是dataTable则需要出发全选
+        if (!this.isDataTable) {
+          this.rows.splice(0, 0)
+        }
       },
       owner: this
     })
