@@ -200,7 +200,6 @@ class Body extends Base {
     return true
   }
   caculateRowspanByFields (indexes, domId) {
-    debugger
     var tab = document.getElementById(domId)
     let val = ''
     let count = 0
