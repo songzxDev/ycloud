@@ -12,7 +12,7 @@
             <div class="y-cell y-cell-summary" data-bind="html: $parent.columns()[0].summaryFn(row)">
             </div>
             <!-- /ko -->
-            <!-- ko if: $parent.columns()[0].summaryType === 'comp'-->
+            <!-- ko if: $parent.columns()[0].summaryType === 'comp' || $parent.columns()[0].summaryType === 'component'-->
             <div class="y-cell y-cell-summary" data-bind="component: $parent.columns()[0].summaryFn(row)">
             </div>
             <!-- /ko -->
