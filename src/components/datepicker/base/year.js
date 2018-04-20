@@ -1,5 +1,5 @@
 import './year.less'
-/* global ko */
+import ko from 'knockout'
 function init (params) {
   // 实际选择的年份
   this.year = params.year

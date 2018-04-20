@@ -1,5 +1,5 @@
 import {getFirstDayOfMonth, getDayCountOfMonth, getWeekNumber, getStartDateOfMonth} from '../util'
-/* global ko */
+import ko from 'knockout'
 const DAY_DURATION = 86400000 // 1天
 const clearHours = function (time) {
   const cloneDate = new Date(time)

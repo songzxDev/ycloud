@@ -1,5 +1,5 @@
 import './timer.less'
-/* global ko */
+import ko from 'knockout'
 function init ({hour, minutes, seconds, showtimer}) {
   this.showtimer = showtimer
   this.hour = ko.computed(() => {
