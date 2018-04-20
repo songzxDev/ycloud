@@ -7,7 +7,7 @@ exports[`y-checkboxitem组件 快照 1`] = `
   >
     <label
       class="y-checkbox-item y-checkbox-item-checked"
-      data-bind="css:{'y-checkbox-item-checked': checked}"
+      data-bind="css:{'y-checkbox-item-checked': checked() && checked() != 0 }"
     >
       
   

@@ -25,11 +25,21 @@ exports[`y-box-content组件 快照 1`] = `
       <!-- /ko -->
       
   
-      <!-- ko template: { nodes: $componentTemplateNodes } -->
-      <span>
-        content
-      </span>
+      <!-- ko if: label -->
       <!-- /ko -->
+      
+  
+      <div>
+        
+    
+        <!-- ko template: { nodes: $componentTemplateNodes } -->
+        <span>
+          content
+        </span>
+        <!-- /ko -->
+        
+  
+      </div>
       
 
     </div>
