@@ -4,6 +4,8 @@ class ChildGrid extends Base {
   initialize (params) {
     this.isDataTable = params.isDataTable
     this.columns = params.columns
+    this.pagination = params.pagination
+    this.totalCount = params.totalCount
     this.rows = params.rows
     this.maxheight = params.maxheight
     this.minheight = params.minheight

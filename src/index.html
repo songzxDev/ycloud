@@ -462,7 +462,7 @@
     </div>
     <h1>13.2 复杂一对多主子表</h1>
     <div class="row">
-      <y-childgrid params="rows: $root.childgridrows, columns:$root.childgridcolumns"></y-childgrid>
+      <y-childgrid params="totalCount:ko.observable(100),pagination:true,rows: $root.childgridrows, columns:$root.childgridcolumns"></y-childgrid>
     </div>
   </y-boxcontent>
   <y-boxcontent>

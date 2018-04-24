@@ -784,6 +784,30 @@ let viewmodel = {
         addr: '地址合并'
       }
     ]
+  }, {
+    title: 'name2',
+    list: []
+  }, {
+    title: 'name2',
+    list: []
+  }, {
+    title: 'name2',
+    list: []
+  }, {
+    title: 'name2',
+    list: []
+  }, {
+    title: 'name2',
+    list: []
+  }, {
+    title: 'name2',
+    list: []
+  }, {
+    title: 'name2',
+    list: []
+  }, {
+    title: 'name2',
+    list: []
   }]),
   lockcolcolumns: ko.observableArray([]),
   lockcolrows: ko.observableArray([
