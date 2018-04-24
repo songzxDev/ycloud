@@ -6,6 +6,8 @@ class ChildGrid extends Base {
     this.columns = params.columns
     this.pagination = params.pagination
     this.totalCount = params.totalCount
+    this.onSizeChange = params.onSizeChange
+    this.onPageChange = params.onPageChange
     this.rows = params.rows
     this.maxheight = params.maxheight
     this.minheight = params.minheight
