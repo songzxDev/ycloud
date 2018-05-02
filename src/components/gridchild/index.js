@@ -1,4 +1,5 @@
 import template from './index.html'
+import ko from 'knockout'
 import Base from '../../core/base'
 class ChildGrid extends Base {
   initialize (params) {
@@ -6,6 +7,8 @@ class ChildGrid extends Base {
     this.columns = params.columns
     this.pagination = params.pagination
     this.totalCount = params.totalCount
+    this.pageSize = params.pageSize || ko.observable(10)
+    this.pageIndex = params.pageIndex || ko.observable(0)
     this.onSizeChange = params.onSizeChange
     this.onPageChange = params.onPageChange
     this.rows = params.rows
