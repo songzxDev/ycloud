@@ -24,6 +24,21 @@ function init (params) {
   this.allRowChecked = params.allRowChecked
   this.lockhead = params.lockhead
   this.headtransform = params.headtransform
+  // 排序算法回调
+  this.handleSort = (vm, event) => {
+    if (vm.sort) {
+      let node = event.currentTarget
+      if (node.classList.contains('y-sort-asc')) {
+        node.classList.add('y-sort-desc')
+        node.classList.remove('y-sort-asc')
+        vm.sortFn && vm.sortFn('desc')
+      } else {
+        node.classList.add('y-sort-asc')
+        node.classList.remove('y-sort-desc')
+        vm.sortFn && vm.sortFn('asc')
+      }
+    }
+  }
 }
 
 export default {

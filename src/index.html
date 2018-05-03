@@ -403,6 +403,10 @@
         </y-grid>
       </div>
       <div class="col-md-12">
+        <h4>支持表头可排序自定义方法</h4>
+        <y-grid params="rows: $root.sortableRows, columns: $root.sortableColumns"></y-grid>
+      </div>
+      <div class="col-md-12">
         <h4>跨页选择-datatable</h4>
         <y-button params="click:$root.handleCrossRows">获取已选择跨页数据</y-button>
         <y-grid params="maxheight:'auto',isDataTable:true,crossPageSelectedRows:$root.crossPageSelectedRows,pagination:true,totalCount: ko.observable(100),onPageChange:$root.crossPageChange,columns:$root.pureColumns,rows: $root.crossRows">

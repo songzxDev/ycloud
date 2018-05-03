@@ -1483,6 +1483,37 @@ let viewmodel = {
       return row.getValue('rowStatus') !== 'del'
     })
   }),
+  sortableColumns: [
+    {
+      title: 'sortable',
+      field: 'name',
+      sort: true,
+      sortFn: function (flag) {
+        console.log(flag)
+        if (flag === 'asc') {
+          viewmodel.sortableRows([{
+            name: 'test'
+          }, {
+            name: 'test2'
+          }])
+        } else {
+          viewmodel.sortableRows([{
+            name: 'test2'
+          }, {
+            name: 'test'
+          }])
+        }
+
+      }
+    }
+  ],
+  sortableRows: ko.observableArray([
+    {
+      name: 'test'
+    }, {
+      name: 'test2'
+    }
+  ]),
   rowstatuscol: [
     {
       title: 'colA',

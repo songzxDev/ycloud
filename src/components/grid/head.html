@@ -6,7 +6,7 @@
     <thead>
       <!-- ko if: columns1().length == 0 -->
       <tr data-bind="foreach:{data: columns,as: 'col'}">
-        <th data-bind="visible: col._show">
+        <th data-bind="click: $parent.handleSort, visible: col._show,css:{'y-cell-sortable': col.sort}">
           <!-- ko if: col.type == 'checkbox' -->
           <div class="y-cell y-cell-checkbox" style="position: relative;top: 2px;">
             <y-checkbox-item class="y-grid-checkbox" params="value:'',label:'',checked:allRowChecked"></y-checkbox-item>
@@ -17,7 +17,13 @@
             <div class="y-cell" data-bind="text: col.title(),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}"></div>
           <!-- /ko -->
           <!-- ko ifnot: typeof col.title == 'function' -->
-          <div class="y-cell" data-bind="html:col.title,css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}"></div>
+          <div class="y-cell" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+            <span data-bind="html:col.title"></span>
+            <!-- ko if:col.sort -->
+              <i class="fa fa-sort-asc"></i>
+              <i class="fa fa-sort-desc" style="position:relative;left: -11px;"></i>
+            <!-- /ko -->
+          </div>
           <!-- /ko -->
           <!-- /ko -->
         </th>
