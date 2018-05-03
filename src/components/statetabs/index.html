@@ -1,6 +1,7 @@
-<div class="y-state-tabs y-inline-block" data-bind="foreach:{data: items, as:'item'}, style:style">
-  <div class="y-state-tab" data-bind="click:function(){$parent.handler($data,$index())},css:$parent.index()==$index()?'active':''">
+<div class="y-relative y-inline-block">
+  <div class="y-state-active" data-bind="style: stateActiveStyle"></div>
+  <div class="y-state-tabs" data-bind="foreach:{data: items, as:'item'}, style:style"><div class="y-state-tab" data-bind="click:function(){$parent.handler($data,$index())},css:$parent.index()==$index()?'active':''">
     <label data-bind="text:item.title"></label>
     <span data-bind="visible: !$parent.hideNum,text:'(' + item.num + ')'"></span>
-  </div>
+  </div></div>
 </div>

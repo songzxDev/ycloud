@@ -1913,6 +1913,7 @@ setTimeout(() => {
       {id: ko.observable(5), name: ko.observable('张3四')}
     ]
   )
+  viewmodel.curStateIndex(2)
   table.setSimpleData([{
     id: 1,
     name: 'name2',
