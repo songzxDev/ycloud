@@ -1709,7 +1709,8 @@ setTimeout(() => {
   viewmodel.rowspanrowstest(rowspantestdata)
 }, 1000)
 setTimeout(function () {
-  ycloud.$refs['lockright'].setColVisibleByField('address', false)
+  debugger
+  ycloud.$refs['lockright'].setColVisibleByField('age', false)
   viewmodel.rowspanrows(rowspanrowsdata.filter(function (item) {return item.field6 !== 'F5'}))
 }, 3000)
 // 打印每次单选的内容
