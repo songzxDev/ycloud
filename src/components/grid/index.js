@@ -332,6 +332,16 @@ class Grid extends Base {
       }
       this.reComputedTableWidth(!this.reComputedTableWidth())
     }
+    // 根据field获取column
+    this.getColByField = (field) => {
+      var curColumn = {}
+      this.columns().forEach((col) => {
+        if (col.field === field) {
+          curColumn = col
+        }
+      })
+      return curColumn
+    }
     // 切换行是否禁止选中
     this.setRowSelectEnable = (isEnable) => {
       this.forbitRowSelect(isEnable)

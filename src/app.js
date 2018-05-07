@@ -111,7 +111,7 @@ let viewmodel = {
       width: '20%',
       title: '品牌产地/材质',
       field: 'product',
-      _show: true,
+      _show: ko.observable(true),
       summaryType: 'render',
       summaryFn: (row) => {
         var template = `<div><div>${row.materialName}</div>
@@ -141,7 +141,7 @@ let viewmodel = {
       title: '税率',
       field: 'taxrate',
       align: 'right',
-      _show: true,
+      _show: ko.observable(true),
       type: 'component',
       compFn: (row) => {
         return {
@@ -157,7 +157,7 @@ let viewmodel = {
       title: '无税单价(元)',
       align: 'right',
       field: 'price',
-      _show: true,
+      _show: ko.observable(true),
       type: 'component',
       compFn: (row) => {
         return {
@@ -173,7 +173,7 @@ let viewmodel = {
       title: '金额',
       align: 'right',
       field: 'amount',
-      _show: true,
+      _show: ko.observable(true),
       type: 'component',
       compFn: (row) => {
         return {

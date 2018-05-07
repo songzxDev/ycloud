@@ -78,7 +78,9 @@ class Body extends Base {
     this.expandColspan = ko.computed(() => {
       let count = 0
       this.columns().forEach(col => {
-        if (col._show()) {
+        if (ko.isObservable(col._show) && col._show()) {
+          count++
+        } else if (col._show) {
           count++
         }
       })
