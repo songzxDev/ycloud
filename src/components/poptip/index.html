@@ -1,13 +1,13 @@
 <span class="y-poptip" data-bind="css: trigger=='hover'?'trigger-hover':''">
   <span class="element" data-bind="click: handleVisible">
+    <!-- ko if: question -->
+    <span class="fa fa-question-circle y-text-link"></span>
+    <!-- /ko -->
     <!-- 其它元素 -->
     <!-- ko template: { nodes: $componentTemplateNodes} --><!-- /ko -->
 
     <!-- title span -->
     <!-- ko if: !hasMarkup() -->
-      <!-- ko if: question -->
-      <span class="fa fa-question-circle y-text-link"></span>
-      <!-- /ko -->
       <span data-bind="html: title"></span>
     <!-- /ko -->
   </span>

@@ -48,23 +48,25 @@ class Poptip extends Base {
     })
   }
   created () {
-    let reference = $(this.$el).find('.element')
-    let popper = $(this.$el).find('.y-poptip-ctn')
-    /* eslint-disable no-new */
-    new Popper(
-      reference,
-      popper,
-      {
-        placement: this.position,
-        onCreate: (data) => {},
-        onUpdate: (data) => {},
-        modifiers: {
-          flip: {
-            behavior: ['left', 'bottom', 'top']
+    setTimeout(() => {
+      let reference = $(this.$el).find('.element')
+      let popper = $(this.$el).find('.y-poptip-ctn')
+      /* eslint-disable no-new */
+      new Popper(
+        reference,
+        popper,
+        {
+          placement: this.position,
+          onCreate: (data) => {},
+          onUpdate: (data) => {},
+          modifiers: {
+            flip: {
+              behavior: ['left', 'bottom', 'top']
+            }
           }
         }
-      }
-    )
+      )
+    })
   }
 }
 export default {
