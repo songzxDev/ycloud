@@ -409,7 +409,7 @@
       <div class="col-md-12">
         <h4>跨页选择-datatable</h4>
         <y-button params="click:$root.handleCrossRows">获取已选择跨页数据</y-button>
-        <y-grid params="maxheight:'auto',isDataTable:true,crossPageSelectedRows:$root.crossPageSelectedRows,pagination:true,totalCount: ko.observable(100),onPageChange:$root.crossPageChange,columns:$root.pureColumns,rows: $root.crossRows">
+        <y-grid params="ref:'crossPageDt',maxheight:'auto',isDataTable:true,crossPageSelectedRows:$root.crossPageSelectedRows,pagination:true,totalCount: ko.observable(100),onPageChange:$root.crossPageChange,columns:$root.pureColumns,rows: $root.crossRows">
         </y-grid>
         <h4>跨页选择-ko observerbleArray</h4>
         <y-button params="click:$root.handleCrossRows2">获取已选择跨页数据</y-button>

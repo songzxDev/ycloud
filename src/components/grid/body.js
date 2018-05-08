@@ -18,6 +18,7 @@ class Body extends Base {
     this.tableWidth = params.tableWidth
     this.expand = params.expand
     this.columns = params.columns
+    this.rows = params.rows
     this.domId = params.domId
     this.onRowSelect = params.onRowSelect
     this.defaultExpand = params.defaultExpand || false
@@ -28,7 +29,6 @@ class Body extends Base {
     this.forbitRowSelect = params.forbitRowSelect || function () {}
     this.forbitRowSelectFn = params.forbitRowSelectFn || function () { return false }
     this.isShowLoading = params.isShowLoading
-    this.crossPageSelectedRows = params.crossPageSelectedRows
     this.fixColumnTransform = params.fixColumnTransform
     this.headHeight = params.headHeight
     this.verticalAlign = params.verticalAlign
@@ -61,20 +61,6 @@ class Body extends Base {
         }).length > 0
       }
     })
-    // 已选中的ids
-    this.crossPageSelectedIds = ko.computed(() => {
-      if (params.isEnableCrossPage) {
-        return this.crossPageSelectedRows().map((row) => {
-          if (this.isDataTable) {
-            return row.ref(params.crossPageRowPrimaryKey)()
-          } else {
-            return row[params.crossPageRowPrimaryKey]
-          }
-        })
-      } else {
-        return []
-      }
-    })
     this.expandColspan = ko.computed(() => {
       let count = 0
       this.columns().forEach(col => {
@@ -86,77 +72,6 @@ class Body extends Base {
       })
       return count
     })
-    // 行数据
-    var that = this
-    this.rows = ko.computed(() => {
-      params.rows().forEach((row, index) => {
-        // 减轻重复赋值的压力
-        !row._delete && (row._delete = ko.observable(false))
-        !row._hover && (row._hover = ko.observable(false))
-        !row._disabled && (row._disabled = ko.observable(false))
-        !row._expand && (row._expand = ko.observable(this.defaultExpand))
-        if (this.isDataTable) {
-          // 如果是dataTable设置成计算属性
-          !row._selected && (row._selected = ko.pureComputed({
-            read: function () {
-              return row.selected()
-            },
-            write: function (val) {
-              // 设置datatable的选中
-              if (val) {
-                row.parent.addRowSelect(row)
-              } else {
-                row.parent.setRowUnSelect(row)
-              }
-              if (params.isEnableCrossPage) {
-                // 设置已选中rows的值
-                var _index = that.crossPageSelectedIds().indexOf(row.getValue(params.crossPageRowPrimaryKey))
-                if (val) {
-                  if (_index === -1) {
-                    params.crossPageSelectedRows.push(row)
-                  }
-                } else {
-                  if (_index >= 0) {
-                    params.crossPageSelectedRows.splice(_index, 1)
-                  }
-                }
-              }
-              params.onRowSelect(row)
-            }
-          }))
-          // 如果当前行在已选中的ids中则设置选中（设置默认选中）
-          if (params.isEnableCrossPage && that.crossPageSelectedIds().indexOf(row.getValue(params.crossPageRowPrimaryKey)) >= 0) {
-            row.parent.addRowSelect(row)
-          }
-        } else {
-          !row._selected && (row._selected = ko.observable(false))
-          if (params.isEnableCrossPage) {
-            // 初始化选中状态
-            if (that.crossPageSelectedIds().indexOf(row[params.crossPageRowPrimaryKey]) >= 0) {
-              row._selected(true)
-            }
-          }
-          row._selected.subscribe(function (val) {
-            if (params.isEnableCrossPage) {
-              // 设置已选中rows的值
-              var _index = that.crossPageSelectedIds().indexOf(row[params.crossPageRowPrimaryKey])
-              if (val) {
-                if (_index === -1) {
-                  params.crossPageSelectedRows.push(row)
-                }
-              } else {
-                if (_index >= 0) {
-                  params.crossPageSelectedRows.splice(_index, 1)
-                }
-              }
-            }
-            params.onRowSelect(row)
-          })
-        }
-        // todo:行是否选中要和cacheData里的数据进行合并
-      })
-      return params.rows()
-    }).extend({ deferred: true })
     // 暂无数据区域的高度
     this.noDataHeight = ko.computed(() => {
       if (params.maxheight === 'auto') {

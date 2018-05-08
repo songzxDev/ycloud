@@ -29,7 +29,6 @@ class Grid extends Base {
     this.fixRightHeadtransform = ko.observable('translateX(0)')
     this.fixRightTransform = ko.observable('translate(0,0)')
     this.rowspan = params.rowspan
-    this.rows = params.rows
     this.domId = params.rowspan ? Math.random() : ''
     this.isTableBorder = params.isTableBorder || params.rowspan
     this.maxheight = params.maxheight || '486px'
@@ -81,6 +80,89 @@ class Grid extends Base {
     this.reComputedTableWidth = ko.observable(false)
   }
   computed (params) {
+    var that = this
+    // 已选中的ids
+    this.crossPageSelectedIds = ko.computed(() => {
+      if (this.isEnableCrossPage) {
+        return this.crossPageSelectedRows().map((row) => {
+          if (this.isDataTable) {
+            return row.ref(this.crossPageRowPrimaryKey)()
+          } else {
+            return row[this.crossPageRowPrimaryKey]
+          }
+        })
+      } else {
+        return []
+      }
+    })
+    this.rows = ko.computed(() => {
+      params.rows().forEach((row, index) => {
+        // 减轻重复赋值的压力
+        !row._delete && (row._delete = ko.observable(false))
+        !row._hover && (row._hover = ko.observable(false))
+        !row._disabled && (row._disabled = ko.observable(false))
+        !row._expand && (row._expand = ko.observable(this.defaultExpand))
+        if (this.isDataTable) {
+          // 如果是dataTable设置成计算属性
+          !row._selected && (row._selected = ko.pureComputed({
+            read: function () {
+              return row.selected()
+            },
+            write: function (val) {
+              // 设置datatable的选中
+              if (val) {
+                row.parent.addRowSelect(row)
+              } else {
+                row.parent.setRowUnSelect(row)
+              }
+              if (that.crossPageSelectedRows) {
+                // 设置已选中rows的值
+                var _index = that.crossPageSelectedIds().indexOf(row.getValue(that.crossPageRowPrimaryKey))
+                if (val) {
+                  if (_index === -1) {
+                    that.crossPageSelectedRows.push(row)
+                  }
+                } else {
+                  if (_index >= 0) {
+                    that.crossPageSelectedRows.splice(_index, 1)
+                  }
+                }
+              }
+              that.onRowSelect(row)
+            }
+          }))
+          // 如果当前行在已选中的ids中则设置选中（设置默认选中）
+          if (that.isEnableCrossPage && that.crossPageSelectedIds().indexOf(row.getValue(that.crossPageRowPrimaryKey)) >= 0) {
+            row.parent.addRowSelect(row)
+          }
+        } else {
+          !row._selected && (row._selected = ko.observable(false))
+          if (that.isEnableCrossPage) {
+            // 初始化选中状态
+            if (that.crossPageSelectedIds().indexOf(row[that.crossPageRowPrimaryKey]) >= 0) {
+              row._selected(true)
+            }
+          }
+          row._selected.subscribe(function (val) {
+            if (that.isEnableCrossPage) {
+              // 设置已选中rows的值
+              var _index = that.crossPageSelectedIds().indexOf(row[that.crossPageRowPrimaryKey])
+              if (val) {
+                if (_index === -1) {
+                  params.crossPageSelectedRows.push(row)
+                }
+              } else {
+                if (_index >= 0) {
+                  params.crossPageSelectedRows.splice(_index, 1)
+                }
+              }
+            }
+            that.onRowSelect(row)
+          })
+        }
+      })
+      return params.rows()
+    }).extend({ deferred: true })
     // 用于存储对应关系
     this.columns1UniqueKeys = {}
     this.columns1 = ko.computed(() => {
@@ -277,7 +359,7 @@ class Grid extends Base {
         })
         // 如果不是dataTable则需要出发全选
         if (!this.isDataTable) {
-          this.rows.splice(0, 0)
+          params.rows.splice(0, 0)
         }
       },
       owner: this
