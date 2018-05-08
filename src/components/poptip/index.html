@@ -1,5 +1,5 @@
 <span class="y-poptip" data-bind="css: trigger=='hover'?'trigger-hover':''">
-  <span class="element" data-bind="click: handleVisible">
+  <span class="element" data-bind="event:{click: handleClick, mouseenter:handleHover, mouseout: handleHover}">
     <!-- ko if: question -->
     <span class="fa fa-question-circle y-text-link"></span>
     <!-- /ko -->
@@ -8,10 +8,10 @@
 
     <!-- title span -->
     <!-- ko if: !hasMarkup() -->
-      <span data-bind="html: title"></span>
+    <span data-bind="html: title"></span>
     <!-- /ko -->
   </span>
-  <div class="y-poptip-ctn" data-bind="css: thisClass, style: trigger=='hover'? {}:{opacity: visible}">
+  <div class="y-poptip-ctn" data-bind="css: thisClass, style: trigger=='hover'? {}:{opacity: visible, zIndex: (visible()?'1000':'-1')}">
     <div class="y-poptip-arrow"></div>
     <div class="y-poptip-cover"></div>
     <div class="y-poptip-ctn-inner" data-bind="html: title"></div>

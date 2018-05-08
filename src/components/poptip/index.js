@@ -24,15 +24,15 @@ class Poptip extends Base {
     }
   }
   methods () {
-    this.handleVisible = () => {}
+    this.handleClick = () => {}
+    this.handleHover = () => {}
+    function handleVisible () {
+      this.visible(Number(!this.visible()))
+    }
     if (this.trigger === 'click') {
-      this.handleVisible = () => {
-        if (this.visible()) {
-          this.visible(0)
-        } else {
-          this.visible(1)
-        }
-      }
+      this.handleClick = handleVisible
+    } else {
+      this.handleHover = handleVisible
     }
   }
   computed () {
@@ -47,25 +47,28 @@ class Poptip extends Base {
       }
     })
   }
-  created () {
-    setTimeout(() => {
-      let reference = $(this.$el).find('.element')
-      let popper = $(this.$el).find('.y-poptip-ctn')
-      /* eslint-disable no-new */
-      new Popper(
-        reference,
-        popper,
-        {
-          placement: this.position,
-          onCreate: (data) => {},
-          onUpdate: (data) => {},
-          modifiers: {
-            flip: {
-              behavior: ['left', 'bottom', 'top']
+  subscribe (params) {
+    /* eslint-disable no-new */
+    /* 声明变量myPopper会存在内存中 */
+    this.visible.subscribe(val => {
+      if (!this.myPopper && val) {
+        let reference = $(this.$el).find('.element')
+        let popper = $(this.$el).find('.y-poptip-ctn')
+        this.myPopper = new Popper(
+          reference,
+          popper,
+          {
+            placement: this.position,
+            onCreate: (data) => {},
+            onUpdate: (data) => {},
+            modifiers: {
+              flip: {
+                behavior: ['left', 'bottom', 'top']
+              }
             }
           }
-        }
-      )
+        )
+      }
     })
   }
 }
