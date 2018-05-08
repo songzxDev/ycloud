@@ -158,7 +158,8 @@ class Grid extends Base {
       if (this.isRowspanHead) {
         var columns2 = [].concat(this.columns2())
         this.columns1().forEach((col) => {
-          if (col.colspan > 1) {
+          // 原来是colspan > 1才计算，实际上只要colspan有值就应该处理
+          if (col.colspan) {
             var colspanlength = col.colspan
             var row2columns = columns2.splice(0, colspanlength)
             columns = columns.concat(row2columns)

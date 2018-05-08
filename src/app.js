@@ -458,11 +458,20 @@ let viewmodel = {
     }, {
       title: '横跨三列,第{n}行',
       rowspan: 1,
-      colspan: 3,
+      colspan: 1,
+      width: 100,
       uniqueKey: 'col1',
       loop: true,
       looplength: function (row) {
         return row.quotation ? row.quotation.length : 0
+      },
+      type: 'render',
+      renderFn: function (row, index, col) {
+        debugger
+        console.log('=====')
+        console.log(col)
+        console.log(row.quotation[col._childIndex])
+        return row.quotation[col._childIndex].name1
       }
     }, {
       title: 'col3',
@@ -485,26 +494,6 @@ let viewmodel = {
       type: 'render',
       renderFn: function (row, index, col) {
         return row.quotation[col._childIndex].name1
-      }
-    }, {
-      title: 'col222',
-      field: 'name2',
-      width: 100,
-      uniqueKey: 'col1',
-      loop: true,
-      type: 'render',
-      renderFn: function (row, index, col) {
-        return row.quotation[col._childIndex].name2
-      }
-    }, {
-      title: 'colC',
-      field: 'name3',
-      width: 100,
-      uniqueKey: 'col1',
-      loop: true,
-      type: 'render',
-      renderFn: function (row, index, col) {
-        return row.quotation[col._childIndex].name3
       }
     }, {
       title: 'colD',
