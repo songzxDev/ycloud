@@ -456,7 +456,9 @@ let viewmodel = {
       rowspan: 2,
       width: 100
     }, {
-      title: '横跨三列,第{n}行',
+      title: function (index, looplength) {
+        return '横跨三列,第' + index + '区域'
+      },
       rowspan: 1,
       colspan: 1,
       width: 100,
@@ -1490,6 +1492,27 @@ let viewmodel = {
             name: 'test2'
           }, {
             name: 'test'
+          }])
+        }
+
+      }
+    }, {
+      title: 'sortable2',
+      field: 'name',
+      sort: true,
+      sortFn: function (flag) {
+        console.log(flag)
+        if (flag === 'asc') {
+          viewmodel.sortableRows([{
+            name: 'test2'
+          }, {
+            name: 'test'
+          }])
+        } else {
+          viewmodel.sortableRows([{
+            name: 'test'
+          }, {
+            name: 'test2'
           }])
         }
 

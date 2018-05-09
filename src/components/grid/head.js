@@ -7,6 +7,7 @@ function init (params) {
   // 用于多行的rowspan
   this.columns2 = params.columns2 || ko.observableArray([])
   this.tableWidth = params.tableWidth
+  this.el = params.el
   this.outterWidth = ko.observable()
   if (params.lockhead) {
     setTimeout(function () {
@@ -28,6 +29,14 @@ function init (params) {
   this.handleSort = (vm, event) => {
     if (vm.sort) {
       let node = event.currentTarget
+      // 同一个表格排序以前需要把其他排序列的标识先清空
+      this.el.querySelectorAll('.y-cell-sortable').forEach(element => {
+        if (node !== element) {
+          element.classList.remove('y-sort-asc')
+          element.classList.remove('y-sort-desc')
+        }
+      })
+
       if (node.classList.contains('y-sort-asc')) {
         node.classList.add('y-sort-desc')
         node.classList.remove('y-sort-asc')

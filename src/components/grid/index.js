@@ -176,7 +176,14 @@ class Grid extends Base {
             if (this.rows().length > 0) {
               var looplength = col.looplength(this.rows()[0])
               for (var i = 0; i < looplength; i++) {
-                var _col = Object.assign({}, col, {title: col.title.replace('{n}', i + 1)})
+                var title = ''
+                // 为了支持索引自定义
+                if (typeof (col.title) === 'function') {
+                  title = col.title(i + 1, looplength)
+                } else {
+                  title = col.title.replace('{n}', i + 1)
+                }
+                var _col = Object.assign({}, col, {title: title})
                 _columns1.push(_col)
               }
               if (ko.isObservable(this.columns1UniqueKeys[col.uniqueKey])) {

@@ -5,7 +5,7 @@
       <y-grid-body params="forbitRowSelectFn:forbitRowSelectFn,caculateColumns:caculateColumns,hasChildGrid:hasChildGrid,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,isEnableCrossPage:isEnableCrossPage,crossPageRowPrimaryKey:crossPageRowPrimaryKey,crossPageSelectedRows:crossPageSelectedRows,isShowLoading:isShowLoading,forbitRowSelect:forbitRowSelect,isSeparate:isSeparate,tdstyle: tdstyle, lockhead:lockhead,isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect">
         <!-- ko template: { nodes: $parent.$templateNodes } --><!-- /ko -->
       </y-grid-body>
-      <!-- ko if:lockcolumn && rows().length > 0-->
+      <!-- ko if:lockcolumn-->
       <div class="y-grid-fixed" data-bind="style:{width: fixedTableWidth}">
         <div class="y-grid-fixed-head">
           <y-grid-head data-bind="visible:!nohead" params="el:$el,columns1:columns1,columns2:columns2,lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
@@ -16,7 +16,7 @@
         </div>
       </div>
       <!-- /ko -->
-      <!-- ko if:lockright && rows().length > 0-->
+      <!-- ko if:lockright-->
       <div class="y-grid-fixed-right" style="margin-right: 15px" data-bind="style:{width: fixedLockRightTableWidth}">
         <div class="y-grid-fixed-head">
           <y-grid-head data-bind="visible:!nohead" params="headtransform:fixRightHeadtransform,el:$el,columns1:columns1,columns2:columns2,lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
