@@ -469,7 +469,6 @@ let viewmodel = {
       },
       type: 'render',
       renderFn: function (row, index, col) {
-        debugger
         console.log('=====')
         console.log(col)
         console.log(row.quotation[col._childIndex])
@@ -1721,7 +1720,6 @@ setTimeout(() => {
   viewmodel.rowspanrowstest(rowspantestdata)
 }, 1000)
 setTimeout(function () {
-  debugger
   ycloud.$refs['lockright'].setColVisibleByField('age', false)
   viewmodel.rowspanrows(rowspanrowsdata.filter(function (item) {return item.field6 !== 'F5'}))
 }, 3000)
@@ -1954,6 +1952,11 @@ setTimeout(() => {
   viewmodel.rows(
     [
       {id: ko.observable(4), name: ko.observable('张2')},
+      {id: ko.observable(5), name: ko.observable('张3四')},
+      {id: ko.observable(5), name: ko.observable('张3四')},
+      {id: ko.observable(5), name: ko.observable('张3四')},
+      {id: ko.observable(5), name: ko.observable('张3四')},
+      {id: ko.observable(5), name: ko.observable('张3四')},
       {id: ko.observable(5), name: ko.observable('张3四')}
     ]
   )

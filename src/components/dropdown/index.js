@@ -27,9 +27,11 @@ function _init (params, el) {
       let el = this.targetEl.children[0]
       let position = el.getBoundingClientRect()
       var left = position.left
+      var right = position.right
+      var dropWidth = this.width() === '100%' ? el.offsetWidth : (this.width().toString().replace('px', '') - 0)
       // 如果距离右侧屏幕宽度小于250
-      if (document.documentElement.clientWidth - position.left < 250) {
-        left = left - 100
+      if (document.documentElement.clientWidth - position.left < dropWidth) {
+        left = right - dropWidth
       }
       if (!params.width) {
         this.width($(el).width())

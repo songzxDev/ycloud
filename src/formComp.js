@@ -28,9 +28,6 @@ var template = `
 var init = function (params) {
   this.row = params.value
   this.handleSave = function () {
-    console.log(this.row.id)
-    console.log(this.row.name)
-    console.log(this.row)
     this.row._expand(!this.row._expand())
   }.bind(this)
 }

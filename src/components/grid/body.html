@@ -20,7 +20,10 @@
         </tr>
         <!-- /ko -->
         <!-- ko ifnot: $parent.hasChildGrid -->
-        <tr data-bind="css:{'y-grid-row-hover':row._hover,'y-grid-row-selected':row._selected},event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
+        <tr data-bind="css:{'y-grid-row-hover':row._hover,
+        'y-grid-row-selected':row._selected,
+        'y-grid-lastrow': $index() > 5 && $index() == $parent.rows().length - 1
+        },event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
           <!-- ko foreach:{data: $parent.columns, as: 'col'} -->
           <td data-bind="visible: col._show, style: tdstyle">
             <y-grid-td params="forbitRowSelectFn: forbitRowSelectFn,isDataTable:isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
