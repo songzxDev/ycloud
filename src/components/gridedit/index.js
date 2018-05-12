@@ -1,9 +1,20 @@
 import template from './index.html'
 import Base from '../../core/base'
+import ko from 'knockout'
 class EditGrid extends Base {
   initialize (params) {
     this.isDataTable = params.isDataTable
     this.columns = params.columns
+    // 保证表头和标题的_show绑定到同一个ko对象
+    if (ko.isObservable(this.columns)) {
+      this.columns().forEach(col => {
+        col._show = col._show ? col._show : ko.observable(!col.hidden)
+      })
+    } else {
+      this.columns.forEach(col => {
+        col._show = col._show ? col._show : ko.observable(!col.hidden)
+      })
+    }
     this.rows = params.rows
     this.maxheight = params.maxheight
     this.minheight = params.minheight
