@@ -66,7 +66,13 @@ setTimeout(function () {
 window.dt = dt
 let viewmodel = {
   table: table,
+  extraEdit: function(data) {
+    viewmodel.modalVisible(true)
+  },
   handleClear: function (data) {
+    debugger
+  },
+  handleDelete: function (data) {
     debugger
   },
   columnsname: ko.observable('name'),
@@ -2048,7 +2054,7 @@ validateRows.setSimpleData([
     position: ''
   }
 ])
-validateRows.on('valueChange', function (a, b, c) {
+validateRows.on('position.valueChange', function (a, b, c) {
   viewmodel.validateRows.splice(0, 0)
 })
 // 用于存储分组的消息

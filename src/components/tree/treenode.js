@@ -5,6 +5,8 @@ var init = function (params) {
   var data = params.data
   data._checked = ko.isObservable(data._checked) ? data._checked : ko.observable(!!data._checked)
   this.data = ko.observable(data)
+  this.extraEdit = params.extraEdit
+  this.extraText = params.extraText
   this.loadData = params.loadData
   this.selectedItem = params.selectedItem
   this.loaded = ko.observable(params.loadData === undefined)

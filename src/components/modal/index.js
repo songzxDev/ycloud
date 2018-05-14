@@ -7,6 +7,7 @@ function init (params) {
   this.visible = params.visible || ko.observable(false)
   this.textOk = params.textOk || '确定'
   this.textCancel = params.textCancel || '取消'
+  this.textDelete = params.textDelete
   this.textClear = params.textClear
   this.isShow = ko.observable(false)
   this.width = params.width || '400px'
@@ -32,6 +33,11 @@ function init (params) {
   this.handleClear = function (data, event) {
     if (params.handleClear) {
       params.handleClear(data, event)
+    }
+  }
+  this.handleDelete = function (data, event) {
+    if (params.handleDelete) {
+      params.handleDelete(data, event)
     }
   }
   this.handleOk = (data, event) => {

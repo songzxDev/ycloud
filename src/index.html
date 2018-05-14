@@ -317,7 +317,7 @@
   <y-boxcontent>
     <h1>9.弹框</h1>
     <y-button params="click:$root.showModal">显示弹框</y-button>
-    <y-modal params="textOk: '是',handleClear:$root.handleClear, textCancel:'否',visible: $root.modalVisible, title:'组织选择！', width:'700px', errormsg:'请选择组织', validateFn: $root.validateFn">
+    <y-modal params="textDelete: '删除', handleDelete: $root.handleDelete,textOk: '是',handleClear:$root.handleClear, textCancel:'否',visible: $root.modalVisible, title:'组织选择！', width:'700px', errormsg:'请选择组织', validateFn: $root.validateFn">
       <y-radio params="dataList:$root.radioDataList,value:$root.radioValue"></y-radio>
       <!-- <y-grid params="modalBodyModalHeight:bodyMaxHeight,modalBodyExtraHeight:'10px',ref:'modalgrid',onRowSelect:$root.onRowSelect,isStripe: true,columns:$root.columns,rows: $root.rows,lockhead:true"></y-grid> -->
     </y-modal>
@@ -335,7 +335,12 @@
     <y-tree params="data:$root.treeData, height:'200px',onChange: $root.onTreeSelect"></y-tree>
     <p>当前选中的节点是：<span data-bind="text:$root.treeSelectedData"></span></p>
     <h2>11.2 异步加载</h2>
-    <y-tree params="data:$root.asyncTreeData, height:'200px',onChange: $root.onTreeSelect, loadData:$root.loadTreeData"></y-tree>
+    <div class="row">
+      <div class="col-md-4">
+        <y-tree params="extraEdit: $root.extraEdit, extraText:'+ 编辑',data:$root.asyncTreeData, height:'200px',onChange: $root.onTreeSelect, loadData:$root.loadTreeData"></y-tree>
+      </div>
+    </div>
+
     <h2>11.3 异步加载 + checkbox</h2>
     <p>当前选中的节点是：<span data-bind="text:$root.treeSelectedData2"></span></p>
     <y-tree params="selectedId: ko.observableArray([3, 4]),multiple: true, data:$root.asyncTreeData, height:'200px',selectedItem:$root.selectedItems,onChange: $root.onTreeMultiSelect, loadData:$root.loadTreeData"></y-tree>

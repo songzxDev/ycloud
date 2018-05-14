@@ -13,6 +13,8 @@ function init (params) {
   this.height = params.height || 'auto'
   this.minHeight = params.minHeight || '0'
   this.loadData = params.loadData
+  this.extraEdit = params.extraEdit
+  this.extraText = params.extraText
   this.multiple = params.multiple || false
   this.selectedItem = params.selectedItem || (this.multiple ? ko.observableArray() : ko.observable({}))
   if (!this.multiple) {
