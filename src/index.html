@@ -476,7 +476,12 @@
     <div class="row">
       <y-childgrid params="totalCount:ko.observable(100),pagination:true,rows: $root.childgridrows, columns:$root.childgridcolumns"></y-childgrid>
     </div>
+    <h1>13.3 复杂y-select + y-grid 校验规则</h1>
+    <y-grid params="rows: $root.validateRows, columns:$root.validateColumns,isDataTable:true">
+
+    </y-grid>
   </y-boxcontent>
+
   <y-boxcontent>
     <h1>14.分页</h1>
     <y-pagination params="pageSizeList:[4,8,16,20],onPageChage:$root.onPageChage,pageSize: $root.pageSize, totalCount: $root.totalCount, pageIndex: $root.pageIndex"></y-pagination>

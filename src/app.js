@@ -37,6 +37,13 @@ var crossRows = new u.DataTable({
     total: ''
   }
 })
+var validateRows = new u.DataTable({
+  meta: {
+    id: '',
+    name: '',
+    position: ''
+  }
+})
 table.on('price.valueChange', function (obj) {
   var price = obj.rowObj.getValue('price')
   var num = obj.rowObj.getValue('num')
@@ -584,6 +591,53 @@ let viewmodel = {
     }
   ]),
   crossRows: crossRows.rows,
+  validateRows: validateRows.rows,
+  validateColumns: [{
+    title: 'name',
+    field: 'name'
+  }, {
+    title: '位置',
+    field: 'position',
+    type: 'component',
+    compFn (row) {
+      var dataList = [
+        {
+          value: 1,
+          label: '部门经理'
+        }, {
+          value: 2,
+          label: '开发经理'
+        }, {
+          value: 3,
+          label: '资深开发'
+        }, {
+          value: 4,
+          label: '高级开发'
+        }, {
+          value: 5,
+          label: '普通开发'
+        }
+      ]
+      var _map = viewmodel.validateMap()
+      dataList.forEach((data, index) => {
+        var hasItem = _map[row.getValue('name')] && _map[row.getValue('name')].indexOf(data.value)  >= 0
+        if (hasItem && row.getValue('position') != data.value) {
+          dataList[index] = undefined
+        }
+      })
+      dataList = dataList.filter(data => {
+        return data !== undefined
+      })
+      return {
+        name: 'y-select',
+        params: {
+          clearable: true,
+          id: row.ref('position'),
+          dataList: dataList
+        }
+      }
+    }
+  }],
   crossKoRows: ko.observableArray([]),
   crossPageSelectedRows: ko.observableArray([]),
   crossPageSelectedRows2: ko.observableArray([]),
@@ -1971,5 +2025,47 @@ setTimeout(() => {
   // grid2.setColVisibleByField('id', false)
   ycloud.notice.error('here has some error！here has some error！here has some error！here has some error！here has some error！here has some error！')
 }, 5000)
+validateRows.setSimpleData([
+  {
+    id: 1,
+    name: 'name',
+    position: 1
+  }, {
+    id: 2,
+    name: 'name',
+    position: ''
+  }, {
+    id: 3,
+    name: 'name',
+    position: ''
+  }, {
+    id: 4,
+    name: 'name2',
+    position: ''
+  }, {
+    id: 5,
+    name: 'name2',
+    position: ''
+  }
+])
+validateRows.on('valueChange', function (a, b, c) {
+  viewmodel.validateRows.splice(0, 0)
+})
+// 用于存储分组的消息
+viewmodel.validateMap = ko.computed(function () {
+  var _map = {}
+  var _rows = viewmodel.validateRows()
+  _rows.forEach(row => {
+    var positoin = row.getValue('position')
+    if (positoin) {
+      if (_map[row.getValue('name')] && _map[row.getValue('name')].indexOf(positoin) === -1) {
+        _map[row.getValue('name')].push(positoin)
+      } else {
+        _map[row.getValue('name')] = [positoin]
+      }
+    }
+  })
+  return _map
+})
 window.vm = viewmodel
 
