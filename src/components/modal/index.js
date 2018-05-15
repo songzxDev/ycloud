@@ -8,6 +8,7 @@ function init (params) {
   this.textOk = params.textOk || '确定'
   this.textCancel = params.textCancel || '取消'
   this.textDelete = params.textDelete
+  this.showDelete = params.showDelete || false
   this.textClear = params.textClear
   this.isShow = ko.observable(false)
   this.width = params.width || '400px'
