@@ -54,7 +54,7 @@ function init (params) {
               params.ok(data, event)
             }
           } else {
-            this.errormsg(params.errormsg || '校验失败！')
+            this.errormsg((ko.isObservable(params.errormsg) ? params.errormsg() : params.errormsg) || '校验失败！')
           }
         })
       } else if (this.validateFn()) { // 同步校验
@@ -64,10 +64,10 @@ function init (params) {
           params.ok(data, event)
         }
       } else {
-        this.errormsg(params.errormsg || '校验失败！')
+        this.errormsg((ko.isObservable(params.errormsg) ? params.errormsg() : params.errormsg) || '校验失败！')
       }
     } else {
-      this.errormsg(params.errormsg || '校验失败！')
+      this.errormsg((ko.isObservable(params.errormsg) ? params.errormsg() : params.errormsg) || '校验失败！')
     }
   }
   this.visible.subscribe(function (val) {

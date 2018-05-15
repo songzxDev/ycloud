@@ -392,13 +392,14 @@ let viewmodel = {
   validateFn: function () {
     return false
   },
+  errormsg: ko.observable('错误信息'),
   asyncValidateFn: async function () {
     var data = await new Promise(function (resolve) {
       setTimeout(function () {
         resolve(1)
       }, 2000)
     })
-    return true
+    return false
   },
   treeSelectedData: ko.observable(''),
   onTreeSelect: function (data) {
