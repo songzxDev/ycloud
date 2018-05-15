@@ -66,7 +66,7 @@ class Body extends Base {
       this.columns().forEach(col => {
         if (ko.isObservable(col._show) && col._show()) {
           count++
-        } else if (col._show) {
+        } else if (!ko.isObservable(col._show) && col._show) { // 确保_show为true的状况
           count++
         }
       })
