@@ -26,6 +26,7 @@ function init (params) {
     return true
   }
   this.validateFn = params.validateFn || function () { return true }
+  this.asyncValidateFn = params.asyncValidateFn
   // 时间
   this.handleCancel = () => {
     this.visible(false)
@@ -41,11 +42,29 @@ function init (params) {
     }
   }
   this.handleOk = (data, event) => {
-    if (this.isValidate && this.validateFn()) {
-      this.errormsg('')
-      this.visible(false)
-      if (params.ok) {
-        params.ok(data, event)
+    if (this.isValidate) {
+      // 异步校验
+      if (this.asyncValidateFn) {
+        this.asyncValidateFn().then((flag) => {
+          debugger
+          if (flag) {
+            this.errormsg('')
+            this.visible(false)
+            if (params.ok) {
+              params.ok(data, event)
+            }
+          } else {
+            this.errormsg(params.errormsg || '校验失败！')
+          }
+        })
+      } else if (this.validateFn()) { // 同步校验
+        this.errormsg('')
+        this.visible(false)
+        if (params.ok) {
+          params.ok(data, event)
+        }
+      } else {
+        this.errormsg(params.errormsg || '校验失败！')
       }
     } else {
       this.errormsg(params.errormsg || '校验失败！')

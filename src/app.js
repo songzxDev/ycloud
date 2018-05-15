@@ -386,12 +386,19 @@ let viewmodel = {
     ]
   }]),
   modalVisible: ko.observable(false),
+  asyncOk: function () {
+    debugger
+  },
   validateFn: function () {
-    if (1 > 2) {
-      return true
-    } else {
-      return false
-    }
+    return false
+  },
+  asyncValidateFn: async function () {
+    var data = await new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve(1)
+      }, 2000)
+    })
+    return true
   },
   treeSelectedData: ko.observable(''),
   onTreeSelect: function (data) {

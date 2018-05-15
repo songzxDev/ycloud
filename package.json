@@ -1,6 +1,6 @@
 {
   "name": "ycloud",
-  "version": "1.6.19",
+  "version": "1.6.20",
   "description": "",
   "main": "dist/ycloud.min.js",
   "author": "windknow <songhlc@yonyou.com>",
@@ -26,6 +26,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin": "^4.2.0",
     "css-loader": "^0.28.5",
