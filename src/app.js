@@ -1579,6 +1579,42 @@ let viewmodel = {
       }
     }
   ],
+  twoDimensionalColumns: [{
+    title: '序号',
+    type: 'index',
+    lock: true,
+    headRowSpan: 5,
+    bodyRowSpan: 3
+  }, {
+    title: '物料描述',
+    lock: true,
+    headRowSpan: 5,
+    bodyRowSpan: 3
+  }, {
+    title: '上次定标价',
+    lock: true,
+    headRowSpan: 5,
+    bodyRowSpan: 3
+  }, {
+    title: '本次定标价',
+    lock: true,
+    headRowSpan: 5,
+    bodyRowSpan: 3
+  }, {
+    title: '拟购金额',
+    lock: true,
+    headRowSpan: 5,
+    bodyRowSpan: 3
+  }, {
+    title: '',// 标识列
+    lock: true,
+    headRender: function () {},
+    bodyRender: function (row) {}
+  }, {
+    loop: true, // loop列
+    headRender: function () {},
+    bodyRender: function (row) {}
+  }],
   sortableRows: ko.observableArray([
     {
       name: 'test'
