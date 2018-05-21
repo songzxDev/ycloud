@@ -170,25 +170,27 @@ class Body extends Base {
       // 需要减掉用于显示暂无数据的那一行
       for (var i = 0; i < tab.rows.length - 1; i++) {
         // fixed rowspan 在数据切换之后产生的bug
-        if (tab.rows[i].cells[col].style.display === 'none') {
-          tab.rows[i].cells[col].style.display = 'table-cell'
-        }
-        // 每次初始化之前要把当前rowSpan重置
-        tab.rows[i].cells[col].rowSpan = 1
-        // 第一列不需要校验左侧是否被合并了（display === 'none'表示被合并了）
-        if (val === tab.rows[i].cells[col].innerHTML && (col === 0 || tab.rows[i].cells[col - 1].style.display === 'none')) {
-          count++
-        } else {
-          if (count > 1) { // 合并
-            start = i - count
-            tab.rows[start].cells[col].rowSpan = count
-            for (let j = start + 1; j < i; j++) {
-              // 被合并的列隐藏
-              tab.rows[j].cells[col].style.display = 'none'
-            }
-            count = 1
+        if (tab.rows[i].cells[col]) {
+          if (tab.rows[i].cells[col].style.display === 'none') {
+            tab.rows[i].cells[col].style.display = 'table-cell'
           }
-          val = tab.rows[i].cells[col].innerHTML
+          // 每次初始化之前要把当前rowSpan重置
+          tab.rows[i].cells[col].rowSpan = 1
+          // 第一列不需要校验左侧是否被合并了（display === 'none'表示被合并了）
+          if (val === tab.rows[i].cells[col].innerHTML && (col === 0 || tab.rows[i].cells[col - 1].style.display === 'none')) {
+            count++
+          } else {
+            if (count > 1) { // 合并
+              start = i - count
+              tab.rows[start].cells[col].rowSpan = count
+              for (let j = start + 1; j < i; j++) {
+                // 被合并的列隐藏
+                tab.rows[j].cells[col].style.display = 'none'
+              }
+              count = 1
+            }
+            val = tab.rows[i].cells[col].innerHTML
+          }
         }
       }
       if (count > 1) { // 合并，最后几行相同的情况下
