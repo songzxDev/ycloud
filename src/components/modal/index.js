@@ -4,7 +4,10 @@ import 'ko-bindinghandler'
 import {lockScrollEffect, resetScrollEffect} from '@/util/scrollable'
 function init (params) {
   this.addtionButton = params.textClear || false
-  this.footShow = params.footShow || true
+  // 隐藏foot ok 取消按钮  传true就会隐藏
+  this.hideFoot = params.hideFoot || false
+  this.hideOk = params.hideOk || false
+  this.hideCancel = params.hideCancel || false
   this.visible = params.visible || ko.observable(false)
   this.textOk = params.textOk || '确定'
   this.textCancel = params.textCancel || '取消'
