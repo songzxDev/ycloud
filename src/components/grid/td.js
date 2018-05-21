@@ -6,6 +6,20 @@ ko.components.register(PREFIX + operation.name, {
   viewModel: operation.init,
   template: operation.template
 })
+// 数字转成千分位
+function toThousands(num) {
+  if (isNaN(num)) {
+    return num
+  }
+  num = (num || 0).toString()
+  let result = ''
+  while (num.length > 3) {
+    result = ',' + num.slice(-3) + result;
+    num = num.slice(0, num.length - 3);
+  }
+  if (num) { result = num + result; }
+  return result;
+}
 // 判断点击事件是否触发行选中
 function init (params) {
   // 为跨页选择做准备
@@ -24,13 +38,19 @@ function init (params) {
     } else {
       result = params.row[params.col.field]
     }
-    if (this.col.dataType === 'date') {
-      if (result) {
-        result = new Date(result)._format('yyyy-MM-dd')
-      }
-    } else if (this.col.dataType === 'datetime') {
-      if (result) {
-        result = new Date(result)._format('yyyy-MM-dd hh:mm:ss')
+    if (this.col.dataType) {
+      if (this.col.dataType === 'date') {
+        if (result) {
+          result = new Date(result)._format('yyyy-MM-dd')
+        } else if (this.col.dataType === 'datetime') {
+          if (result) {
+            result = new Date(result)._format('yyyy-MM-dd hh:mm:ss')
+          }
+        } else if (this.col.dataType === 'financial') { // 财务数字
+          if (result) {
+            result = toThousands(result)
+          }
+        }
       }
     }
     return result

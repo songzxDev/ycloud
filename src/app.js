@@ -659,19 +659,19 @@ let viewmodel = {
   caculateRows: ko.observableArray([
     {
       name: 'name',
-      age: 24,
+      age: 24000.034,
       sex: '男'
     }, {
       name: 'name',
-      age: 22,
+      age: 223291,
       sex: '男'
     }, {
       name: 'name',
-      age: 21,
+      age: 2112389,
       sex: '男'
     }, {
       name: 'name',
-      age: 23,
+      age: 230000000,
       sex: '男'
     }
   ]),
@@ -681,6 +681,7 @@ let viewmodel = {
   }, {
     title: '年龄',
     field: 'age',
+    dataType: 'financial'
   }, {
     title: '性别',
     field: 'sex',
