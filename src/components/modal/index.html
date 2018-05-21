@@ -9,7 +9,7 @@
         <div class="y-modal-body" data-bind="style:{maxHeight:bodyMaxHeight}">
           <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
         </div>
-        <div class="y-modal-foot" data-bind="visible:!footShow">
+        <div class="y-modal-foot" data-bind="visible:!hideFoot">
           <span class="y-modal-error-msg" data-bind="text:errormsg"></span>
           <!-- ko if: showDelete -->
           <y-button params="type:'error', click: handleDelete" class="pull-left"><span data-bind="text: $parent.textDelete">删除</span></y-button>
@@ -17,10 +17,10 @@
           <!-- ko if: textClear-->
           <y-button params="type:'primary', click: handleClear"><span data-bind="text: $parent.textClear">清空</span></y-button>
           <!-- /ko -->
-          <!-- ko if: !showOk-->
+          <!-- ko if: !hideOk-->
           <y-button params="type:'primary', click: handleOk"><span data-bind="text: $parent.textOk"></span></y-button>
           <!-- /ko -->
-          <!-- ko if: !showCancel-->
+          <!-- ko if: !hideCancel-->
           <y-button params="type:'ghost', click: handleCancel">取消</y-button>
           <!-- /ko -->
         </div>
