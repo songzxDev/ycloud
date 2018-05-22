@@ -5,7 +5,6 @@ import {lockScrollEffect, resetScrollEffect} from '@/util/scrollable'
 function init (params) {
   this.addtionButton = params.textClear || false
   // 隐藏foot ok 取消按钮  传true就会隐藏
-  debugger
   this.hideFoot = params.hideFoot || ko.observable(false)
   this.hideOk = params.hideOk || ko.observable(false)
   this.hideCancel = params.hideCancel || ko.observable(false)
