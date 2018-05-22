@@ -293,3 +293,59 @@
 .y-grid table{
   border: 0 solid #ccc;
 }
+.y-hasCollapseToolbar{
+  margin-right: 22px;
+}
+.y-lock-toolbar{
+  width: 24px;
+  position: absolute;
+  right: -23px;
+  text-align: center;
+  top: -1px;
+  height: auto;
+  border: solid 1px #e5e5e5;z-index: 1;background-color: #FFF;
+  cursor: pointer;
+  &:hover{
+    background-color: #f5f5f5;
+  }
+  &:active{
+    background-color: #eee;
+  }
+  .y-lock-toolbar-i{
+    width: 16px;
+    height: 16px;
+    border-radius: 10px;
+    background-color: #999;
+    font-size: 12px;
+    margin: 0 auto;
+    margin-top: 10px;
+    i{
+      color: #FFF;
+    }
+  }
+}
+.y-lock-toolbar-i .fa-angle-left {
+  display: none;
+  line-height: 16px;
+}
+.y-lock-toolbar-i .fa-angle-right {
+  display: block;
+  line-height: 16px;
+}
+.y-lock-toolbar-hide {
+  .y-lock-toolbar-i .fa-angle-left {
+    display: block;
+  }
+  .y-lock-toolbar-i .fa-angle-right {
+    display: none;
+  }
+}
+.y-fixtopright-space{
+  background-color: #f5f5f5;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 15px;
+  height: 44px;
+  z-index: 1;
+}

@@ -47,6 +47,7 @@ class Grid extends Base {
     // 是否启用固定列
     this.lockcolumn = params.lockcolumn || false
     this.lockright = params.lockright || false
+    this.showLockRightToolBar = ko.observable(true)
     // 固定表头
     this.lockhead = params.lockhead || params.lockcolumn
 
@@ -380,6 +381,16 @@ class Grid extends Base {
     })
   }
   methods (params) {
+    // 切换lockright动态显示
+    this.handleToogleLockright = (vm, event) => {
+      if (event.currentTarget.classList.contains('y-lock-toolbar-hide')) {
+        this.showLockRightToolBar(true)
+        event.currentTarget.classList.remove('y-lock-toolbar-hide')
+      } else {
+        this.showLockRightToolBar(false)
+        event.currentTarget.classList.add('y-lock-toolbar-hide')
+      }
+    }
     this.recomputedLockRight = () => {
       let columns = this.columns()
       this.lockRightWidth = columns.filter(col => !col.lockright).filter(col => col._show()).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0)

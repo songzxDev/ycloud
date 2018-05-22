@@ -663,15 +663,15 @@ let viewmodel = {
       sex: '男'
     }, {
       name: 'name',
-      age: 223291,
+      age: 223291.0000000,
       sex: '男'
     }, {
       name: 'name',
-      age: 2112389,
+      age: '2112389.010',
       sex: '男'
     }, {
       name: 'name',
-      age: 230000000,
+      age: 2300000.01,
       sex: '男'
     }
   ]),
@@ -681,7 +681,8 @@ let viewmodel = {
   }, {
     title: '年龄',
     field: 'age',
-    dataType: 'financial'
+    align: 'right',
+    dataType: 'money'
   }, {
     title: '性别',
     field: 'sex',
