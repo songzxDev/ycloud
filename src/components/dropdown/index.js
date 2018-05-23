@@ -14,6 +14,7 @@ function _init (params, el) {
   this.targetEl = params.targetEl
   this.top = ko.observable()
   this.left = ko.observable()
+  this.topAdjust = params.topAdjust || 0
   this.width = ko.observable(params.width || '100%')
   var scrollEvent = function () {
     if (this.isShow()) {
@@ -62,7 +63,8 @@ function _init (params, el) {
       style.overflow = params.overflow
     }
     if (this.top()) {
-      style.top = this.top() + 'px'
+      debugger
+      style.top = this.top() + Number(this.topAdjust) + 'px'
       style.left = this.left() + 'px'
       style.position = 'fixed'
     } else {

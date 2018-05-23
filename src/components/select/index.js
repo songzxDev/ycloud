@@ -60,6 +60,7 @@ class Select extends Base {
     // 用于判断是否要重新查询
     this.oldSearchKey = undefined
     this.isStopTransferDom = params.isStopTransferDom || false
+    this.topAdjust = params.topAdjust
   }
   computed (params) {
     // 显示暂无数据
