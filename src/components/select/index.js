@@ -344,9 +344,9 @@ function setDefaultValue () {
         this.hasSetDefault = true
         this.selectedLabel(defaultItem[0][this.labelkey])
       }
-    } else if (this.selectedValue()) { // 单选时有可能是只绑定了id属性，同样需要 fix error #86
+    } else if (this.selectedValue() !== undefined && this.selectedValue() !== null) { // 单选时有可能是只绑定了id属性，同样需要 fix error #86
       var __defaultItem = this.filterDataList().filter(item => {
-        if (this.selectedValue()) {
+        if (this.selectedValue() !== undefined && this.selectedValue() !== null) { // 要支持值为0的情况
           return item[this.valuekey] === this.selectedValue()
         } else {
           return false

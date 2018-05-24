@@ -66,6 +66,7 @@ setTimeout(function () {
 window.dt = dt
 let viewmodel = {
   table: table,
+  zeroId: ko.observable(),
   extraEdit: function(data) {
     viewmodel.modalVisible(true)
   },
