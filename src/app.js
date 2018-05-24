@@ -1806,6 +1806,18 @@ setTimeout(() => {
             row._expand(!row._expand())
             return false
           }
+        }, {
+          title: '子表2',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
+        }, {
+          title: '子表3',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
         }
       ]
     }

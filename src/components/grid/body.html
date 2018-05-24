@@ -25,7 +25,7 @@
         'y-grid-lastrow': $index() > 5 && $index() == $parent.rows().length - 1
         },event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
           <!-- ko foreach:{data: $parent.columns, as: 'col'} -->
-          <td data-bind="visible: col._show, style: tdstyle">
+          <td data-bind="visible: col._show, style: tdstyle, css:{'y-relative': col.type == 'operation'}">
             <y-grid-td params="forbitRowSelectFn: forbitRowSelectFn,isDataTable:isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
           </td>
           <!-- /ko -->
@@ -51,7 +51,7 @@
       <!-- ko if: $parent.caculateColumns && $index() ==  $parent.rows().length - 1-->
       <tr>
         <!-- ko foreach:{data: $parent.caculateColumns, as: 'col'} -->
-        <td data-bind="visible: col._show, style: tdstyle">
+        <td data-bind="visible: col._show, style: tdstyle, css:{'y-relative': col.type == 'operation'}">
           <y-grid-td params="forbitRowSelectFn: forbitRowSelectFn,isDataTable:isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
         </td>
         <!-- /ko -->
