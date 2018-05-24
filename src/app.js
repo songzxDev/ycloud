@@ -19,6 +19,13 @@ var table = new u.DataTable({
     date: ''
   }
 })
+var allCheckDt = new u.DataTable({
+  meta: {
+    id: '',
+    name: '',
+    price: ''
+  }
+})
 var dtRowStatus = new u.DataTable({
   meta: {
     id: '',
@@ -65,6 +72,40 @@ setTimeout(function () {
 }, 1000)
 window.dt = dt
 let viewmodel = {
+  allCheckCol: [{
+    type: 'checkbox',
+    lock: true
+  }, {
+    title: 'name',
+    field: 'name',
+    lock: true,
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }],
+  allCheckRows: allCheckDt.rows,
   table: table,
   zeroId: ko.observable(),
   extraEdit: function(data) {
@@ -1751,6 +1792,9 @@ setTimeout(() => {
   ])
   viewmodel.lockcolcolumns([
     {
+      type: 'checkbox'
+    },
+    {
       lock: true,
       title: '姓名',
       field: 'name',
@@ -2133,5 +2177,30 @@ viewmodel.validateMap = ko.computed(function () {
   })
   return _map
 })
+allCheckDt.setSimpleData([{
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}])
 window.vm = viewmodel
 

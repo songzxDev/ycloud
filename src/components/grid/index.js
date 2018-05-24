@@ -132,8 +132,8 @@ class Grid extends Base {
               that.onRowSelect(row)
             }
           }))
-          // 如果当前行在已选中的ids中则设置选中（设置默认选中）
-          if (that.isEnableCrossPage && that.crossPageSelectedIds().indexOf(row.getValue(that.crossPageRowPrimaryKey)) >= 0) {
+          // 如果当前行在已选中的ids中则设置选中（设置默认选中）这里不能使用监听对象，初始化的时候要用peek
+          if (that.isEnableCrossPage && that.crossPageSelectedIds.peek().indexOf(row.getValue(that.crossPageRowPrimaryKey)) >= 0) {
             row.parent.addRowSelect(row)
           }
         } else {

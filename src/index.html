@@ -425,6 +425,11 @@
         </y-grid>
       </div>
       <div class="col-md-12">
+        <h4>dataTable 全选反选</h4>
+        <y-grid params="crossPageSelectedRows:$root.crossPageSelectedRows,lockcolumn:true, lockhead:true,isDataTable:true,columns:$root.allCheckCol,rows: $root.allCheckRows">
+        </y-grid>
+      </div>
+      <div class="col-md-12">
         <h4>支持表头可排序自定义方法</h4>
         <y-grid params="rows: $root.sortableRows, columns: $root.sortableColumns"></y-grid>
       </div>
@@ -477,7 +482,7 @@
       </div>
       <div class="col-md-12">
         <h4>锁定列</h4>
-        <y-grid params="rowspan:{maxCol:2},id:'tttxxxx2',ref:'lockright',lockright:true,rows: $root.lockcolrows, columns: $root.lockcolcolumns, lockcolumn: true"></y-grid>
+        <y-grid params="id:'tttxxxx2',ref:'lockright',lockright:true,rows: $root.lockcolrows, columns: $root.lockcolcolumns, lockcolumn: true"></y-grid>
       </div>
     </div>
     <h1>13.2 复杂可编辑表格</h1>
