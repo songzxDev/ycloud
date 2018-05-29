@@ -1943,7 +1943,7 @@ setTimeout(() => {
         name2: 'tes2',
         name3: 'test3'
       }, {
-        name1: '2test1',
+        name1: '2test1a的控件啥地方锁定列分开加2第三方',
         name2: '3tes21',
         name3: '1test31'
       }]
@@ -2104,7 +2104,7 @@ setTimeout(() => {
     }
   ])
   // viewmodel.radioDataList([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}])
-}, 1000)
+}, 1500)
 setTimeout(() => {
   viewmodel.rows(
     [

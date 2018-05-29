@@ -17,6 +17,7 @@ const PAGESIZE = 10
 const PAGEINDEX = 0
 class Grid extends Base {
   initialize (params) {
+    this.lockColumnHeight = ko.observable({})
     this.isDataTable = params.isDataTable || false
     this.hasSummaryRow = params.hasSummaryRow || false
     this.hasChildGrid = params.hasChildGrid || false
@@ -281,6 +282,11 @@ class Grid extends Base {
         })
         return columns
       }
+    })
+    this.lockleftColumns = ko.computed(() => {
+      return this.columns().filter(col => {
+        return col.lock
+      })
     })
     // 只有表格数据大于10条才显示分页
     this.isShowPagination = ko.computed(() => {

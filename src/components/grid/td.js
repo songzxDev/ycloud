@@ -43,6 +43,17 @@ function init (params) {
   this.isDataTable = params.isDataTable
   this.row = params.row
   this.col = params.col
+  this.displayMode = function (data) {
+    switch (data.col.type) {
+      case 'index': return 'y-template-index'
+      case 'checkbox': return 'y-template-checkbox'
+      case 'render': return 'y-template-render'
+      case 'component': return 'y-template-component'
+      case 'comp': return 'y-template-component'
+      case 'operation': return 'y-template-operation'
+      default: return 'y-template-noType'
+    }
+  }
   this.colIndex = params.colIndex.subscribe ? params.colIndex() : params.colIndex
   this.rowIndex = params.rowIndex.subscribe ? params.rowIndex() : params.rowIndex
   this.forbitRowSelectFn = params.forbitRowSelectFn || function () { return false }
