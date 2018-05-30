@@ -720,6 +720,10 @@ let viewmodel = {
   caculateMainColumns: [{
     title: '姓名',
     field: 'name',
+    type: 'render',
+    renderFn: function (row) {
+      return "<a href='http://www.baidu.com'>row.name</a>"
+    }
   }, {
     title: '年龄',
     field: 'age',

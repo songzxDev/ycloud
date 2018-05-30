@@ -92,6 +92,10 @@ class Body extends Base {
         return 'auto'
       }
     }
+    // 状态tab切换或重新加载不同数据后需要清空缓存的列高度
+    this.rows.subscribe(function () {
+      that.computedLockColumnHeight({})
+    }, 'beforeChange')
     this.afterRender = (elements, data) => {
       if (!params.isLockLeft) {
         // 确保计算列合并先执行
@@ -323,11 +327,13 @@ class Body extends Base {
   methods (params) {
     this.handleMouseOut = (row) => {
       row._hover(false)
+      return true
     }
     // mousein
     this.handleMouseIn = (row) => {
-      if (row._hover()) return
+      if (row._hover()) return true
       row._hover(true)
+      return true
     }
     this.handleClick = (row, evt) => {
       // 如果组织行选中则直接返回不选中任何行
@@ -346,7 +352,7 @@ class Body extends Base {
         // 一些单行选中的场景
         this.onRowSelect && this.onRowSelect(row)
       }
-      return true
+      // return true
     }
   }
 }

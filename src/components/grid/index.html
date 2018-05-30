@@ -89,9 +89,9 @@
           'y-grid-row-selected':row._selected,
           'y-grid-lastrow': rowIndex > 5 && rowIndex == rows().length - 1
         },event:{
-          click: function (vm, event) { handleClick(row, event)},
-          mouseenter: function (vm, event) { handleMouseIn(row, event)},
-          mouseleave: function (vm, event) { handleMouseOut(row, event)}}">
+          click: function (vm, event) { return handleClick(row, event)},
+          mouseenter: function (vm, event) { return handleMouseIn(row, event)},
+          mouseleave: function (vm, event) { return handleMouseOut(row, event)}}">
   <!-- ko foreach:{data: columns, as: 'col'} -->
   <td data-bind="
   visible: col._show,
