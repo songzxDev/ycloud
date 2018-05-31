@@ -284,9 +284,20 @@ class Grid extends Base {
       }
     })
     this.lockleftColumns = ko.computed(() => {
-      return this.columns().filter(col => {
+      let _columns = this.columns().filter(col => {
         return col.lock
       })
+      // 补充列用于填充行，方便行列合并计算
+      _columns.push({
+        title: '',
+        type: 'render',
+        _show: true,
+        width: 0,
+        renderFn: function (row, index) {
+          return index % 2
+        }
+      })
+      return _columns
     })
     // 只有表格数据大于10条才显示分页
     this.isShowPagination = ko.computed(() => {

@@ -358,6 +358,12 @@
     <h1>13.表格</h1>
     <div class="row">
       <div class="col-md-12">
+        <h4>rowspan + fixcolumns + 动态添加行</h4>
+        <y-grid params="rows: $root.rfRows, columns: $root.rfColumns, rowspan:{maxCol: 1},lockcolumn:true">
+
+        </y-grid>
+      </div>
+      <div class="col-md-12">
         <y-grid params="rows:$root.caculateRows, columns: $root.caculateMainColumns, caculateColumns: $root.caculateColumns">
         </y-grid>
       </div>
@@ -472,7 +478,7 @@
       </div>
       <div class="col-md-12">
         <h4>head rowspan</h4>
-        <y-grid params="ref:'headrowpsantable',rowspan:{maxCol:3},headHeight:'90px',lockcolumn:true,isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">
+        <y-grid params="ref:'headrowpsantable',rowspan:{maxCol:2},headHeight:'90px',lockcolumn:true,isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">
 
         </y-grid>
       </div>

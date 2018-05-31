@@ -496,6 +496,32 @@ let viewmodel = {
   onSizeChange: function (pageIndex, pageSize) {
     debugger
   },
+  rfRows: ko.observableArray([{
+    a: 1,
+    b: 2
+  }, {
+    a: 1,
+    b: 3
+  }, {
+    a: 1,
+    b: 4
+  }, {
+    a: 2,
+    b: 3
+  }, {
+    a: 2,
+    b: 2
+  }]),
+  rfColumns: [{
+    title: '第一列',
+    lock: true,
+    field: 'a',
+    width: 100
+  }, {
+    title: '第二列',
+    field: 'b',
+    width: 100
+  }],
   columnsrowspan1: ko.observableArray([
     {
       title: 'col1',
