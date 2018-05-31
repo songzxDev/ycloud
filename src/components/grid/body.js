@@ -8,6 +8,36 @@ ko.components.register(PREFIX + td.name, {
   viewModel: td.init,
   template: td.template
 })
+function removeZero (num) {
+  if (isNaN(num)) {
+    return num
+  }
+  let result = Number(num)
+  return result
+}
+// 数字转成千分位
+function toThousands (num) {
+  if (isNaN(num)) {
+    return num
+  }
+  num = (num || 0).toString()
+  let result = ''
+  let nums = num.split('.')
+  // 整数部分
+  let integerPart = nums[0]
+  // 小数部分
+  let decimalPart = nums.length > 1 ? nums[1] : 0
+  while (integerPart.length > 3) {
+    result = ',' + integerPart.slice(-3) + result
+    integerPart = integerPart.slice(0, integerPart.length - 3)
+  }
+  if (integerPart) { result = integerPart + result }
+  if (Number(decimalPart)) {
+    // 末位去零
+    result += '.' + Number('0.' + decimalPart).toString().split('.')[1]
+  }
+  return result
+}
 class Body extends Base {
   initialize (params) {
     this.hasSummaryRow = params.hasSummaryRow || false
@@ -15,7 +45,6 @@ class Body extends Base {
     this.hasChildGrid = params.hasChildGrid || false
     this.isDataTable = params.isDataTable
     this.caculateColumns = params.caculateColumns
-    this.tableWidth = params.tableWidth
     this.expand = params.expand
     this.columns = params.columns
     this.rows = params.rows
@@ -32,8 +61,97 @@ class Body extends Base {
     this.fixColumnTransform = params.fixColumnTransform
     this.headHeight = params.headHeight
     this.verticalAlign = params.verticalAlign
+    this.lockColumnHeight = params.lockColumnHeight
+    this.isLockLeft = params.isLockLeft || false
+    this.tableWidth = params.isLockLeft ? function () {
+      return 'auto'
+    } : params.tableWidth
+    this.computedLockColumnHeight = ko.observable({})
+    this.computedLockColumnHeight.subscribe((val) => {
+      var length = this.rows.peek().length
+      var count = 0
+      for (var pro in val) {
+        if (val.hasOwnProperty(pro)) { // 这里扩展了对象,所以必须判断
+          count++
+        }
+      }
+      // 如果所有的都渲染完了
+      if (length === count) {
+        ko.tasks.schedule(function () {
+          params.lockColumnHeight(val)
+        })
+      }
+    })
   }
   computed (params) {
+    var that = this
+    this.getRowHeight = function (rowIndex) {
+      if (params.isLockLeft) {
+        return params.lockColumnHeight()[rowIndex] || 'auto'
+      } else {
+        return 'auto'
+      }
+    }
+    // 状态tab切换或重新加载不同数据后需要清空缓存的列高度
+    this.rows.subscribe(function () {
+      that.computedLockColumnHeight({})
+    }, 'beforeChange')
+    this.afterRender = (elements, data) => {
+      if (!params.isLockLeft) {
+        // 确保计算列合并先执行
+        setTimeout(function () {
+          ko.tasks.schedule(function () {
+            var height = elements.filter(function (el) {
+              return el.nodeName === 'TR'
+            })[0].offsetHeight
+            var lockColumnHeight = that.computedLockColumnHeight()
+            lockColumnHeight[data.rowIndex] = height + 'px'
+            that.computedLockColumnHeight(lockColumnHeight)
+          })
+        })
+      }
+    }
+    // td渲染的不同模板
+    this.displayMode = (data) => {
+      switch (data.col.type) {
+        case 'index': return 'y-template-index'
+        case 'checkbox': return 'y-template-checkbox'
+        case 'render': return 'y-template-render'
+        case 'component': return 'y-template-component'
+        case 'comp': return 'y-template-component'
+        case 'operation': return 'y-template-operation'
+        default: return 'y-template-noType'
+      }
+    }
+    // 格式化表格默认值
+    this.defaultFormatText = (row, col) => {
+      let result
+      if (this.isDataTable && col.field) {
+        result = row.ref(col.field)() // 使用ko属性数值改变才能被监听到
+      } else {
+        result = row[col.field]
+      }
+      if (col.dataType) {
+        if (col.dataType === 'date') {
+          if (result) {
+            result = new Date(result)._format('yyyy-MM-dd')
+          }
+        } else if (col.dataType === 'datetime') {
+          if (result) {
+            result = new Date(result)._format('yyyy-MM-dd hh:mm:ss')
+          }
+        } else if (col.dataType === 'financial') { // 财务数字
+          if (result) {
+            result = toThousands(result)
+          }
+        } else if (col.dataType === 'removeZero') { // 金额 单价类（自动末位0去掉，是几位小数就按几位小数显示）
+          if (result) {
+            result = removeZero(result)
+          }
+        }
+      }
+      return result
+    }
     this.gridBodyStyle = ko.pureComputed(() => {
       let style = {}
       if (this.lockhead) {
@@ -84,21 +202,25 @@ class Body extends Base {
   created (params) {
     if (params.rowspan) {
       setTimeout(() => {
-        if (params.rowspan.columnIndex) {
-          this.caculateRowspanByFields(params.rowspan.columnIndex, params.domId)
-        } else if (params.rowspan.maxCol) {
-          this.caculateRowspan(params.rowspan.maxCol, params.domId)
-        }
-      })
-      params.rows.subscribe(val => {
-        // 确保页面重绘之后再进行合并单元格
-        setTimeout(function () {
+        ko.tasks.schedule(function () {
           if (params.rowspan.columnIndex) {
             this.caculateRowspanByFields(params.rowspan.columnIndex, params.domId)
           } else if (params.rowspan.maxCol) {
             this.caculateRowspan(params.rowspan.maxCol, params.domId)
           }
-        }.bind(this), 50)
+        }.bind(this))
+      })
+      params.rows.subscribe(val => {
+        // 确保页面重绘之后再进行合并单元格
+        setTimeout(function () {
+          ko.tasks.schedule(function () {
+            if (params.rowspan.columnIndex) {
+              this.caculateRowspanByFields(params.rowspan.columnIndex, params.domId)
+            } else if (params.rowspan.maxCol) {
+              this.caculateRowspan(params.rowspan.maxCol, params.domId)
+            }
+          }.bind(this))
+        }.bind(this))
       })
     }
   }
@@ -205,11 +327,13 @@ class Body extends Base {
   methods (params) {
     this.handleMouseOut = (row) => {
       row._hover(false)
+      return true
     }
     // mousein
     this.handleMouseIn = (row) => {
-      if (row._hover()) return
+      if (row._hover()) return true
       row._hover(true)
+      return true
     }
     this.handleClick = (row, evt) => {
       // 如果组织行选中则直接返回不选中任何行
@@ -228,7 +352,7 @@ class Body extends Base {
         // 一些单行选中的场景
         this.onRowSelect && this.onRowSelect(row)
       }
-      return true
+      // return true
     }
   }
 }

@@ -128,6 +128,14 @@
         <y-select params="valuekey:'id',labelkey: 'personName',hasmore:true, onmore:$root.showModal,value:vm.singleselect,loadData: $root.loadSelectData,clearable:true,filterable:true"></y-select>
       </div>
     </div>
+    <div class="row m-b-xs">
+      <div class="col-md-1">
+        value为0（数字）：
+      </div>
+      <div class="col-md-3">
+        <y-select params="dataList: [{value: 0, label: '0'}, {value:1, label: '1'}], id: $root.zeroId"></y-select>
+      </div>
+    </div>
     <h1 id="button">5.button</h1>
     <div class="row">
       <div class="col-md-12">
@@ -350,12 +358,18 @@
     <h1>13.表格</h1>
     <div class="row">
       <div class="col-md-12">
+        <h4>rowspan + fixcolumns + 动态添加行</h4>
+        <y-grid params="rows: $root.rfRows, columns: $root.rfColumns, rowspan:{maxCol: 1},lockcolumn:true">
+
+        </y-grid>
+      </div>
+      <div class="col-md-12">
         <y-grid params="rows:$root.caculateRows, columns: $root.caculateMainColumns, caculateColumns: $root.caculateColumns">
         </y-grid>
       </div>
       <div class="col-md-12">
-        <!--<y-grid params="isStripe:true,rowspan:{maxCol: 3},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrowstest">-->
-        <!--</y-grid>-->
+        <y-grid params="isStripe:true,rowspan:{maxCol: 3},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrowstest">
+        </y-grid>
       </div>
       <div class="col-md-6">
         <h4>datatable，动态计算</h4>
@@ -386,9 +400,9 @@
       </div>
       <div class="col-md-12">
         <h4>rowspan datatable</h4>
-        <!--<y-grid params="isStripe:true,rowspan:{maxCol: 2},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrows">-->
+        <y-grid params="isStripe:true,rowspan:{maxCol: 2},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrows">
 
-        <!--</y-grid>-->
+        </y-grid>
       </div>
       <div class="col-md-12">
         <h4>横向滚动条 datatable 需固定每一列的宽度</h4>
@@ -414,6 +428,11 @@
           <div>
             <y-button params="click: $root.handleSupplyApply">邀请供应商</y-button>
           </div>
+        </y-grid>
+      </div>
+      <div class="col-md-12">
+        <h4>dataTable 全选反选</h4>
+        <y-grid params="crossPageSelectedRows:$root.crossPageSelectedRows,lockcolumn:true, lockhead:true,isDataTable:true,columns:$root.allCheckCol,rows: $root.allCheckRows">
         </y-grid>
       </div>
       <div class="col-md-12">
@@ -459,9 +478,9 @@
       </div>
       <div class="col-md-12">
         <h4>head rowspan</h4>
-        <!--<y-grid params="ref:'headrowpsantable',rowspan:{maxCol:3},headHeight:'90px',lockcolumn:true,isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">-->
+        <y-grid params="ref:'headrowpsantable',rowspan:{maxCol:2},headHeight:'90px',lockcolumn:true,isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">
 
-        <!--</y-grid>-->
+        </y-grid>
       </div>
       <div class="col-md-12">
         <h4>grid 设置rowstatus字段</h4>
@@ -469,7 +488,7 @@
       </div>
       <div class="col-md-12">
         <h4>锁定列</h4>
-        <y-grid params="rowspan:{maxCol:2},id:'tttxxxx2',ref:'lockright',lockright:true,rows: $root.lockcolrows, columns: $root.lockcolcolumns, lockcolumn: true"></y-grid>
+        <y-grid params="id:'tttxxxx2',ref:'lockright',lockright:true,rows: $root.lockcolrows, columns: $root.lockcolcolumns, lockcolumn: true"></y-grid>
       </div>
     </div>
     <h1>13.2 复杂可编辑表格</h1>
@@ -625,7 +644,7 @@
     <div class="row">
       <div class="row">
         <div class="col-md-2">
-          <y-showdetail params="text:$root.showdetail, multiple:true">
+          <y-showdetail params="text:$root.showdetail, multiple:true,position:'topleft'">
           </y-showdetail>
         </div>
         <div class="col-md-2">

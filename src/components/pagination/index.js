@@ -21,7 +21,7 @@ function init (params) {
     }
   })
   this.totalCount = params.totalCount
-  var defaultList = [10, 20, 50, 100]
+  var defaultList = [100, 50, 20, 10]
   if (params.pageSizeList) {
     defaultList = params.pageSizeList
   }

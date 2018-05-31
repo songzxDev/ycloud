@@ -1,31 +1,38 @@
 <div>
-  <div class="y-grid-wrapper" data-bind="css: {'y-grid-noborder':noborder, 'y-grid-separate': isSeparate},style:style">
+  <div class="y-grid-wrapper" data-bind="css: {'y-grid-noborder':noborder, 'y-grid-separate': isSeparate, 'y-hasCollapseToolbar': lockright},style:style">
     <div class="y-grid" data-bind="event:{scroll:handleScroll},css:{'y-grid-stripe':isStripe,'y-grid-border': isTableBorder},style:{height:computedMaxHeight,minHeight:minheight}">
       <y-grid-head data-bind="visible:!nohead" params="headtransform:headtransform,el:$el,columns1:columns1,columns2:columns2,lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
-      <y-grid-body params="forbitRowSelectFn:forbitRowSelectFn,caculateColumns:caculateColumns,hasChildGrid:hasChildGrid,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,isEnableCrossPage:isEnableCrossPage,crossPageRowPrimaryKey:crossPageRowPrimaryKey,crossPageSelectedRows:crossPageSelectedRows,isShowLoading:isShowLoading,forbitRowSelect:forbitRowSelect,isSeparate:isSeparate,tdstyle: tdstyle, lockhead:lockhead,isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect">
+      <y-grid-body params="lockColumnHeight:lockColumnHeight,forbitRowSelectFn:forbitRowSelectFn,caculateColumns:caculateColumns,hasChildGrid:hasChildGrid,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,isEnableCrossPage:isEnableCrossPage,crossPageRowPrimaryKey:crossPageRowPrimaryKey,crossPageSelectedRows:crossPageSelectedRows,isShowLoading:isShowLoading,forbitRowSelect:forbitRowSelect,isSeparate:isSeparate,tdstyle: tdstyle, lockhead:lockhead,isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect">
         <!-- ko template: { nodes: $parent.$templateNodes } --><!-- /ko -->
       </y-grid-body>
       <!-- ko if:lockcolumn-->
       <div class="y-grid-fixed" data-bind="style:{width: fixedTableWidth}">
         <div class="y-grid-fixed-head">
-          <y-grid-head data-bind="visible:!nohead" params="el:$el,columns1:columns1,columns2:columns2,lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
+          <y-grid-head data-bind="visible:!nohead" params="el:$el,columns1:columns1,columns2:columns2,lockhead:lockhead,columns:lockleftColumns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
         </div>
         <div class="y-grid-fixed-body" data-bind="style:{height: fixBodyHeight}">
-          <y-grid-body params="forbitRowSelectFn:forbitRowSelectFn,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,fixColumnTransform:fixColumnTransform,tdstyle: tdstyle, lockhead:true,tableWidth:tableWidth,rowspan:rowspan,domId:domId+'_fix',expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns,forbitRowSelect:forbitRowSelect,rows:rows, onRowSelect:onRowSelect">
+          <y-grid-body params="isLockLeft: true,lockColumnHeight:lockColumnHeight,forbitRowSelectFn:forbitRowSelectFn,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,fixColumnTransform:fixColumnTransform,tdstyle: tdstyle, lockhead:true,tableWidth:tableWidth,rowspan:rowspan,domId:domId+'_fix',expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:lockleftColumns,forbitRowSelect:forbitRowSelect,rows:rows, onRowSelect:onRowSelect">
           </y-grid-body>
         </div>
       </div>
       <!-- /ko -->
       <!-- ko if:lockright-->
-      <div class="y-grid-fixed-right" style="margin-right: 15px" data-bind="style:{width: fixedLockRightTableWidth}">
+      <div class="y-grid-fixed-right" style="margin-right: 15px" data-bind="style:{width: fixedLockRightTableWidth}, visible: showLockRightToolBar">
         <div class="y-grid-fixed-head">
           <y-grid-head data-bind="visible:!nohead" params="headtransform:fixRightHeadtransform,el:$el,columns1:columns1,columns2:columns2,lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
         </div>
         <div class="y-grid-fixed-body" data-bind="style:{height: fixBodyHeight}">
-          <y-grid-body params="forbitRowSelectFn:forbitRowSelectFn,caculateColumns:caculateColumns,hasChildGrid:hasChildGrid,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,fixColumnTransform:fixRightTransform,tdstyle: tdstyle, lockhead:true,tableWidth:tableWidth,rowspan:rowspan,domId:domId+'_fixRight',expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns,forbitRowSelect:forbitRowSelect,rows:rows, onRowSelect:onRowSelect">
+          <y-grid-body params="lockColumnHeight:lockColumnHeight,forbitRowSelectFn:forbitRowSelectFn,caculateColumns:caculateColumns,hasChildGrid:hasChildGrid,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,fixColumnTransform:fixRightTransform,tdstyle: tdstyle, lockhead:true,tableWidth:tableWidth,rowspan:rowspan,domId:domId+'_fixRight',expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns,forbitRowSelect:forbitRowSelect,rows:rows, onRowSelect:onRowSelect">
           </y-grid-body>
         </div>
       </div>
+      <div class="y-lock-toolbar" title="收起/展开" data-bind="style: {height:computedMaxHeight},click:handleToogleLockright">
+        <div class="y-lock-toolbar-i">
+          <i class="fa fa-angle-left"></i>
+          <i class="fa fa-angle-right"></i>
+        </div>
+      </div>
+      <div class="y-fixtopright-space"></div>
       <!-- /ko -->
     </div>
   </div>
@@ -33,3 +40,72 @@
   <y-pagination data-bind="visible: isShowPagination" params="onSizeChange:onSizeChange,onPageChage:onPageChange,pageSize: pageSize, totalCount: totalCount, pageIndex: pageIndex"></y-pagination>
   <!-- /ko -->
 </div>
+<script type="text/html" id="y-template-noType">
+  <div class="y-cell" data-bind="style: col.computedStyle && col.computedStyle(row),text: defaultFormatText(row, col),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
+  </div>
+</script>
+<script type="text/html" id="y-template-index">
+  <div class="y-cell" data-bind="text: rowIndex + 1">
+  </div>
+</script>
+<script type="text/html" id="y-template-checkbox">
+  <div class="y-cell y-cell-checkbox">
+    <!-- ko if: !forbitRowSelectFn(row) -->
+    <y-checkbox-item class="y-grid-checkbox" params="value:row._selected(),label:'',checked:row._selected"></y-checkbox-item>
+    <!-- /ko -->
+  </div>
+</script>
+<script type="text/html" id="y-template-render">
+  <div class="y-cell" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},
+  html: col.renderFn(row, rowIndex, col),style:col.style">
+  </div>
+</script>
+<script type="text/html" id="y-template-component">
+  <div class="y-cell y-cell-overflow-auto" data-bind="css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'},
+  component: col.compFn(row, rowIndex, col),style:col.style">
+  </div>
+</script>
+<script type="text/html" id="y-template-operation">
+  <y-grid-operation params="operationList: col.operationList, row: row, col: col"></y-grid-operation>
+</script>
+<script type="text/html" id="y-template-summaryRow">
+  <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
+  <!-- ko if: $parent.columns()[0].summaryType === 'render' -->
+  <div class="y-cell y-cell-summary" data-bind="html: $parent.columns()[0].summaryFn(row)">
+  </div>
+  <!-- /ko -->
+  <!-- ko if: $parent.columns()[0].summaryType === 'comp' || $parent.columns()[0].summaryType === 'component'-->
+  <div class="y-cell y-cell-summary" data-bind="component: $parent.columns()[0].summaryFn(row)">
+  </div>
+  <!-- /ko -->
+  </td>
+</script>
+<script type="text/html" id="y-template-tr">
+  <tr data-bind="style: {
+          height: getRowHeight(rowIndex)
+        },
+        css:{
+          'y-grid-row-hover':row._hover,
+          'y-grid-row-selected':row._selected,
+          'y-grid-lastrow': rowIndex > 5 && rowIndex == rows().length - 1
+        },event:{
+          click: function (vm, event) { return handleClick(row, event)},
+          mouseenter: function (vm, event) { return handleMouseIn(row, event)},
+          mouseleave: function (vm, event) { return handleMouseOut(row, event)}}">
+  <!-- ko foreach:{data: columns, as: 'col'} -->
+  <td data-bind="
+  visible: col._show,
+    style: $parent.tdstyle,
+    css:{'y-relative': col.type == 'operation'},
+  template: {
+    name: $parent.displayMode,
+      data: {
+      forbitRowSelectFn: $parent.forbitRowSelectFn,
+        col: col,
+        rowIndex: $parent.rowIndex,
+        colIndex: $index(),
+        defaultFormatText:$parent.defaultFormatText}}">
+  </td>
+  <!-- /ko -->
+  </tr>
+</script>

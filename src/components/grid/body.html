@@ -1,11 +1,11 @@
-<div class="y-grid-body" data-bind="style:gridBodyStyle,css:{'y-grid-body-lock':lockhead, 'y-grid-summary':hasSummaryRow},let:{forbitRowSelectFn:forbitRowSelectFn,tdstyle:tdstyle,isDataTable:isDataTable, hasSummaryRow:hasSummaryRow}">
+<div class="y-grid-body" data-bind="style:gridBodyStyle,css:{'y-grid-body-lock':lockhead, 'y-grid-summary':hasSummaryRow}">
   <table cellspacing="0" cellpadding="0" border="0" data-bind="attr:{id:domId},style:{width:tableWidth,transform:fixColumnTransform},css:{'y-table-separate':isSeparate}">
     <colgroup data-bind="foreach:{data: columns,as: 'col'}">
       <col data-bind="visible: col._show, attr:{width:col.width}">
     </colgroup>
     <tbody data-bind="foreach: {data: rows, as: 'row'}, css:{'y-grid-body-verticaltop':verticalAlign === 'top'}">
       <!-- ko ifnot: row._delete -->
-        <!-- ko if: hasSummaryRow-->
+        <!-- ko if: $parent.hasSummaryRow-->
         <tr>
           <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
             <!-- ko if: $parent.columns()[0].summaryType === 'render' -->
@@ -20,16 +20,24 @@
         </tr>
         <!-- /ko -->
         <!-- ko ifnot: $parent.hasChildGrid -->
-        <tr data-bind="css:{'y-grid-row-hover':row._hover,
-        'y-grid-row-selected':row._selected,
-        'y-grid-lastrow': $index() > 5 && $index() == $parent.rows().length - 1
-        },event:{click:$parent.handleClick,mouseenter:$parent.handleMouseIn,mouseleave:$parent.handleMouseOut}">
-          <!-- ko foreach:{data: $parent.columns, as: 'col'} -->
-          <td data-bind="visible: col._show, style: tdstyle">
-            <y-grid-td params="forbitRowSelectFn: forbitRowSelectFn,isDataTable:isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
-          </td>
+          <!-- ko template: {name:'y-template-tr',
+            data:{
+              columns: $parent.columns,
+              displayMode:$parent.displayMode,
+              afterRender: $parent.afterRender,
+              forbitRowSelectFn: $parent.forbitRowSelectFn,
+              defaultFormatText: $parent.defaultFormatText,
+              rowIndex: $index(),
+              row: row,
+              rows: $parent.rows,
+              getRowHeight: $parent.getRowHeight,
+              handleClick: $parent.handleClick,
+              handleMouseIn: $parent.handleMouseIn,
+              handleMouseOut: $parent.handleMouseOut
+            },
+            afterRender: $parent.afterRender}
+          -->
           <!-- /ko -->
-        </tr>
         <!-- /ko -->
         <!-- ko if: $parent.expand && row._expand() -->
         <tr>
@@ -51,8 +59,18 @@
       <!-- ko if: $parent.caculateColumns && $index() ==  $parent.rows().length - 1-->
       <tr>
         <!-- ko foreach:{data: $parent.caculateColumns, as: 'col'} -->
-        <td data-bind="visible: col._show, style: tdstyle">
-          <y-grid-td params="forbitRowSelectFn: forbitRowSelectFn,isDataTable:isDataTable,row: row, col: col, rowIndex: $parentContext.$index(),colIndex:$index()"></y-grid-td>
+        <td data-bind="
+            visible: col._show,
+            style: $parentContext.$parent.tdstyle,
+            css:{'y-relative': col.type == 'operation'},
+            template: {
+              name: $parentContext.$parent.displayMode,
+              data: {
+                forbitRowSelectFn: $parentContext.$parent.forbitRowSelectFn,
+                col: col,
+                rowIndex: $parentContext.$index(),
+                colIndex:$index(),
+                defaultFormatText:$parentContext.$parent.defaultFormatText}}">
         </td>
         <!-- /ko -->
       </tr>

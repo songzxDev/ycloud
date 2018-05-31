@@ -9,18 +9,24 @@ function init (params) {
   this.tableWidth = params.tableWidth
   this.el = params.el
   this.outterWidth = ko.observable()
+  let nowOuterWidth = 0
   if (params.lockhead) {
-    setTimeout(function () {
-      if (params.el) {
-        var width = params.el.firstElementChild.offsetWidth
-        // 对于在modal中的grid需要特殊处理
-        if (width > 0) {
-          this.outterWidth(width + 'px')
-        } else {
-          this.outterWidth('100%')
+    setInterval(() => {
+      window.requestAnimationFrame(function () {
+        if (params.el) {
+          var width = params.el.firstElementChild.offsetWidth
+          // 对于在modal中的grid需要特殊处理
+          if (nowOuterWidth !== width) {
+            nowOuterWidth = width
+            if (width > 0) {
+              this.outterWidth(width + 'px')
+            } else {
+              this.outterWidth('100%')
+            }
+          }
         }
-      }
-    }.bind(this))
+      }.bind(this))
+    }, 2000)
   }
   this.allRowChecked = params.allRowChecked
   this.lockhead = params.lockhead

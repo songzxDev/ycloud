@@ -19,6 +19,13 @@ var table = new u.DataTable({
     date: ''
   }
 })
+var allCheckDt = new u.DataTable({
+  meta: {
+    id: '',
+    name: '',
+    price: ''
+  }
+})
 var dtRowStatus = new u.DataTable({
   meta: {
     id: '',
@@ -65,7 +72,42 @@ setTimeout(function () {
 }, 1000)
 window.dt = dt
 let viewmodel = {
+  allCheckCol: [{
+    type: 'checkbox',
+    lock: true
+  }, {
+    title: 'name',
+    field: 'name',
+    lock: true,
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }],
+  allCheckRows: allCheckDt.rows,
   table: table,
+  zeroId: ko.observable(),
   extraEdit: function(data) {
     viewmodel.modalVisible(true)
   },
@@ -460,6 +502,32 @@ let viewmodel = {
   onSizeChange: function (pageIndex, pageSize) {
     debugger
   },
+  rfRows: ko.observableArray([{
+    a: 1,
+    b: 2
+  }, {
+    a: 1,
+    b: 3
+  }, {
+    a: 1,
+    b: 4
+  }, {
+    a: 2,
+    b: 3
+  }, {
+    a: 2,
+    b: 2
+  }]),
+  rfColumns: [{
+    title: '第一列',
+    lock: true,
+    field: 'a',
+    width: 100
+  }, {
+    title: '第二列',
+    field: 'b',
+    width: 100
+  }],
   columnsrowspan1: ko.observableArray([
     {
       title: 'col1',
@@ -669,25 +737,30 @@ let viewmodel = {
       sex: '男'
     }, {
       name: 'name',
-      age: 223291,
+      age: 223291.0000000,
       sex: '男'
     }, {
       name: 'name',
-      age: 2112389,
+      age: '2112389.010',
       sex: '男'
     }, {
       name: 'name',
-      age: 230000000,
+      age: 2300000.01,
       sex: '男'
     }
   ]),
   caculateMainColumns: [{
     title: '姓名',
     field: 'name',
+    type: 'render',
+    renderFn: function (row) {
+      return "<a href='http://www.baidu.com'>row.name</a>"
+    }
   }, {
     title: '年龄',
     field: 'age',
-    dataType: 'financial'
+    align: 'right',
+    dataType: 'money'
   }, {
     title: '性别',
     field: 'sex',
@@ -1755,6 +1828,9 @@ setTimeout(() => {
   ])
   viewmodel.lockcolcolumns([
     {
+      type: 'checkbox'
+    },
+    {
       lock: true,
       title: '姓名',
       field: 'name',
@@ -1807,6 +1883,18 @@ setTimeout(() => {
           }
         }, {
           title: '子表',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
+        }, {
+          title: '子表2',
+          click: function (row, evt) {
+            row._expand(!row._expand())
+            return false
+          }
+        }, {
+          title: '子表3',
           click: function (row, evt) {
             row._expand(!row._expand())
             return false
@@ -1891,7 +1979,7 @@ setTimeout(() => {
         name2: 'tes2',
         name3: 'test3'
       }, {
-        name1: '2test1',
+        name1: '2test1a的控件啥地方锁定列分开加2第三方',
         name2: '3tes21',
         name3: '1test31'
       }]
@@ -2052,7 +2140,7 @@ setTimeout(() => {
     }
   ])
   // viewmodel.radioDataList([{value: 1,label:'无发票'},{value: 2,label:'普通发票'},{value: 3,label:'增值锐发票'}])
-}, 1000)
+}, 1500)
 setTimeout(() => {
   viewmodel.rows(
     [
@@ -2125,5 +2213,30 @@ viewmodel.validateMap = ko.computed(function () {
   })
   return _map
 })
+allCheckDt.setSimpleData([{
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}, {
+  id: 1, name: '2', price: 3
+}])
 window.vm = viewmodel
 

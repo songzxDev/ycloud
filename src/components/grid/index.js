@@ -17,6 +17,7 @@ const PAGESIZE = 10
 const PAGEINDEX = 0
 class Grid extends Base {
   initialize (params) {
+    this.lockColumnHeight = ko.observable({})
     this.isDataTable = params.isDataTable || false
     this.hasSummaryRow = params.hasSummaryRow || false
     this.hasChildGrid = params.hasChildGrid || false
@@ -47,6 +48,7 @@ class Grid extends Base {
     // 是否启用固定列
     this.lockcolumn = params.lockcolumn || false
     this.lockright = params.lockright || false
+    this.showLockRightToolBar = ko.observable(true)
     // 固定表头
     this.lockhead = params.lockhead || params.lockcolumn
 
@@ -131,8 +133,8 @@ class Grid extends Base {
               that.onRowSelect(row)
             }
           }))
-          // 如果当前行在已选中的ids中则设置选中（设置默认选中）
-          if (that.isEnableCrossPage && that.crossPageSelectedIds().indexOf(row.getValue(that.crossPageRowPrimaryKey)) >= 0) {
+          // 如果当前行在已选中的ids中则设置选中（设置默认选中）这里不能使用监听对象，初始化的时候要用peek
+          if (that.isEnableCrossPage && that.crossPageSelectedIds.peek().indexOf(row.getValue(that.crossPageRowPrimaryKey)) >= 0) {
             row.parent.addRowSelect(row)
           }
         } else {
@@ -281,6 +283,22 @@ class Grid extends Base {
         return columns
       }
     })
+    this.lockleftColumns = ko.computed(() => {
+      let _columns = this.columns().filter(col => {
+        return col.lock
+      })
+      // 补充列用于填充行，方便行列合并计算
+      _columns.push({
+        title: '',
+        type: 'render',
+        _show: true,
+        width: 0,
+        renderFn: function (row, index) {
+          return index % 2
+        }
+      })
+      return _columns
+    })
     // 只有表格数据大于10条才显示分页
     this.isShowPagination = ko.computed(() => {
       return params.pagination && this.totalCount() > 10
@@ -380,6 +398,16 @@ class Grid extends Base {
     })
   }
   methods (params) {
+    // 切换lockright动态显示
+    this.handleToogleLockright = (vm, event) => {
+      if (event.currentTarget.classList.contains('y-lock-toolbar-hide')) {
+        this.showLockRightToolBar(true)
+        event.currentTarget.classList.remove('y-lock-toolbar-hide')
+      } else {
+        this.showLockRightToolBar(false)
+        event.currentTarget.classList.add('y-lock-toolbar-hide')
+      }
+    }
     this.recomputedLockRight = () => {
       let columns = this.columns()
       this.lockRightWidth = columns.filter(col => !col.lockright).filter(col => col._show()).map(cell => cell.width).reduce((a, b) => Number(a) + Number(b), 0)
