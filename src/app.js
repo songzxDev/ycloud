@@ -240,6 +240,12 @@ let viewmodel = {
   checked2: ko.observable(true),
   checked3: ko.observable(true),
   checked4: ko.observable('1'),
+  showDelete: ko.observable(true),
+  hideFoot: ko.observable(false),
+  checkDis: ko.observable(false),
+  hideFootClick: function () {
+    viewmodel.hideFoot(true)
+  },
   switchDisabled: ko.observable(true),
   loading: ko.observable(true),
   b: ko.observable('i am ucloud-ko-fileupload'),

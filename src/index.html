@@ -260,7 +260,7 @@
             <y-checkbox params="dataList:$root.checkboxDataList,value:$root.checkboxValue, direction:'vertical'"></y-checkbox>
           </y-formitem>
           <y-formitem params="label:'checkbox默认值\'0\'',style:{height:'auto'}">
-            <y-checkbox-item params="checked:$root.checkboxItem,trueValue:'1',falseValue: '0'"></y-checkbox-item>
+            <y-checkbox-item params="disabled:$root.checkDis,checked:$root.checkboxItem,trueValue:'1',falseValue: '0'"></y-checkbox-item>
           </y-formitem>
           <y-formitem params="label: 'String日期'">
             <y-datepicker params='placeholder:"请选择日期",data: $root.datepicker'>
