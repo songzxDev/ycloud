@@ -6,18 +6,14 @@
     <tbody data-bind="foreach: {data: rows, as: 'row'}, css:{'y-grid-body-verticaltop':verticalAlign === 'top'}">
       <!-- ko ifnot: row._delete -->
         <!-- ko if: $parent.hasSummaryRow-->
-        <tr>
-          <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
-            <!-- ko if: $parent.columns()[0].summaryType === 'render' -->
-            <div class="y-cell y-cell-summary" data-bind="html: $parent.columns()[0].summaryFn(row)">
-            </div>
-            <!-- /ko -->
-            <!-- ko if: $parent.columns()[0].summaryType === 'comp' || $parent.columns()[0].summaryType === 'component'-->
-            <div class="y-cell y-cell-summary" data-bind="component: $parent.columns()[0].summaryFn(row)">
-            </div>
-            <!-- /ko -->
-          </td>
-        </tr>
+          <!-- ko template: {name:'y-template-summaryRow',
+            data:{
+              columns: $parent.columns,
+              expandColspan: $parent.expandColspan
+            },
+            afterRender: $parent.summaryAfterRender}
+          -->
+          <!-- /ko -->
         <!-- /ko -->
         <!-- ko ifnot: $parent.hasChildGrid -->
           <!-- ko template: {name:'y-template-tr',
@@ -41,11 +37,11 @@
         <!-- /ko -->
         <!-- ko if: $parent.expand && row._expand() -->
         <tr>
-            <td style="border-bottom: none" data-bind="attr:{colspan: $parent.expandColspan()}">
-              <div data-bind="component: $parent.columns()[0].expandCompFn(row)">
-              </div>
-            </td>
-          </tr>
+          <td style="border-bottom: none" data-bind="attr:{colspan: $parent.expandColspan()}">
+            <div data-bind="component: $parent.columns()[0].expandCompFn(row)">
+            </div>
+          </td>
+        </tr>
         <!-- /ko -->
         <!-- ko if: $parent.hasChildGrid -->
         <tr>

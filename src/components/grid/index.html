@@ -8,7 +8,7 @@
       <!-- ko if:lockcolumn-->
       <div class="y-grid-fixed" data-bind="style:{width: fixedTableWidth}">
         <div class="y-grid-fixed-head">
-          <y-grid-head data-bind="visible:!nohead" params="el:$el,columns1:columns1,columns2:columns2,lockhead:lockhead,columns:lockleftColumns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
+          <y-grid-head data-bind="visible:!nohead" params="el:$el,columns1:columns1,columns2:columns2,lockhead:lockhead,columns:columns,allRowChecked:allRowChecked,tableWidth:tableWidth"></y-grid-head>
         </div>
         <div class="y-grid-fixed-body" data-bind="style:{height: fixBodyHeight}">
           <y-grid-body params="isLockLeft: true,lockColumnHeight:lockColumnHeight,forbitRowSelectFn:forbitRowSelectFn,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,fixColumnTransform:fixColumnTransform,tdstyle: tdstyle, lockhead:true,tableWidth:tableWidth,rowspan:rowspan,domId:domId+'_fix',expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:lockleftColumns,forbitRowSelect:forbitRowSelect,rows:rows, onRowSelect:onRowSelect">
@@ -40,6 +40,7 @@
   <y-pagination data-bind="visible: isShowPagination" params="onSizeChange:onSizeChange,onPageChage:onPageChange,pageSize: pageSize, totalCount: totalCount, pageIndex: pageIndex"></y-pagination>
   <!-- /ko -->
 </div>
+<!-- td 模板 -->
 <script type="text/html" id="y-template-noType">
   <div class="y-cell" data-bind="style: col.computedStyle && col.computedStyle(row),text: defaultFormatText(row, col),css:{'text-left':col.align == 'left','text-right':col.align == 'right','text-center':col.align == 'center'}">
   </div>
@@ -68,17 +69,21 @@
 <script type="text/html" id="y-template-operation">
   <y-grid-operation params="operationList: col.operationList, row: row, col: col"></y-grid-operation>
 </script>
+<!-- td 模板 -->
+<!-- tr 模板 -->
 <script type="text/html" id="y-template-summaryRow">
-  <td style="border: none" data-bind="attr:{colspan: $parent.expandColspan()}">
-  <!-- ko if: $parent.columns()[0].summaryType === 'render' -->
-  <div class="y-cell y-cell-summary" data-bind="html: $parent.columns()[0].summaryFn(row)">
-  </div>
-  <!-- /ko -->
-  <!-- ko if: $parent.columns()[0].summaryType === 'comp' || $parent.columns()[0].summaryType === 'component'-->
-  <div class="y-cell y-cell-summary" data-bind="component: $parent.columns()[0].summaryFn(row)">
-  </div>
-  <!-- /ko -->
-  </td>
+  <tr>
+    <td style="border: none" data-bind="attr:{colspan: expandColspan()}">
+      <!-- ko if: columns()[0].summaryType === 'render' -->
+      <div class="y-cell y-cell-summary" data-bind="html: columns()[0].summaryFn(row)">
+      </div>
+      <!-- /ko -->
+      <!-- ko if: columns()[0].summaryType === 'comp' || columns()[0].summaryType === 'component'-->
+      <div class="y-cell y-cell-summary" data-bind="component: columns()[0].summaryFn(row)">
+      </div>
+      <!-- /ko -->
+    </td>
+  </tr>
 </script>
 <script type="text/html" id="y-template-tr">
   <tr data-bind="style: {
@@ -109,3 +114,4 @@
   <!-- /ko -->
   </tr>
 </script>
+<!-- tr 模板 -->

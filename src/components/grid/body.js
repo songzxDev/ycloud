@@ -96,6 +96,16 @@ class Body extends Base {
     this.rows.subscribe(function () {
       that.computedLockColumnHeight({})
     }, 'beforeChange')
+    this.summaryAfterRender = (elements, data) => {
+      setTimeout(function () {
+        ko.tasks.schedule(function () {
+          var element = elements.filter(function (el) {
+            return el.nodeName === 'TR'
+          })[0]
+          element.style.width = '100%'
+        })
+      })
+    }
     this.afterRender = (elements, data) => {
       if (!params.isLockLeft) {
         // 确保计算列合并先执行
@@ -240,10 +250,13 @@ class Body extends Base {
   }
   caculateRowspanByFields (indexes, domId) {
     var tab = document.getElementById(domId)
+    // val表示单元格的内容
     let val = ''
     let count = 0
     let start = 0
     indexes.forEach(index => {
+      // 不同列的合并开始每次需要重置val值
+      val = ''
       count = 1
       // 需要减掉用于显示暂无数据的那一行
       for (var i = 0; i < tab.rows.length - 1; i++) {
