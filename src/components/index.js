@@ -33,6 +33,8 @@ import {notice, $refs} from './base'
 import breadcrumb from './breadcrumb'
 import showdetail from './showdetail'
 import poptip from './poptip'
+import sortablelist from './dragable/sortablelist'
+import dragablelist from './dragable/dragablelist'
 import './konewfeature'
 const PREFIX = 'y-'
 function register (model) {
@@ -74,6 +76,8 @@ register(breadcrumb)
 register(showdetail)
 register(formview)
 register(poptip)
+register(sortablelist)
+register(dragablelist)
 let ycloud = {
   notice,
   $refs

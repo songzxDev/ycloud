@@ -4208,6 +4208,10 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.npmjs.org/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
+knockout-dragdrop@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/knockout-dragdrop/-/knockout-dragdrop-2.6.1.tgz#062408658eeb1b366d5f3deba9afaf04d6d2b52e"
+
 knockout@3.4.2, knockout@^3.4.2:
   version "3.4.2"
   resolved "https://registry.npmjs.org/knockout/-/knockout-3.4.2.tgz#e87958de77ad1e936f7ce645bab8b5d7c456d937"

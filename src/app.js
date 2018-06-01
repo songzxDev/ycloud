@@ -512,6 +512,22 @@ let viewmodel = {
     a: 2,
     b: 2
   }]),
+  sourceList: ko.observableArray([
+    {
+      id: 5,
+      name: 'testme'
+    }
+  ]),
+  sortableList: ko.observableArray([{
+    id: 1,
+    name: 'ttt'
+  }, {
+    id: 2,
+    name: 'ttt2'
+  }, {
+    id: 3,
+    name: 'ttt4'
+  }]),
   rfColumns: [{
     title: '第一列',
     lock: true,

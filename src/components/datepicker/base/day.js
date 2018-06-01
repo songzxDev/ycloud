@@ -68,7 +68,7 @@ function init (params) {
       // fix ie and edge new date bug
 
       if (params.data()) {
-        var _date = new Date(params.data().replace(/-/g, '/'))
+        var _date = new Date((params.data() + '').replace(/-/g, '/'))
         if (cellDay === this.day() && this.month() === (_date.getMonth() + 1) && this.year() === (_date.getFullYear())) {
           return true
         }

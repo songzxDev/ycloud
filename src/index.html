@@ -659,6 +659,21 @@
       </div>
     </div>
   </y-boxcontent>
+  <y-boxcontent>
+    <h1>18.可拖拽排序列表</h1>
+    <y-dragablelist params="name:'target',items: $root.sourceList">
+      <div>
+        <y-tag params="text: item.name"></y-tag>
+        <y-input></y-input>
+      </div>
+    </y-dragablelist>
+    <y-sortablelist params="name:'target',items:$root.sortableList, style:{display:'inline-block',padding: '10px', border: 'solid 1px red'}">
+      <div>
+        <y-tag params="text: item.name"></y-tag>
+        <y-input></y-input>
+      </div>
+    </y-sortablelist>
+  </y-boxcontent>
 </y-box>
 <script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
