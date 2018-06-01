@@ -1,0 +1,8 @@
+<div data-bind="foreach:items">
+  <div data-bind="style: $parent.style,
+  dragZone:{
+    name: $parent.name
+  }">
+    <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+  </div>
+</div>
