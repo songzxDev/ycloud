@@ -1,7 +1,7 @@
 <label class="y-checkbox-item" data-bind="css:{'y-checkbox-item-checked': checked() && checked() != 0 }">
   <span class="y-checkbox-item--inner-warpper">
     <span class="y-checkbox-item-inner">
-      <input type="checkbox" data-bind="event:{click:hanldeClick}">
+      <input type="checkbox" data-bind="event:{click:hanldeClick},attr:{disabled:disabled}">
     </span>
   </span>
   <span class="y-checkbox-label" data-bind="text:label"></span>
