@@ -432,7 +432,7 @@
       </div>
       <div class="col-md-12">
         <h4>dataTable 全选反选</h4>
-        <y-grid params="crossPageSelectedRows:$root.crossPageSelectedRows,lockcolumn:true, lockhead:true,isDataTable:true,columns:$root.allCheckCol,rows: $root.allCheckRows">
+        <y-grid params="scrollStyle: $root.scrollStyle,maxheight:'auto',verticalScroll:true,crossPageSelectedRows:$root.crossPageSelectedRows,lockcolumn:true, lockhead:true,isDataTable:true,columns:$root.allCheckCol,rows: $root.allCheckRows">
         </y-grid>
       </div>
       <div class="col-md-12">
@@ -661,13 +661,13 @@
   </y-boxcontent>
   <y-boxcontent>
     <h1>18.可拖拽排序列表</h1>
-    <y-dragablelist params="name:'target',items: $root.sourceList">
+    <y-dragablelist params="style:{display: 'inline-block'},name:'target',items: $root.sourceList">
       <div>
         <y-tag params="text: item.name"></y-tag>
         <y-input></y-input>
       </div>
     </y-dragablelist>
-    <y-sortablelist params="name:'target',items:$root.sortableList, style:{display:'inline-block',padding: '10px', border: 'solid 1px red'}">
+    <y-sortablelist params="dragEnter: $root.dragEnter,name:'target',items:$root.sortableList, style:{display:'inline-block',padding: '10px', border: 'solid 1px red'}">
       <div>
         <y-tag params="text: item.name"></y-tag>
         <y-input></y-input>
@@ -675,7 +675,7 @@
     </y-sortablelist>
   </y-boxcontent>
 </y-box>
-<script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
+<script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-debug.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
 <script src="https://yc.yonyoucloud.com/cpu-cdn/js/uui/iuap-design-3.1.23/js/u.js"></script>
 </body>

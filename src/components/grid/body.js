@@ -58,7 +58,7 @@ class Body extends Base {
     this.forbitRowSelect = params.forbitRowSelect || function () {}
     this.forbitRowSelectFn = params.forbitRowSelectFn || function () { return false }
     this.isShowLoading = params.isShowLoading
-    this.fixColumnTransform = params.fixColumnTransform
+    this.transform = params.transform
     this.headHeight = params.headHeight
     this.verticalAlign = params.verticalAlign
     this.lockColumnHeight = params.lockColumnHeight

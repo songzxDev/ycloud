@@ -6,6 +6,7 @@ function generateItem (items) {
   return ([].concat(items)).map((item) => {
     return {
       item: item,
+      dragged: item.dragged || ko.observable(true),
       dragging: ko.observable(false)
     }
   })
@@ -15,6 +16,7 @@ function init (params) {
   params.items.subscribe(items => {
     this.items(generateItem(items))
   })
+  this.style = params.style || {}
   this.name = params.name || ('dragable_' + Math.random())
 }
 export default {

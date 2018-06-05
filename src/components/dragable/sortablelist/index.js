@@ -6,6 +6,7 @@ function generateItem (items) {
   return ([].concat(items)).map((item) => {
     return {
       item: item,
+      dragged: item.dragged || ko.observable(true),
       dragging: ko.observable(false)
     }
   })
@@ -29,18 +30,22 @@ function init (params) {
   var that = this
   this.drop = () => {
     that.items().forEach(item => {
+      item.dragged && item.dragged(true)
       item.dragging && item.dragging(false)
     })
+    params.items(that.items().map(function (item) {
+      return item.item
+    }))
   }
   this.reorder = (event, dragData, zoneData) => {
     if (dragData !== zoneData.item) {
       var items = zoneData.items
       var zoneDataIndex = items.indexOf(zoneData.item)
       var dragIndex = items.indexOf(dragData)
+      dragData.dragging(true)
       if (dragIndex >= 0) {
         items.splice(dragIndex, 1)
       }
-      dragData.dragging(true)
       items.splice(zoneDataIndex, 0, dragData)
     }
   }

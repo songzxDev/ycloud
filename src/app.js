@@ -104,7 +104,24 @@ let viewmodel = {
     title: 'price',
     field: 'price',
     width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
+  }, {
+    title: 'price',
+    field: 'price',
+    width: 150
   }],
+  scrollStyle: ko.observable({}),
   allCheckRows: allCheckDt.rows,
   table: table,
   zeroId: ko.observable(),

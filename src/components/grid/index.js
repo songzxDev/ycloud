@@ -26,6 +26,7 @@ class Grid extends Base {
     this.isRowspanHead = !!params.columns1 && !!params.columns2
     this.headtransform = ko.observable('translateX(0)')
     this.fixColumnTransform = ko.observable('translateY(0)')
+    this.vertiacalScrollTransform = ko.observable('translateX(0)')
     this.lockRightWidth = 0
     this.fixRightHeadtransform = ko.observable('translateX(0)')
     this.fixRightTransform = ko.observable('translate(0,0)')
@@ -36,6 +37,9 @@ class Grid extends Base {
     this.minheight = params.minheight || 'auto'
     this.isStripe = params.isStripe || false
     this.expand = params.expand || true
+    // 是否启用自定义的transform
+    this.verticalScroll = params.verticalScroll || false
+    this.scrollStyle = params.scrollStyle || {}
     // 是否显示loading图标
     this.isShowLoading = ko.observable(false)
     // 是否隐藏表头
@@ -56,6 +60,7 @@ class Grid extends Base {
     this.scrollHeight = params.scrollHeight || '15px'
     this.pageSize = params.pageSize || ko.observable(PAGESIZE)
     this.pageIndex = params.pageIndex || ko.observable(PAGEINDEX)
+    this.pageSizeList = params.pageSizeList
     this.totalCount = params.totalCount || ko.observable(0)
     this.tdstyle = params.tdstyle || {}
     this.verticalAlign = params.verticalAlign || 'middle'
@@ -421,6 +426,9 @@ class Grid extends Base {
         let scrollTop = event.currentTarget.scrollTop
         this.headtransform('translateX(-' + scrollLeft + 'px)')
         this.fixColumnTransform('translateY(-' + scrollTop + 'px)')
+        if (this.verticalScroll) {
+          this.vertiacalScrollTransform('translateX(-' + scrollLeft + 'px)')
+        }
         this.fixRightTransform('translate(-' + this.lockRightWidth + 'px, -' + scrollTop + 'px)')
       }
     }
