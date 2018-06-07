@@ -4,6 +4,7 @@ var init = function (params) {
   this.multiple = params.multiple
   var data = params.data
   data._checked = ko.isObservable(data._checked) ? data._checked : ko.observable(!!data._checked)
+  data._expand = ko.isObservable(data._expand) ? data._expand : ko.observable(!!data._expand)
   this.data = ko.observable(data)
   this.extraEdit = params.extraEdit
   this.extraText = params.extraText
@@ -33,7 +34,7 @@ var init = function (params) {
       return this.selectedItem() && this.selectedItem().id === this.data().id
     }
   })
-  this.expanded = ko.observable(false)
+  this.expanded = data._expand || ko.observable(false)
   this.selectedId = params.selectedId
   // 多选场景下需要默认选中
   if (ko.isObservableArray(this.selectedId)) {
