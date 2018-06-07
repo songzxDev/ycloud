@@ -3,6 +3,7 @@ import Base from '../../core/base'
 import ko from 'knockout'
 class EditGrid extends Base {
   initialize (params) {
+    this.maxheight = params.maxheight || 'auto'
     this.isDataTable = params.isDataTable
     this.columns = params.columns
     // 保证表头和标题的_show绑定到同一个ko对象

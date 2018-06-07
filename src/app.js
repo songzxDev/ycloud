@@ -1528,12 +1528,7 @@ let viewmodel = {
     title: 'lockhead',
     field: 'name'
   }],
-  lockheadRows: ko.observableArray([
-    {name: '第一列'}, {name: '第一列'}, {name: '第0列'}, {name: '第一列'}, {name: '第一列'},
-    {name: '第一列'}, {name: '第一列'}, {name: '第2列'}, {name: '第一列'}, {name: '第一列'},
-    {name: '第一列'}, {name: '第一列'}, {name: '第4列'}, {name: '第一列'}, {name: '第一列'},
-    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'}
-  ]),
+  lockheadRows: ko.observableArray(),
   rowstatusrowOld: dtRowStatus.rows,
   rowstatusrow: ko.computed(function () {
     return dtRowStatus.rows().filter(function (row) {
@@ -1946,9 +1941,34 @@ setTimeout(() => {
   viewmodel.rowspanrowstest(rowspantestdata)
 }, 1000)
 setTimeout(function () {
+  viewmodel.lockheadRows([
+    {name: '第一列'}, {name: '第一列'}, {name: '第0列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第2列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第4列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第2列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第1列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'},
+    {name: '第一列'}, {name: '第一列'}, {name: '第6列'}, {name: '第一列'}, {name: '第一列'}
+  ])
   ycloud.$refs['lockright'].setColVisibleByField('age', false)
   viewmodel.rowspanrows(rowspanrowsdata.filter(function (item) {return item.field6 !== 'F5'}))
-}, 3000)
+}, 500)
 // 打印每次单选的内容
 viewmodel.singleselect.subscribe(function (item) {
   console.log('单选：')
