@@ -434,12 +434,12 @@ let viewmodel = {
     viewmodel.modalVisible(true)
   },
   treeData: ko.observable([{
-    id: 1, name: '北京总公司', children: [
+    id: 1, name: '北京总公司', _expand: true, children: [
       {
         id: 2, name: '上海分公司', children: []
       },
       {
-        id: 3, name: '福建分公司', children: [
+        id: 3, name: '福建分公司', _expand: true, children: [
           {
             id: 4, name: '福州分公司', children: []
           },

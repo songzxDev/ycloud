@@ -10,7 +10,7 @@ var init = function (params) {
   this.extraText = params.extraText
   this.loadData = params.loadData
   this.selectedItem = params.selectedItem
-  this.loaded = ko.observable(params.loadData === undefined)
+  this.loaded = ko.observable(params.loadData === undefined || data._expand.peek())
   this.isLoading = ko.observable(false)
   this.isShowExpanIcon = ko.computed(() => {
     // 如果children有值休闲室
