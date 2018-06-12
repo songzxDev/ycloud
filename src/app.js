@@ -467,8 +467,21 @@ let viewmodel = {
     return false
   },
   treeSelectedData: ko.observable(''),
-  onTreeSelect: function (data) {
-    viewmodel.treeSelectedData(JSON.stringify(data))
+  onTreeSelect: async function (data) {
+    debugger
+    var _data = await viewmodel.asyncTreeloadData(data)
+    debugger
+    viewmodel.treeSelectedData(JSON.stringify(_data))
+    return false
+  },
+  asyncTreeloadData: async function (_data) {
+    var data = await new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve(1)
+      }, 2000)
+    })
+    debugger
+    return _data
   },
   treeSelectedData2: ko.observableArray(),
   onTreeMultiSelect: function (data) {
@@ -824,6 +837,42 @@ let viewmodel = {
     title: 'id',
     field: 'id',
     type: 'checkbox'
+  }, {
+    title: '单价+',
+    field: 'id',
+    type: 'component',
+    compFn (row) {
+      return {
+        name: 'y-grid-merge-td',
+        params: {
+          dataList: [
+            {
+              field: 'price'
+            }, {
+              field: 'num',
+              type: 'render',
+              renderFn () {
+                var html = '<div>数量：' + row.getValue('num') + '</div>'
+                return html
+              }
+            }, {
+              field: 'id',
+              type: 'component',
+              compFn () {
+                return {
+                  name: 'y-input',
+                  params: {
+                    value: row.ref('price'),
+                    placeholder: '你好世界'
+                  }
+                }
+              }
+            }
+          ],
+          row: row
+        }
+      }
+    }
   }, {
     title: function () {
       return viewmodel.columnsname
