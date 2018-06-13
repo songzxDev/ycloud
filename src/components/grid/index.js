@@ -106,7 +106,7 @@ class Grid extends Base {
       } else {
         return []
       }
-    })
+    }).extend({defered: true})
     this.rows = ko.computed(() => {
       params.rows().forEach((row, index) => {
         // 减轻重复赋值的压力
@@ -153,6 +153,8 @@ class Grid extends Base {
             // 初始化选中状态
             if (that.crossPageSelectedIds().indexOf(row[that.crossPageRowPrimaryKey]) >= 0) {
               row._selected(true)
+            } else {
+              row._selected(false)
             }
           }
           row._selected.subscribe(function (val) {
@@ -404,6 +406,17 @@ class Grid extends Base {
     this.columns.subscribe(val => {
       if (this.lockright) {
         this.recomputedLockRight()
+      }
+    })
+    this.crossPageSelectedIds.subscribe(ids => {
+      if (this.isDataTable) {
+        this.rows.peek().forEach(row => {
+          if (ids.indexOf(row.getValue(this.crossPageRowPrimaryKey)) > -1) {
+            row.parent.addRowSelect(row)
+          } else {
+            row.parent.setRowUnSelect(row)
+          }
+        })
       }
     })
   }
