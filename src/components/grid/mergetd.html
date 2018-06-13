@@ -1,17 +1,15 @@
-<div class="y-cell">
-  <div data-bind="foreach: {data: dataList, as: 'col'}">
-    <!-- ko if: col.type -->
-      <!-- ko if: col.type == 'render' -->
-        <div class="text-left" data-bind="html: col.renderFn(row),style:col.style">
-        </div>
-      <!-- /ko -->
-      <!-- ko if: col.type == 'component' -->
-        <div class="text-left" data-bind="component: col.compFn(row),style:col.style">
-        </div>
-      <!-- /ko -->
+<div data-bind="foreach: {data: dataList, as: 'col'}">
+  <!-- ko if: col.type -->
+    <!-- ko if: col.type == 'render' -->
+      <div class="text-left" data-bind="html: col.renderFn(row),style:col.style">
+      </div>
     <!-- /ko -->
-    <!-- ko ifnot: col.type -->
-      <div class="text-left" data-bind="text: $parent.defaultFormatText($parent.row, col)"></div>
+    <!-- ko if: col.type == 'component' -->
+      <div class="text-left" data-bind="component: col.compFn(row),style:col.style">
+      </div>
     <!-- /ko -->
-  </div>
+  <!-- /ko -->
+  <!-- ko ifnot: col.type -->
+    <div class="text-left" data-bind="text: $parent.defaultFormatText($parent.row, col)"></div>
+  <!-- /ko -->
 </div>

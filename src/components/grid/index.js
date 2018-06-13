@@ -3,6 +3,7 @@ import ko from 'knockout'
 import head from './head'
 import body from './body'
 import megertd from './mergetd'
+import operation from './operation'
 import Base from '../../core/base'
 import _ from '../../util/lodash'
 const PREFIX = 'y-'
@@ -17,6 +18,10 @@ ko.components.register(PREFIX + body.name, {
 ko.components.register(PREFIX + megertd.name, {
   viewModel: megertd.init,
   template: megertd.template
+})
+ko.components.register(PREFIX + operation.name, {
+  viewModel: operation.init,
+  template: operation.template
 })
 const PAGESIZE = 10
 const PAGEINDEX = 0
