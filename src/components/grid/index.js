@@ -318,7 +318,7 @@ class Grid extends Base {
     })
     // 只有表格数据大于10条才显示分页
     this.isShowPagination = ko.computed(() => {
-      return params.pagination && this.totalCount() > 10
+      return params.pagination && this.totalCount() > this.pageSize()
     })
     // 表格的宽度
     this.tableWidth = ko.computed(() => {
