@@ -1,6 +1,6 @@
 /*
-* 参考 https://github.com/garand/sticky/blob/master/jquery.sticky.js实现
-* */
+ * 参考 https://github.com/garand/sticky/blob/master/jquery.sticky.js实现
+ * */
 import $ from 'jquery'
 import template from './index.html'
 import Base from '@/core/base'
@@ -49,6 +49,11 @@ class Boxsticky extends Base {
   methods (params) {
     var anchor = null
     var anchorlist = []
+    var cachedOffsetTop = {}
+    var cachedHeight = 0
+    var outerHeight = 0
+    var wrapperOuterHeight = 0
+    var outterOffsetTop = 0
     this.scroller = function () {
       // 如果不存在元素
       if (!anchor) {
@@ -57,31 +62,38 @@ class Boxsticky extends Base {
           anchorlist.push($(this).attr('href'))
         })
       }
+      let documentHeight = $(document).height()
+      let scrollTop = $(window).scrollTop()
+      let windowHeight = $(window).height()
       // 至于滚轮滚动的时候才会触发 鼠标点击上面不会触发
       if (window.isRecomputeActiveAnchor) {
         anchorlist.forEach(function (item) {
-          let pos = $(item).offset().top - $(document).scrollTop()
+          if (documentHeight !== cachedHeight) {
+            cachedOffsetTop[item] = $(item).offset().top
+          }
+          let pos = cachedOffsetTop[item] - scrollTop
           // 确保滚轮滚动时 会定位到相应的选项
-          if (pos - $(window).height() / 2 < 50) {
-            if (!($('.sticky-anchor[href="' + item + '"]').hasClass('active'))) {
+          if (pos - windowHeight / 2 < 50) {
+            var anchorItem = $('.sticky-anchor[href="' + item + '"]')
+            if (!(anchorItem.hasClass('active'))) {
               $('.sticky-anchor').removeClass('active')
-              $('.sticky-anchor[href="' + item + '"]').addClass('active')
+              anchorItem.addClass('active')
             }
           }
         })
+        cachedHeight = documentHeight
+      }
+      if (!outerHeight) {
+        outerHeight = o.stickyElement.outerHeight()
       }
       // update height in case of dynamic content
-      o.stickyWrapper.css('height', o.stickyElement.outerHeight())
-      let scrollTop = $(window).scrollTop()
-      let documentHeight = $(document).height()
-      let windowHeight = $(window).height()
+      o.stickyWrapper.css('height', outerHeight)
+
       let dwh = documentHeight - windowHeight
       let extra = (scrollTop > dwh) ? dwh - scrollTop : 0
-
-      let elementTop = o.stickyWrapper.offset().top
+      let elementTop = wrapperOuterHeight || o.stickyWrapper.offset().top
+      wrapperOuterHeight = elementTop
       let etse = elementTop - o.topSpacing - extra
-
-      o.stickyWrapper.css('height', o.stickyElement.outerHeight())
       if (scrollTop <= etse) {
         if (o.currentTop !== null) {
           o.stickyElement
@@ -95,7 +107,7 @@ class Boxsticky extends Base {
           o.currentTop = null
         }
       } else {
-        var newTop = documentHeight - o.stickyElement.outerHeight() - o.topSpacing - o.bottomSpacing - scrollTop - extra
+        var newTop = documentHeight - outerHeight - o.topSpacing - o.bottomSpacing - scrollTop - extra
         if (newTop < 0) {
           newTop = newTop + o.topSpacing
         } else {
@@ -118,20 +130,25 @@ class Boxsticky extends Base {
 
         // Check if sticky has reached end of container and stop sticking
         var stickyWrapperContainer = o.stickyWrapper.parent()
-        var unstick = (o.stickyElement.offset().top + o.stickyElement.outerHeight() >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight()) && (o.stickyElement.offset().top <= o.topSpacing)
-
+        var _innerOffsetTop = o.stickyElement.offset().top
+        var _outterOffsetTop = outterOffsetTop || stickyWrapperContainer.offset().top
+        outterOffsetTop = _outterOffsetTop
+        var unstick = (_innerOffsetTop + outerHeight >= _outterOffsetTop + stickyWrapperContainer.outerHeight()) && (_innerOffsetTop <= o.topSpacing)
         if (unstick) {
           o.stickyElement
-            .css('position', 'absolute')
-            .css('top', '')
-            .css('bottom', 0)
-            .css('z-index', '')
+            .css({
+              'position': 'absolute',
+              'top': '',
+              'bottom': 0,
+              'z-index': ''
+            })
         } else {
-          o.stickyElement
-            .css('position', 'fixed')
-            .css('top', newTop)
-            .css('bottom', '')
-            .css('z-index', o.zIndex)
+          o.stickyElement.css({
+            'position': 'fixed',
+            'top': newTop,
+            'bottom': '',
+            'z-index': o.zIndex
+          })
         }
       }
     }
