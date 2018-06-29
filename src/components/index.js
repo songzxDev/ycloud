@@ -82,4 +82,8 @@ let ycloud = {
   notice,
   $refs
 }
+// 3.5.0-rc版本开始 breaking change,所以ycloud要适配老版本的代码需要添加参数
+if (ko.options && ko.options.createChildContextWithAs !== undefined) {
+  ko.options.createChildContextWithAs = true
+}
 export default ycloud

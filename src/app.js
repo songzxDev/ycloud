@@ -1607,7 +1607,7 @@ let viewmodel = {
 
       }
     }, {
-      title: 'sortable2',
+      title: function () { return '<div style="display: inline-block" title="test">sortable3</div>'},
       field: 'name',
       sort: true,
       sortFn: function (flag) {
@@ -2341,4 +2341,24 @@ allCheckDt.setSimpleData([{
   id: 1, name: '2', price: 3
 }])
 window.vm = viewmodel
+var result2 = []
+for (var i = 0; i < 10; i++) {
+  result2.push({
+    materialName: '硫酸钾',
+    num: 2000,
+    unit: '吨',
+    reqOrg: '广东那方是你优先公司',
+    spec: 'XLLL 1号 #UIO 型号，历史采购档次一致',
+    product: '',
+    taxrate: 17,
+    price: 200.00,
+    amount: 400000.00,
+    reqDate: ko.observable(''),
+    holdDate: ko.observable(''),
+    remark: ''
+  })
+}
+setTimeout(function () {
+  viewmodel.editgridrows(result2)
+}, 10000)
 
