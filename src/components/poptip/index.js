@@ -68,6 +68,8 @@ class Poptip extends Base {
             }
           }
         )
+      } else {
+        this.myPopper && this.myPopper.update()
       }
     })
   }
