@@ -72,15 +72,15 @@ class Body extends Base {
       if (!params.isLockLeft) {
         var lockColumnHeight = that.computedLockColumnHeight()
         if (!lockColumnHeight[data.rowIndex]) {
-        setTimeout(function () {
-          var height = elements.filter(function (el) {
-            return el.nodeName === 'TR'
-          })[0].offsetHeight
-          if (height > 0) {
-            lockColumnHeight[data.rowIndex] = height + 'px'
-            that.computedLockColumnHeight(lockColumnHeight)
-          }
-        })
+          setTimeout(function () {
+            var height = elements.filter(function (el) {
+              return el.nodeName === 'TR'
+            })[0].offsetHeight
+            if (height > 0) {
+              lockColumnHeight[data.rowIndex] = height + 'px'
+              that.computedLockColumnHeight(lockColumnHeight)
+            }
+          })
         }
       }
     }
