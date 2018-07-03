@@ -51,7 +51,6 @@ function init (params) {
       // 异步校验
       if (this.asyncValidateFn) {
         this.asyncValidateFn().then((flag) => {
-          debugger
           if (flag) {
             this.errormsg('')
             this.visible(false)

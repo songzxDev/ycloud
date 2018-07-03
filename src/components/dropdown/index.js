@@ -63,7 +63,6 @@ function _init (params, el) {
       style.overflow = params.overflow
     }
     if (this.top()) {
-      debugger
       style.top = this.top() + Number(this.topAdjust) + 'px'
       style.left = this.left() + 'px'
       style.position = 'fixed'

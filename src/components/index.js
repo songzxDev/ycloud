@@ -18,6 +18,7 @@ import formview from './formview'
 import grid from './grid'
 import editgrid from './gridedit'
 import childgrid from './gridchild'
+import basicgrid from './gridbasic'
 import icon from './icon'
 import input from './input'
 import modal from './modal'
@@ -66,6 +67,7 @@ register(pagination)
 register(grid)
 register(editgrid)
 register(childgrid)
+register(basicgrid)
 register(input)
 register(datepicker)
 register(datetimepicker)

@@ -31,12 +31,11 @@ class Showdetail extends Base {
   }
   methods (params) {
     this.computedVisible = () => {
-      setTimeout(() => {
+      ko.tasks.schedule(function () {
         var el = this.$el
-        var scrollWidth = el.children[0].children[0].scrollWidth
-        var offsetWidth = el.children[0].children[0].offsetWidth
-
         if (!this.multiple) {
+          var scrollWidth = el.children[0].children[0].scrollWidth
+          var offsetWidth = el.children[0].children[0].offsetWidth
           // 有隐藏
           if (scrollWidth > offsetWidth) {
             this.visible(true)
@@ -52,7 +51,7 @@ class Showdetail extends Base {
             this.visible(false)
           }
         }
-      })
+      }.bind(this))
     }
   }
   created (params) {

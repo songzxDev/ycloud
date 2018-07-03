@@ -2027,6 +2027,62 @@ viewmodel.multiselect.subscribe(function (items) {
   console.log('多选：')
   console.log(items)
 })
+viewmodel.gridLazy = {
+  lazyStart: ko.observable(0),
+  lazyEnd: ko.observable(10)
+}
+var datas = []
+for (var i = 0; i < 100; i++) {
+  datas.push({
+    a: i,
+    b: 'b',
+    c: 'c'
+  })
+}
+viewmodel.lazyRows = ko.observableArray(datas)
+var lazyGrid = null
+setTimeout(function () {
+  lazyGrid = ycloud.$refs['lazygrid']
+}, 2000)
+
+viewmodel.lazyScroll = function (event, scrollTop,  scrollLeft) {
+  var index = lazyGrid.getFitIndexByScrollTop(scrollTop)
+  var curIndex = Math.round(datas.length * scrollTop / 4442)
+  if (index == -1) {
+    index = curIndex
+  }
+  viewmodel.gridLazy.lazyStart(index - 10 < 80 ? index - 10 : 80)
+  viewmodel.gridLazy.lazyEnd(index + 10 > datas.length ? datas.length : index + 10)
+  console.log('start: ' + (index - 10) + ', end:' +(index + 10))
+}
+viewmodel.lazyColumns = [
+  {
+    title: 'a',
+    field: 'a',
+    width: 200,
+    lock: true
+  },
+  {
+    title: 'b',
+    field: 'b',
+    width: 100,
+    type: 'render',
+    renderFn: function (row) {
+      if (row.a % 7 == 0) {
+        return '<div>1</div><div>2</div><div>3</div><div>5</div>'
+      } else if (row.a.toString().split('').indexOf('3') >= 0) {
+        return '<div>5</div><div>2</div><div>3</div><div>5</div><div>5</div><div>5</div>'
+      } else {
+        return '12,3,4'
+      }
+    }
+  },
+  {
+    title: 'c',
+    field: 'c',
+    width: 400,
+  }
+]
 window.vm = viewmodel
 window.clickme = function clickme (event) {
   console.log(event)
@@ -2318,27 +2374,27 @@ viewmodel.validateMap = ko.computed(function () {
 allCheckDt.setSimpleData([{
   id: 1, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 2, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 3, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 4, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 5, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 6, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 7, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 8, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 9, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 10, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 11, name: '2', price: 3
 }, {
-  id: 1, name: '2', price: 3
+  id: 12, name: '2', price: 3
 }])
 window.vm = viewmodel
 var result2 = []

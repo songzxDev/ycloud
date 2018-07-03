@@ -10,13 +10,13 @@ exports[`y-grid组件 快照 1`] = `
   
       <div
         class="y-grid-wrapper"
-        data-bind="css: {'y-grid-noborder':noborder, 'y-grid-separate': isSeparate},style:style"
+        data-bind="css: {'y-grid-noborder':noborder, 'y-grid-separate': isSeparate, 'y-hasCollapseToolbar': lockright},style:style"
       >
         
     
         <div
           class="y-grid y-grid-stripe"
-          data-bind="event:{scroll:handleScroll},css:{'y-grid-stripe':isStripe,'y-grid-border': isTableBorder},style:{height:computedMaxHeight,minHeight:minheight}"
+          data-bind="event:{scroll:handleScroll},css:{'y-grid-stripe':isStripe, 'y-grid-verticalScroll':verticalScroll,'y-grid-border': isTableBorder},style:{height:computedMaxHeight,minHeight:minheight}"
           style="height: 486px; min-height: auto;"
         >
           
@@ -28,7 +28,7 @@ exports[`y-grid组件 快照 1`] = `
           
       
           <y-grid-body
-            params="forbitRowSelectFn:forbitRowSelectFn,caculateColumns:caculateColumns,hasChildGrid:hasChildGrid,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,isEnableCrossPage:isEnableCrossPage,crossPageRowPrimaryKey:crossPageRowPrimaryKey,crossPageSelectedRows:crossPageSelectedRows,isShowLoading:isShowLoading,forbitRowSelect:forbitRowSelect,isSeparate:isSeparate,tdstyle: tdstyle, lockhead:lockhead,isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect"
+            params="transform:vertiacalScrollTransform,lockColumnHeight:lockColumnHeight,forbitRowSelectFn:forbitRowSelectFn,caculateColumns:caculateColumns,hasChildGrid:hasChildGrid,verticalAlign:verticalAlign,hasSummaryRow:hasSummaryRow,headHeight:headHeight,isEnableCrossPage:isEnableCrossPage,crossPageRowPrimaryKey:crossPageRowPrimaryKey,crossPageSelectedRows:crossPageSelectedRows,isShowLoading:isShowLoading,forbitRowSelect:forbitRowSelect,isSeparate:isSeparate,tdstyle: tdstyle, lockhead:lockhead,isNoDataCustomTpl: hasMarkup,defaultExpand:defaultExpand,tableWidth:tableWidth,rowspan:rowspan,domId:domId,expand:expand,maxheight:computedMaxHeight, isDataTable:isDataTable, columns:columns, rows:rows, onRowSelect:onRowSelect"
           >
             
         
@@ -39,11 +39,15 @@ exports[`y-grid组件 快照 1`] = `
           </y-grid-body>
           
       
-          <!-- ko if:lockcolumn && rows().length &gt; 0-->
+          <!-- ko if:lockcolumn-->
           <!-- /ko -->
           
       
-          <!-- ko if:lockright && rows().length &gt; 0-->
+          <!-- ko if:lockright-->
+          <!-- /ko -->
+          
+      
+          <!-- ko if: verticalScroll -->
           <!-- /ko -->
           
     

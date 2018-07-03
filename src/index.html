@@ -359,29 +359,29 @@
     <div class="row">
       <div class="col-md-12">
         <h4>rowspan + fixcolumns + 动态添加行</h4>
-        <y-grid params="rows: $root.rfRows, columns: $root.rfColumns, rowspan:{maxCol: 1},lockcolumn:true">
+        <y-basicgrid params="rows: $root.rfRows, columns: $root.rfColumns, rowspan:{maxCol: 1},lockcolumn:true">
 
-        </y-grid>
+        </y-basicgrid>
       </div>
       <div class="col-md-12">
         <y-grid params="rows:$root.caculateRows, columns: $root.caculateMainColumns, caculateColumns: $root.caculateColumns">
         </y-grid>
       </div>
       <div class="col-md-12">
-        <y-grid params="isStripe:true,rowspan:{maxCol: 3},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrowstest">
-        </y-grid>
+        <y-basicgrid params="isStripe:true,rowspan:{maxCol: 3},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrowstest">
+        </y-basicgrid>
       </div>
       <div class="col-md-6">
         <h4>datatable，动态计算</h4>
-        <y-grid params="forbitRowSelectFn:$root.forbitRowSelectFn,ref:'loadingGrid',isDataTable: true,columns:$root.ComputeColumns,rows: $root.ComputeRows"></y-grid>
+        <y-basicgrid params="forbitRowSelectFn:$root.forbitRowSelectFn,ref:'loadingGrid',isDataTable: true,columns:$root.ComputeColumns,rows: $root.ComputeRows"></y-basicgrid>
       </div>
       <div class="col-md-6">
         <h4>普通ko对象，每个属性也是ko对象，为了支持可编辑</h4>
-         <y-grid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-grid>
+         <y-basicgrid params="isStripe: true,columns:$root.columns,rows: $root.rows"></y-basicgrid>
       </div>
       <div class="col-md-6">
         <h4>普通ko对象，由普通json对象set获得，不支持可编辑</h4>
-        <y-grid params="onSizeChange:$root.onSizeChange,onPageChange: $root.onPageChange,columns:$root.pureColumns,rows: $root.pureRows,maxheight:'auto',pagination:true,totalCount: $root.totalCount"></y-grid>
+        <y-basicgrid params="onSizeChange:$root.onSizeChange,onPageChange: $root.onPageChange,columns:$root.pureColumns,rows: $root.pureRows,maxheight:'auto',pagination:true,totalCount: $root.totalCount"></y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>datatable + 复杂主子表</h4>
@@ -400,19 +400,19 @@
       </div>
       <div class="col-md-12">
         <h4>rowspan datatable</h4>
-        <y-grid params="isStripe:true,rowspan:{maxCol: 2},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrows">
+        <y-basicgrid params="isStripe:true,rowspan:{maxCol: 2},id:'rowspantable',columns:$root.rowspancol,rows: $root.rowspanrows">
 
-        </y-grid>
+        </y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>横向滚动条 datatable 需固定每一列的宽度</h4>
-        <y-grid params="isStripe:true,columns:$root.scrollColumn,rows: $root.scrollRows">
+        <y-basicgrid params="isStripe:true,columns:$root.scrollColumn,rows: $root.scrollRows">
 
-        </y-grid>
+        </y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>datatable无表头</h4>
-        <y-grid params="nohead:true, columns:$root.noheadCols,rows: $root.noheadRows"></y-grid>
+        <y-basicgrid params="nohead:true, columns:$root.noheadCols,rows: $root.noheadRows"></y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>datatable无数据内容自定义</h4>
@@ -424,30 +424,30 @@
       </div>
       <div class="col-md-12">
         <h4>锁定表头</h4>
-        <y-grid params="lockhead:true,columns:$root.lockheadCols,rows: $root.lockheadRows">
+        <y-basicgrid params="lockhead:true,columns:$root.lockheadCols,rows: $root.lockheadRows">
           <div>
             <y-button params="click: $root.handleSupplyApply">邀请供应商</y-button>
           </div>
-        </y-grid>
+        </y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>dataTable 全选反选</h4>
-        <y-grid params="scrollStyle: $root.scrollStyle,maxheight:'auto',verticalScroll:true,crossPageSelectedRows:$root.crossPageSelectedRows,lockcolumn:true, lockhead:true,isDataTable:true,columns:$root.allCheckCol,rows: $root.allCheckRows">
-        </y-grid>
+        <y-basicgrid params="scrollStyle: $root.scrollStyle,maxheight:'auto',verticalScroll:true,crossPageSelectedRows:$root.crossPageSelectedRows,lockcolumn:true, lockhead:true,isDataTable:true,columns:$root.allCheckCol,rows: $root.allCheckRows">
+        </y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>支持表头可排序自定义方法</h4>
-        <y-grid params="rows: $root.sortableRows, columns: $root.sortableColumns"></y-grid>
+        <y-basicgrid params="rows: $root.sortableRows, columns: $root.sortableColumns"></y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>跨页选择-datatable</h4>
         <y-button params="click:$root.handleCrossRows">获取已选择跨页数据</y-button>
-        <y-grid params="ref:'crossPageDt',maxheight:'auto',isDataTable:true,crossPageSelectedRows:$root.crossPageSelectedRows,pagination:true,totalCount: ko.observable(100),onPageChange:$root.crossPageChange,columns:$root.pureColumns,rows: $root.crossRows">
-        </y-grid>
+        <y-basicgrid params="ref:'crossPageDt',maxheight:'auto',isDataTable:true,crossPageSelectedRows:$root.crossPageSelectedRows,pagination:true,totalCount: ko.observable(100),onPageChange:$root.crossPageChange,columns:$root.pureColumns,rows: $root.crossRows">
+        </y-basicgrid>
         <h4>跨页选择-ko observerbleArray</h4>
         <y-button params="click:$root.handleCrossRows2">获取已选择跨页数据</y-button>
-        <y-grid params="maxheight:'auto',crossPageSelectedRows:$root.crossPageSelectedRows2,pagination:true,totalCount: ko.observable(100),onPageChange:$root.crossPageChange,columns:$root.pureColumns,rows: $root.crossKoRows">
-        </y-grid>
+        <y-basicgrid params="maxheight:'auto',crossPageSelectedRows:$root.crossPageSelectedRows2,pagination:true,totalCount: ko.observable(100),onPageChange:$root.crossPageChange,columns:$root.pureColumns,rows: $root.crossKoRows">
+        </y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>expand-true</h4>
@@ -455,7 +455,7 @@
       </div>
       <div class="col-md-12">
         <h4>lockhead+verticalscroll</h4>
-        <y-grid params="columns: [
+        <y-basicgrid params="columns: [
           {
             title: 'col1',
             width: 400,
@@ -474,21 +474,21 @@
             field: 'name'
           }
         ], rows: ko.observableArray([{name:'ttt'},{name:'ttt2'},{name:'ttt2'},
-        {name:'ttt2'},{name:'ttt2'},{name:'ttt2'},{name:'ttt2'}]), lockhead:true, maxheight:'200px'"></y-grid>
+        {name:'ttt2'},{name:'ttt2'},{name:'ttt2'},{name:'ttt2'}]), lockhead:true, maxheight:'200px'"></y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>head rowspan</h4>
-        <y-grid params="ref:'headrowpsantable',rowspan:{maxCol:2},headHeight:'90px',lockcolumn:true,isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">
+        <y-basicgrid params="ref:'headrowpsantable',rowspan:{maxCol:2},headHeight:'90px',lockcolumn:true,isTableBorder:true,columns1: $root.columnsrowspan1,columns2:$root.columnsrowspan2, rows: $root.headRowspanRows">
 
-        </y-grid>
+        </y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>grid 设置rowstatus字段</h4>
-        <y-grid params="ref:'rowstatusDt',isDataTable:true,rows: $root.rowstatusrow,columns: $root.rowstatuscol"></y-grid>
+        <y-basicgrid params="ref:'rowstatusDt',isDataTable:true,rows: $root.rowstatusrow,columns: $root.rowstatuscol"></y-basicgrid>
       </div>
       <div class="col-md-12">
         <h4>锁定列</h4>
-        <y-grid params="id:'tttxxxx2',ref:'lockright',lockright:true,rows: $root.lockcolrows, columns: $root.lockcolcolumns, lockcolumn: true"></y-grid>
+        <y-basicgrid params="id:'tttxxxx2',ref:'lockright',lockright:true,rows: $root.lockcolrows, columns: $root.lockcolcolumns, lockcolumn: true"></y-basicgrid>
       </div>
     </div>
     <h1>13.2 复杂可编辑表格</h1>
@@ -502,9 +502,9 @@
       <y-childgrid params="totalCount:ko.observable(100),pagination:true,rows: $root.childgridrows, columns:$root.childgridcolumns"></y-childgrid>
     </div>
     <h1>13.3 复杂y-select + y-grid 校验规则</h1>
-    <y-grid params="rows: $root.validateRows, columns:$root.validateColumns,isDataTable:true">
+    <y-basicgrid params="rows: $root.validateRows, columns:$root.validateColumns,isDataTable:true">
 
-    </y-grid>
+    </y-basicgrid>
   </y-boxcontent>
 
   <y-boxcontent>
@@ -673,10 +673,14 @@
         <y-input></y-input>
       </div>
     </y-sortablelist>
+    <h1>19.lazygrid</h1>
+    <y-basicgrid params="ref:'lazygrid',lockcolumn: true,lockhead:true,handleScroll:$root.lazyScroll,lazy: $root.gridLazy, rows: $root.lazyRows, columns: $root.lazyColumns">
+
+    </y-basicgrid>
   </y-boxcontent>
 </y-box>
-<!--<script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-debug.js"></script>-->
-<script src="http://yc.yonyou.com/cpu-cdn/js/knockout/knockout-3.5.0-rc.min.js"></script>
+<script src="https://cdn.bootcss.com/knockout/3.4.2/knockout-debug.js"></script>
+<!--<script src="http://yc.yonyou.com/cpu-cdn/js/knockout/knockout-3.5.0-rc.min.js"></script>-->
 <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
 <script src="https://yc.yonyoucloud.com/cpu-cdn/js/uui/iuap-design-3.1.23/js/u.js"></script>
 </body>
