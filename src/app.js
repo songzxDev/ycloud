@@ -2417,4 +2417,3 @@ for (var i = 0; i < 10; i++) {
 setTimeout(function () {
   viewmodel.editgridrows(result2)
 }, 10000)
-

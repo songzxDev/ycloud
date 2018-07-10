@@ -13,6 +13,7 @@ function init (params) {
   this.height = params.height || 'auto'
   this.minHeight = params.minHeight || '0'
   this.loadData = params.loadData
+  this.nameField = params.nameField
   this.extraEdit = params.extraEdit
   this.extraText = params.extraText
   this.multiple = params.multiple || false

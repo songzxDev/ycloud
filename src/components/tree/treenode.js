@@ -6,6 +6,7 @@ var init = function (params) {
   data._checked = ko.isObservable(data._checked) ? data._checked : ko.observable(!!data._checked)
   data._expand = ko.isObservable(data._expand) ? data._expand : ko.observable(!!data._expand)
   this.data = ko.observable(data)
+  this.nameField = (params.nameField && params.nameField != '') ? params.nameField : 'name'
   this.extraEdit = params.extraEdit
   this.extraText = params.extraText
   this.loadData = params.loadData

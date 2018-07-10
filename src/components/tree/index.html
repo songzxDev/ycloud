@@ -1,6 +1,16 @@
-<div class="y-tree" data-bind="style: {height:height, minHeight: minHeight},let: {selectedId:selectedId, multiple:multiple}">
-  <ul data-bind="foreach: {data:data, as:'item'}">
-    <y-treenode params="extraText: $parent.extraText, extraEdit: $parent.extraEdit, selectedId:selectedId, multiple: multiple,data: item, loadData: $parent.loadData, selectedItem: $parent.selectedItem">
+<div class="y-tree" data-bind="
+  style: {height: height, minHeight: minHeight},
+  let: {selectedId: selectedId, multiple: multiple}">
+  <ul data-bind="foreach: {data: data, as: 'item'}">
+    <y-treenode params="
+      extraText: $parent.extraText,
+      extraEdit: $parent.extraEdit,
+      selectedId: selectedId,
+      multiple: multiple,
+      data: item,
+      nameField: $parent.nameField,
+      loadData: $parent.loadData,
+      selectedItem: $parent.selectedItem">
     </y-treenode>
   </ul>
 </div>
