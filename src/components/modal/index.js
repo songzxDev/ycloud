@@ -35,8 +35,8 @@ function init (params) {
   // 时间
   this.handleCancel = () => {
     this.visible(false)
-    if (params.handleCancel) {
-      params.handleCancel()
+    if (params.onCancel) {
+      params.onCancel()
     }
   }
   this.handleClear = function (data, event) {
