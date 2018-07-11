@@ -451,8 +451,13 @@ let viewmodel = {
     ]
   }]),
   modalVisible: ko.observable(false),
-  asyncOk: function () {
-    debugger
+  asyncOk: async function () {
+    var data = await new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve(1)
+      }, 2000)
+    })
+    return true
   },
   validateFn: function () {
     return false
