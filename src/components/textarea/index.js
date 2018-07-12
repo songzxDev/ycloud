@@ -14,7 +14,7 @@ class Textarea extends Base {
   }
   methods (params) {
     this.onInput = (a, b) => {
-      if (this.autoHeightChange === 'true') {
+      if (this.autoHeightChange) {
         var el = b.target
         el.style.height = 'auto'
         el.style.height = el.scrollHeight + 'px'
