@@ -1457,6 +1457,8 @@ let viewmodel = {
       }
     }
   ],
+  textareaDisabled:ko.observable(false),
+  textareaText:ko.observable('文本框'),
   checkboxkey: ko.observableArray(),
   radiokey: ko.observable(),
   asyncTreeData: ko.observableArray([]),

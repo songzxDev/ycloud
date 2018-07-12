@@ -36,6 +36,7 @@ import showdetail from './showdetail'
 import poptip from './poptip'
 import sortablelist from './dragable/sortablelist'
 import dragablelist from './dragable/dragablelist'
+import textarea from './textarea'
 import './konewfeature'
 const PREFIX = 'y-'
 function register (model) {
@@ -80,6 +81,7 @@ register(formview)
 register(poptip)
 register(sortablelist)
 register(dragablelist)
+register(textarea)
 let ycloud = {
   notice,
   $refs
