@@ -1,15 +1,5 @@
 <div class="y-textarea-ctn">
-    <!-- ko if: isHasForm -->
-     <form data-bind="submit:handleSubmit">
-        <textarea autocomplete="off" wrap="soft" class="y-textarea" 
-        data-bind="attr:{maxlength:maxlength,rows:rows,placeholder:placeholder,disabled:disabled},value:value,
-        event:{input:inputChange,click:inputChange}"></textarea>
-     </form>
-    <!-- /ko -->
-    <!-- ko ifnot: isHasForm -->
-      <textarea autocomplete="off" wrap="soft" class="y-textarea" 
-      data-bind="attr:{maxlength:maxlength,rows:rows,placeholder:placeholder,disabled:disabled},value:value,
-      event:{input:onInput,click:onClick}"></textarea>
-    <!-- /ko -->
-  </div>
-  
+    <textarea autocomplete="off" wrap="soft" class="y-textarea"
+    data-bind="attr:{maxlength:maxlength,rows:rows,placeholder:placeholder,disabled:disabled},value:value,
+    event:{input:onInput,click:onClick}"></textarea>
+</div>

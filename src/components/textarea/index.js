@@ -8,11 +8,9 @@ class Textarea extends Base {
     this.rows = params.rows || '2'
     this.placeholder = params.placeholder || ''
     this.maxlength = params.maxlength
-    this.isHasForm = !!params.onSubmit
-    this.handleSubmit = params.onSubmit || function () {}
     this.disabled = params.disabled || ko.observable(false)
     // textarea是否可以自动变高，如果参数为‘true’则可以，默认不可以
-    this.autoHeightChange = params.autoHeightChange || 'false'
+    this.autoHeightChange = params.autoHeightChange || false
   }
   methods (params) {
     this.onInput = (a, b) => {
@@ -24,7 +22,7 @@ class Textarea extends Base {
       }
     }
     this.onClick = (a, b) => {
-      if (this.autoHeightChange === 'true') {
+      if (this.autoHeightChange) {
         var el = b.target
         el.style.height = 'auto'
         el.style.height = el.scrollHeight + 'px'
