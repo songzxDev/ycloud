@@ -29,6 +29,14 @@ class Textarea extends Base {
         el.style.overflowY = 'hidden'
       }
     }
+    this.onBlur = (a, b) => {
+      if (this.autoHeightChange) {
+        var el = b.target
+        el.style.height = 'auto'
+        el.style.height = el.scrollHeight + 'px'
+        el.style.overflowY = 'hidden'
+      }
+    }
   }
 }
 export default {
