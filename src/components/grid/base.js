@@ -49,6 +49,7 @@ class Grid extends Base {
 
     this.headHeight = params.headHeight || '45px'
     this.scrollHeight = params.scrollHeight || '15px'
+    this.startIndex = params.startIndex || 0
     this.pageSize = params.pageSize || ko.observable(PAGESIZE)
     this.pageIndex = params.pageIndex || ko.observable(PAGEINDEX)
     this.pageSizeList = params.pageSizeList
