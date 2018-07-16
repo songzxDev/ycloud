@@ -42,6 +42,13 @@
     </div>
   </div>
   <!-- ko if: pagination -->
-  <y-pagination data-bind="visible: isShowPagination" params="pageSizeList:pageSizeList,onSizeChange:onSizeChange,onPageChage:onPageChange,pageSize: pageSize, totalCount: totalCount, pageIndex: pageIndex"></y-pagination>
+  <y-pagination data-bind="visible: isShowPagination" params="
+    pageSizeList: pageSizeList,
+    onSizeChange: onSizeChange,
+    onPageChage: onPageChange,
+    pageSize: pageSize,
+    totalCount: totalCount,
+    startIndex: startIndex,
+    pageIndex: pageIndex"></y-pagination>
   <!-- /ko -->
 </div>
