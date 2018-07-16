@@ -8,10 +8,36 @@
       <div class="y-datepicker-header">
       </div>
       <div class="y-datepicker-footer">
-        <y-datepicker-year params="year: $parent.year,showmonth:$parent.showmonth,$parent.showyear:$parent.showyear" class="hide" data-bind="css:{'show':$parent.showyear}"></y-datepicker-year>
-        <y-datepicker-month params="year: $parent.year, month: $parent.month,showday:$parent.showday,showmonth:$parent.showmonth, showyear:$parent.showyear" class="hide" data-bind="css:{'show':$parent.showmonth}"></y-datepicker-month>
-        <y-datepicker-day params="minDate: $parent.minDate,maxDate:$parent.maxDate,hour:$parent.hour,minutes:$parent.minutes,seconds:$parent.seconds,isTimer:$parent.isTimer, data: $parent.data,year: $parent.year, month: $parent.month, day: $parent.day,showday:$parent.showday, showyear:$parent.showyear,showmonth:$parent.showmonth" class="hide" data-bind="css:{'show':$parent.showday}"></y-datepicker-day>
-        <y-datepicker-timer params="hour:$parent.hour,minutes:$parent.minutes,seconds:$parent.seconds, showtimer:$parent.showtimer" ></y-datepicker-timer>
+        <y-datepicker-year params="
+          year: $parent.year,
+          showmonth:$parent.showmonth,
+          showyear:$parent.showyear" class="hide" data-bind="css:{'show':$parent.showyear}"></y-datepicker-year>
+        <y-datepicker-month params="
+          year: $parent.year,
+          month: $parent.month,
+          showday:$parent.showday,
+          showmonth:$parent.showmonth,
+          showyear:$parent.showyear" class="hide" data-bind="css:{'show':$parent.showmonth}"></y-datepicker-month>
+        <y-datepicker-day params="
+          isNumbericValue: $parent.isNumbericValue,
+          minDate: $parent.minDate,
+          maxDate:$parent.maxDate,
+          hour:$parent.hour,
+          minutes:$parent.minutes,
+          seconds:$parent.seconds,
+          isTimer:$parent.isTimer,
+          data: $parent.data,
+          year: $parent.year,
+          month: $parent.month,
+          day: $parent.day,
+          showday:$parent.showday,
+          showyear:$parent.showyear,
+          showmonth:$parent.showmonth" class="hide" data-bind="css:{'show':$parent.showday}"></y-datepicker-day>
+        <y-datepicker-timer params="
+          hour:$parent.hour,
+          minutes:$parent.minutes,
+          seconds:$parent.seconds,
+          showtimer:$parent.showtimer" ></y-datepicker-timer>
         <div class="y-datepicker-option">
           <div class="curdate" data-bind="click:$parent.choosenow">
             <span class="fa fa-arrows"></span>

@@ -273,6 +273,10 @@
           <y-formitem params="label:'checkbox默认值\'0\'',style:{height:'auto'}">
             <y-checkbox-item params="disabled:$root.checkDis,checked:$root.checkboxItem,trueValue:'1',falseValue: '0'"></y-checkbox-item>
           </y-formitem>
+          <y-formitem params="label: '默认值是数字'">
+            <y-datetimepicker params='numbericValue:true, placeholder:"请选择日期",data: $root.datepickerNumber'>
+            </y-datetimepicker>
+          </y-formitem>
           <y-formitem params="label: 'String日期'">
             <y-datepicker params='placeholder:"请选择日期",data: $root.datepicker'>
             </y-datepicker>
@@ -307,7 +311,7 @@
             </y-datetimepicker>
           </y-formitem>
           <y-formitem params="label: '时间dataTable'">
-            <y-datetimepicker params='placeholder:"请选择时间dataTable",data: $root.table.ref("date")'>
+            <y-datetimepicker params='numbericValue: true,placeholder:"请选择时间dataTable",data: $root.table.ref("date")'>
             </y-datetimepicker>
           </y-formitem>
           <y-formitem params="label: '级联'">

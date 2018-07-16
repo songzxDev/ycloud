@@ -2,6 +2,7 @@ import './index.less'
 import ko from 'knockout'
 import template from './index.html'
 import Base from '../../core/base'
+import {setData} from './util'
 const PREIFX = 'y-'
 // 日期组件要验证的点
 // 1.默认日期没有值
@@ -42,11 +43,12 @@ const getElementLeft = function (element) {
   return actualLeft
 }
 class DatePicker extends Base {
-  initialize ({placeholder, data, isTimer = false, lang = 'zh', minDate, maxDate}) {
+  initialize ({placeholder, data, isTimer = false, lang = 'zh', minDate, maxDate, numbericValue = false}) {
     this.lang = lang
     this.isTimer = isTimer
     this.placeholder = placeholder
     this.data = data
+    this.isNumbericValue = numbericValue
     this.year = ko.observable()
     this.month = ko.observable()
     this.day = ko.observable()
@@ -81,7 +83,7 @@ class DatePicker extends Base {
         }
       },
       write: (val) => {
-        this.data(val)
+        this.setData(val, this.data, this.isNumbericValue)
       }
     })
   }
@@ -120,6 +122,7 @@ class DatePicker extends Base {
     })
   }
   methods (params) {
+    this.setData = setData
     // 生成初始化的值
     this.generateDate = (v) => {
       var _date
@@ -180,12 +183,12 @@ class DatePicker extends Base {
       }
       // 如果还处于初始化则不重新赋值, 数据初始化的时候有默认值，则会重新设置一下日期格式
       if (this.initFlag) {
-        this.data(_date)
+        this.setData(_date, this.data, this.isNumbericValue)
       }
       // 如果有旧值，则存在只修改了时间没有修改日期的操作，需要动态更新值
       var oldData = this.data()
       if (oldData !== undefined && oldData !== '' && oldData !== null) {
-        this.data(_date)
+        this.setData(_date, this.data, this.isNumbericValue)
       }
     }
     //
@@ -203,7 +206,7 @@ class DatePicker extends Base {
       } else {
         _date = new Date()._format(DATEFORMAT)
       }
-      this.data(_date)
+      this.setData(_date, this.data, this.isNumbericValue)
       this.closeModal()
     }
     // 关闭弹框

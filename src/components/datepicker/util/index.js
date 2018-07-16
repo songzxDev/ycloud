@@ -1,4 +1,11 @@
 const DAY_DURATION = 86400000
+// 如果
+export function setData (value, observable, isNumbericValue) {
+  if (isNumbericValue) {
+    value = (new Date(value)).getTime()
+  }
+  observable(value)
+}
 // 获取每个月的第一天
 export function getFirstDayOfMonth (date) {
   const temp = new Date(date.getTime())

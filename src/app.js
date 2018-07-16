@@ -1412,6 +1412,7 @@ let viewmodel = {
     console.log('pageIndex:' + pageIndex + ' ,pageSize:' + pageSize)
   },
   datepicker: ko.observable('2017-02-19 02:00:00'),
+  datepickerNumber: ko.observable('1531732538284'),
   numericDate: ko.observable('1516009970361'),
   dynamicDate: ko.observable(),
   onInputBlur: function (data) {

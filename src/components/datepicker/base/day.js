@@ -1,4 +1,4 @@
-import {getFirstDayOfMonth, getDayCountOfMonth, getWeekNumber, getStartDateOfMonth} from '../util'
+import {getFirstDayOfMonth, getDayCountOfMonth, getWeekNumber, getStartDateOfMonth, setData} from '../util'
 import ko from 'knockout'
 const DAY_DURATION = 86400000 // 1天
 const clearHours = function (time) {
@@ -60,13 +60,12 @@ function init (params) {
       }
     }
     // 切换到其他月份的时候
-    params.data((new Date(year, month - 1, day, params.hour(), params.minutes(), params.seconds()))._format(params.isTimer ? 'yyyy-MM-dd hh:mm:ss' : 'yyyy-MM-dd'))
+    setData((new Date(year, month - 1, day, params.hour(), params.minutes(), params.seconds()))._format(params.isTimer ? 'yyyy-MM-dd hh:mm:ss' : 'yyyy-MM-dd'), params.data, params.isNumbericValue)
   }
   // 判断是否当前天
   this.isSelectedDay = (cellType, cellDay) => {
     if (cellType === 'normal') {
       // fix ie and edge new date bug
-
       if (params.data()) {
         var _date = new Date((params.data() + '').replace(/-/g, '/'))
         if (cellDay === this.day() && this.month() === (_date.getMonth() + 1) && this.year() === (_date.getFullYear())) {
