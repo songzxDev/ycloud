@@ -3,6 +3,7 @@ import ko from 'knockout'
 import template from './index.html'
 import Base from '../../core/base'
 import {setData} from './util'
+import getLang from '../../i18n'
 const PREIFX = 'y-'
 // 日期组件要验证的点
 // 1.默认日期没有值
@@ -65,6 +66,7 @@ class DatePicker extends Base {
     this.showday = ko.observable(true)
     this.showtimer = ko.observable(false)
     this.alignright = ko.observable(false)
+    this.i18nConfirm = getLang('确定')
   }
   computed (params) {
     // 最终显示的值为计算属性 close #88

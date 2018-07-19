@@ -2,6 +2,7 @@ import template from './index.html'
 import ko from 'knockout'
 import 'ko-bindinghandler'
 import {lockScrollEffect, resetScrollEffect} from '@/util/scrollable'
+import getLang from '../../i18n'
 function init (params) {
   this.addtionButton = params.textClear || false
   // 隐藏foot ok 取消按钮  传true就会隐藏
@@ -9,14 +10,14 @@ function init (params) {
   this.hideOk = params.hideOk || ko.observable(false)
   this.hideCancel = params.hideCancel || ko.observable(false)
   this.visible = params.visible || ko.observable(false)
-  this.textOk = params.textOk || '确定'
-  this.textCancel = params.textCancel || '取消'
+  this.textOk = params.textOk || getLang('确定')
+  this.textCancel = params.textCancel || getLang('取消')
   this.textDelete = params.textDelete
   this.showDelete = params.showDelete || false
   this.textClear = params.textClear
   this.isShow = ko.observable(false)
   this.width = params.width || '400px'
-  this.title = params.title || '提示'
+  this.title = params.title || getLang('提示')
   this.isNotLazy = params.lazy === undefined ? false : !params.lazy
   this.top = window.innerHeight * 0.06 + 'px'
   var headAndFootHeightRate = (43 + 57) / window.innerHeight

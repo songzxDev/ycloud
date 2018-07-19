@@ -1,9 +1,11 @@
 import ko from 'knockout'
 import Base from '../../core/base'
 import util from './gridutil'
+import getLang from '../../i18n'
 class Body extends Base {
   initialize (params) {
     this.lazy = params.lazy
+    this.i18nNoData = getLang('暂无数据')
     this.hasSummaryRow = params.hasSummaryRow || false
     // 用在子表一对多的场景之中
     this.hasChildGrid = params.hasChildGrid || false

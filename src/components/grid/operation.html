@@ -9,7 +9,7 @@
   <span class="y-grid-operation" data-bind="click:$parent.operClick, text:item.title"></span>
   <!-- /ko -->
   <div class="y-inline-block y-grid-operation-morectn">
-    <span class="y-grid-operation">更多</span>
+    <span class="y-grid-operation" data-bind="text: i18nMore">更多</span>
     <span class="fa fa-sort-down"></span>
     <ul class="y-grid-operation-more" data-bind="foreach:{data:moreList, as: 'item'}">
       <li class="y-grid-stoprowselect" data-bind="click:$parent.operClick, text:item.title"></li>

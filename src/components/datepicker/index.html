@@ -45,7 +45,7 @@
           <div class="timer-picker" data-bind="click:$parent.timerpanel">
             <span class="fa fa-clock-o" data-bind="css:{'fa-calendar':$parent.showtimer}"></span>
           </div>
-          <div class="confirmbutton pull-right" data-bind="click:$parent.confirm">确定</div>
+          <div class="confirmbutton pull-right" data-bind="click:$parent.confirm, text: $parent.i18nConfirm"></div>
         </div>
       </div>
       <div class="y-datepicker-mask" data-bind="click:$parent.maskClick"></div>

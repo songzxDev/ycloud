@@ -1,11 +1,14 @@
 import template from './index.html'
 import ko from 'knockout'
+import getLang from '../../i18n'
 function init (params) {
   // 外部默认分页默认从0 开始 而分页从1开始显示 所以要添加一个INDEX_DIFF,如果传入startIndex 为1 则差值为0
   const INDEX_DIFF = params.startIndex === 1 ? 0 : 1
   this.pageIndex = ko.computed(() => {
     return params.pageIndex() + INDEX_DIFF
   })
+  this.i18nShowPage = getLang('每页显示')
+  this.i18nShowLists = getLang('条')
   // 对齐
   this.align = params.align || 'center'
   this.pageSize = params.pageSize

@@ -3,7 +3,7 @@
     <!--<span :class="[prefixCls + '-total']" v-if="showTotal">-->
         <!--<slot>{{ t('i.page.total') }} {{ total }} <template v-if="total <= 1">{{ t('i.page.item') }}</template><template v-else>{{ t('i.page.items') }}</template></slot>-->
     <!--</span>-->
-    <li title="上一页" class="y-page-prev" data-bind="click: handlePrev,css:{'y-page-disable':pageIndex()<=1}">
+    <li title="" class="y-page-prev" data-bind="click: handlePrev,css:{'y-page-disable':pageIndex()<=1}">
       <a><i class="fa fa-caret-left"></i></a>
     </li>
     <li title="1" class="y-page-item" data-bind="css:{'y-page-item-cur': pageIndex() == 1},click:function(){handlePageChange(1)}"><a>1</a></li>
@@ -15,13 +15,13 @@
     <li class="y-page-item" data-bind="attr:{title:pageIndex() + 1},visible:pageIndex() + 2 < totalPage(),click:function(){handlePageChange(pageIndex() + 2)}"><a data-bind="text:pageIndex() + 2"></a></li>
     <!--<li :title="t('i.page.next5')" v-if="currentPage + 3 < allPages" :class="[prefixCls + '-item-jump-next']" @click="fastNext"><a><i class="ivu-icon ivu-icon-ios-arrow-right"></i></a></li>-->
     <li class="y-page-item" data-bind="css:{'y-page-item-cur': pageIndex() == totalPage()},attr:{title:totalPage},visible:totalPage() > 1,click:function(){handlePageChange(totalPage())}"><a data-bind="text:totalPage()"></a></li>
-    <li title="下一页" class="y-page-next" data-bind="click: handleNext, css:{'y-page-disable':pageIndex()==totalPage()}">
+    <li title="" class="y-page-next" data-bind="click: handleNext, css:{'y-page-disable':pageIndex()==totalPage()}">
       <a><i class="fa fa-caret-right"></i></a>
     </li>
     <li class="y-inline-block" style="margin-left:5px;">
-      <span class="y-inline-block">每页显示</span>
+      <span class="y-inline-block" data-bind="text: i18nShowPage">每页显示</span>
       <y-select class="y-inline-block" style="width: 60px;position: relative;top:2px;vertical-align: middle" params="topAdjust:'-180',stopLockScroll:true,dataList: pageList,value:curPage,onChange:sizeChange"></y-select>
-      <span class="y-inline-block">条</span>
+      <span class="y-inline-block" data-bind="text: i18nShowLists">条</span>
     </li>
   </ul>
 </div>

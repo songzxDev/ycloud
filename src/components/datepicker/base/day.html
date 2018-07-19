@@ -3,21 +3,21 @@
     <span class="lastyear" data-bind="click: lastyear">&lt;&lt;</span>
     <span class="lastmonth" data-bind="click: lastmonth">&lt;</span>
     <span class="yearandmonth">
-      <span data-bind="text: year() + '年',click: chooseyear"></span>
-      <span data-bind="text: month() + '月',click: choosemonth"></span>
+      <span data-bind="text: showYear, click: chooseyear"></span>
+      <span data-bind="text: showMonth, click: choosemonth"></span>
     </span>
     <span class="nextmonth" data-bind="click: nextmonth">&gt;</span>
     <span class="nextyear" data-bind="click: nextyear">&gt;&gt;</span>
   </div>
   <table class="y-day-body">
     <tr style="color: #bbb;">
-      <td>日</td>
-      <td>一</td>
-      <td>二</td>
-      <td>三</td>
-      <td>四</td>
-      <td>五</td>
-      <td>六</td>
+      <td data-bind="text: i18nSun">日</td>
+      <td data-bind="text: i18nMon">一</td>
+      <td data-bind="text: i18nTue">二</td>
+      <td data-bind="text: i18nWed">三</td>
+      <td data-bind="text: i18nThu">四</td>
+      <td data-bind="text: i18nFri">五</td>
+      <td data-bind="text: i18nSat">六</td>
     </tr>
     <!-- ko foreach: { data: rows(), as: 'row' } -->
     <tr data-bind="foreach: { data: row, as: 'cell' }">

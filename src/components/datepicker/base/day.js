@@ -1,5 +1,6 @@
 import {getFirstDayOfMonth, getDayCountOfMonth, getWeekNumber, getStartDateOfMonth, setData} from '../util'
 import ko from 'knockout'
+import getLang from '../../../i18n'
 const DAY_DURATION = 86400000 // 1天
 const clearHours = function (time) {
   const cloneDate = new Date(time)
@@ -11,7 +12,20 @@ function init (params) {
   let that = this
   this.month = params.month
   this.year = params.year
+  this.showYear = ko.computed(function () {
+    return this.year() + getLang('年')
+  }.bind(this))
+  this.showMonth = ko.computed(function () {
+    return getLang(this.month() + '月')
+  }.bind(this))
   this.day = params.day
+  this.i18nSun = getLang('日')
+  this.i18nMon = getLang('一')
+  this.i18nTue = getLang('二')
+  this.i18nWed = getLang('三')
+  this.i18nThu = getLang('四')
+  this.i18nFri = getLang('五')
+  this.i18nSat = getLang('六')
   this.tableRows = ko.observableArray([ ko.observableArray([]), ko.observableArray([]), ko.observableArray([]), ko.observableArray([]), ko.observableArray([]), ko.observableArray([]) ])
   // todo
   this.firstDayOfWeek = ko.observable(7)

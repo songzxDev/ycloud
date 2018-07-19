@@ -10,6 +10,7 @@ import {lockScrollEffect, resetScrollEffect} from '../../util/scrollable'
 import option from './option'
 import Base from '../../core/base'
 import $ from 'jquery'
+import getLang from '../../i18n'
 const PREFIX = 'y-'
 ko.components.register(PREFIX + option.name, {
   viewModel: option.init,
@@ -36,7 +37,7 @@ class Select extends Base {
     // 是否有更多按钮（一般用于各种参照）
     this.hasmore = params.hasmore || false
     // 设置placeholder提示
-    this.placeholder = params.placeholder || '请选择'
+    this.placeholder = params.placeholder || getLang('请选择')
     // 选中的文本
     this.selectedLabel = params.label || ko.observable()
     this.selectedValue = params.id || ko.observable()

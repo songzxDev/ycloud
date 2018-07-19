@@ -1,6 +1,7 @@
 import template from './index.html'
 import $ from 'jquery'
 import ko from 'knockout'
+import getLang from '../../i18n'
 function computedHeight (element) {
   this.height = $(element).find('.y-searchtag-ctn').height()
   if (this.height > 30) {
@@ -23,7 +24,7 @@ function _init (params, el) {
   this.showMore = ko.observable(false)
   this.enableActive = params.enableActive || false
   this.expandMore = ko.observable(false)
-  this.operation = ko.observable('展开')
+  this.operation = ko.observable(getLang('展开'))
   this.style = ko.computed(() => {
     if (this.expandMore()) {
       return {
@@ -38,9 +39,9 @@ function _init (params, el) {
   this.handleMoreClick = () => {
     this.expandMore(!this.expandMore())
     if (this.expandMore()) {
-      this.operation('收起')
+      this.operation(getLang('收起'))
     } else {
-      this.operation('展开')
+      this.operation(getLang('展开'))
     }
   }
   setTimeout(() => {

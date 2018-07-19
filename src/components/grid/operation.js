@@ -1,8 +1,10 @@
 import template from './operation.html'
 import ko from 'knockout'
+import getLang from '../../i18n'
 function init ({row, col, operationList}) {
   this.row = row
   this.col = col
+  this.i18nMore = getLang('更多')
   this.orginOperationList = ko.observableArray(operationList)
   this.operationList = ko.computed(() => {
     let list = []

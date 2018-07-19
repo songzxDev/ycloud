@@ -7,11 +7,13 @@ import template from './index.html'
 import ko from 'knockout'
 import 'ko-bindinghandler'
 import Base from '../../core/base'
+import getLang from '../../i18n'
 class Showdetail extends Base {
   initialize (params) {
     this.text = params.text
     this.visible = ko.observable(false)
     this.multiple = !!params.multiple
+    this.title = getLang('详细')
   }
   computed (params) {
     this.style = ko.computed(() => {

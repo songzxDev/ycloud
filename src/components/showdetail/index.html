@@ -4,7 +4,7 @@
   </div>
   <div class="y-text-link" data-bind="visible:visible,css:{'y-showdetail-singlemore':!multiple,
   'y-showdetail-multiplemore': multiple}">
-    <y-tooltip params="title:'详细'">
+    <y-tooltip params="title: title">
       <y-tooltipctn params="targetEl:$el,show:isShow,position:'bottomleft'">
         <div data-bind="text:$parentContext.$parent.text"></div>
       </y-tooltipctn>
