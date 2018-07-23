@@ -6,7 +6,7 @@ ko.components.register('custom-tooltip', {
   viewmodel: function (params) {
 
   },
-  template: `<y-input style="display: inline-block;"/><y-poptip params="title: $root.sayHello, position: 'top'">
+  template: `<y-select style="width: 200px;display: inline-block;" params="dataList: ko.observableArray(), value:ko.observable()"/><y-poptip params="title: $root.sayHello, position: 'top'">
           <span class="fa fa-question-circle y-text-link"></span>
         </y-poptip>`
 })
