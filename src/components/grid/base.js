@@ -17,7 +17,7 @@ class Grid extends Base {
     this.isRowspanHead = !!params.columns1 && !!params.columns2
     this.headtransform = ko.observable('translateX(0)')
     this.fixColumnTransform = ko.observable('translateY(0)')
-    this.vertiacalScrollTransform = ko.observable('translateX(0)')
+    this.vertiacalScrollTransform = ko.observable({})
     this.lockRightWidth = 0
     this.fixRightHeadtransform = ko.observable('translateX(0)')
     this.fixRightTransform = ko.observable('translate(0,0)')

@@ -61,11 +61,7 @@ class Poptip extends Base {
             placement: this.position,
             onCreate: (data) => {},
             onUpdate: (data) => {},
-            modifiers: {
-              flip: {
-                behavior: ['left', 'bottom', 'top']
-              }
-            }
+            positionFixed: true
           }
         )
       } else {

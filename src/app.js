@@ -2,6 +2,14 @@ import ko from 'knockout'
 import ycloud from './index'
 import './formComp'
 import _ from 'lodash'
+ko.components.register('custom-tooltip', {
+  viewmodel: function (params) {
+
+  },
+  template: `<y-input style="display: inline-block;"/><y-poptip params="title: $root.sayHello, position: 'top'">
+          <span class="fa fa-question-circle y-text-link"></span>
+        </y-poptip>`
+})
 var dt = new u.DataTable({
   meta:{
     id: "",
@@ -400,7 +408,22 @@ let viewmodel = {
       title: '河北'
     }
   ]),
-  sayHello: ko.observable(`<div>11111111111</div><div>11111111111不限定报价品范围：报价品范报价品范报价品范报价品品范围：报价品范报价品范报价品范报价品范不进行报价范围的指定，供应商可以为本次寻源项品范围：报价品范报价品范报价品范报价品范不进行报价范围的指定，供应商可以为本次寻源项范不进行报价范围的指定，供应商可以为本次寻源项目的所有物料报价</div>`),
+  tooltipcol: [{
+    title: '列1',
+    field: 'a'
+  }, {
+    title: 'tooltip',
+    type: 'component',
+    compFn (row) {
+      return {
+        name: 'custom-tooltip',
+        params: {
+          value: row.a
+        }
+      }
+    }
+  }],
+  sayHello: ko.observable(`<div>11111111111</div><div>11111111111不限定报价品范围：报价品范报价品范报价品范报价品品范围：报价品范报价品范报价品范报价品范不进行报价范围的指定，报价品范报价品范报价品范报价品范不进行报价范围的指定，报价品范报价品范报价品范报价品范不进行报价范围的指定，报价品范报价品范报价品范报价品范不进行报价范围的指定，供应商可以为本次寻源项品范围：报价品范报价品范报价品范报价品范不进行报价范围的指定，供应商可以为本次寻源项范不进行报价范围的指定，供应商可以为本次寻源项目的所有物料报价</div>`),
   boxtitle: 'box and boxcontent',
   isShow: ko.observable(false),
   singleselect: ko.observable(),
