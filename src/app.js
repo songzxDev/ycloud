@@ -1250,7 +1250,17 @@ let viewmodel = {
     }, {
       title: '第三列',
       width: '100',
-      field: 'field3'
+      field: 'field3',
+      type: 'component',
+      compFn (row) {
+        return {
+          name: 'y-checkbox-item',
+          params: {
+            checked: ko.observable(false),
+            label: row.field3
+          }
+        }
+      }
     }, {
       title: '第四列折行的列名',
       width: '100',

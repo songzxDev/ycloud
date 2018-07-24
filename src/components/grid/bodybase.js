@@ -149,18 +149,7 @@ class Body extends Base {
   }
   created (params) {
     if (params.rowspan) {
-      // setTimeout(() => {
-      ko.tasks.schedule(function () {
-        if (params.rowspan.columnIndex) {
-          this.caculateRowspanByFields(params.rowspan.columnIndex, params.domId)
-        } else if (params.rowspan.maxCol) {
-          this.caculateRowspan(params.rowspan.maxCol, params.domId)
-        }
-      }.bind(this))
-      // })
-      params.rows.subscribe(val => {
-        // 确保页面重绘之后再进行合并单元格
-        // setTimeout(function () {
+      setTimeout(() => {
         ko.tasks.schedule(function () {
           if (params.rowspan.columnIndex) {
             this.caculateRowspanByFields(params.rowspan.columnIndex, params.domId)
@@ -168,7 +157,18 @@ class Body extends Base {
             this.caculateRowspan(params.rowspan.maxCol, params.domId)
           }
         }.bind(this))
-        // }.bind(this))
+      })
+      params.rows.subscribe(val => {
+        // 确保子组件重绘之后再进行合并单元格，component调用的是后会遇到此问题
+        setTimeout(function () {
+          ko.tasks.schedule(function () {
+            if (params.rowspan.columnIndex) {
+              this.caculateRowspanByFields(params.rowspan.columnIndex, params.domId)
+            } else if (params.rowspan.maxCol) {
+              this.caculateRowspan(params.rowspan.maxCol, params.domId)
+            }
+          }.bind(this))
+        }.bind(this))
       })
     }
   }
