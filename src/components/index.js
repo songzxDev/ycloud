@@ -30,7 +30,7 @@ import tag from './tag'
 import tree from './tree'
 import yswitch from './switch'
 import tooltip from './tooltip'
-import {notice, $refs} from './base'
+import {notice, $refs, loading} from './base'
 import breadcrumb from './breadcrumb'
 import showdetail from './showdetail'
 import poptip from './poptip'
@@ -84,7 +84,8 @@ register(dragablelist)
 register(textarea)
 let ycloud = {
   notice,
-  $refs
+  $refs,
+  loading
 }
 // 3.5.0-rc版本开始 breaking change,所以ycloud要适配老版本的代码需要添加参数
 if (ko.options && ko.options.createChildContextWithAs !== undefined) {

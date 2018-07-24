@@ -1,4 +1,5 @@
 export {notice} from './notice'
+export {loading} from './loading'
 /* eslint-disable */
 Date.prototype._format = function (fmt) { // author: songhlc
   var o = {
