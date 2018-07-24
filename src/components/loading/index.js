@@ -19,8 +19,7 @@ let $loading = {
     }, 100)
   },
   hide: function () {
-    $('#y-loading').removeClass('y-loading-active')
-    $('#y-loading').addClass('y-loading-hide')
+    $('#y-loading').remove()
   }
 }
 window.hideloading = $loading.hide
