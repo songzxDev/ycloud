@@ -58,6 +58,8 @@ class Body extends Base {
     }
     // 状态tab切换或重新加载不同数据后需要清空缓存的列高度
     this.rows.subscribe(function () {
+      // 默认getRowHeight是从里面取的所以要把所有的都清空
+      params.lockColumnHeight({})
       that.computedLockColumnHeight({})
     }, 'beforeChange')
     this.summaryAfterRender = (elements, data) => {
