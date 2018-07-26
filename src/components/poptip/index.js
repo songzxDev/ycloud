@@ -9,7 +9,6 @@ import template from './index.html'
 import ko from 'knockout'
 import Base from '@/core/base'
 import Popper from 'popper.js'
-import $ from 'jquery'
 class Poptip extends Base {
   initialize (params) {
     this.title = params.title || ''
@@ -50,10 +49,11 @@ class Poptip extends Base {
   subscribe (params) {
     /* eslint-disable no-new */
     /* 声明变量myPopper会存在内存中 */
+    var that = this
     this.visible.subscribe(val => {
-      if (!this.myPopper && val) {
-        let reference = $(this.$el).find('.element')
-        let popper = $(this.$el).find('.y-poptip-ctn')
+      if (!that.myPopper && val) {
+        let reference = that.$el.querySelector('.element')
+        let popper = that.$el.querySelector('.y-poptip-ctn')
         this.myPopper = new Popper(
           reference,
           popper,
@@ -61,11 +61,16 @@ class Poptip extends Base {
             placement: this.position,
             onCreate: (data) => {},
             onUpdate: (data) => {},
-            positionFixed: true
+            positionFixed: true,
+            modifiers: {
+              preventOverflow: {
+                enabled: false
+              }
+            }
           }
         )
       } else {
-        this.myPopper && this.myPopper.update()
+        that.myPopper && that.myPopper.update()
       }
     })
   }

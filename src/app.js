@@ -4,7 +4,7 @@ import './formComp'
 import _ from 'lodash'
 ko.components.register('custom-tooltip', {
   viewmodel: function (params) {
-
+    this.value = params.value
   },
   template: `<y-select style="width: 200px;display: inline-block;" params="dataList: ko.observableArray(), value:ko.observable()"/><y-poptip params="title: $root.sayHello, position: 'top'">
           <span class="fa fa-question-circle y-text-link"></span>
