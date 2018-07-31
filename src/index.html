@@ -62,6 +62,19 @@
         </y-dropdown>
       </div>
     </div>
+    <h1>下拉按钮</h1>
+    <div class="row m-b-xs">
+      <div class="col-md-1">
+        下拉
+      </div>
+      <div class="col-md-10">
+        <y-dropbutton params="mainClick:$root.dropButton,
+                            mainText:'新增123',
+                            dropWidth:105,
+                            dataList:$root.dropArr,
+                            handleOptClick:$root.dropClick"></y-dropbutton>
+      </div>
+    </div>
     <h1 id="select">4.select</h1>
     <div class="row m-b-xs">
       <div class="col-md-1">

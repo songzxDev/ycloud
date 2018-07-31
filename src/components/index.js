@@ -38,6 +38,7 @@ import sortablelist from './dragable/sortablelist'
 import dragablelist from './dragable/dragablelist'
 import textarea from './textarea'
 import './konewfeature'
+import dropbutton from './dropbutton'
 const PREFIX = 'y-'
 function register (model) {
   ko.components.register(PREFIX + model.name, {
@@ -82,6 +83,7 @@ register(poptip)
 register(sortablelist)
 register(dragablelist)
 register(textarea)
+register(dropbutton)
 let ycloud = {
   notice,
   $refs,

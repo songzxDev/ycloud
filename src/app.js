@@ -1441,6 +1441,13 @@ let viewmodel = {
   onSelectChange: function (data) {
     console.log('change:' + JSON.stringify(data))
   },
+  dropArr: ko.observableArray([]),
+  dropButton: () => {
+    debugger
+  },
+  dropClick: function (item) {
+    debugger
+  },
   onPageChage: function (pageIndex, pageSize) {
     console.log('pageIndex:' + pageIndex + ' ,pageSize:' + pageSize)
   },
@@ -2134,6 +2141,10 @@ setTimeout(function () {
 })
 setTimeout(() => {
   viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])
+  viewmodel.dropArr([
+    {value:1,label:'北京'},
+    {value:2,label:'上海'},
+  ])
   viewmodel.selectList([
     {value:1,label:'北京'},
     {value:2,label:'上海'},
