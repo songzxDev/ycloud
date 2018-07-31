@@ -12,7 +12,7 @@
     <li class="y-page-item" data-bind="attr:{title:pageIndex() - 1},visible:pageIndex() - 1 > 1,click:function(){handlePageChange(pageIndex() - 1)}"><a data-bind="text:pageIndex() - 1"></a></li>
     <li class="y-page-item y-page-item-cur" data-bind="attr:{title:pageIndex},visible:pageIndex() != 1 && pageIndex() != totalPage()"><a data-bind="text:pageIndex"></a></li>
     <li class="y-page-item" data-bind="attr:{title:pageIndex() + 1},visible:pageIndex() + 1 < totalPage(),click:function(){handlePageChange(pageIndex() + 1)}"><a data-bind="text:pageIndex() + 1"></a></li>
-    <li class="y-page-item" data-bind="attr:{title:pageIndex() + 1},visible:pageIndex() + 2 < totalPage(),click:function(){handlePageChange(pageIndex() + 2)}"><a data-bind="text:pageIndex() + 2"></a></li>
+    <li class="y-page-item" data-bind="attr:{title:pageIndex() + 2},visible:pageIndex() + 2 < totalPage(),click:function(){handlePageChange(pageIndex() + 2)}"><a data-bind="text:pageIndex() + 2"></a></li>
     <!--<li :title="t('i.page.next5')" v-if="currentPage + 3 < allPages" :class="[prefixCls + '-item-jump-next']" @click="fastNext"><a><i class="ivu-icon ivu-icon-ios-arrow-right"></i></a></li>-->
     <li class="y-page-item" data-bind="css:{'y-page-item-cur': pageIndex() == totalPage()},attr:{title:totalPage},visible:totalPage() > 1,click:function(){handlePageChange(totalPage())}"><a data-bind="text:totalPage()"></a></li>
     <li title="" class="y-page-next" data-bind="click: handleNext, css:{'y-page-disable':pageIndex()==totalPage()}">

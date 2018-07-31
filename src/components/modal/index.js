@@ -20,7 +20,10 @@ function init (params) {
   this.title = params.title || getLang('提示')
   this.isNotLazy = params.lazy === undefined ? false : !params.lazy
   this.top = window.innerHeight * 0.06 + 'px'
-  var headAndFootHeightRate = (43 + 57) / window.innerHeight
+  const handleOk = params.ok || params.onOk || function () {}
+  const handleCancel = params.onCancel || function () {}
+
+  let headAndFootHeightRate = (43 + 57) / window.innerHeight
   // 容器最大高度等于 屏幕可视高度 - 头部 - 尾部 - 内存padding - 距离顶部距离10% - 距离底部最小距离10%
   this.bodyMaxHeight = window.innerHeight * (1 - 0.12 - headAndFootHeightRate) + 'px'
   // 关闭事件
@@ -36,9 +39,7 @@ function init (params) {
   // 时间
   this.handleCancel = () => {
     this.visible(false)
-    if (params.onCancel) {
-      params.onCancel()
-    }
+    handleCancel()
   }
   this.handleClear = function (data, event) {
     if (params.handleClear) {
@@ -58,9 +59,7 @@ function init (params) {
           if (flag) {
             this.errormsg('')
             this.visible(false)
-            if (params.ok) {
-              params.ok(data, event)
-            }
+            handleOk(data, event)
           } else {
             this.errormsg((ko.isObservable(params.errormsg) ? params.errormsg() : params.errormsg) || '校验失败！')
           }
@@ -68,9 +67,7 @@ function init (params) {
       } else if (this.validateFn()) { // 同步校验
         this.errormsg('')
         this.visible(false)
-        if (params.ok) {
-          params.ok(data, event)
-        }
+        handleOk(data, event)
       } else {
         this.errormsg((ko.isObservable(params.errormsg) ? params.errormsg() : params.errormsg) || '校验失败！')
       }
