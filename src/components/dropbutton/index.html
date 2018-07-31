@@ -1,11 +1,13 @@
-<div class="u-form-button">
-  <button class="y-button y-button-primary add-button" data-bind="click:mainClick,text:mainText"></button>
-  <button class="y-button y-button-primary dropdown-toggle" data-bind="click:showdropdown">
+<div class="y-group-button">
+  <button class="y-button y-button-primary y-add-button" data-bind="click:mainClick">
+    <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
+  </button>
+  <button class="y-button y-button-primary y-dropdown-toggle" data-bind="click:showdropdown">
     <span class="fa fa-sort-down"></span>
   </button>
   <y-dropdown params="width:dropWidth, isShow:isShowDrop,isStopTransferDom:true">
-    <ul data-bind="foreach:{data: $parent.dataList, as: 'item'}">
-      <li class="cursorPointer" data-bind="text:label,event:{click:function(){$parentContext.$parent.handleOptClick(item)}}"></li>
+    <ul data-bind="foreach:{data: $parent.dropList, as: 'item'}">
+      <li class="y-item-li" data-bind="text:label,event:{click:function(){$parentContext.$parent.handleOptClick(item)}}"></li>
     </ul>
   </y-dropdown>
 </div>
