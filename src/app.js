@@ -2551,7 +2551,7 @@ allCheckDt.setSimpleData([{
 }, {
   id: 2, name: '2', price: 3
 }, {
-  id: 3, name: '2', price: 3
+  id: 3, name: '我试一试如果要超过2行的文字那么会怎么办会不会错行什么的', price: 3
 }, {
   id: 4, name: '2', price: 3
 }, {
@@ -2559,7 +2559,7 @@ allCheckDt.setSimpleData([{
 }, {
   id: 6, name: '2', price: 3
 }, {
-  id: 7, name: '2', price: 3
+  id: 7, name: '2', price: '我试一试如果要超过2行的文字那么会怎么办会不会错行什么的'
 }, {
   id: 8, name: '2', price: 3
 }, {
