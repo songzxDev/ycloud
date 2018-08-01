@@ -11,6 +11,7 @@ function init (params) {
   this.hideCancel = params.hideCancel || ko.observable(false)
   this.visible = params.visible || ko.observable(false)
   this.textOk = params.textOk || getLang('确定')
+  debugger
   this.textCancel = params.textCancel || getLang('取消')
   this.textDelete = params.textDelete
   this.showDelete = params.showDelete || false

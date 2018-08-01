@@ -10,7 +10,7 @@ function _init (params, el) {
     _el.children[0].scrollTop = val
   })
   this.$el = el
-  this.isTransferDom = params.isStopTransferDom || false
+  this.isTransferDom = !params.isStopTransferDom
   this.targetEl = params.targetEl
   this.top = ko.observable()
   this.left = ko.observable()

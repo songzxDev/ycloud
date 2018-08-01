@@ -20,14 +20,20 @@ function init (params) {
   this.value.subscribe((val) => {
     if (this.stringValue) {
       const v = val.toString()
+      // 当存在stringValue时 需要判断String值是否一样 防止多次触发
       if (v !== this.stringValue()) {
         this.stringValue(v)
       }
     }
   })
+  var that = this
   this.stringValue.subscribe((val) => {
-    if (val !== this.value().toString()) {
-      this.value(val.split(','))
+    if (val) {
+      if (val !== this.value().toString()) {
+        that.value(val.split(','))
+      }
+    } else {
+      that.value([])
     }
   })
   this.direction = params.direction || 'horizontal'

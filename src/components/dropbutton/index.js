@@ -4,22 +4,30 @@
 // 欢迎吐槽  by wjk
 import template from './index.html'
 import ko from 'knockout'
+import Base from '../../core/base'
 import './index.less'
-function init (params) {
-  this.text = params.text || '新增'
-  this.mainClick = params.click || function () {}
-  this.isShowDrop = ko.observable(false)
-  this.showdropdown = () => {
-    this.isShowDrop(!this.isShowDrop())
+class DropButton extends Base {
+  initialize (params) {
+    this.text = params.text || '新增'
+    this.mainClick = params.click || function () {}
+    this.isShowDrop = ko.observable(false)
+    this.dropWidth = params.dropWidth
+    this.dropList = params.dropList || ko.isObservableArray([])
   }
-  this.dropWidth = params.dropWidth
-  this.dropList = params.dropList || ko.isObservableArray([])
-  this.handleOptClick = function (item) {
-    params.onDropList(item)
+  methods (params) {
+    this.showdropdown = () => {
+      this.isShowDrop(!this.isShowDrop())
+    }
+    this.handleOptClick = function (item) {
+      params.onDropList(item)
+    }
+    this.handleHideDrop = () => {
+      this.isShowDrop(false)
+    }
   }
 }
 export default {
   name: 'button-group',
-  init,
+  init: Base.createViewModel(DropButton),
   template
 }

@@ -1,13 +1,15 @@
-<div class="y-group-button">
-  <button class="y-button y-button-primary y-add-button" data-bind="click:mainClick">
+<div class="y-group-button" data-bind="clickoutside: handleHideDrop">
+  <button class="y-button y-button-primary y-group-default" data-bind="click:mainClick">
     <!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
   </button>
   <button class="y-button y-button-primary y-dropdown-toggle" data-bind="click:showdropdown">
-    <span class="fa fa-sort-down"></span>
+    <span class="fa fa-sort-down" style="position: relative;top: -2px;"></span>
   </button>
-  <y-dropdown params="width:dropWidth, isShow:isShowDrop,isStopTransferDom:true">
-    <ul data-bind="foreach:{data: $parent.dropList, as: 'item'}">
-      <li class="y-item-li" data-bind="text:label,event:{click:function(){$parentContext.$parent.handleOptClick(item)}}"></li>
-    </ul>
-  </y-dropdown>
+  <div data-bind="let: {handleOptClick:handleOptClick, dropList:dropList}">
+    <y-dropdown params="width:dropWidth, isShow:isShowDrop,targetEl:$el">
+      <ul data-bind="foreach:{data: dropList, as: 'item'}">
+        <li class="y-drop-item" data-bind="text:label,click:handleOptClick"></li>
+      </ul>
+    </y-dropdown>
+  </div>
 </div>
