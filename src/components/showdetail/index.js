@@ -11,6 +11,7 @@ import getLang from '../../i18n'
 class Showdetail extends Base {
   initialize (params) {
     this.text = params.text
+    this.limitText = params.limitText || params.text
     this.visible = ko.observable(false)
     this.multiple = !!params.multiple
     this.title = getLang('详细')
