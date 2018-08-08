@@ -11,7 +11,9 @@ import getLang from '../../i18n'
 class Showdetail extends Base {
   initialize (params) {
     this.text = params.text
-    this.limitText = params.limitText || params.text
+    // 在某些场景下，希望默认用于显示的字符和tooltip中显示的不一样，这里希望可以自定义
+    // 添加textShow参数 以及适配原来的limitText
+    this.textShow = params.textShow || params.limitText || params.text
     this.visible = ko.observable(false)
     this.multiple = !!params.multiple
     this.title = getLang('详细')

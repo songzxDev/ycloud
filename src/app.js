@@ -2223,7 +2223,6 @@ viewmodel.lazyScroll = function (event, scrollTop,  scrollLeft) {
   }
   viewmodel.gridLazy.lazyStart(index - 10 < 80 ? index - 10 : 80)
   viewmodel.gridLazy.lazyEnd(index + 10 > datas.length ? datas.length : index + 10)
-  console.log('start: ' + (index - 10) + ', end:' +(index + 10))
 }
 viewmodel.lazyColumns = [
   {
