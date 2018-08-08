@@ -84,7 +84,7 @@ class Grid extends Base {
     this.columnNumberHeight = ko.pureComputed(() => {
       var item = this.lockColumnHeight()
       var heights = Object.keys(item).map(function (key) {
-        return item[key].replace('px', '') - 0
+        return item[key].height.replace('px', '') - 0
       })
       return heights
     })

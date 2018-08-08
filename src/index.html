@@ -52,7 +52,7 @@
     <div data-bind="clickoutside:vm.clickoutside" style="width: 300px">
       <button type="button" data-bind="click:$root.showdropdown">点击后切换显示dropdown</button>
       <div>
-        <y-dropdown params="width:300, isShow:$root.isShow">
+        <y-dropdown params="width:300, isShow:$root.isShow, isStopTransferDom: true">
           <div data-bind="text:$parent.id"></div>
           <div data-bind="text:$parent.b"></div>
           <div>i am dropdown</div>
@@ -60,6 +60,19 @@
           <div>i am dropdown</div>
           <div>i am dropdown</div>
         </y-dropdown>
+      </div>
+    </div>
+    <h1>3.下拉按钮</h1>
+    <div class="row m-b-xs">
+      <div class="col-md-1">
+        下拉
+      </div>
+      <div class="col-md-10">
+        <y-button-group params="click:$root.dropButton,
+                            dropList:$root.dropArr,
+                            onDropList:$root.dropClick">
+          <span class="fa fa-edit"></span>新增
+        </y-button-group>
       </div>
     </div>
     <h1 id="select">4.select</h1>
@@ -333,7 +346,7 @@
     <h1>9.弹框</h1>
     <y-button params="click:$root.hideFootClick">hideFoot</y-button>
     <y-button params="click:$root.showModal">显示弹框</y-button>
-    <y-modal params="showDelete:$root.showDelete,textDelete:'删除',hideFoot:$root.hideFoot, handleDelete: $root.handleDelete,textOk: '是',handleClear:$root.handleClear, textCancel:'否',visible: $root.modalVisible, title:'组织选择！', width:'700px', errormsg: $root.errormsg, validateFn: $root.validateFn, asyncValidateFn: $root.asyncOk">
+    <y-modal params="showDelete:$root.showDelete,textDelete:'删除',hideFoot:$root.hideFoot, handleDelete: $root.handleDelete,textOk: '是',handleClear:$root.handleClear,visible: $root.modalVisible, title:'组织选择！', width:'700px', errormsg: $root.errormsg, validateFn: $root.validateFn, asyncValidateFn: $root.asyncOk">
       <y-radio params="dataList:$root.radioDataList,value:$root.radioValue"></y-radio>
       <!-- <y-grid params="modalBodyModalHeight:bodyMaxHeight,modalBodyExtraHeight:'10px',ref:'modalgrid',onRowSelect:$root.onRowSelect,isStripe: true,columns:$root.columns,rows: $root.rows,lockhead:true"></y-grid> -->
     </y-modal>
@@ -645,7 +658,28 @@
         <y-poptip params="title: '111111111111111111111111111111111111111111111', position: 'right', question: true"></y-poptip>
       </div>
       <div class="col-md-8" id="test-tooltip">
-        <y-basicgrid params="maxheight:'auto',rows: ko.observableArray([{a: 1}]), columns: $root.tooltipcol"></y-basicgrid>
+        <y-basicgrid params="maxheight:'auto',rows: ko.observableArray([{a: 1}, {a: 2}, {a: 3}, {a: 4}]), columns: $root.tooltipcol"></y-basicgrid>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <y-basicgrid params="
+        lockcolumn: true,
+        headHeight: '90px',
+        maxheight:'auto',
+        isTableBorder:true,
+        columns1:$root.columnsDynamic1,
+        columns2: $root.columnsDynamic2,
+        rows: $root.complexHeadRowsDynamic"></y-basicgrid>
+      </div>
+      <div class="col-md-6">
+        <y-basicgrid params="
+        lockcolumn: false,
+        maxheight:'auto',
+        isTableBorder:true,
+        columns1:$root.columnsDynamic1,
+        columns2: $root.columnsDynamic2,
+        rows: $root.complexHeadRowsDynamic"></y-basicgrid>
       </div>
     </div>
   </y-boxcontent>

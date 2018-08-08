@@ -4,7 +4,7 @@ import './formComp'
 import _ from 'lodash'
 ko.components.register('custom-tooltip', {
   viewmodel: function (params) {
-
+    this.value = params.value
   },
   template: `<y-select style="width: 200px;display: inline-block;" params="dataList: ko.observableArray(), value:ko.observable()"/><y-poptip params="title: $root.sayHello, position: 'top'">
           <span class="fa fa-question-circle y-text-link"></span>
@@ -80,6 +80,126 @@ setTimeout(function () {
 }, 1000)
 window.dt = dt
 let viewmodel = {
+  columnsDynamic1: ko.observableArray([
+    {
+      title: '供应商名称',
+      field: 'name',
+      rowspan: 2,
+      lock: true,
+      width: 200
+    }, {
+      title: '第{n}次报价信息',
+      colspan: 3,
+      loop: true,
+      uniqueKey: 'price',
+      looplength: function (row) {
+        return row.detailList.length
+      },
+      align: 'center'
+    }, {
+      title: '供应商联系方式',
+      field: 'cell',
+      width: 100,
+      rowspan: 2
+    }
+  ]),
+  columnsDynamic2: ko.observableArray([
+    {
+      title: '单价',
+      width: 50,
+      loop: true,
+      type: 'render',
+      uniqueKey: 'price',
+      renderFn: function (row, index, col) {
+        return row.detailList[col._childIndex].price
+      }
+    }, {
+      title: '数量',
+      width: 50,
+      loop: true,
+      type: 'render',
+      uniqueKey: 'price',
+      renderFn: function (row, index, col) {
+        return row.detailList[col._childIndex].num
+      }
+    }, {
+      title: '税率',
+      width: 50,
+      loop: true,
+      type: 'render',
+      uniqueKey: 'price',
+      renderFn: function (row, index, col) {
+        return row.detailList[col._childIndex].tax
+      }
+    }
+  ]),
+  complexHeadRowsDynamic: ko.observableArray([
+    {
+      name: '北京供应商',
+      cell: '18182736212',
+      detailList: [{
+        price: 100.00,
+        num: 12,
+        tax: '17%'
+      }, {
+        price: 110.00,
+        num: 12,
+        tax: '17%'
+      }, {
+        price: 112.00,
+        num: 12,
+        tax: '17%'
+      }]
+    }, {
+      name: '上海供应商',
+      cell: '18182736212',
+      detailList: [{
+        price: 100.00,
+        num: 12,
+        tax: '17%'
+      }, {
+        price: 110.00,
+        num: 12,
+        tax: '17%'
+      }, {
+        price: 112.00,
+        num: 12,
+        tax: '17%'
+      }]
+    }, {
+      name: '天津供应商',
+      cell: '18182736212',
+      detailList: [{
+        price: 98.00,
+        num: 12,
+        tax: '17%'
+      }, {
+        price: 110.00,
+        num: 12,
+        tax: '17%'
+      }, {
+        price: 115.00,
+        num: 12,
+        tax: '17%'
+      }]
+    }, {
+      name: '四川供应商',
+      cell: '18182736212',
+      detailList: [{
+        price: 100.00,
+        num: 12,
+        tax: '17%'
+      }, {
+        price: 101.00,
+        num: 12,
+        tax: '17%'
+      }, {
+        price: 102.00,
+        num: 12,
+        tax: '17%'
+      }]
+    }
+  ]),
   allCheckCol: [{
     type: 'checkbox',
     lock: true
@@ -311,6 +431,7 @@ let viewmodel = {
   hideFoot: ko.observable(false),
   checkDis: ko.observable(false),
   hideFootClick: function () {
+    viewmodel.modalVisible(true)
     viewmodel.hideFoot(true)
   },
   switchDisabled: ko.observable(true),
@@ -454,6 +575,7 @@ let viewmodel = {
     })
   },
   showModal: function () {
+    viewmodel.hideFoot(false)
     viewmodel.modalVisible(true)
   },
   treeData: ko.observable([{
@@ -1441,6 +1563,13 @@ let viewmodel = {
   onSelectChange: function (data) {
     console.log('change:' + JSON.stringify(data))
   },
+  dropArr: ko.observableArray([]),
+  dropButton: () => {
+    debugger
+  },
+  dropClick: function (item) {
+    debugger
+  },
   onPageChage: function (pageIndex, pageSize) {
     console.log('pageIndex:' + pageIndex + ' ,pageSize:' + pageSize)
   },
@@ -2134,6 +2263,11 @@ setTimeout(function () {
 })
 setTimeout(() => {
   viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])
+  viewmodel.dropArr([
+    {value:1,label:'view Detail'},
+    {value:2,label:'上海'},
+    {value:1,label:'Apply to Requirement'}
+  ])
   viewmodel.selectList([
     {value:1,label:'北京'},
     {value:2,label:'上海'},
@@ -2417,7 +2551,7 @@ allCheckDt.setSimpleData([{
 }, {
   id: 2, name: '2', price: 3
 }, {
-  id: 3, name: '2', price: 3
+  id: 3, name: '我试一试如果要超过2行的文字那么会怎么办会不会错行什么的', price: 3
 }, {
   id: 4, name: '2', price: 3
 }, {
@@ -2425,7 +2559,7 @@ allCheckDt.setSimpleData([{
 }, {
   id: 6, name: '2', price: 3
 }, {
-  id: 7, name: '2', price: 3
+  id: 7, name: '2', price: '我试一试如果要超过2行的文字那么会怎么办会不会错行什么的'
 }, {
   id: 8, name: '2', price: 3
 }, {

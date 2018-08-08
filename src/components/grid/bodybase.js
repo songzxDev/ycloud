@@ -41,8 +41,8 @@ class Body extends Base {
           count++
         }
       }
-      // 如果所有的都渲染完了
-      if (length === count || params.lazy) {
+      // 如果所有的都渲染完了 count可能比实际数量多（重新setSimpleData 数量变少）
+      if ((length <= count && length > 0) || params.lazy) {
         params.lockColumnHeight(val)
       }
     })
@@ -51,7 +51,7 @@ class Body extends Base {
     var that = this
     this.getRowHeight = function (rowIndex) {
       if (params.isLockLeft || params.lazy) {
-        return params.lockColumnHeight()[rowIndex] || 'auto'
+        return params.lockColumnHeight()[rowIndex] ? params.lockColumnHeight()[rowIndex].height : 'auto'
       } else {
         return 'auto'
       }
@@ -60,7 +60,14 @@ class Body extends Base {
     this.rows.subscribe(function () {
       // 默认getRowHeight是从里面取的所以要把所有的都清空
       params.lockColumnHeight({})
-      that.computedLockColumnHeight({})
+      // 当调用addSimpleData的时候 需要只把原来没变化的设置成needRefresh=true 保留原来的高度（已经渲染过的不会重新走afterrender）
+      var allHeight = that.computedLockColumnHeight()
+      for (var prop in allHeight) {
+        if (allHeight.hasOwnProperty(prop)) { // 这里扩展了对象,所以必须判断
+          allHeight[prop].needRefresh = true
+        }
+      }
+      that.computedLockColumnHeight(allHeight)
     }, 'beforeChange')
     this.summaryAfterRender = (elements, data) => {
       // setTimeout(function () {
@@ -75,13 +82,17 @@ class Body extends Base {
     this.afterRender = (elements, data) => {
       if (!params.isLockLeft) {
         var lockColumnHeight = that.computedLockColumnHeight()
-        if (!lockColumnHeight[data.rowIndex]) {
+        if (!lockColumnHeight[data.rowIndex] || lockColumnHeight[data.rowIndex].needRefresh) {
           setTimeout(function () {
             var height = elements.filter(function (el) {
               return el.nodeName === 'TR'
             })[0].offsetHeight
             if (height > 0) {
-              lockColumnHeight[data.rowIndex] = height + 'px'
+              lockColumnHeight[data.rowIndex] = {
+                height: height + 'px',
+                needRefresh: false
+              }
+              that.computedLockColumnHeight({})
               that.computedLockColumnHeight(lockColumnHeight)
             }
           })
