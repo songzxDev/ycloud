@@ -7,6 +7,7 @@ function init (params) {
   this.value = params.value
   this.checked = params.checked || ko.observable(false)
   this.falseValue = params.falseValue || false
+  this.clickBubble = !!params.clickBubble
   this.trueValue = params.trueValue ? params.trueValue : true
   params.valueList = params.valueList || []
   if (params.valueList.indexOf(this.value) >= 0) {
