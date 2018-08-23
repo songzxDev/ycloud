@@ -1,7 +1,12 @@
-<div class="y-input-ctn" data-bind="css:ctnClass">
+<div class="y-input-ctn" data-bind="css: ctnClass">
   <!-- ko if: isHasForm -->
    <form data-bind="submit:handleSubmit">
-    <input class="y-input" data-bind="css:{'text-right': align === 'right'},click:onClick,event:{keyup:onKeyup,blur:onBlur,input:onInput,focus: onFocus},attr:{maxlength:maxlength,type: type, placeholder:placeholder,disabled:disabled},value:value">
+    <input class="y-input" data-bind="
+      css: {'text-right': align === 'right'},
+      click: onClick,
+      event: {keyup: onKeyup, blur: onBlur, input: onInput, focus: onFocus},
+      attr: {maxlength: maxlength, type: type, placeholder: placeholder, disabled: disabled},
+      value: value" />
     <i data-bind="visible: showIcon, css:iconClass,click: handleIconClick"></i>
    </form>
   <!-- /ko -->
@@ -11,7 +16,12 @@
       <span data-bind="text: prepend"></span>
     </div>
     <!-- /ko -->
-    <input class="y-input" data-bind="css:{'y-hasprepend':prepend,'y-hasappend':append,'text-right': align === 'right'},click:onClick,event:{keyup:onKeyup,blur:onBlur,input:onInput,focus: onFocus},attr:{maxlength:maxlength,type: type, placeholder:placeholder,disabled:disabled},value:value">
+    <input class="y-input" data-bind="
+      css: {'y-hasprepend': prepend, 'y-hasappend': append, 'text-right': align === 'right'},
+      click: onClick,
+      event: {keyup: onKeyup, blur: onBlur, input: onInput, focus: onFocus},
+      attr: {maxlength: maxlength, type: type, placeholder: placeholder, disabled: disabled},
+      value: value" />
     <!-- ko if: append -->
     <div class="y-input-append">
       <span data-bind="text: append"></span>

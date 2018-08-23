@@ -1,11 +1,16 @@
-<div class="y-searchtag-wrapper" data-bind="style:style">
-  <div class="y-searchtag-ctn" data-bind="foreach:{data:tagList, as:'tag'}">
-    <y-tag
-      params="enableActive:$parent.enableActive,item:tag,handleClick:tag.handleClick,text:tag[$parent.titleKey], type:'blank',style:{marginRight:'10px'}">
+<div class="y-searchtag-wrapper" data-bind="style: style">
+  <div class="y-searchtag-ctn" data-bind="foreach: {data: tagList, as: 'tag'}">
+    <y-tag params="
+      enableActive: $parent.enableActive,
+      item: tag,
+      handleClick: tag.handleClick,
+      text: tag[$parent.titleKey],
+      type: 'blank',
+      style: {marginRight:'10px'}">
     </y-tag>
   </div>
   <div class="y-searchtag-expand disable-select-text"
-       data-bind="visible:showMore,click: handleMoreClick">
-    <span data-bind="text:operation">展开</span> <i class="fa fa-angle-down" data-bind="css:{'y-searchtag-expanded':expandMore}"></i>
+    data-bind="visible: showMore, click: handleMoreClick">
+    <span data-bind="text: operation">展开</span> <i class="fa fa-angle-down" data-bind="css: {'y-searchtag-expanded': expandMore}"></i>
   <div>
 </div>

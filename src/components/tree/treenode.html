@@ -17,6 +17,7 @@
       <span class="y-tree-title" data-bind="
         click: handleClickNode,
         text: data()[nameField],
+        attr: {title: data()[nameField]},
         css: {'y-tree-node-selected': isNodeSelected}"></span>
       <!-- ko if: extraEdit -->
       <span class="y-tree-extra pull-right" data-bind="
