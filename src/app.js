@@ -80,6 +80,7 @@ setTimeout(function () {
 }, 1000)
 window.dt = dt
 let viewmodel = {
+  select4Id: ko.observable(),
   columnsDynamic1: ko.observableArray([
     {
       title: '供应商名称',
@@ -1625,6 +1626,7 @@ let viewmodel = {
   checkboxkey: ko.observableArray(),
   radiokey: ko.observable(),
   asyncTreeData: ko.observableArray([]),
+  asyncTreeData2: ko.observableArray([]),
   selectList: ko.observableArray([]),
   checkboxValue: ko.observableArray([]),
   checkboxItem: ko.observable('0'),
@@ -2262,6 +2264,7 @@ setTimeout(function () {
 })
 setTimeout(() => {
   viewmodel.asyncTreeData([{id: 1, name: '北京总公司'}])
+  viewmodel.asyncTreeData2([{id: 1, name: '北京总公司'}])
   viewmodel.dropArr([
     {value:1,label:'view Detail'},
     {value:2,label:'上海'},

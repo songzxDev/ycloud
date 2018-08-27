@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`y-select组件 快照 1`] = `
+<body>
+  <y-select
+    params="placeholder:placeholder,dataList:DataList,id:selectedId,value:selectedValue"
+  >
+    <div
+      class="y-inline-block y-relative y-width-100"
+      data-bind="clickoutside:clickoutside,css:{selected:showDropdown}"
+    >
+      
+  
+      <div
+        class="y-select-ctn y-input"
+        data-bind="click:handleShowDrop, css:{'y-select-disabled':disabled}, attr:{disabled:disabled}"
+      >
+        
+    
+        <div
+          data-bind="foreach:{data: multiValue, as: 'tag'}"
+        />
+        
+    
+        <div
+          class="y-select-single"
+          data-bind="visible:!multiple&&selectedLabel() && !filterable(), text:selectedLabel"
+        >
+          女
+        </div>
+        
+    
+        <div
+          class="y-select-placeholder"
+          data-bind="text:placeholder,visible:showPlaceholder() && !filterable()"
+          style="display: none;"
+        >
+          这是placeholder
+        </div>
+        
+    
+        <input
+          class="y-select-filter"
+          data-bind="event:{keyup:handleKeyUp,focus:handleFocus, compositionend: handleCompositionEnd,compositionstart:handleCompositionStart},textInput:key,visible:filterable,attr:{placeholder:placeholder}"
+          placeholder="这是placeholder"
+          style="display: none;"
+          type="text"
+        />
+        
+    
+        <i
+          class="y-select-arrow fa fa-close"
+          data-bind="visible:clearable,css:{'y-select-showclose':showCloseIcon(),'y-select-important':hasmore}, click:handlerClear, clickBubble: false"
+          style="display: none;"
+        />
+        
+    
+        <i
+          class="y-select-arrow fa fa-caret-down"
+          data-bind="css: {'y-select-showdrop':clearable && showCloseIcon()}, visible:!hasmore"
+        />
+        
+    
+        <i
+          class="y-select-arrow fa fa-list y-select-hasmore"
+          data-bind="visible: hasmore,click:function(data, event){handleMore(data, event);return false;}, clickBubble: false"
+          style="display: none;"
+        />
+        
+  
+      </div>
+      
+  
+      <div
+        data-bind="let: {isNoData:isNoData,curIndex:curIndex,curValue:curValue,valuekey:valuekey,labelkey:labelkey,handleOptClick:handleOptClick,multiValue:multiValue}"
+      >
+        
+    
+        <y-dropdown
+          params="topAdjust: topAdjust,width:dropWidth,targetEl:$el, isShow:showDropdown,scrollTop:scrollTop,isStopTransferDom:isStopTransferDom"
+        >
+          
+      
+          <div
+            class="y-option-ctn"
+            data-bind="foreach:{data: $parent.filterDataList, as: 'item'}"
+          />
+          
+      
+          <div
+            class="y-select-nodata"
+            data-bind="visible: isNoData, text: $parent.i18nNoData"
+            style="display: none;"
+          >
+            
+          </div>
+          
+    
+        </y-dropdown>
+        
+  
+      </div>
+      
+
+    </div>
+    
+
+  </y-select>
+</body>
+`;

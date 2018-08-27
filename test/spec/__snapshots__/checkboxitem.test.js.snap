@@ -7,7 +7,7 @@ exports[`y-checkboxitem组件 快照 1`] = `
   >
     <label
       class="y-checkbox-item y-checkbox-item-checked"
-      data-bind="css:{'y-checkbox-item-checked': checked() && checked() != 0 }"
+      data-bind=",clickBubble: clickBubble,event:{click:hanldeClick},css:{'y-checkbox-item-checked': checked() && checked() != 0 }"
     >
       
   
@@ -22,7 +22,7 @@ exports[`y-checkboxitem组件 快照 1`] = `
           
       
           <input
-            data-bind="event:{click:hanldeClick},attr:{disabled:disabled}"
+            data-bind="attr:{disabled:disabled}"
             type="checkbox"
           />
           

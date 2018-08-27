@@ -25,6 +25,8 @@ class Grid extends Base {
     this.domId = params.rowspan ? Math.random() : ''
     this.isTableBorder = params.isTableBorder || params.rowspan
     this.maxheight = params.maxheight || '486px'
+    // fixed issue 111 当设置了auto之后，需要把外层y-grid的overflow设置成visible，防止auto+更多操作按钮的组合遮挡住浮动框
+    this.isAutoHeight = params.maxheight === 'auto'
     this.minheight = params.minheight || 'auto'
     this.isStripe = params.isStripe || false
     this.expand = params.expand || true

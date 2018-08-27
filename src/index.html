@@ -86,6 +86,31 @@
     </div>
     <div class="row m-b-xs">
       <div class="col-md-1">
+        下拉使用id：
+      </div>
+      <div class="col-md-1">
+        <y-select params="dataList:ko.observableArray([{
+         value: 1,
+         label: '项目1'
+        }, {
+         value: 2,
+         label: '项目2'
+        }, {
+         value: 3,
+         label: '项目3'
+        }]),id: $root.select4Id"></y-select>
+      </div>
+    </div>
+    <div class="row m-b-xs">
+      <div class="col-md-1">
+        禁用下拉：
+      </div>
+      <div class="col-md-1">
+        <y-select params="disabled:true,dropWidth:'200',dataList:vm.selectList,value:vm.singleselect,onChange:$root.onSelectChange"></y-select>
+      </div>
+    </div>
+    <div class="row m-b-xs">
+      <div class="col-md-1">
         默认值下拉：
       </div>
       <div class="col-md-3">
@@ -372,7 +397,7 @@
 
     <h2>11.3 异步加载 + checkbox</h2>
     <p>当前选中的节点是：<span data-bind="text:$root.treeSelectedData2"></span></p>
-    <y-tree params="selectedId: ko.observableArray([3, 4]),multiple: true, data:$root.asyncTreeData, height:'200px',selectedItem:$root.selectedItems,onChange: $root.onTreeMultiSelect, loadData:$root.loadTreeData"></y-tree>
+    <y-tree params="selectedId: ko.observableArray([3, 4]),multiple: true, data:$root.asyncTreeData2, height:'200px',selectedItem:$root.selectedItems,onChange: $root.onTreeMultiSelect, loadData:$root.loadTreeData"></y-tree>
   </y-boxcontent>
   <y-boxcontent>
     <h1>13.表格</h1>

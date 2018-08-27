@@ -38,6 +38,7 @@ class Select extends Base {
     this.hasmore = params.hasmore || false
     // 设置placeholder提示
     this.placeholder = params.placeholder || getLang('请选择')
+    this.i18nNoData = getLang('暂无匹配数据')
     // 选中的文本
     this.selectedLabel = params.label || ko.observable()
     this.selectedValue = params.id || ko.observable()

@@ -15,7 +15,7 @@
       <div class="y-option-ctn" data-bind="foreach:{data: $parent.filterDataList, as: 'item'}">
         <y-option params="value: item,valuekey:valuekey, label:labelkey,itemClick:handleOptClick,index:$index, curIndex:curIndex, curValue:curValue, curMultiValue:multiValue"></y-option>
       </div>
-      <div class="y-select-nodata" data-bind="visible: isNoData">暂无匹配数据</div>
+      <div class="y-select-nodata" data-bind="visible: isNoData, text: $parent.i18nNoData"></div>
     </y-dropdown>
   </div>
 </div>
