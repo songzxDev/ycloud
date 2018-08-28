@@ -50,7 +50,7 @@
         css:{
           'y-grid-row-hover':row._hover,
           'y-grid-row-selected':row._selected,
-          'y-grid-lastrow': rowIndex > 5 && rowIndex == rows().length - 1
+          'y-grid-lastrow': rowIndex == rows().length - 1
         },event:{
           click: function (vm, event) { return handleClick(row, event)},
           mouseenter: function (vm, event) { return handleMouseIn(row, event)},
