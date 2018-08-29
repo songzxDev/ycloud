@@ -4,13 +4,16 @@
 
 # ycloud
 
-
-
 ## Links
 
 - Demo and Document
     - ycloud-admin [https://yonyouyc.github.io/ycloud-admin/dist/index.html#buyofferlist](https://yonyouyc.github.io/ycloud-admin/dist/index.html#buyofferlist)
     - document [https://yonyouyc.github.io/ycloud-document/dist](https://yonyouyc.github.io/ycloud-document/dist)
+
+## instruction
+Because of internal management needs, we temporarily delete the source code under the 'src' directory. 
+We will continue to contribute and improve the ycloud and reopen the source code in the future. 
+If you have any questions, please contact me by mail songhlc@yonyou.com. Temporary source code is migrated to inner git: http://git.yonyou.com/nccloud_yuncai/ycloud.
 
 ## Install
 
