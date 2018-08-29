@@ -12,6 +12,10 @@ ycloud 是友云采FED自研的一套基于knockoutjs 的开源UI组件库，主
 - 符合友云采规范、细致、漂亮、统一的 UI
 - 以表格为核心的丰富示例文档
 
+## 说明
+因内部管控需要，暂时不开放src下的源码。我们仍然会持续完善和改进ycloud框架，并在后续适当的时机重新开放源代码。请知悉，有疑问请通过邮件songhlc@yonyou.com联系我。
+暂时源码迁移到公司内部git[http://git.yonyou.com/nccloud_yuncai/ycloud](http://git.yonyou.com/nccloud_yuncai/ycloud)之中。
+
 ## 相关链接
 
 - 示例工程和文档
